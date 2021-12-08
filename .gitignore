@@ -5,6 +5,9 @@ export_presets.cfg
 *.apk
 *.apk.*
 
+# GDUnit
+reports/
+
 # Imported translations (automatically generated from CSV files)
 *.translation
 

@@ -59,6 +59,7 @@ func drop_item():
 	holding.apply_central_impulse(toss_vector)
 	holding.pickup_time = 0.2
 	holding = null
+	print("set holding to null")
 	
 # Input
 func _unhandled_input(event):
