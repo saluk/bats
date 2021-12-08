@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/back-walls.png" type="Texture" id=2]
 [ext_resource path="res://scenes/tiles.png" type="Texture" id=3]
 [ext_resource path="res://objects/RockPile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/PressurePlate.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "back-walls.png 0"
@@ -288,6 +289,9 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+
+[node name="PressurePlate" parent="." instance=ExtResource( 5 )]
+position = Vector2( 176.535, 111.77 )
 
 [node name="foreground" type="TileMap" parent="."]
 tile_set = SubResource( 26 )
