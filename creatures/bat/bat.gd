@@ -89,9 +89,21 @@ func limit_movement():
 	if move.x > xlimit: move.x = xlimit
 	if move.y > ylimit: move.y = ylimit
 	if move.y < -ylimit: move.y = -ylimit
+	
+func update_ui():
+	var interact_buttons = get_tree().get_nodes_in_group("drop_button")
+	if not interact_buttons:
+		return
+	var b:Button = interact_buttons[0]
+	if holding:
+		b.text = "Toss"
+		b.visible = true
+	else:
+		b.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	update_ui()
 	#slow down horizontal movement
 	if move.x < 0:
 		move.x += 50*delta
@@ -113,6 +125,7 @@ func _physics_process(delta):
 		move.y = 0
 
 
+# Signals
 
 func _on_Area2D_body_entered(body):
 	if "pickup" in body:

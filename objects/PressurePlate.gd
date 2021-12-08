@@ -8,6 +8,8 @@ var move = Vector2()
 var max_pressure = 20
 export var door_group = ""
 export var door_move_scale = 1.0
+export var down_speed = 2
+export var up_speed = 0.1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,9 +28,9 @@ func _physics_process(delta):
 	var k = $KinematicBody2D
 	#k.position.y = target_y
 	if k.position.y < target_y:
-		move.y = 2
+		move.y = down_speed
 	if k.position.y > target_y:
-		move.y = -0.1
+		move.y = -up_speed
 	#k.position += move
 	var x = k.position.x
 	k.move_and_slide(move)
