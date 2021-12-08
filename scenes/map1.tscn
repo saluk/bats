@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scenes/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/back-walls.png" type="Texture" id=2]
 [ext_resource path="res://scenes/tiles.png" type="Texture" id=3]
 [ext_resource path="res://objects/RockPile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/PressurePlate.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/Door.tscn" type="PackedScene" id=6]
 
 [sub_resource type="TileSet" id=1]
 0/name = "back-walls.png 0"
@@ -100,6 +101,36 @@ points = PoolVector2Array( 32.8889, 30, 15.5278, 30, 15.5278, 2.91669, 32.8889, 
 
 [sub_resource type="ConvexPolygonShape2D" id=25]
 points = PoolVector2Array( 33.5833, 31.3333, 12.75, 31.3333, 12.75, -0.611145, 33.5833, -0.611145 )
+
+[sub_resource type="ConvexPolygonShape2D" id=27]
+points = PoolVector2Array( 32.6132, 32.4508, -0.541656, 32.4508, -0.541656, 15.0361, 32.6132, 15.0361 )
+
+[sub_resource type="ConvexPolygonShape2D" id=28]
+points = PoolVector2Array( 32.0936, 32.1159, -0.391479, 32.1159, -0.391479, 14.0314, 32.0936, 14.0314 )
+
+[sub_resource type="ConvexPolygonShape2D" id=29]
+points = PoolVector2Array( 32.2438, 32.4508, 0.0936279, 32.4508, 0.0936279, 15.0361, 32.2438, 15.0361 )
+
+[sub_resource type="ConvexPolygonShape2D" id=30]
+points = PoolVector2Array( 31.3893, 31.4461, 1.24854, 31.4461, 1.24854, 15.7059, 31.3893, 15.7059 )
+
+[sub_resource type="ConvexPolygonShape2D" id=31]
+points = PoolVector2Array( 32.2093, 31.781, -0.275757, 31.781, -0.275757, 14.0314, 32.2093, 14.0314 )
+
+[sub_resource type="ConvexPolygonShape2D" id=32]
+points = PoolVector2Array( 31.505, 31.8622, 0.0246277, 31.8622, 0.0246277, 0, 31.505, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=33]
+points = PoolVector2Array( 30.1654, 30.6728, 0.0246277, 30.6728, 0.0246277, 1.20182, 30.1654, 1.20182 )
+
+[sub_resource type="ConvexPolygonShape2D" id=34]
+points = PoolVector2Array( 31.643, 29.6682, 15.5679, 29.6682, 15.5679, 1.87164, 31.643, 1.87164 )
+
+[sub_resource type="ConvexPolygonShape2D" id=35]
+points = PoolVector2Array( 29.6682, 15.1173, -1.14246, 15.1173, -1.14246, 0.381836, 29.6682, 0.381836 )
+
+[sub_resource type="ConvexPolygonShape2D" id=36]
+points = PoolVector2Array( 30.8231, 15.4522, 0.0124359, 15.4522, 0.0124359, 0.716736, 30.8231, 0.716736 )
 
 [sub_resource type="TileSet" id=26]
 0/name = "tiles.png 0"
@@ -266,10 +297,70 @@ points = PoolVector2Array( 33.5833, 31.3333, 12.75, 31.3333, 12.75, -0.611145, 3
 "one_way_margin": 1.0,
 "shape": SubResource( 25 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 5, 4 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 27 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 6, 4 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 28 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 7, 4 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 29 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 8, 4 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 30 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 9, 4 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 31 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 11, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 32 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 11, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 33 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 34 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 35 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 36 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
 
-[node name="map" type="Node2D"]
+[node name="map_1" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -292,12 +383,21 @@ tile_data = PoolIntArray( 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219
 
 [node name="PressurePlate" parent="." instance=ExtResource( 5 )]
 position = Vector2( 176.535, 111.77 )
+door_group = "door1"
+door_move_scale = 20.0
 
 [node name="foreground" type="TileMap" parent="."]
 tile_set = SubResource( 26 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 1, 0, 262147, 2, 0, 262148, 3, 0, 262149, 4, 0, 262155, 65537, 0, 327683, 65538, 0, 327684, 65539, 0, 327685, 65540, 0, 327691, 131073, 0, 65539, 131074, 0, 393220, 131075, 0, 393221, 131076, 0, 393227, 196609, 0, 131075, 196610, 0, 131081, 196611, 0, 131082, 196612, 0, 131083, 196613, 0, 458764, 196614, 0, 458764, 196615, 0, 458764, 327687, 0, 262147, 327688, 0, 262148, 327689, 0, 262149, 327690, 0, 262155, 393223, 0, 327683, 393224, 0, 327684, 393225, 0, 327685, 393226, 0, 327691, 458759, 0, 65539, 458760, 0, 393220, 458761, 0, 393221, 458762, 0, 393227, 524295, 0, 131075, 524296, 0, 131081, 524297, 0, 131082, 524298, 0, 131083 )
+tile_data = PoolIntArray( -262137, 0, 262147, -262136, 0, 458753, -262135, 0, 458753, -262134, 0, 458753, -262133, 0, 458753, -196601, 0, 327683, -196600, 0, 327685, -196599, 0, 327685, -196598, 0, 327685, -196597, 0, 327685, -131065, 0, 327683, -131064, 0, 327685, -131063, 0, 327685, -131062, 0, 327685, -131061, 0, 327685, -65529, 0, 327683, -65528, 0, 327685, -65527, 0, 327685, -65526, 0, 327685, -65525, 0, 327685, 1, 0, 262147, 2, 0, 262148, 3, 0, 262149, 4, 0, 262155, 7, 0, 327683, 8, 0, 327685, 9, 0, 327685, 10, 0, 327685, 11, 0, 327685, 65537, 0, 327683, 65538, 0, 327684, 65539, 0, 327685, 65540, 0, 327691, 131073, 0, 65539, 131074, 0, 393220, 131075, 0, 393221, 131076, 0, 393227, 196609, 0, 131075, 196610, 0, 131081, 196611, 0, 131082, 196612, 0, 131083, 196613, 0, 458764, 196614, 0, 458764, 196615, 0, 458764, 327687, 0, 262147, 327688, 0, 262148, 327689, 0, 262149, 327690, 0, 262155, 393223, 0, 327683, 393224, 0, 327684, 393225, 0, 327685, 393226, 0, 327691, 458759, 0, 65539, 458760, 0, 393220, 458761, 0, 393221, 458762, 0, 393227, 524295, 0, 131075, 524296, 0, 131081, 524297, 0, 131082, 524298, 0, 131083 )
 
 [node name="RockPile" parent="." instance=ExtResource( 4 )]
 position = Vector2( 241.077, 101.388 )
+
+[node name="Door" parent="." groups=[
+"door1",
+] instance=ExtResource( 6 )]
+position = Vector2( 254.827, 35.7236 )
+
+[editable path="PressurePlate"]

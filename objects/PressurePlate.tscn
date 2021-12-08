@@ -7,7 +7,7 @@
 extents = Vector2( 9.31483, 3.43589 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 9.48169, 1.6839 )
+extents = Vector2( 7.89638, 1.6839 )
 
 [node name="PressurePlate" type="Node2D"]
 script = ExtResource( 2 )
@@ -27,6 +27,7 @@ position = Vector2( 0.0834274, -3.25367 )
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="KinematicBody2D"]
+position = Vector2( 0.0834274, 2.00225 )
 collision_layer = 0
 collision_mask = 6
 

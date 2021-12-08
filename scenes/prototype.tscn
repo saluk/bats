@@ -5,7 +5,9 @@
 
 [node name="prototype" type="Node2D"]
 
-[node name="map" parent="." instance=ExtResource( 2 )]
+[node name="MapNode" type="Node2D" parent="."]
+
+[node name="map" parent="MapNode" instance=ExtResource( 2 )]
 
 [node name="Bat" parent="." instance=ExtResource( 1 )]
 position = Vector2( 210.554, 66.0039 )
@@ -16,3 +18,26 @@ current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
+
+[node name="Control" type="Control" parent="Bat/Camera2D"]
+margin_left = -128.0
+margin_top = -64.0
+margin_right = 128.0
+margin_bottom = 64.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Bat/Camera2D/Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = -21.0
+margin_right = 256.0
+margin_bottom = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Bat/Camera2D/Control/Button" to="Bat" method="_on_Button_pressed"]

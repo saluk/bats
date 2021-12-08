@@ -64,7 +64,9 @@ func drop_item():
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.is_pressed():
 		var click_pos = event.position
-		if click_pos.x < position.x:
+		
+		print(get_viewport().size.x, click_pos.x)
+		if click_pos.x < ProjectSettings.get_setting("display/window/size/width")/2:
 			flap_left()
 		else:
 			flap_right()
@@ -115,3 +117,7 @@ func _physics_process(delta):
 func _on_Area2D_body_entered(body):
 	if "pickup" in body:
 		pickup_object_from_world(body)
+
+
+func _on_Button_pressed():
+	drop_item()
