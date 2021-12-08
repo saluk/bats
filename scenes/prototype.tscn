@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://creatures/bat/bat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/map1.tscn" type="PackedScene" id=2]
+
+[node name="prototype" type="Node2D"]
+
+[node name="map" parent="." instance=ExtResource( 2 )]
+
+[node name="Bat" parent="." instance=ExtResource( 1 )]
+position = Vector2( 210.554, 66.0039 )
+
+[node name="Camera2D" type="Camera2D" parent="Bat"]
+position = Vector2( -1.54012, 0.670776 )
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
