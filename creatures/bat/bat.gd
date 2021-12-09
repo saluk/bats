@@ -50,7 +50,6 @@ func drop_item():
 	holding.apply_central_impulse(toss_vector)
 	holding.pickup_time = 0.2
 	holding = null
-	print("set holding to null")
 	
 func grab_item():
 	if not alive: return
@@ -61,6 +60,7 @@ func grab_item():
 	if not object:
 		return false
 	holding = object
+	pickups.erase(source)
 	$Holding.get_child(0).texture = holding.find_node('Sprite').texture
 	return true
 	
@@ -155,7 +155,7 @@ func _physics_process(delta):
 
 # Signals and reactions
 
-func do_damage(amount):
+func do_damage(_amount):
 	die()
 	
 func die():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://scenes/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/back-walls.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://objects/PressurePlate.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/traps/Spikes.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/traps/Fireball.tscn" type="PackedScene" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "back-walls.png 0"
@@ -414,5 +415,8 @@ door_move_scale = 20.0
 
 [node name="Label" parent="PressurePlate" index="0"]
 visible = false
+
+[node name="Fireball" parent="." instance=ExtResource( 8 )]
+position = Vector2( 335.956, 103.84 )
 
 [editable path="PressurePlate"]

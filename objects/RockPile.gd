@@ -1,6 +1,6 @@
 extends Area2D
 
-export var pickup_object:PackedScene = null
+export var pickup_object_scene:PackedScene = null
 export var pickup_object_name:String = ""
 
 
@@ -28,4 +28,4 @@ func _on_RockPile_body_entered(body:KinematicBody2D):
 		body.stack_time = 0.2
 
 func pickup_object():
-	return pickup_object.instance()
+	return pickup_object_scene.instance()

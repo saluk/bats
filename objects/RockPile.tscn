@@ -14,7 +14,7 @@ region = Rect2( 97.7782, 4, 27.5959, 28.6828 )
 [node name="RockPile" type="Area2D"]
 collision_mask = 15
 script = ExtResource( 2 )
-pickup_object = ExtResource( 3 )
+pickup_object_scene = ExtResource( 3 )
 pickup_object_name = "SingleRock"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -23,5 +23,5 @@ func _draw():
 		position + (vec * width)
 	), color)
 	
-func _process(delta):
+func _process(_delta):
 	update()
