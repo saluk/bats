@@ -23,8 +23,9 @@ func put_object_in_stack(object):
 
 
 func _on_RockPile_body_entered(body:KinematicBody2D):
-	if body and body.has_method("pickup_object_from_pile"):
-		body.pickup_object_from_pile(self.pickup_object)
-	elif body and "match_name" in body and body.match_name == pickup_object_name:
+	if body and "match_name" in body and body.match_name == pickup_object_name:
 		body.stack = self
 		body.stack_time = 0.2
+
+func pickup_object():
+	return pickup_object.instance()

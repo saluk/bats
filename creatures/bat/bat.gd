@@ -15,6 +15,7 @@ var flapping = 200
 
 ### References ###
 var holding:Node2D = null
+var pickups = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,25 +40,6 @@ func flap_right():
 		move.y = 0
 	move.y -= jump_height
 	
-func pickup_object_from_pile(object:PackedScene):
-	if not alive: return
-	return _pickup_object_instance(object.instance())
-	
-func pickup_object_from_world(object:Node2D):
-	if not alive: return
-	if _pickup_object_instance(object):
-		object.get_parent().remove_child(object)
-		return true
-	
-func _pickup_object_instance(object:Node2D):
-	if holding:
-		return false
-	if object.pickup_time > 0:
-		return false
-	holding = object
-	$Holding.get_child(0).texture = holding.find_node('Sprite').texture
-	return true
-	
 func drop_item():
 	if not holding:
 		return
@@ -69,6 +51,18 @@ func drop_item():
 	holding.pickup_time = 0.2
 	holding = null
 	print("set holding to null")
+	
+func grab_item():
+	if not alive: return
+	var source = can_pickup()
+	if not source:
+		return
+	var object = source.pickup_object()
+	if not object:
+		return false
+	holding = object
+	$Holding.get_child(0).texture = holding.find_node('Sprite').texture
+	return true
 	
 # Input
 func _unhandled_input(event):
@@ -103,13 +97,28 @@ func limit_movement():
 	if move.y > ylimit: move.y = ylimit
 	if move.y < -ylimit: move.y = -ylimit
 	
+func can_pickup():
+	if not holding and pickups:
+		for p in pickups:
+			if p.has_method("pickup_object"):
+				return p
+	return null
+	
 func update_ui():
 	var interact_buttons = get_tree().get_nodes_in_group("drop_button")
 	if not interact_buttons:
 		return
 	var b:Button = interact_buttons[0]
 	if holding:
-		b.text = "Toss"
+		b.visible = true
+	else:
+		b.visible = false
+		
+	interact_buttons = get_tree().get_nodes_in_group("grab_button")
+	if not interact_buttons:
+		return
+	b = interact_buttons[0]
+	if can_pickup():
 		b.visible = true
 	else:
 		b.visible = false
@@ -153,14 +162,37 @@ func die():
 	alive = false
 	$AnimatedSprite.play("death")
 	toss_vector = Vector2()
+	pickups = []
 	drop_item()
 	# TODO - hack
 	$AnimatedSprite.position.y = -6
+	
+func add_pickup(object):
+	if not alive: return
+	if object.has_method("pickup_object"):
+		if not object in pickups:
+			pickups.append(object)
+			
+func remove_pickup(object):
+	if not alive: return
+	if object.has_method("pickup_object"):
+		if object in pickups:
+			pickups.erase(object)
 
 func _on_Area2D_body_entered(body):
-	if "pickup" in body:
-		pickup_object_from_world(body)
+	add_pickup(body)
 
+func _on_Area2D_body_exited(body):
+	remove_pickup(body)
 
-func _on_Button_pressed():
+func _on_Drop_pressed():
 	drop_item()
+
+func _on_Grab_pressed():
+	grab_item()
+
+func _on_Area2D_area_entered(area):
+	add_pickup(area)
+
+func _on_Area2D_area_exited(area):
+	remove_pickup(area)

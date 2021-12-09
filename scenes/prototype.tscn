@@ -27,7 +27,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="CanvasLayer/Control" groups=[
+[node name="TossButton" type="Button" parent="CanvasLayer/Control" groups=[
 "drop_button",
 ]]
 margin_left = 0.374573
@@ -39,4 +39,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="CanvasLayer/Control/Button" to="Bat" method="_on_Button_pressed"]
+[node name="GrabButton" type="Button" parent="CanvasLayer/Control" groups=[
+"grab_button",
+]]
+margin_left = 0.374573
+margin_top = 107.398
+margin_right = 260.495
+margin_bottom = 128.0
+text = "Grab"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CanvasLayer/Control/TossButton" to="Bat" method="_on_Drop_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/GrabButton" to="Bat" method="_on_Grab_pressed"]

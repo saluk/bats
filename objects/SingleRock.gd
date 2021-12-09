@@ -28,6 +28,12 @@ func enter_stack(delta):
 			stack_time -= delta
 		else:
 			stack.put_object_in_stack(self)
+			
+func pickup_object():
+	if pickup_time > 0.2:
+		return null
+	get_parent().remove_child(self)
+	return duplicate(DUPLICATE_USE_INSTANCING)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
