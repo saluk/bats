@@ -3,12 +3,15 @@ extends KinematicBody2D
 ### Operation variables ###
 var move = Vector2(0, 0)
 var toss_vector = move
+var alive = true
 
 ### Constants/Parameters ###
 var xlimit = 100
-var ylimit = 100
+var ylimit = 500
 var jump_width = 50
 var jump_height = 50
+var gravity = 300
+var flapping = 200
 
 ### References ###
 var holding:Node2D = null
@@ -18,6 +21,10 @@ func _ready():
 	pass # Replace with function body.
 	
 # Body functions
+func apply_player_input(func_name, array):
+	if not alive: return
+	callv(func_name, array)
+
 func flap_left():
 	$AnimatedSprite.flip_h = 0
 	move.x = -jump_width
@@ -33,9 +40,11 @@ func flap_right():
 	move.y -= jump_height
 	
 func pickup_object_from_pile(object:PackedScene):
+	if not alive: return
 	return _pickup_object_instance(object.instance())
 	
 func pickup_object_from_world(object:Node2D):
+	if not alive: return
 	if _pickup_object_instance(object):
 		object.get_parent().remove_child(object)
 		return true
@@ -63,6 +72,7 @@ func drop_item():
 	
 # Input
 func _unhandled_input(event):
+	if not alive: return
 	if event is InputEventMouseButton and event.is_pressed():
 		var click_pos = event.position
 		
@@ -80,6 +90,8 @@ func _unhandled_input(event):
 
 # State enforcement
 func choose_animation():
+	if not alive:
+		return
 	if abs(move.x)>0.5 or move.y<0:
 		$AnimatedSprite.play("fly")
 	else:
@@ -102,7 +114,15 @@ func update_ui():
 	else:
 		b.visible = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+#Physics functions
+
+func apply_flapping(delta):
+	if not alive: return
+	move.y -= flapping * delta
+	
+func apply_gravity(delta):
+	move.y += gravity * delta
+
 func _physics_process(delta):
 	update_ui()
 	#slow down horizontal movement
@@ -115,10 +135,8 @@ func _physics_process(delta):
 	#save toss vector
 	toss_vector = Vector2(move.x * 2, move.y * 3)
 	#add gravity
-	if move.y > 0:  # not flapping
-		move.y += 100*delta
-	else:  # flapping
-		move.y += 100*delta
+	apply_gravity(delta)
+	apply_flapping(delta)
 	limit_movement()
 	var col = self.move_and_collide(move*delta)
 	if col:
@@ -126,7 +144,18 @@ func _physics_process(delta):
 		move.y = 0
 
 
-# Signals
+# Signals and reactions
+
+func do_damage(amount):
+	die()
+	
+func die():
+	alive = false
+	$AnimatedSprite.play("death")
+	toss_vector = Vector2()
+	drop_item()
+	# TODO - hack
+	$AnimatedSprite.position.y = -6
 
 func _on_Area2D_body_entered(body):
 	if "pickup" in body:
