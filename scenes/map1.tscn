@@ -7,7 +7,7 @@
 [ext_resource path="res://objects/PressurePlate.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/traps/Spikes.tscn" type="PackedScene" id=7]
-[ext_resource path="res://objects/traps/Fireball.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/traps/Canon.tscn" type="PackedScene" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "back-walls.png 0"
@@ -416,7 +416,8 @@ door_move_scale = 20.0
 [node name="Label" parent="PressurePlate" index="0"]
 visible = false
 
-[node name="Fireball" parent="." instance=ExtResource( 8 )]
-position = Vector2( 335.956, 103.84 )
+[node name="Canon" parent="." instance=ExtResource( 8 )]
+position = Vector2( 371.493, 90.4678 )
+scale = Vector2( -1, 1 )
 
 [editable path="PressurePlate"]

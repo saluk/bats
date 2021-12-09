@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://objects/traps/fireball/fireball_die_6.png" type="Texture" id=1]
 [ext_resource path="res://objects/traps/Trap.gd" type="Script" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://objects/traps/fireball/fireball_3.png" type="Texture" id=11]
 [ext_resource path="res://objects/traps/fireball/fireball_die_4.png" type="Texture" id=12]
 [ext_resource path="res://objects/traps/fireball/fireball_5.png" type="Texture" id=13]
+[ext_resource path="res://objects/traps/Explode.gd" type="Script" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -23,31 +27,26 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 1 ) ],
 "loop": true,
-"name": "die",
-"speed": 5.0
+"name": "death",
+"speed": 10.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
 
 [node name="Fireball" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_mask = 2
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
-scale = Vector2( 0.114169, 0.1168 )
-frames = SubResource( 2 )
-frame = 1
-playing = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
-
-[node name="Mover" type="Node2D" parent="."]
+[node name="Mover" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
 script = ExtResource( 3 )
 direction = Vector2( -1, 0 )
 speed = 100
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover"]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Mover"]
+scale = Vector2( 0.114169, 0.1168 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+script = ExtResource( 14 )

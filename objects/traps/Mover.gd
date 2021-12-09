@@ -1,13 +1,14 @@
-extends Node2D
+extends Area2D
 
 export var direction:Vector2 = Vector2()
-export var speed = 10
+export var speed = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+signal collide_body(body)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	get_parent().position += direction*speed*delta
+	if speed:
+		position += (direction*speed*delta)
+
+
+func _on_KinematicBody2D_body_entered(body):
+	emit_signal("collide_body", body)
