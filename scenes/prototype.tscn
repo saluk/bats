@@ -10,7 +10,7 @@
 [node name="map" parent="MapNode" instance=ExtResource( 2 )]
 
 [node name="Bat" parent="." instance=ExtResource( 1 )]
-position = Vector2( 210.554, 66.0039 )
+position = Vector2( 175.718, 37.1615 )
 
 [node name="Camera2D" type="Camera2D" parent="Bat"]
 position = Vector2( -1.54012, 0.670776 )

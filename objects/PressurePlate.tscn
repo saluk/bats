@@ -12,25 +12,36 @@ extents = Vector2( 7.89638, 1.6839 )
 [node name="PressurePlate" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+[node name="Label" type="Label" parent="."]
+margin_left = 9.15556
+margin_top = -13.8335
+margin_right = 54.1556
+margin_bottom = 0.166487
+rect_scale = Vector2( 0.252873, 0.297757 )
+text = "Weight"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PhysicalPart" type="StaticBody2D" parent="."]
 position = Vector2( 0.0834274, -0.166855 )
 collision_layer = 8
 collision_mask = 0
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+[node name="Sprite" type="Sprite" parent="PhysicalPart"]
 position = Vector2( -0.0085564, -9.42953 )
 scale = Vector2( 0.0716778, 0.0736308 )
 texture = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicalPart"]
 position = Vector2( 0.0834274, -3.25367 )
 shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="KinematicBody2D"]
+[node name="Area2D" type="Area2D" parent="PhysicalPart"]
 position = Vector2( 0.0834274, 2.00225 )
 collision_layer = 0
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicalPart/Area2D"]
 position = Vector2( 0.0834274, -8.42618 )
 shape = SubResource( 2 )

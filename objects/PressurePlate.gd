@@ -4,7 +4,6 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var move = Vector2()
 var max_pressure = 20
 export var door_group = ""
 export var door_move_scale = 1.0
@@ -22,19 +21,28 @@ func _ready():
 
 func _physics_process(delta):
 	var weight = 0
-	for body in $KinematicBody2D/Area2D.get_overlapping_bodies():
+	for body in $PhysicalPart/Area2D.get_overlapping_bodies():
 		weight += 1
 	var target_y = weight*2
-	var k = $KinematicBody2D
+	var k = $PhysicalPart
 	#k.position.y = target_y
-	if k.position.y < target_y:
-		move.y = down_speed
-	if k.position.y > target_y:
-		move.y = -up_speed
+	var move = Vector2()
+	var dist = abs(k.position.y - target_y)
+	if dist > 0.5:
+		if k.position.y < target_y:
+			move.y = down_speed
+			#if move.y > dist:
+			#	move.y = dist
+			#if move.y < 0:
+			#	move.y = 0
+		if k.position.y > target_y:
+			move.y = -up_speed
 	#k.position += move
 	var x = k.position.x
-	k.move_and_slide(move)
-	k.position.x = x
+	$Label.text = "w:" + str(weight) + " ty:" + str(target_y) + " ry:" + str(k.position.y) + " mv:" + str(move.y)
+	#k.move_and_collide(move*delta)
+	k.position.y += move.y * delta
+	#k.position.x = x
 	#if k.position.y > max_pressure:
 	#	k.position.y = max_pressure
 	#	move.y = 0
