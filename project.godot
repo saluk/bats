@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/matchers/AnyClazzArgumentMatcher.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Bat",
+"language": "GDScript",
+"path": "res://creatures/bat/bat.gd"
+}, {
 "base": "GdUnitTestSuite",
 "class": "BatTest",
 "language": "GDScript",
@@ -658,6 +663,7 @@ _global_script_class_icons={
 "AnyArgumentMatcher": "",
 "AnyBuildInTypeArgumentMatcher": "",
 "AnyClazzArgumentMatcher": "",
+"Bat": "",
 "BatTest": "",
 "CallBackValueProvider": "",
 "ChainedArgumentMatcher": "",
@@ -795,6 +801,7 @@ config/icon="res://icon.png"
 [autoload]
 
 ManageGame="*res://system/ManageGame.tscn"
+GlobalSettings="*res://system/GlobalSettings.tscn"
 
 [display]
 

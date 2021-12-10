@@ -10,7 +10,7 @@ const __source = 'res://objects/traps/Trap.gd'
 func test_bat_with_spikes() -> void:
 	var scene:FakeMap = FakeMap.new().setup(self)
 	var bat = scene.add("res://creatures/bat/bat.tscn")
-	var spikes = scene.add("res://objects/traps/Spikes.tscn")
+	var _spikes = scene.add("res://objects/traps/Spikes.tscn")
 	assert_bool(bat.alive == true).is_true()
 	yield(scene.process_one_tick(), "completed")
 	assert_bool(bat.alive == false).is_true()

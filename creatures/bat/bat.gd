@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Bat
 
 ### Operation variables ###
 var move = Vector2(0, 0)
@@ -48,7 +49,7 @@ func drop_item():
 	get_parent().add_child(holding)
 	#holding.move = toss_vector
 	holding.apply_central_impulse(toss_vector)
-	holding.pickup_time = 0.2
+	holding.pickup_time = 1
 	holding = null
 	
 func grab_item():
@@ -107,22 +108,26 @@ func can_pickup():
 	
 func update_ui():
 	var interact_buttons = get_tree().get_nodes_in_group("drop_button")
-	if not interact_buttons:
-		return
-	var b:Button = interact_buttons[0]
-	if holding:
-		b.visible = true
-	else:
-		b.visible = false
+	var b:Button
+	if interact_buttons:
+		b = interact_buttons[0]
+		if holding:
+			b.visible = true
+		else:
+			b.visible = false
 		
 	interact_buttons = get_tree().get_nodes_in_group("grab_button")
-	if not interact_buttons:
-		return
-	b = interact_buttons[0]
-	if can_pickup():
-		b.visible = true
-	else:
-		b.visible = false
+	if interact_buttons:
+		b = interact_buttons[0]
+		if can_pickup():
+			b.visible = true
+		else:
+			b.visible = false
+
+	if GlobalSettings.auto_grab:
+		grab_item()
+		if interact_buttons:
+			interact_buttons[0].visible = false
 
 #Physics functions
 

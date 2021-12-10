@@ -6,7 +6,7 @@ var runner
 signal processed_physics_once
 
 func _ready():
-	get_tree().connect("physics_frame", self, "increment_physics_count")
+	var _signal = get_tree().connect("physics_frame", self, "increment_physics_count")
 	
 func setup(test_suite):
 	runner = test_suite.scene_runner(self)
@@ -24,4 +24,9 @@ func increment_physics_count():
 		emit_signal("processed_physics_once")
 
 func process_one_tick():
-	yield( runner.simulate_until_object_signal(self, "processed_physics_once"), "completed")
+	print("proccing one tick")
+	yield(
+		runner.simulate_until_object_signal(self, "processed_physics_once"), 
+		"completed"
+	)
+	print("end processing")

@@ -30,16 +30,14 @@ func enter_stack(delta):
 			stack.put_object_in_stack(self)
 			
 func pickup_object():
-	if pickup_time > 0.2:
+	if pickup_time > 0:
 		return null
 	get_parent().remove_child(self)
 	return self
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	just_dropped(delta)
 	enter_stack(delta)
 	move.y += 200*delta
-	#var col = move_and_collide(move*delta)
-	#if col:
-	#	move = Vector2()
+	if pickup_time > 0:
+		pickup_time -= delta
