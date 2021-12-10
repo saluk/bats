@@ -50,7 +50,7 @@ func test_grab_drop_auto():
 	var rock = world.add('res://objects/SingleRock.tscn')
 	GlobalSettings.auto_grab = true
 	bat._on_Area2D_body_entered(rock)
-	bat.update_ui()
+	bat.find_node("BatPlayerController").update_ui()
 	assert_int(len(bat.pickups)).is_equal(0)
 	assert_object(bat.holding).is_equal(rock)
 	assert_bool(rock in world.get_children()).is_false()
