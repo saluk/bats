@@ -1,23 +1,18 @@
 # GdUnit generated TestSuite
 #warning-ignore-all:unused_argument
 #warning-ignore-all:return_value_discarded
-class_name TrapTest
+class_name TestTrap
 extends GdUnitTestSuite
 
 # TestSuite generated from
 const __source = 'res://objects/traps/Trap.gd'
 
 func test_bat_with_spikes() -> void:
-	var scene = load("res://test/TestTraps.tscn").instance()
-	var runner = scene_runner(scene)
-	var bat = scene.find_node("Bat")
+	var scene:FakeMap = FakeMap.new().setup(self)
+	var bat = scene.add("res://creatures/bat/bat.tscn")
+	var spikes = scene.add("res://objects/traps/Spikes.tscn")
 	assert_bool(bat.alive == true).is_true()
-	print("simulation")
-	for i in range(100):
-		runner.simulate_frames(1)
+	yield(scene.process_one_tick(), "completed")
 	assert_bool(bat.alive == false).is_true()
-	print("simulation returned")
 	
 	scene.queue_free()
-	runner.queue_free()
-	bat.queue_free()

@@ -2,10 +2,10 @@
 
 [ext_resource path="res://objects/rock_tileset.png" type="Texture" id=1]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 60 )
 
-[sub_resource type="TileSet" id=1]
+[sub_resource type="TileSet" id=2]
 0/name = "rock_tileset.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -34,10 +34,10 @@ extents = Vector2( 20, 60 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 20, 60 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="KinematicBody2D"]
-tile_set = SubResource( 1 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 20, 10 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 196608, 327681, 0, 262145, 393216, 0, 196608, 393217, 0, 196609, 458752, 0, 262144, 458753, 0, 262145, 524288, 0, 262144, 524289, 0, 262145, 589824, 0, 262144, 589825, 0, 262145, 655360, 0, 262144, 655361, 0, 262145, 720896, 0, 262144, 720897, 0, 262145, 786432, 0, 327680, 786433, 0, 327681 )

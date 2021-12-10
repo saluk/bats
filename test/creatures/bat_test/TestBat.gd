@@ -8,13 +8,11 @@ extends GdUnitTestSuite
 const __source = 'res://creatures/bat/bat.gd'
 
 func test_drop_item() -> void:
-	var world = Node2D.new()
-	var bat = load('res://creatures/bat/bat.tscn').instance()
-	var rock = load('res://objects/SingleRock.tscn').instance()
-	var rock_pile = load('res://objects/RockPile.tscn').instance()
-	world.add_child(bat)
-	world.add_child(rock)
-	world.add_child(rock_pile)
+	var world = FakeMap.new().setup(self)
+	var bat = world.add('res://creatures/bat/bat.tscn')
+	var rock = world.add('res://objects/SingleRock.tscn')
+	var rock_pile = world.add('res://objects/RockPile.tscn')
+	
 	# Pretend bat has intersected with the rock
 	
 	bat._on_Area2D_body_entered(rock)

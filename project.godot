@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "GdUnitTestSuite",
 "class": "BatTest",
 "language": "GDScript",
-"path": "res://test/creatures/bat_test/bat_test.gd"
+"path": "res://test/creatures/bat_test/TestBat.gd"
 }, {
 "base": "ValueProvider",
 "class": "CallBackValueProvider",
@@ -83,6 +83,11 @@ _global_script_classes=[ {
 "class": "EqualsArgumentMatcher",
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/matchers/EqualsArgumentMatcher.gd"
+}, {
+"base": "Node2D",
+"class": "FakeMap",
+"language": "GDScript",
+"path": "res://test/FakeMap.gd"
 }, {
 "base": "Resource",
 "class": "Fuzzer",
@@ -614,15 +619,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/fuzzers/StringFuzzer.gd"
 }, {
+"base": "GdUnitTestSuite",
+"class": "TestTrap",
+"language": "GDScript",
+"path": "res://test/objects/traps/TestTrap.gd"
+}, {
 "base": "Resource",
 "class": "TimeUnit",
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/core/TimeUnit.gd"
-}, {
-"base": "GdUnitTestSuite",
-"class": "TrapTest",
-"language": "GDScript",
-"path": "res://test/objects/traps/TrapTest.gd"
 }, {
 "base": "Reference",
 "class": "ValueProvider",
@@ -665,6 +670,7 @@ _global_script_class_icons={
 "Comparator": "",
 "DefaultValueProvider": "",
 "EqualsArgumentMatcher": "",
+"FakeMap": "",
 "Fuzzer": "",
 "FuzzerTool": "",
 "Fuzzers": "",
@@ -771,8 +777,8 @@ _global_script_class_icons={
 "RichTextLabelExt": "",
 "SignalHandler": "",
 "StringFuzzer": "",
+"TestTrap": "",
 "TimeUnit": "",
-"TrapTest": "",
 "ValueProvider": "",
 "Vector2Fuzzer": "",
 "Vector3Fuzzer": "",
@@ -785,6 +791,10 @@ _global_script_class_icons={
 config/name="bats"
 run/main_scene="res://scenes/prototype.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+ManageGame="*res://system/ManageGame.tscn"
 
 [display]
 

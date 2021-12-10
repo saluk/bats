@@ -30,6 +30,7 @@ __meta__ = {
 [node name="TossButton" type="Button" parent="CanvasLayer/Control" groups=[
 "drop_button",
 ]]
+visible = false
 margin_left = 0.374573
 margin_top = 107.398
 margin_right = 260.495
@@ -42,6 +43,7 @@ __meta__ = {
 [node name="GrabButton" type="Button" parent="CanvasLayer/Control" groups=[
 "grab_button",
 ]]
+visible = false
 margin_left = 0.374573
 margin_top = 107.398
 margin_right = 260.495

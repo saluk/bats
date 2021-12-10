@@ -69,8 +69,6 @@ func _unhandled_input(event):
 	if not alive: return
 	if event is InputEventMouseButton and event.is_pressed():
 		var click_pos = event.position
-		
-		print(get_viewport().size.x, click_pos.x)
 		if click_pos.x < ProjectSettings.get_setting("display/window/size/width")/2:
 			flap_left()
 		else:
@@ -136,7 +134,6 @@ func apply_gravity(delta):
 	move.y += gravity * delta
 
 func _physics_process(delta):
-	print(alive)
 	update_ui()
 	#slow down horizontal movement
 	if move.x < 0:
@@ -163,7 +160,6 @@ func do_damage(_amount):
 	die()
 	
 func die():
-	print("bat died")
 	alive = false
 	$AnimatedSprite.play("death")
 	toss_vector = Vector2()
@@ -171,6 +167,7 @@ func die():
 	drop_item()
 	# TODO - hack
 	$AnimatedSprite.position.y = -6
+	ManageGame.reload()
 	
 func add_pickup(object):
 	if not alive: return

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://system/ManageGame.gd" type="Script" id=1]
+
+[node name="ManageGame" type="Node2D" groups=[
+"manage_game",
+]]
+script = ExtResource( 1 )
