@@ -14,7 +14,8 @@ func _ready():
 
 
 func reload():
-	reload_in_seconds = 2
+	if reload_in_seconds <= 0:
+		reload_in_seconds = 2
 	
 func _process(delta):
 	if reload_in_seconds > 0:

@@ -128,6 +128,7 @@ func die():
 	# TODO - hack
 	$AnimatedSprite.position.y = -6
 	ManageGame.reload()
+	collision_layer = 0
 	
 func add_pickup(object):
 	if not alive: return
