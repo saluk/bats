@@ -22,6 +22,8 @@ func trap(body):
 		body.do_damage(self.damage)
 	if animated_node:
 		animated_node.explode()
+	if mover_node:
+		mover_node.speed = 0
 		
 func collide_with(col):
 	trap(col.collider)

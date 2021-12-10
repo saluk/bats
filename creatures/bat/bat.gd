@@ -80,7 +80,10 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("ui_right"):
 		flap_right()
 	elif event.is_action_pressed("ui_down"):
-		drop_item()
+		if holding:
+			drop_item()
+		else:
+			grab_item()
 
 # State enforcement
 func choose_animation():
@@ -133,6 +136,7 @@ func apply_gravity(delta):
 	move.y += gravity * delta
 
 func _physics_process(delta):
+	print(alive)
 	update_ui()
 	#slow down horizontal movement
 	if move.x < 0:
@@ -159,6 +163,7 @@ func do_damage(_amount):
 	die()
 	
 func die():
+	print("bat died")
 	alive = false
 	$AnimatedSprite.play("death")
 	toss_vector = Vector2()
