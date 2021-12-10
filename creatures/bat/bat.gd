@@ -23,9 +23,6 @@ func _ready():
 	pass # Replace with function body.
 	
 # Body functions
-func apply_player_input(func_name, array):
-	if not alive: return
-	callv(func_name, array)
 
 func flap_left():
 	$AnimatedSprite.flip_h = 0
@@ -64,27 +61,9 @@ func grab_item():
 	pickups.erase(source)
 	$Holding.get_child(0).texture = holding.find_node('Sprite').texture
 	return true
-	
-# Input
-func _unhandled_input(event):
-	if not alive: return
-	if event is InputEventMouseButton and event.is_pressed():
-		var click_pos = event.position
-		if click_pos.x < ProjectSettings.get_setting("display/window/size/width")/2:
-			flap_left()
-		else:
-			flap_right()
-	elif event.is_action_pressed("ui_left"):
-		flap_left()
-	elif event.is_action_pressed("ui_right"):
-		flap_right()
-	elif event.is_action_pressed("ui_down"):
-		if holding:
-			drop_item()
-		else:
-			grab_item()
 
 # State enforcement
+
 func choose_animation():
 	if not alive:
 		return
@@ -105,29 +84,6 @@ func can_pickup():
 			if p.has_method("pickup_object"):
 				return p
 	return null
-	
-func update_ui():
-	var interact_buttons = get_tree().get_nodes_in_group("drop_button")
-	var b:Button
-	if interact_buttons:
-		b = interact_buttons[0]
-		if holding:
-			b.visible = true
-		else:
-			b.visible = false
-		
-	interact_buttons = get_tree().get_nodes_in_group("grab_button")
-	if interact_buttons:
-		b = interact_buttons[0]
-		if can_pickup():
-			b.visible = true
-		else:
-			b.visible = false
-
-	if GlobalSettings.auto_grab:
-		grab_item()
-		if interact_buttons:
-			interact_buttons[0].visible = false
 
 #Physics functions
 
@@ -139,7 +95,6 @@ func apply_gravity(delta):
 	move.y += gravity * delta
 
 func _physics_process(delta):
-	update_ui()
 	#slow down horizontal movement
 	if move.x < 0:
 		move.x += 50*delta

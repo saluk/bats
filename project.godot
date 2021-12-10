@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://creatures/bat/bat.gd"
 }, {
+"base": "Node",
+"class": "BatPlayerController",
+"language": "GDScript",
+"path": "res://creatures/bat/BatPlayerController.gd"
+}, {
 "base": "GdUnitTestSuite",
 "class": "BatTest",
 "language": "GDScript",
@@ -664,6 +669,7 @@ _global_script_class_icons={
 "AnyBuildInTypeArgumentMatcher": "",
 "AnyClazzArgumentMatcher": "",
 "Bat": "",
+"BatPlayerController": "",
 "BatTest": "",
 "CallBackValueProvider": "",
 "ChainedArgumentMatcher": "",
