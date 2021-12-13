@@ -2,12 +2,13 @@ extends Node
 class_name FlyingAIController
 
 ### Constants/Parameters ###
-var spot_distance = 50
+var spot_distance = 100
 
 ### Operation variables ###
 var creature:FlyingCreature = null  # Creature we are controlling
 var target:FlyingCreature = null
 
+var delta = 0.0
 var direction = -1
 var state = ""
 var state_time = 0
@@ -27,12 +28,12 @@ func can_fly_right():
 	return true
 func state_fly_left():
 	direction = -1
-	creature.move = Vector2(-40, 0)
+	creature.move = creature.move.move_toward(Vector2(-40, 0), self.delta*150)
 	if creature.last_collision_type == "terrain" and creature.last_collision_side == "left":
 		apply_state("fly_right")
 func state_fly_right():
 	direction = 1
-	creature.move = Vector2(40, 0)
+	creature.move = creature.move.move_toward(Vector2(40, 0), self.delta*150)
 	if creature.last_collision_type == "terrain" and creature.last_collision_side == "right":
 		apply_state("fly_left")
 func apply_fly_left():
@@ -54,7 +55,8 @@ func can_chase_target():
 func apply_chase_target():
 	state_time = 2
 func state_chase_target():
-	creature.move = creature.position.direction_to(target.position) * 50
+	var d = creature.position.direction_to(target.position) * 50
+	creature.move = creature.move.move_toward(d, self.delta*150)
 	
 func can_get_above_target():
 	target = get_target()
@@ -96,10 +98,10 @@ func new_state():
 			return
 
 # Input
-func update_brain(delta):
+func update_brain():
 	if not creature.alive: return
 	if state:
-		state_time -= delta
+		state_time -= self.delta
 		if state_time <= 0:
 			new_state()
 		call("state_"+state)
@@ -108,4 +110,5 @@ func update_brain(delta):
 
 
 func _physics_process(delta):
-	update_brain(delta)
+	self.delta = delta
+	update_brain()

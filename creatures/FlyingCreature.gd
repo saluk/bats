@@ -21,22 +21,26 @@ var last_collision_type = ""
 var last_collision_side = ""
 var last_collision:KinematicCollision2D = null
 
+var attack_collision:Area2D = null
+
 ### Signals ###
 signal is_dead
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	attack_collision = get_node("AttackCollision")
+	attack_collision.connect("body_entered", self, "attack_collide")
 	
 # Body functions
 
 func flap_left():
+	$AnimatedSprite.flip_h = 0
 	move.x = -jump_width
 	if move.y>0:
 		move.y = 0
 	move.y -= jump_height
 	
 func flap_right():
+	$AnimatedSprite.flip_h = 1
 	move.x = jump_width
 	if move.y>0:
 		move.y = 0
@@ -71,10 +75,6 @@ func grab_item():
 func choose_animation():
 	if not alive:
 		return
-	if move.x > 0:
-		$AnimatedSprite.flip_h = 1
-	if move.x < 0:
-		$AnimatedSprite.flip_h = 0
 	if abs(move.x)>0.5 or move.y<0:
 		$AnimatedSprite.play("fly")
 	else:
@@ -108,11 +108,8 @@ func _physics_process(delta):
 		move.x += 50*delta
 	if move.x > 0:
 		move.x -= 50*delta
-	#animate based on current move vector
 	choose_animation()
-	#save toss vector
 	toss_vector = Vector2(move.x * 2, move.y * 3)
-	#add gravity
 	apply_gravity(delta)
 	apply_flapping(delta)
 	limit_movement()
@@ -136,8 +133,6 @@ func _physics_process(delta):
 			last_collision_type = "terrain"
 		if col.collider.get_class() == self.get_class():
 			last_collision_type = "creature"
-			if col.collider.position.y > position.y:
-				col.collider.do_damage(5)
 
 
 # Signals and reactions
@@ -187,3 +182,13 @@ func _on_Area2D_area_entered(area):
 
 func _on_Area2D_area_exited(area):
 	remove_pickup(area)
+
+func attack_collide(body:FlyingCreature):
+	if not alive:
+		return
+	if not body:
+		return
+	if body.get_class() == get_class() and body.alive:
+		move = body.position.direction_to(position) * 100
+		if body.position.y > position.y:
+			body.do_damage(5)

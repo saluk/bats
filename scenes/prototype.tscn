@@ -22,7 +22,22 @@ drag_margin_v_enabled = true
 smoothing_enabled = true
 
 [node name="Bee" parent="." instance=ExtResource( 3 )]
-position = Vector2( 543.656, 410.104 )
+position = Vector2( 593.423, 407.584 )
+
+[node name="Bee2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 451.052, 469.321 )
+
+[node name="Bee3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 357.187, 357.818 )
+
+[node name="Bee4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 188.988, 294.822 )
+
+[node name="Bee5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 258.284, 527.907 )
+
+[node name="Bee6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 366.637, 299.231 )
 
 [node name="Spikes" parent="." instance=ExtResource( 4 )]
 position = Vector2( 597.362, 487.512 )
