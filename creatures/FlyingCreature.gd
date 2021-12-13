@@ -8,7 +8,7 @@ var alive = true
 
 ### Constants/Parameters ###
 var xlimit = 100
-var ylimit = 500
+var ylimit = 250
 var jump_width = 50
 var jump_height = 50
 var gravity = 300
@@ -34,17 +34,24 @@ func _ready():
 
 func flap_left():
 	$AnimatedSprite.flip_h = 0
-	move.x = -jump_width
 	if move.y>0:
-		move.y = 0
-	move.y -= jump_height
+		move.y -= jump_height/2
+	if abs(move.x)<jump_width*4:
+		move.x -= jump_width/2
+		move.y -= jump_height/2
+	else:
+		move.y -= jump_height
+	#move.x = -jump_width
 	
 func flap_right():
 	$AnimatedSprite.flip_h = 1
-	move.x = jump_width
 	if move.y>0:
-		move.y = 0
-	move.y -= jump_height
+		move.y -= jump_height/2
+	if abs(move.x)<jump_width*4:
+		move.x += jump_width/2
+		move.y -= jump_height/2
+	else:
+		move.y -= jump_height
 	
 func drop_item():
 	if not holding:

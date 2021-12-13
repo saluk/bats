@@ -1,15 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://creatures/bat/bat.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/generated/The Drop.tscn" type="PackedScene" id=2]
-[ext_resource path="res://creatures/bee/bee.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/map1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/traps/Spikes.tscn" type="PackedScene" id=4]
 
 [node name="prototype" type="Node2D"]
 
 [node name="MapNode" type="Node2D" parent="."]
 
-[node name="MapRoot" parent="MapNode" instance=ExtResource( 2 )]
+[node name="map_1" parent="MapNode" instance=ExtResource( 2 )]
 
 [node name="Bat" parent="." instance=ExtResource( 1 )]
 position = Vector2( 545.469, 478.326 )
@@ -20,24 +19,7 @@ current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
-
-[node name="Bee" parent="." instance=ExtResource( 3 )]
-position = Vector2( 593.423, 407.584 )
-
-[node name="Bee2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 451.052, 469.321 )
-
-[node name="Bee3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 357.187, 357.818 )
-
-[node name="Bee4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 188.988, 294.822 )
-
-[node name="Bee5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 258.284, 527.907 )
-
-[node name="Bee6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 366.637, 299.231 )
+smoothing_speed = 10.0
 
 [node name="Spikes" parent="." instance=ExtResource( 4 )]
 position = Vector2( 597.362, 487.512 )
