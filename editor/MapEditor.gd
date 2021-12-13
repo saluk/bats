@@ -50,7 +50,7 @@ func save_scene(scene, filename):
 	ResourceSaver.save(filename, pack)
 	
 # match the tiles from the generatedtilemap to the tilemap
-func edit_scene(scene, tilemap):
+func edit_scene(scene, tilemap:RoomMap):
 	var save_map:TileMap = scene.get_node("GeneratedTileMap")
 	var tile_id
 	var map_ref:TileMap
@@ -67,6 +67,11 @@ func edit_scene(scene, tilemap):
 			max_x = cell_index.x
 		if max_y == null or cell_index.y > max_y:
 			max_y = cell_index.y
+	if tilemap.generate_room_offset:
+		tilemap.generate_room_offset = false
+		tilemap.room_offset = Vector2(min_x, min_y)
+	var offset = tilemap.room_offset
+	save_map.clear()
 	for x in range(min_x, max_x+1):
 		for y in range(min_y, max_y+1):
 			var has_tile = tilemap.get_cell(x, y)
@@ -79,8 +84,8 @@ func edit_scene(scene, tilemap):
 					var autotile_coord = map_ref.get_cell_autotile_coord(ref_x, ref_y)
 					print(ref_id, ref_x, ", ", ref_y, ",", autotile_coord)
 					var coord = Vector2(
-						(x-min_x)*5+ref_x,
-						(y-min_y)*4+ref_y
+						(x-offset.x)*5+ref_x,
+						(y-offset.y)*4+ref_y
 					)
 					if ref_id>=0 and has_tile>=0:
 						save_map.set_cell(

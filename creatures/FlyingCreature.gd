@@ -1,5 +1,5 @@
 extends KinematicBody2D
-class_name Bat
+class_name FlyingCreature
 
 ### Operation variables ###
 var move = Vector2(0, 0)
@@ -17,6 +17,9 @@ var flapping = 200
 ### References ###
 var holding:Node2D = null
 var pickups = []
+var last_collision_type = ""
+var last_collision_side = ""
+var last_collision:KinematicCollision2D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,14 +28,12 @@ func _ready():
 # Body functions
 
 func flap_left():
-	$AnimatedSprite.flip_h = 0
 	move.x = -jump_width
 	if move.y>0:
 		move.y = 0
 	move.y -= jump_height
 	
 func flap_right():
-	$AnimatedSprite.flip_h = 1
 	move.x = jump_width
 	if move.y>0:
 		move.y = 0
@@ -67,6 +68,10 @@ func grab_item():
 func choose_animation():
 	if not alive:
 		return
+	if move.x > 0:
+		$AnimatedSprite.flip_h = 1
+	if move.x < 0:
+		$AnimatedSprite.flip_h = 0
 	if abs(move.x)>0.5 or move.y<0:
 		$AnimatedSprite.play("fly")
 	else:
@@ -109,9 +114,25 @@ func _physics_process(delta):
 	apply_flapping(delta)
 	limit_movement()
 	var col = self.move_and_collide(move*delta)
+	last_collision_type = ""
+	last_collision = col
+	last_collision_side = ""
 	if col:
-		move.x = 0
-		move.y = 0
+		if move.x < 0 and col.normal.x > 0:
+			last_collision_side = "left"
+			move.x = 0
+		if move.x > 0 and col.normal.x < 0:
+			last_collision_side = "right"
+			move.x = 0
+		if move.y < 0 and col.normal.y > 0:
+			move.y = 0
+		if move.y > 0 and col.normal.y < 0:
+			move.y = 0
+		last_collision_type = "unknown"
+		if col.collider is TileMap:
+			last_collision_type = "terrain"
+		if col.collider.get_class() == self.get_class():
+			last_collision_type = "creature"
 
 
 # Signals and reactions

@@ -43,6 +43,8 @@ tile_data = PoolIntArray( 131075, 1, 0, 131076, 1, 2, 196611, 1, 65536, 196612, 
 script = ExtResource( 3 )
 room_tileset = ExtResource( 4 )
 room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 3, 2 )
+generate_room_offset = false
 
 [node name="Area B" type="TileMap" parent="Layout"]
 modulate = Color( 0.839216, 1, 0.690196, 1 )
@@ -50,10 +52,12 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 15, 12 )
 cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
 format = 1
-tile_data = PoolIntArray( 458755, 1, 0, 458756, 1, 65537, 458757, 1, 1, 458758, 1, 2, 524291, 1, 131072, 524292, 1, 131073, 524293, 1, 65537, 524294, 1, 131074 )
+tile_data = PoolIntArray( 524286, 1, 0, 524287, 1, 1, 458752, 1, 1, 458753, 1, 1, 458754, 1, 1, 458755, 1, 1, 458756, 1, 65537, 458757, 1, 1, 458758, 1, 1, 458759, 1, 1, 458760, 1, 1, 458761, 1, 1, 458762, 1, 1, 458763, 1, 1, 458764, 1, 1, 458765, 1, 2, 589822, 1, 131072, 589823, 1, 131073, 524288, 1, 131073, 524289, 1, 131073, 524290, 1, 131073, 524291, 1, 131073, 524292, 1, 131073, 524293, 1, 65537, 524294, 1, 131073, 524295, 1, 131073, 524296, 1, 131073, 524297, 1, 131073, 524298, 1, 131073, 524299, 1, 131073, 524300, 1, 131073, 524301, 1, 131074 )
 script = ExtResource( 3 )
 room_tileset = ExtResource( 4 )
 room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 3, 7 )
+generate_room_offset = false
 
 [node name="Area B2" type="TileMap" parent="Layout"]
 modulate = Color( 0.690196, 1, 0.956863, 1 )
@@ -65,6 +69,8 @@ tile_data = PoolIntArray( 589828, 1, 0, 589829, 1, 65537, 589830, 1, 2, 655364, 
 script = ExtResource( 3 )
 room_tileset = ExtResource( 4 )
 room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 4, 9 )
+generate_room_offset = false
 
 [node name="Config" type="Node2D" parent="."]
 position = Vector2( 311.648, 41.9526 )

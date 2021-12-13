@@ -2,7 +2,7 @@ extends Node
 class_name BatPlayerController
 
 ### Operation variables ###
-var bat:Bat = null
+var bat:FlyingCreature = null
 
 func _ready():
 	bat = get_parent()

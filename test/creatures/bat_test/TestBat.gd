@@ -8,7 +8,7 @@ extends GdUnitTestSuite
 const __source = 'res://creatures/bat/bat.gd'
 
 var world:FakeMap
-var bat:Bat
+var bat:FlyingCreature
 
 func before_test():
 	world = FakeMap.new().setup(self)

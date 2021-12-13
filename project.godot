@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/matchers/AnyClazzArgumentMatcher.gd"
 }, {
-"base": "KinematicBody2D",
-"class": "Bat",
-"language": "GDScript",
-"path": "res://creatures/bat/bat.gd"
-}, {
 "base": "Node",
 "class": "BatPlayerController",
 "language": "GDScript",
@@ -98,6 +93,16 @@ _global_script_classes=[ {
 "class": "FakeMap",
 "language": "GDScript",
 "path": "res://test/FakeMap.gd"
+}, {
+"base": "Node",
+"class": "FlyingAIController",
+"language": "GDScript",
+"path": "res://creatures/FlyingAIController.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "FlyingCreature",
+"language": "GDScript",
+"path": "res://creatures/FlyingCreature.gd"
 }, {
 "base": "Resource",
 "class": "Fuzzer",
@@ -619,6 +624,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/ui/parts/RichTextLabelExt.gd"
 }, {
+"base": "TileMap",
+"class": "RoomMap",
+"language": "GDScript",
+"path": "res://editor/RoomMap.gd"
+}, {
 "base": "Resource",
 "class": "SignalHandler",
 "language": "GDScript",
@@ -668,7 +678,6 @@ _global_script_class_icons={
 "AnyArgumentMatcher": "",
 "AnyBuildInTypeArgumentMatcher": "",
 "AnyClazzArgumentMatcher": "",
-"Bat": "",
 "BatPlayerController": "",
 "BatTest": "",
 "CallBackValueProvider": "",
@@ -683,6 +692,8 @@ _global_script_class_icons={
 "DefaultValueProvider": "",
 "EqualsArgumentMatcher": "",
 "FakeMap": "",
+"FlyingAIController": "",
+"FlyingCreature": "",
 "Fuzzer": "",
 "FuzzerTool": "",
 "Fuzzers": "",
@@ -787,6 +798,7 @@ _global_script_class_icons={
 "Result": "",
 "RichTextEffectBackground": "",
 "RichTextLabelExt": "",
+"RoomMap": "",
 "SignalHandler": "",
 "StringFuzzer": "",
 "TestTrap": "",
