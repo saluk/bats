@@ -6,6 +6,7 @@
 [ext_resource path="res://creatures/bat/BatPlayerController.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 5.33508
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -201,6 +202,7 @@ collision_mask = 9
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.551216, 2.28361 )
 shape = SubResource( 1 )
 
 [node name="Dropping" type="Node2D" parent="."]
@@ -215,7 +217,7 @@ position = Vector2( 0.397301, 9.27031 )
 position = Vector2( -0.132431, -1.90735e-06 )
 frames = SubResource( 42 )
 animation = "fly"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://creatures/bat/bat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/generated/The Drop.tscn" type="PackedScene" id=2]
 [ext_resource path="res://creatures/bee/bee.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/traps/Spikes.tscn" type="PackedScene" id=4]
 
 [node name="prototype" type="Node2D"]
 
@@ -21,7 +22,10 @@ drag_margin_v_enabled = true
 smoothing_enabled = true
 
 [node name="Bee" parent="." instance=ExtResource( 3 )]
-position = Vector2( 565.074, 444.752 )
+position = Vector2( 543.656, 410.104 )
+
+[node name="Spikes" parent="." instance=ExtResource( 4 )]
+position = Vector2( 597.362, 487.512 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

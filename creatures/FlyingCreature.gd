@@ -21,6 +21,9 @@ var last_collision_type = ""
 var last_collision_side = ""
 var last_collision:KinematicCollision2D = null
 
+### Signals ###
+signal is_dead
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -133,12 +136,15 @@ func _physics_process(delta):
 			last_collision_type = "terrain"
 		if col.collider.get_class() == self.get_class():
 			last_collision_type = "creature"
+			if col.collider.position.y > position.y:
+				col.collider.do_damage(5)
 
 
 # Signals and reactions
 
 func do_damage(_amount):
-	die()
+	if alive:
+		die()
 	
 func die():
 	alive = false
@@ -148,7 +154,7 @@ func die():
 	drop_item()
 	# TODO - hack
 	$AnimatedSprite.position.y = -6
-	ManageGame.reload()
+	emit_signal("is_dead")
 	# Turn off collision with projectiles
 	set_collision_layer_bit(4, false)
 	

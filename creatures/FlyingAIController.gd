@@ -1,27 +1,30 @@
 extends Node
 class_name FlyingAIController
 
+### Constants/Parameters ###
+var spot_distance = 50
+
 ### Operation variables ###
-var creature:FlyingCreature = null
+var creature:FlyingCreature = null  # Creature we are controlling
 var target:FlyingCreature = null
 
 var direction = -1
-var state = "fly_right"
+var state = ""
 var state_time = 0
 
 func _ready():
 	creature = get_parent()
-	apply_state("fly_right")
 
 func get_target():
 	for n in get_tree().get_nodes_in_group("creature"):
-		return n
+		if n.alive:
+			return n
 	return null
 
 func can_fly_left():
-	return direction == -1
+	return true
 func can_fly_right():
-	return direction == 1
+	return true
 func state_fly_left():
 	direction = -1
 	creature.move = Vector2(-40, 0)
@@ -39,9 +42,13 @@ func apply_fly_right():
 	
 func can_chase_target():
 	target = get_target()
-	if target.position.distance_to(creature.position) > 100:
+	if not target:
+		return false
+	if target.position.distance_to(creature.position) > spot_distance:
+		print("too far away")
 		return false
 	if target.position.y < creature.position.y:
+		print("wrong direction")
 		return false
 	return true
 func apply_chase_target():
@@ -51,7 +58,9 @@ func state_chase_target():
 	
 func can_get_above_target():
 	target = get_target()
-	if target.position.distance_to(creature.position) > 100:
+	if not target:
+		return false
+	if target.position.distance_to(creature.position) > spot_distance:
 		return false
 	if target.position.y >= creature.position.y:
 		return false
@@ -66,16 +75,25 @@ func apply_state(s):
 	state = s
 	if has_method("apply_"+s):
 		call("apply_"+s)
+	return state
+		
+func switch_to_state_if_possible(new_state):
+	if call("can_"+new_state):
+		print("applying new state: ", new_state)
+		return apply_state(new_state)
+	return null
 
 func new_state():
-	for possible_state in [
-		"chase_target", "get_above_target",
-		"fly_left", "fly_right"
-	]:
-		if call("can_"+possible_state):
-			state = possible_state
-			break
-	apply_state(state)
+	var states:Array = [
+		"chase_target", "get_above_target"
+	]
+	var flying_states:Array = ["fly_left", "fly_right"]
+	randomize()
+	flying_states.shuffle()
+	states.append_array(flying_states)
+	for possible_state in states:
+		if switch_to_state_if_possible(possible_state):
+			return
 
 # Input
 func update_brain(delta):
