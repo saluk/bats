@@ -3,9 +3,13 @@
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=1]
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=2]
 
-[node name="Area B2" type="Node2D"]
+[node name="Area B2" type="Node2D" groups=[
+"room_root",
+]]
 
-[node name="GeneratedTileMap" type="TileMap" parent="."]
+[node name="GeneratedTileMap" type="TileMap" parent="." groups=[
+"room_tilemap",
+]]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1

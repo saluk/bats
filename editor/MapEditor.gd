@@ -1,22 +1,11 @@
 tool
 extends Node2D
 
-var destructive = false
+export var bake_map = false setget do_bake_map
 
-export var bake_map = false setget do_bake_map_safe
-export var bake_map_destructive = false setget do_bake_map_destructive
-
-func do_bake_map_safe(val):
-	if val == true:
-		destructive = false
-		do_bake_map()
-
-func do_bake_map_destructive(val):
-	if val == true:
-		destructive = true
-		do_bake_map()
-
-func do_bake_map():
+func do_bake_map(val):
+	if val != true:
+		return
 	print("Baking map...")
 	for n in get_node("Layout").get_children():
 		print(n.name)
@@ -25,9 +14,15 @@ func do_bake_map():
 	world_settings.connected_rooms = find_connected_rooms()
 	print(world_settings.connected_rooms)
 	save_scene(world_settings, "res://scenes/WorldSettings.tscn")
-
-func _ready():
-	pass
+	
+func bake_map_for(tilemap:TileMap):
+	print("- Baking map for ",tilemap.name)
+	var scene = get_scene_for(tilemap.name)
+	if not scene:
+		scene = Node2D.new()
+	update_scene_for(scene, tilemap)
+	print("scene", scene)
+	edit_scene(scene, tilemap)
 	
 func scene_file(name):
 	return "res://scenes/generated/"+name+".tscn"
@@ -37,11 +32,18 @@ func get_scene_for(name):
 		return null
 	return load(scene_file(name)).instance()
 	
-func make_scene_for(source_map):
-	print("-- Making new scene for "+source_map.name)
-	var scene = Node2D.new()
+func update_scene_for(scene:Node, source_map):
+	print("-- (Re)Making new scene for "+source_map.name)
 	scene.name = source_map.name
+	# Clear all children that aren't saved
+	for child in scene.get_children():
+		if child.name.begins_with("Save"):
+			continue
+		scene.remove_child(child)
+	scene.add_to_group("room_root", true)
 	var tilemap:RoomMap = RoomMap.new()
+	tilemap.add_to_group("room_tilemap", true)
+	print("GROUPS:", tilemap.get_groups())
 	tilemap.cell_size = source_map.room_cell_size
 	tilemap.tile_set = source_map.room_tileset
 	tilemap.name = "GeneratedTileMap"
@@ -57,6 +59,7 @@ func make_scene_for(source_map):
 	return scene
 	
 func save_scene(scene, filename):
+	print("SAVING:", scene, filename)
 	var pack = PackedScene.new()
 	pack.pack(scene)
 	ResourceSaver.save(filename, pack)
@@ -112,14 +115,6 @@ func edit_scene(scene, tilemap:RoomMap):
 					else:
 						save_map.set_cell(coord.x, coord.y, ref_id)
 	save_scene(scene, scene_file(tilemap.name))
-	
-func bake_map_for(tilemap:TileMap):
-	print("- Baking map for ",tilemap.name)
-	var scene = get_scene_for(tilemap.name)
-	if not scene or destructive:
-		scene = make_scene_for(tilemap)
-	print("scene", scene)
-	edit_scene(scene, tilemap)
 
 
 # Connected rooms is a list of transition tiles
