@@ -1,7 +1,10 @@
 tool
 extends Node2D
+class_name MapEditor
 
 export var bake_map = false setget do_bake_map
+
+export var export_path = "res://scenes/generated/"
 
 func do_bake_map(val):
 	if val != true:
@@ -14,6 +17,7 @@ func do_bake_map(val):
 	world_settings.connected_rooms = find_connected_rooms()
 	print(world_settings.connected_rooms)
 	save_scene(world_settings, "res://scenes/WorldSettings.tscn")
+	world_settings.free()
 	
 func bake_map_for(tilemap:TileMap):
 	print("- Baking map for ",tilemap.name)
@@ -23,9 +27,10 @@ func bake_map_for(tilemap:TileMap):
 	update_scene_for(scene, tilemap)
 	print("scene", scene)
 	edit_scene(scene, tilemap)
+	scene.free()
 	
 func scene_file(name):
-	return "res://scenes/generated/"+name+".tscn"
+	return export_path+name+".tscn"
 	
 func get_scene_for(name):
 	if not ResourceLoader.exists(scene_file(name)):
@@ -40,6 +45,7 @@ func update_scene_for(scene:Node, source_map):
 		if child.name.begins_with("Save"):
 			continue
 		scene.remove_child(child)
+		child.queue_free()
 	scene.add_to_group("room_root", true)
 	var tilemap:RoomMap = RoomMap.new()
 	tilemap.add_to_group("room_tilemap", true)
@@ -62,7 +68,7 @@ func save_scene(scene, filename):
 	print("SAVING:", scene, filename)
 	var pack = PackedScene.new()
 	pack.pack(scene)
-	ResourceSaver.save(filename, pack)
+	var _ERR = ResourceSaver.save(filename, pack)
 
 # match the tiles from the generatedtilemap to the tilemap
 func edit_scene(scene, tilemap:RoomMap):
