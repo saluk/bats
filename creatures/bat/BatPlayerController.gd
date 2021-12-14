@@ -6,7 +6,7 @@ var bat:FlyingCreature = null
 
 func _ready():
 	bat = get_parent()
-	bat.connect("is_dead", self, "is_dead")
+	var _a = bat.connect("is_dead", self, "is_dead")
 	
 func is_dead():
 	ManageGame.reload()

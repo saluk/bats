@@ -28,7 +28,7 @@ signal is_dead
 
 func _ready():
 	attack_collision = get_node("AttackCollision")
-	attack_collision.connect("body_entered", self, "attack_collide")
+	var _a = attack_collision.connect("body_entered", self, "attack_collide")
 	
 # Body functions
 

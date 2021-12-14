@@ -40,7 +40,7 @@ func get_scene_for(name):
 func make_scene_for(source_map):
 	print("-- Making new scene for "+source_map.name)
 	var scene = Node2D.new()
-	scene.name = "MapRoot"
+	scene.name = source_map.name
 	var tilemap:RoomMap = RoomMap.new()
 	tilemap.cell_size = source_map.room_cell_size
 	tilemap.tile_set = source_map.room_tileset

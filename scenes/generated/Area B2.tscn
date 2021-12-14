@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=1]
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=2]
 
-[node name="MapRoot" type="Node2D"]
+[node name="Area B2" type="Node2D"]
 
 [node name="GeneratedTileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
