@@ -820,6 +820,7 @@ config/icon="res://icon.png"
 
 ManageGame="*res://system/ManageGame.tscn"
 GlobalSettings="*res://system/GlobalSettings.tscn"
+WorldSettings="*res://scenes/WorldSettings.tscn"
 
 [display]
 
@@ -834,6 +835,11 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/gdUnit3/plugin.cfg" )
+
+[global]
+
+filter=false
+import=false
 
 [importer_defaults]
 

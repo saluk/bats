@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://creatures/bat/bat.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/map1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/generated/TopLeft.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/traps/Spikes.tscn" type="PackedScene" id=4]
 
 [node name="prototype" type="Node2D"]
 
 [node name="MapNode" type="Node2D" parent="."]
 
-[node name="map_1" parent="MapNode" instance=ExtResource( 2 )]
+[node name="MapRoot" parent="MapNode" instance=ExtResource( 3 )]
 
 [node name="Bat" parent="." instance=ExtResource( 1 )]
-position = Vector2( 545.469, 478.326 )
+position = Vector2( 88.3237, 56.7672 )
 
 [node name="Camera2D" type="Camera2D" parent="Bat"]
 position = Vector2( -1.54012, 0.670776 )
@@ -20,9 +20,10 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
 smoothing_speed = 10.0
+editor_draw_drag_margin = true
 
 [node name="Spikes" parent="." instance=ExtResource( 4 )]
-position = Vector2( 597.362, 487.512 )
+position = Vector2( 92.6865, 231.195 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

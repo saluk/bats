@@ -18,35 +18,35 @@ region = Rect2( 37, 0, 37, 26 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 37, 26 )
+region = Rect2( 37, 0, 37, 26 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 37, 0, 37, 26 )
+region = Rect2( 0, 0, 37, 26 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
 region = Rect2( 37, 0, 37, 26 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 4 ), SubResource( 5 ) ],
-"loop": true,
-"name": "fly",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 8 ) ],
+"frames": [ SubResource( 4 ) ],
 "loop": true,
 "name": "death",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "fly",
+"speed": 10.0
 } ]
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=8]
 radius = 4.18922
 
 [sub_resource type="CircleShape2D" id=9]
@@ -71,7 +71,7 @@ position = Vector2( 0.397301, 9.27031 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.132431, -1.90735e-06 )
 scale = Vector2( -1, 1 )
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 animation = "death"
 playing = true
 
@@ -80,7 +80,7 @@ position = Vector2( 0.132431, 16.9514 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.264862, -11.5217 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="AttackCollision" type="Area2D" parent="."]
 position = Vector2( 0.132431, 16.9514 )

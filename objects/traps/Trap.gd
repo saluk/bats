@@ -20,7 +20,7 @@ func _ready():
 func trap(body):
 	if body.has_method("do_damage"):
 		body.do_damage(self.damage)
-	if animated_node:
+	if animated_node and animated_node.has_method("explode"):
 		animated_node.explode()
 	if mover_node:
 		mover_node.speed = 0

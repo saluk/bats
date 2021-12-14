@@ -195,7 +195,7 @@ func attack_collide(body:FlyingCreature):
 		return
 	if not body:
 		return
-	if body.get_class() == get_class() and body.alive:
+	if body.alive:
 		move = body.position.direction_to(position) * 100
-		if body.position.y > position.y:
+		if body.global_position.y > global_position.y:
 			body.do_damage(5)
