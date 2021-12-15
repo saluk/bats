@@ -20,16 +20,20 @@ func is_dead():
 # Input
 func _unhandled_input(event):
 	if not bat.alive: return
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton:
 		var click_pos = event.position
 		if click_pos.x < ProjectSettings.get_setting("display/window/size/width")/2:
-			bat.flap_left()
-			left_charge.begin_charge()
+			if event.is_pressed():
+				bat.flap_left()
+				left_charge.begin_charge()
+			else:
+				left_charge.release_charge()
 		else:
-			bat.flap_right()
-			right_charge.begin_charge()
-	elif event is InputEventMouseButton and not event.is_pressed():
-		bat.release_charge()
+			if event.is_pressed():
+				bat.flap_right()
+				right_charge.begin_charge()
+			else:
+				right_charge.release_charge()
 	elif event.is_action_pressed("ui_left"):
 		bat.flap_left()
 		left_charge.begin_charge()

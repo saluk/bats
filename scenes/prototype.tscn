@@ -98,6 +98,7 @@ use_parent_material = true
 use_parent_material = true
 
 [node name="WhereIsBat" type="Sprite" parent="CanvasLayer/Control/ViewportContainer/Viewport/WorldMap/Offset"]
+visible = false
 texture = SubResource( 1 )
 script = ExtResource( 6 )
 
