@@ -1,0 +1,123 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
+[ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=2]
+[ext_resource path="res://editor/maptiles.png" type="Texture" id=3]
+
+[sub_resource type="TileSet" id=1]
+1/name = "maptiles.png 1"
+1/texture = ExtResource( 3 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 45, 36 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 15, 12 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="Layout" type="Node2D"]
+
+[node name="The Drop" type="TileMap" parent="."]
+modulate = Color( 1, 0.898039, 0.705882, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 131075, 1, 0, 131076, 1, 2, 196611, 1, 65536, 196612, 1, 65538, 262147, 1, 65536, 262148, 1, 65537, 262149, 1, 1, 262150, 1, 2, 327683, 1, 65536, 327684, 1, 65537, 327685, 1, 65537, 327686, 1, 131074, 393219, 1, 131072, 393220, 1, 65537, 393221, 1, 131074 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 2 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 3, 2 )
+generate_room_offset = false
+
+[node name="TopLeft" type="TileMap" parent="."]
+modulate = Color( 0.996078, 0.705882, 1, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 0, 1, 65537 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+room_tileset = ExtResource( 2 )
+room_cell_size = Vector2( 32, 32 )
+generate_room_offset = false
+
+[node name="UpperRight" type="TileMap" parent="."]
+modulate = Color( 0.862745, 0.568627, 0.0117647, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 1, 1, 65537 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 2 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 1, 0 )
+generate_room_offset = false
+
+[node name="LowerRight" type="TileMap" parent="."]
+modulate = Color( 0.8, 1, 0.552941, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 65537, 1, 65537 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 2 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 1, 1 )
+generate_room_offset = false
+
+[node name="LowerLeft" type="TileMap" parent="."]
+modulate = Color( 1, 0.898039, 0.705882, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 65536, 1, 65537 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 2 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 0, 1 )
+generate_room_offset = false
+
+[node name="Area B" type="TileMap" parent="."]
+modulate = Color( 0.839216, 1, 0.690196, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 524286, 1, 0, 524287, 1, 1, 458752, 1, 1, 458753, 1, 1, 458754, 1, 1, 458755, 1, 1, 458756, 1, 65537, 458757, 1, 1, 458758, 1, 1, 458759, 1, 1, 458760, 1, 1, 458761, 1, 1, 458762, 1, 1, 458763, 1, 1, 458764, 1, 1, 458765, 1, 2, 589822, 1, 131072, 589823, 1, 131073, 524288, 1, 131073, 524289, 1, 131073, 524290, 1, 131073, 524291, 1, 131073, 524292, 1, 131073, 524293, 1, 65537, 524294, 1, 131073, 524295, 1, 131073, 524296, 1, 131073, 524297, 1, 131073, 524298, 1, 131073, 524299, 1, 131073, 524300, 1, 131073, 524301, 1, 131074 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 2 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 3, 7 )
+generate_room_offset = false
+
+[node name="Area B2" type="TileMap" parent="."]
+modulate = Color( 0.690196, 1, 0.956863, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 589828, 1, 0, 589829, 1, 65537, 589830, 1, 2, 655364, 1, 131072, 655365, 1, 131073, 655366, 1, 131074 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 2 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 4, 9 )
+generate_room_offset = false

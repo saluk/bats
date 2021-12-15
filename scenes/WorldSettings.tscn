@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/WorldSettings.gd" type="Script" id=1]
+
+[node name="WorldSettings" type="Node"]
+script = ExtResource( 1 )
+connected_rooms = {
+Vector2( 0, 0 ): "TopLeft",
+Vector2( 0, 1 ): "LowerLeft",
+Vector2( 1, 0 ): "UpperRight",
+Vector2( 1, 1 ): "LowerRight",
+Vector2( 4, 6 ): "The Drop",
+Vector2( 4, 7 ): "Area B",
+Vector2( 5, 8 ): "Area B",
+Vector2( 5, 9 ): "Area B2"
+}

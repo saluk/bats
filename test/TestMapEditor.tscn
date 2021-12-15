@@ -1,0 +1,154 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://editor/maptiles.png" type="Texture" id=1]
+[ext_resource path="res://editor/MapEditor.gd" type="Script" id=2]
+[ext_resource path="res://editor/RoomMap.gd" type="Script" id=3]
+[ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=4]
+
+[sub_resource type="TileSet" id=1]
+1/name = "maptiles.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 45, 36 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 15, 12 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="MapEditor" type="Node2D"]
+script = ExtResource( 2 )
+export_path = "res://test/generated_scenes/"
+
+[node name="Layout" type="Node2D" parent="."]
+
+[node name="TopLeft" type="TileMap" parent="Layout"]
+modulate = Color( 0.996078, 0.705882, 1, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 0, 1, 65537 )
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+room_tileset = ExtResource( 4 )
+room_cell_size = Vector2( 32, 32 )
+generate_room_offset = false
+
+[node name="UpperRight" type="TileMap" parent="Layout"]
+modulate = Color( 0.862745, 0.568627, 0.0117647, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 1, 1, 65537 )
+script = ExtResource( 3 )
+room_tileset = ExtResource( 4 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 1, 0 )
+generate_room_offset = false
+
+[node name="LowerRight" type="TileMap" parent="Layout"]
+modulate = Color( 0.8, 1, 0.552941, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 65537, 1, 65537 )
+script = ExtResource( 3 )
+room_tileset = ExtResource( 4 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 1, 1 )
+generate_room_offset = false
+
+[node name="LowerLeft" type="TileMap" parent="Layout"]
+modulate = Color( 1, 0.898039, 0.705882, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 65536, 1, 65537 )
+script = ExtResource( 3 )
+room_tileset = ExtResource( 4 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 0, 1 )
+generate_room_offset = false
+
+[node name="Config" type="Node2D" parent="."]
+position = Vector2( 311.648, 41.9526 )
+
+[node name="0,0" type="TileMap" parent="Config"]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 11, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 65536, 0, 65547, 131072, 0, 65547, 196608, 0, 65547 )
+
+[node name="0,1" type="TileMap" parent="Config"]
+position = Vector2( 0, 128 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 393227, 65536, 0, 65547, 131072, 0, 65547, 196608, 0, 65547 )
+
+[node name="0,2" type="TileMap" parent="Config"]
+position = Vector2( 0, 256 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 393227, 65536, 0, 65547, 131072, 0, 65547, 196608, 0, 65547, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458764 )
+
+[node name="1,2" type="TileMap" parent="Config"]
+position = Vector2( 160, 256 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196608, 0, 458754, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458764 )
+
+[node name="2,2" type="TileMap" parent="Config"]
+position = Vector2( 320, 256 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 4, 0, 393219, 65540, 0, 393219, 131076, 0, 393219, 196608, 0, 458754, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458755 )
+
+[node name="2,1" type="TileMap" parent="Config"]
+position = Vector2( 320, 128 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 4, 0, 393219, 65540, 0, 393219, 131076, 0, 393219, 196612, 0, 393219 )
+
+[node name="2,0" type="TileMap" parent="Config"]
+position = Vector2( 320, 0 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 3, 65540, 0, 393219, 131076, 0, 393219, 196612, 0, 393219 )
+
+[node name="1,0" type="TileMap" parent="Config"]
+position = Vector2( 160, 0 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2 )
+
+[node name="1,1" type="TileMap" parent="Config"]
+position = Vector2( 160, 128 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 262147, 4, 0, 262147, 131073, 0, 262148, 131074, 0, 262148, 131075, 0, 262148, 196608, 0, 262147, 196612, 0, 262147 )
