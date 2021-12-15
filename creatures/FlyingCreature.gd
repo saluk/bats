@@ -6,13 +6,6 @@ var move = Vector2(0, 0)
 var toss_vector = move
 var alive = true
 
-var charge_level = 0.0
-var charge_time = 1  #Hold this long to charge
-enum {NotCharging, Charging, ReleaseCharge}
-var charge_state = NotCharging
-var charge_speed = 100  #Speed we move after a charge
-var release_charge_time = 1  #How long we charge before resetting
-
 ### Constants/Parameters ###
 var xlimit = 100
 var ylimit = 250
@@ -66,19 +59,6 @@ func flap_right():
 		move.y -= jump_height/2
 	else:
 		move.y -= jump_height
-		
-func begin_charge():
-	if alive and charge_state == NotCharging:
-		charge_state = Charging
-		charge_level = 0
-
-func release_charge():
-	if alive and charge_state == Charging:
-		if charge_level > charge_time:
-			charge_state = ReleaseCharge
-		else:
-			charge_state = NotCharging
-		charge_level = 0
 	
 func drop_item():
 	if not holding:
@@ -109,7 +89,9 @@ func grab_item():
 func choose_animation():
 	if not alive:
 		return
-	if abs(move.x)>0.5 or move.y<0:
+	if $LeftCharge.charge_state == $LeftCharge.ReleaseCharge:
+		$AnimatedSprite.play("attack")
+	elif abs(move.x)>0.5 or move.y<0:
 		$AnimatedSprite.play("fly")
 	else:
 		$AnimatedSprite.play("idle")
@@ -129,17 +111,6 @@ func can_pickup():
 
 #Physics functions
 
-func handle_charge(delta):
-	if charge_state in [Charging, ReleaseCharge]:
-		charge_level += delta
-	if charge_state == ReleaseCharge:
-		if not $AnimatedSprite.flip_h:
-			move.x = -charge_speed
-		else:
-			move.x = charge_speed
-		if charge_level > release_charge_time:
-			charge_state = NotCharging
-
 func apply_flapping(delta):
 	if not alive: return
 	move.y -= flapping * delta
@@ -155,7 +126,9 @@ func _physics_process(delta):
 		move.x -= drag*delta
 	choose_animation()
 	toss_vector = Vector2(move.x * 2, move.y * 3)
-	handle_charge(delta)
+	for n in get_children():
+		if n.has_method("physics"):
+			n.physics(delta)
 	apply_gravity(delta)
 	apply_flapping(delta)
 	limit_movement()
