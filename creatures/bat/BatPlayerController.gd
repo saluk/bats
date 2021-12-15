@@ -24,8 +24,14 @@ func _unhandled_input(event):
 			bat.flap_right()
 	elif event.is_action_pressed("ui_left"):
 		bat.flap_left()
+		bat.begin_charge()
 	elif event.is_action_pressed("ui_right"):
 		bat.flap_right()
+		bat.begin_charge()
+	elif event.is_action_released("ui_left"):
+		bat.release_charge()
+	elif event.is_action_released("ui_right"):
+		bat.release_charge()
 	elif event.is_action_pressed("ui_down"):
 		if bat.holding:
 			bat.drop_item()

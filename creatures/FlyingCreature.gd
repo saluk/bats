@@ -6,6 +6,13 @@ var move = Vector2(0, 0)
 var toss_vector = move
 var alive = true
 
+var charge_level = 0.0
+var charge_time = 1  #Hold this long to charge
+enum {NotCharging, Charging, ReleaseCharge}
+var charge_state = NotCharging
+var charge_speed = 100  #Speed we move after a charge
+var release_charge_time = 1  #How long we charge before resetting
+
 ### Constants/Parameters ###
 var xlimit = 100
 var ylimit = 250
@@ -13,6 +20,7 @@ var jump_width = 50
 var jump_height = 50
 var gravity = 300
 var flapping = 200
+var drag = 20
 
 ### References ###
 var holding:Node2D = null
@@ -33,7 +41,10 @@ func _ready():
 # Body functions
 
 func flap_left():
-	$AnimatedSprite.flip_h = 0
+	$AnimatedSprite.flip_h = false
+	move.x -= jump_width
+	move.y -= jump_height
+	return
 	if move.y>0:
 		move.y -= jump_height/2
 	if abs(move.x)<jump_width*4:
@@ -44,7 +55,10 @@ func flap_left():
 	#move.x = -jump_width
 	
 func flap_right():
-	$AnimatedSprite.flip_h = 1
+	$AnimatedSprite.flip_h = true
+	move.x += jump_width
+	move.y -= jump_height
+	return
 	if move.y>0:
 		move.y -= jump_height/2
 	if abs(move.x)<jump_width*4:
@@ -52,6 +66,19 @@ func flap_right():
 		move.y -= jump_height/2
 	else:
 		move.y -= jump_height
+		
+func begin_charge():
+	if alive and charge_state == NotCharging:
+		charge_state = Charging
+		charge_level = 0
+
+func release_charge():
+	if alive and charge_state == Charging:
+		if charge_level > charge_time:
+			charge_state = ReleaseCharge
+		else:
+			charge_state = NotCharging
+		charge_level = 0
 	
 func drop_item():
 	if not holding:
@@ -102,6 +129,17 @@ func can_pickup():
 
 #Physics functions
 
+func handle_charge(delta):
+	if charge_state in [Charging, ReleaseCharge]:
+		charge_level += delta
+	if charge_state == ReleaseCharge:
+		if not $AnimatedSprite.flip_h:
+			move.x = -charge_speed
+		else:
+			move.x = charge_speed
+		if charge_level > release_charge_time:
+			charge_state = NotCharging
+
 func apply_flapping(delta):
 	if not alive: return
 	move.y -= flapping * delta
@@ -112,11 +150,12 @@ func apply_gravity(delta):
 func _physics_process(delta):
 	#slow down horizontal movement
 	if move.x < 0:
-		move.x += 50*delta
+		move.x += drag*delta
 	if move.x > 0:
-		move.x -= 50*delta
+		move.x -= drag*delta
 	choose_animation()
 	toss_vector = Vector2(move.x * 2, move.y * 3)
+	handle_charge(delta)
 	apply_gravity(delta)
 	apply_flapping(delta)
 	limit_movement()
