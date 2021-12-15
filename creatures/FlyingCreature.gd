@@ -85,12 +85,22 @@ func grab_item():
 	return true
 
 # State enforcement
+func get_charge_anim():
+	var anim = ""
+	for node in get_children():
+		if "charge_state" in node:
+			if node.charge_state == node.ReleaseCharge and not anim:
+				anim = "attack"
+			elif node.charge_state == node.Charging and not anim:
+				anim = "prepare_charge"
+	return anim
 
 func choose_animation():
 	if not alive:
 		return
-	if $LeftCharge.charge_state == $LeftCharge.ReleaseCharge:
-		$AnimatedSprite.play("attack")
+	var charge_anim = get_charge_anim()
+	if charge_anim:
+		$AnimatedSprite.play(charge_anim)
 	elif abs(move.x)>0.5 or move.y<0:
 		$AnimatedSprite.play("fly")
 	else:
