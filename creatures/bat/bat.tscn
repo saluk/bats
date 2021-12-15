@@ -229,7 +229,7 @@ position = Vector2( 0.397301, 9.27031 )
 position = Vector2( -0.132431, -1.90735e-06 )
 frames = SubResource( 42 )
 animation = "fly"
-frame = 3
+frame = 9
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
