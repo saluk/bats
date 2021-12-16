@@ -58,10 +58,10 @@ func update_scene_for(scene:Node, source_map):
 	tilemap.generate_room_offset = false
 	scene.add_child(tilemap)
 	tilemap.set_owner(scene)
-	var label = Label.new()
-	label.text = source_map.name
-	scene.add_child(label)
-	label.set_owner(scene)
+	#var label = Label.new()
+	#label.text = source_map.name
+	#scene.add_child(label)
+	#label.set_owner(scene)
 	return scene
 	
 func save_scene(scene, filename):

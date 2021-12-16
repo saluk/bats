@@ -23,6 +23,3 @@ script = ExtResource( 2 )
 mapname = "Area B2"
 room_offset = Vector2( 4, 9 )
 generate_room_offset = false
-
-[node name="Label" type="Label" parent="."]
-text = "Area B2"

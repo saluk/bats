@@ -24,6 +24,3 @@ format = 1
 script = ExtResource( 2 )
 mapname = "TopLeft"
 generate_room_offset = false
-
-[node name="Label" type="Label" parent="."]
-text = "TopLeft"
