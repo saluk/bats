@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=1]
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=3]
 
 [node name="Area B" type="Node2D" groups=[
 "room_root",
@@ -21,3 +22,31 @@ generate_room_offset = false
 
 [node name="Label" type="Label" parent="."]
 text = "Area B"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+
+[node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
+position = Vector2( 299.342, 35.636 )
+
+[node name="ParallaxLayer2" parent="ParallaxBackground" index="1"]
+position = Vector2( 299.342, 35.636 )
+
+[node name="ParallaxBackground2" parent="." instance=ExtResource( 3 )]
+
+[node name="ParallaxLayer" parent="ParallaxBackground2" index="0"]
+position = Vector2( 1197.37, 35.636 )
+
+[node name="ParallaxLayer2" parent="ParallaxBackground2" index="1"]
+position = Vector2( 1197.37, 35.636 )
+
+[node name="ParallaxBackground3" parent="." instance=ExtResource( 3 )]
+
+[node name="ParallaxLayer" parent="ParallaxBackground3" index="0"]
+position = Vector2( -587.993, 35.636 )
+
+[node name="ParallaxLayer2" parent="ParallaxBackground3" index="1"]
+position = Vector2( -587.993, 35.636 )
+
+[editable path="ParallaxBackground"]
+[editable path="ParallaxBackground2"]
+[editable path="ParallaxBackground3"]

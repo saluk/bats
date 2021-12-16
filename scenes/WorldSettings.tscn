@@ -4,6 +4,7 @@
 
 [node name="WorldSettings" type="Node"]
 script = ExtResource( 1 )
+debug = false
 connected_rooms = {
 Vector2( 0, 0 ): "TopLeft",
 Vector2( 0, 1 ): "LowerLeft",

@@ -285,7 +285,6 @@ margin_top = -17.0
 margin_right = 51.0
 margin_bottom = -3.0
 theme = SubResource( 46 )
-text = "Debug"
 __meta__ = {
 "_edit_use_anchors_": false
 }

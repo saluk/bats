@@ -18,6 +18,8 @@ func _ready():
 #	pass
 
 func _draw():
+	if not WorldSettings.debug:
+		return
 	var vec = get_parent().get(track_vector)
 	draw_line(position, (
 		position + (vec * width)

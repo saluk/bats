@@ -1,5 +1,6 @@
 extends Node
 
+export var debug = true
 export var connected_rooms = {}
 
 var player_tile = null
@@ -56,7 +57,8 @@ func _process(_delta):
 	
 	var tile = get_player_tile(player.position, map)
 	player_tile = tile
-	player.get_node("Label").text = "x:"+str(int(player.position.x))+"("+str(tile.x)+")"+" y:"+str(int(player.position.y))+"("+str(tile.y)+")"
+	if debug:
+		player.get_node("Label").text = "x:"+str(int(player.position.x))+"("+str(tile.x)+")"+" y:"+str(int(player.position.y))+"("+str(tile.y)+")"
 	if tile in connected_rooms:
 		var connect_map_name = connected_rooms[tile]
 		if connect_map_name == map.mapname:
