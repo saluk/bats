@@ -64,10 +64,10 @@ func _process(_delta):
 		if connect_map_name == map.mapname:
 			return
 		print("warp to "+connect_map_name+" from "+map.mapname)
-		really_bad_change_scene(player, connect_map_name, mapnode, map)
+		really_bad_change_scene(connect_map_name, mapnode, map)
 
 
-func really_bad_change_scene(player, scene_name, mapnode, map):
+func really_bad_change_scene(scene_name, mapnode, map):
 	var old_map = map
 	var new_map_root:Node2D = load("res://scenes/generated/"+scene_name+".tscn").instance()
 	

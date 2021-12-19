@@ -1,7 +1,7 @@
 extends Sprite
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	#var player_tile = WorldSettings.player_tile
 	#var room = WorldSettings.room
 	var player_global_pos = WorldSettings.get_player_global_position()

@@ -3,7 +3,7 @@ extends Control
 var seen_nodes = []
 var mapeditor
 
-func _process(delta):
+func _process(_delta):
 	var offset = find_node("Offset")
 	var layout = find_node("Layout")
 	if WorldSettings.room and not WorldSettings.room.room_offset in seen_nodes:
