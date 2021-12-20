@@ -3,7 +3,8 @@ class_name ArcherAIController
 
 ### Constants/Parameters ###
 var spot_distance = 500
-var arrow_node = preload("res://objects/projectiles/Arrow.tscn")
+var arrow_node
+var time_scene = 'ai'
 
 ### Operation variables ###
 var creature = null  # Creature we are controlling
@@ -18,6 +19,8 @@ var fire_time = 0
 
 func _ready():
 	randomize()
+	arrow_node = load("res://objects/projectiles/Arrow.tscn")
+	ManageTime.attach_node(self, time_scene)
 	creature = get_parent()
 
 func get_target():
@@ -80,9 +83,9 @@ func state_fire_at_target():
 		creature.get_node("AnimatedSprite").play("shoot_med")
 	if creature.get_node("AnimatedSprite").frame >= 4 and fire_time <= 0:
 		var arrow = arrow_node.instance()
+		arrow.time_scene = time_scene
 		creature.get_parent().add_child(arrow)
 		arrow.position = creature.position
-		arrow._ready()
 		arrow.mover_node.direction = d
 		arrow.mover_node.rotate_sprite = true
 		state_time = 0
@@ -126,6 +129,6 @@ func update_brain():
 		new_state()
 
 
-func _physics_process(d):
+func _tick(d):
 	self.delta = d
 	update_brain()

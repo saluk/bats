@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name FlyingCreature
 
+export var time_scene = 'creatures'
+
 ### Operation variables ###
 var move = Vector2(0, 0)
 var toss_vector = move
@@ -29,6 +31,7 @@ var attack_collision:Area2D = null
 signal is_dead
 
 func _ready():
+	ManageTime.attach_node(self, time_scene)
 	attack_collision = get_node("AttackCollision")
 	var _a = attack_collision.connect("body_entered", self, "attack_collide")
 	
@@ -112,7 +115,7 @@ func apply_flapping(delta):
 func apply_gravity(delta):
 	move.y += gravity * delta
 
-func _physics_process(delta):
+func _tick(delta):
 	#slow down horizontal movement
 	if move.x < 0:
 		move.x += drag*delta

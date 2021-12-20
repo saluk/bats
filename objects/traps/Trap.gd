@@ -1,6 +1,7 @@
 extends Node2D
 
 export var damage = 1
+export var time_scene = "projectile"
 
 var enabled = true
 
@@ -14,7 +15,7 @@ func _ready():
 	animated_node = find_node("AnimatedSprite")
 	if area_node:
 		area_node.connect("body_entered", self, "trap")
-	if mover_node:
+	elif mover_node:
 		mover_node.connect("body_entered", self, "trap")
 
 func trap(body):

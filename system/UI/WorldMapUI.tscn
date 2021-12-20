@@ -5,7 +5,7 @@
 [ext_resource path="res://system/UI/WhereIsBat.gd" type="Script" id=3]
 [ext_resource path="res://creatures/bat/rat and bat spritesheet calciumtrice.png" type="Texture" id=4]
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="Theme" id=4]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.235294, 0.0784314, 1, 0.219608 )
@@ -20,14 +20,14 @@ atlas = ExtResource( 4 )
 region = Rect2( 192.937, 263.741, 29.6296, 27.5556 )
 
 [node name="WorldMap" type="Node2D"]
-position = Vector2( 224, 96 )
+position = Vector2( 224, 0 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="WorldMapBackground" type="Panel" parent="."]
 margin_right = 128.0
 margin_bottom = 128.0
 rect_scale = Vector2( 0.5, 0.5 )
-theme = SubResource( 1 )
+theme = SubResource( 4 )
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

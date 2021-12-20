@@ -229,6 +229,7 @@ default_font = SubResource( 48 )
 collision_layer = 18
 collision_mask = 9
 script = ExtResource( 2 )
+time_scene = "player"
 
 [node name="PhysicsCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2( 0.551216, 2.28361 )

@@ -28,6 +28,7 @@ var attack_collision:Area2D = null
 signal is_dead
 
 func _ready():
+	ManageTime.attach_node(self, 'ai')
 	if has_node("AttackCollision"):
 		attack_collision = get_node("AttackCollision")
 	if attack_collision:
@@ -118,7 +119,7 @@ func can_pickup():
 func apply_gravity(delta):
 	move.y += gravity * delta
 
-func _physics_process(delta):
+func _tick(delta):
 	#slow down horizontal movement
 	if move.x < 0:
 		move.x += drag*delta

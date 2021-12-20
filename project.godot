@@ -845,6 +845,7 @@ config/icon="res://icon.png"
 ManageGame="*res://system/ManageGame.tscn"
 GlobalSettings="*res://system/GlobalSettings.tscn"
 WorldSettings="*res://scenes/WorldSettings.tscn"
+ManageTime="*res://system/ManageTime.tscn"
 
 [display]
 
