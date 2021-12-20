@@ -16,3 +16,12 @@ func test_bat_with_spikes() -> void:
 	assert_bool(bat.alive == false).is_true()
 	
 	scene.queue_free()
+
+func test_archer_with_spikes() -> void:
+	var scene:FakeMap = FakeMap.new().setup(self)
+	var archer = scene.add("res://creatures/archer/archer.tscn")
+	var _spikes = scene.add("res://objects/traps/Spikes.tscn")
+	assert_bool(archer.alive == true).is_true()
+	yield(scene.process_one_tick(), "completed")
+	assert_bool(archer.alive == true).is_true()
+	scene.queue_free()

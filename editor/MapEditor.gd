@@ -5,6 +5,7 @@ class_name MapEditor
 export var bake_map = false setget do_bake_map
 
 export var export_path = "res://scenes/generated/"
+export var save_world_settings = true
 
 func do_bake_map(val):
 	if val != true:
@@ -16,7 +17,9 @@ func do_bake_map(val):
 	var world_settings = load("res://scenes/WorldSettings.tscn").instance()
 	world_settings.connected_rooms = find_connected_rooms()
 	print(world_settings.connected_rooms)
-	save_scene(world_settings, "res://scenes/WorldSettings.tscn")
+	if save_world_settings:
+		save_scene(world_settings, "res://scenes/WorldSettings.tscn")
+		save_scene(world_settings, "res://scenes/WorldSettings.tscn")
 	world_settings.free()
 	
 func bake_map_for(tilemap:TileMap):

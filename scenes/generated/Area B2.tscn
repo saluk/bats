@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=1]
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=2]
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://creatures/archer/archer.tscn" type="PackedScene" id=4]
 
 [node name="Area B2" type="Node2D" groups=[
 "room_root",
@@ -10,7 +11,13 @@
 
 [node name="Save" type="Node" parent="."]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Save" instance=ExtResource( 3 )]
+[node name="ParallaxBackground" parent="Save" instance=ExtResource( 3 )]
+
+[node name="Archer" parent="Save" instance=ExtResource( 4 )]
+position = Vector2( 300, 144 )
+
+[node name="Archer2" parent="Save" instance=ExtResource( 4 )]
+position = Vector2( 420, 144 )
 
 [node name="GeneratedTileMap" type="TileMap" parent="." groups=[
 "room_tilemap",

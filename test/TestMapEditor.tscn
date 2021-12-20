@@ -31,6 +31,7 @@
 [node name="MapEditor" type="Node2D"]
 script = ExtResource( 2 )
 export_path = "res://test/generated_scenes/"
+save_world_settings = false
 
 [node name="Layout" type="Node2D" parent="."]
 

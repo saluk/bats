@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/matchers/AnyClazzArgumentMatcher.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Archer",
+"language": "GDScript",
+"path": "res://creatures/archer/archer.gd"
+}, {
+"base": "Node",
+"class": "ArcherAIController",
+"language": "GDScript",
+"path": "res://creatures/ArcherAIController.gd"
+}, {
 "base": "Node",
 "class": "BatPlayerController",
 "language": "GDScript",
@@ -688,6 +698,8 @@ _global_script_class_icons={
 "AnyArgumentMatcher": "",
 "AnyBuildInTypeArgumentMatcher": "",
 "AnyClazzArgumentMatcher": "",
+"Archer": "",
+"ArcherAIController": "",
 "BatPlayerController": "",
 "BatTest": "",
 "CallBackValueProvider": "",
@@ -883,6 +895,7 @@ texture={
 2d_physics/layer_4="pressure plates"
 2d_physics/layer_5="affected by projectile"
 2d_physics/layer_6="enemies"
+2d_physics/layer_7="traps"
 
 [physics]
 

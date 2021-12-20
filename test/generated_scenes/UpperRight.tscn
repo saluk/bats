@@ -18,6 +18,3 @@ script = ExtResource( 1 )
 mapname = "UpperRight"
 room_offset = Vector2( 1, 0 )
 generate_room_offset = false
-
-[node name="@@12" type="Label" parent="."]
-text = "UpperRight"

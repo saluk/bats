@@ -26,6 +26,3 @@ script = ExtResource( 1 )
 mapname = "LowerRight"
 room_offset = Vector2( 1, 1 )
 generate_room_offset = false
-
-[node name="@@13" type="Label" parent="."]
-text = "LowerRight"
