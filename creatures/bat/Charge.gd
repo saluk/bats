@@ -29,7 +29,12 @@ func release_charge():
 			clear_other_charges()
 		else:
 			charge_state = NotCharging
-		charge_level = 0
+			charge_level = 0
+		
+func apply_charge():
+	charge_state = ReleaseCharge
+	clear_other_charges()
+	charge_level = 0
 		
 func physics(delta):
 	if charge_state in [Charging, ReleaseCharge]:

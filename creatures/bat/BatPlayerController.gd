@@ -7,7 +7,7 @@ var left_charge = null
 var right_charge = null
 
 var input_buffer = []
-var input_buffer_seconds = 0.1
+var input_buffer_seconds = 0.3
 var input_buffer_time = 0.0
 
 func _ready():
@@ -21,21 +21,35 @@ func is_dead():
 	
 # Body functions
 
+func recent_actions():
+	var new_arr = []
+	for buffer in input_buffer:
+		new_arr.append(buffer['action'])
+	return new_arr
+
 func apply_input_buffer(action):
-	input_buffer.append(action)
-	if input_buffer == ['left', 'left']:
+	input_buffer.append(
+		{
+			'age': 0,
+			'action': action
+		}
+	)
+	print(input_buffer)
+	if recent_actions() == ['left', 'left']:
 		double_left()
+		input_buffer.clear()
 		return true
-	elif input_buffer == ['right', 'right']:
+	elif recent_actions() == ['right', 'right']:
 		double_right()
+		input_buffer.clear()
 		return true
 	return false
 	
 func double_left():
-	pass
+	get_parent().get_node("LeftCharge").apply_charge()
 	
 func double_right():
-	pass
+	get_parent().get_node("RightCharge").apply_charge()
 
 func press_left():
 	if apply_input_buffer('left'):
@@ -102,11 +116,16 @@ func update_ui():
 			interact_buttons[0].visible = false
 
 func update_input_buffer(delta):
-	input_buffer_time += delta
-	if input_buffer_time >= input_buffer_seconds:
-		input_buffer_time -= input_buffer_seconds
-		input_buffer.remove(0)
+	var new_arr = []
+	for buffer in input_buffer:
+		buffer['age'] += delta
+		if buffer['age'] < input_buffer_seconds:
+			new_arr.append(buffer)
+	input_buffer = new_arr
+
+func _process(delta):
+	update_input_buffer(delta)
 
 func _physics_process(delta):
 	update_ui()
-	update_input_buffer(delta)
+	
