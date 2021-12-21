@@ -138,13 +138,15 @@ func find_connected_rooms():
 	var names = {}
 	for n in get_node("Layout").get_children():
 		for cell_index in n.get_used_cells():
-			var ref = n.get_cell(cell_index.x, cell_index.y)
-			var coord = n.get_cell_autotile_coord(cell_index.x, cell_index.y)
+			# TODO - not sure if we need this or not
+			#var ref = n.get_cell(cell_index.x, cell_index.y)
+			#var coord = n.get_cell_autotile_coord(cell_index.x, cell_index.y)
 			connectable_spots[cell_index] = n.room_offset
 			names[n.room_offset] = n.name
 	var connected_rooms = {}
 	for spot in connectable_spots.keys():
-		var cur_room = connectable_spots[spot]
+		# TODO - not sure if this is needed or not
+		#var cur_room = connectable_spots[spot]
 		var connected_room = connectable_spots[spot]
 		connected_rooms[spot] = names[connected_room]
 #		for x in [-1,0,1]:

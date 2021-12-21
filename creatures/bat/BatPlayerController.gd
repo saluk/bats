@@ -122,10 +122,16 @@ func update_input_buffer(delta):
 		if buffer['age'] < input_buffer_seconds:
 			new_arr.append(buffer)
 	input_buffer = new_arr
+	
+func update_camera(delta):
+	var cam_target:Node2D = get_parent().get_node("CameraTarget")
+	cam_target.position = cam_target.position.linear_interpolate(
+		bat.move.normalized()*50, 1*delta
+	)
 
 func _process(delta):
 	update_input_buffer(delta)
 
 func _physics_process(delta):
 	update_ui()
-	
+	update_camera(delta)

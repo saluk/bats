@@ -11,13 +11,14 @@
 [node name="Bat" parent="." instance=ExtResource( 1 )]
 position = Vector2( 120, 64 )
 
-[node name="Camera2D" type="Camera2D" parent="Bat"]
+[node name="Camera2D" type="Camera2D" parent="Bat/CameraTarget" index="0"]
 position = Vector2( -1.54012, 0.670776 )
 current = true
 limit_left = 0
 limit_top = 0
 limit_right = 480
 limit_bottom = 256
+limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
@@ -63,3 +64,5 @@ __meta__ = {
 
 [connection signal="pressed" from="CanvasLayer/Control/TossButton" to="Bat" method="_on_Drop_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/GrabButton" to="Bat" method="_on_Grab_pressed"]
+
+[editable path="Bat"]

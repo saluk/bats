@@ -95,7 +95,7 @@ func really_bad_change_scene(scene_name, mapnode, map, new_pos):
 	room = new_map
 	print(new_map.get_parent().name)
 	
-	var camera:Camera2D = player.get_node("Camera2D")
+	var camera:Camera2D = player.get_node("CameraTarget/Camera2D")
 	if new_pos:
 		player.position = local_position(new_pos, new_map)
 	else:
