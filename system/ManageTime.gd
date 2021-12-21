@@ -1,13 +1,22 @@
 extends Node
 
+#warning-ignore:unused_signal
 signal process_tick_1(delta)
+#warning-ignore:unused_signal
 signal process_tick_2(delta)
+#warning-ignore:unused_signal
 signal process_tick_3(delta)
+#warning-ignore:unused_signal
 signal process_tick_4(delta)
+#warning-ignore:unused_signal
 signal process_tick_5(delta)
+#warning-ignore:unused_signal
 signal process_tick_6(delta)
+#warning-ignore:unused_signal
 signal process_tick_7(delta)
+#warning-ignore:unused_signal
 signal process_tick_8(delta)
+#warning-ignore:unused_signal
 signal process_tick_9(delta)
 
 export var time_scales_definition = {}

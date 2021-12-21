@@ -15,6 +15,7 @@ var jump_width = 50
 var jump_height = 50
 var gravity = 300
 var flapping = 200
+var charge_flap_force = 50
 var drag = 20
 var bounce_height = 75  # Force to apply when bouncing from an attack
 
@@ -72,14 +73,24 @@ func grab_item():
 	return true
 
 # State enforcement
-func get_charge_anim():
-	var anim = ""
+func is_charging():
 	for node in get_children():
 		if "charge_state" in node:
-			if node.charge_state == node.ReleaseCharge and not anim:
-				anim = "attack"
-			elif node.charge_state == node.Charging and not anim:
-				anim = "prepare_charge"
+			if node.charge_state == node.Charging:
+				return true
+				
+func is_attacking():
+	for node in get_children():
+		if "charge_state" in node:
+			if node.charge_state == node.ReleaseCharge:
+				return true
+
+func get_charge_anim():
+	var anim = ""
+	if is_charging():
+		anim = "prepare_charge"
+	elif is_attacking():
+		anim = "attack"
 	return anim
 
 func choose_animation():
@@ -112,6 +123,10 @@ func apply_flapping(delta):
 	if not alive: return
 	move.y -= flapping * delta
 	
+func apply_charge_flapping(delta):
+	if is_charging():
+		move.y -= charge_flap_force * delta
+	
 func apply_gravity(delta):
 	move.y += gravity * delta
 
@@ -128,6 +143,7 @@ func _tick(delta):
 			n.physics(delta)
 	apply_gravity(delta)
 	apply_flapping(delta)
+	apply_charge_flapping(delta)
 	limit_movement()
 	var col = self.move_and_collide(move*delta)
 	last_collision_type = ""

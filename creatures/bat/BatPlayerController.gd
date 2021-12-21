@@ -6,6 +6,10 @@ var bat:FlyingCreature = null
 var left_charge = null
 var right_charge = null
 
+var input_buffer = []
+var input_buffer_seconds = 0.1
+var input_buffer_time = 0.0
+
 func _ready():
 	bat = get_parent()
 	var _a = bat.connect("is_dead", self, "is_dead")
@@ -16,6 +20,34 @@ func is_dead():
 	ManageGame.reload()
 	
 # Body functions
+
+func apply_input_buffer(action):
+	input_buffer.append(action)
+	if input_buffer == ['left', 'left']:
+		double_left()
+		return true
+	elif input_buffer == ['right', 'right']:
+		double_right()
+		return true
+	return false
+	
+func double_left():
+	pass
+	
+func double_right():
+	pass
+
+func press_left():
+	if apply_input_buffer('left'):
+		return
+	bat.flap_left()
+	left_charge.begin_charge()
+	
+func press_right():
+	if apply_input_buffer('right'):
+		return
+	bat.flap_right()
+	right_charge.begin_charge()
 	
 # Input
 func _unhandled_input(event):
@@ -24,22 +56,18 @@ func _unhandled_input(event):
 		var click_pos = event.position
 		if click_pos.x < ProjectSettings.get_setting("display/window/size/width")/2:
 			if event.is_pressed():
-				bat.flap_left()
-				left_charge.begin_charge()
+				press_left()
 			else:
 				left_charge.release_charge()
 		else:
 			if event.is_pressed():
-				bat.flap_right()
-				right_charge.begin_charge()
+				press_right()
 			else:
 				right_charge.release_charge()
 	elif event.is_action_pressed("ui_left"):
-		bat.flap_left()
-		left_charge.begin_charge()
+		press_left()
 	elif event.is_action_pressed("ui_right"):
-		bat.flap_right()
-		right_charge.begin_charge()
+		press_right()
 	elif event.is_action_pressed("ui_down"):
 		if bat.holding:
 			bat.drop_item()
@@ -73,5 +101,12 @@ func update_ui():
 		if interact_buttons:
 			interact_buttons[0].visible = false
 
-func _physics_process(_delta):
+func update_input_buffer(delta):
+	input_buffer_time += delta
+	if input_buffer_time >= input_buffer_seconds:
+		input_buffer_time -= input_buffer_seconds
+		input_buffer.remove(0)
+
+func _physics_process(delta):
 	update_ui()
+	update_input_buffer(delta)

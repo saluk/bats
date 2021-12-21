@@ -140,26 +140,27 @@ func find_connected_rooms():
 		for cell_index in n.get_used_cells():
 			var ref = n.get_cell(cell_index.x, cell_index.y)
 			var coord = n.get_cell_autotile_coord(cell_index.x, cell_index.y)
-			if ref == 1 and coord.x == 1 and coord.y == 1:
-				connectable_spots[cell_index] = n.room_offset
-				names[n.room_offset] = n.name
+			connectable_spots[cell_index] = n.room_offset
+			names[n.room_offset] = n.name
 	var connected_rooms = {}
 	for spot in connectable_spots.keys():
 		var cur_room = connectable_spots[spot]
-		for x in [-1,0,1]:
-			for y in [-1,0,1]:
-				if x==0 and y==0:
-					continue
-				if x!=0 and y!=0:
-					continue
-				var connected_index = Vector2(
-					spot.x+x, spot.y+y
-				)
-				if not connected_index in connectable_spots:
-					continue
-				var connected_room = connectable_spots[connected_index]
-				if connected_room == cur_room:
-					continue
-				connected_rooms[connected_index] = names[connected_room]
-	print(connected_rooms)
+		var connected_room = connectable_spots[spot]
+		connected_rooms[spot] = names[connected_room]
+#		for x in [-1,0,1]:
+#			for y in [-1,0,1]:
+#				if x==0 and y==0:
+#					continue
+#				if x!=0 and y!=0:
+#					continue
+#				var connected_index = Vector2(
+#					spot.x+x, spot.y+y
+#				)
+#				if not connected_index in connectable_spots:
+#					continue
+#				var connected_room = connectable_spots[connected_index]
+#				if connected_room == cur_room:
+#					continue
+#				connected_rooms[connected_index] = names[connected_room]
+	print("connected_rooms:",connected_rooms)
 	return connected_rooms

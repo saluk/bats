@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://editor/Layout.tscn" type="PackedScene" id=1]
 [ext_resource path="res://editor/MapEditor.gd" type="Script" id=2]
+[ext_resource path="res://creatures/bat/bat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=4]
 
 [node name="MapEditor" type="Node2D"]
@@ -72,5 +73,10 @@ position = Vector2( 160, 128 )
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
+
+[node name="Player" type="Node" parent="."]
+
+[node name="Bat" parent="Player" instance=ExtResource( 3 )]
+position = Vector2( 68.7849, 115.104 )
 
 [editable path="Layout"]

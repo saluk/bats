@@ -52,6 +52,19 @@ func _process(_delta):
 		return
 	var map:TileMap = get_first_in_group("room_tilemap")
 	if not map:
+		# Load player to the position defined on the MapEditor
+		var map_editor = load("res://editor/MapEditor.tscn").instance()
+		var map_editor_player = map_editor.get_node("Player/Bat")
+		var start_pos = Vector2(
+			int(map_editor_player.position.x/15*5*32),
+			int(map_editor_player.position.y/12*4*32)
+		)
+		print(start_pos)
+		var load_tile = Vector2(int(start_pos.x/(5*32)), int(start_pos.y/(4*32)))
+		print("load load tile ", load_tile)
+		if load_tile in connected_rooms:
+			switch_connected_map(load_tile, null, mapnode, start_pos)
+		map_editor.queue_free()
 		return
 	room = map
 	
@@ -60,25 +73,32 @@ func _process(_delta):
 	if debug:
 		player.get_node("Label").text = "x:"+str(int(player.position.x))+"("+str(tile.x)+")"+" y:"+str(int(player.position.y))+"("+str(tile.y)+")"
 	if tile in connected_rooms:
-		var connect_map_name = connected_rooms[tile]
-		if connect_map_name == map.mapname:
-			return
+		switch_connected_map(tile, map, mapnode, null)
+		
+func switch_connected_map(tile, map, mapnode, new_pos):
+	var connect_map_name = connected_rooms[tile]
+	if map and connect_map_name == map.mapname:
+		return
+	if map:
 		print("warp to "+connect_map_name+" from "+map.mapname)
-		really_bad_change_scene(connect_map_name, mapnode, map)
+	really_bad_change_scene(connect_map_name, mapnode, map, new_pos)
 
-
-func really_bad_change_scene(scene_name, mapnode, map):
+func really_bad_change_scene(scene_name, mapnode, map, new_pos):
 	var old_map = map
 	var new_map_root:Node2D = load("res://scenes/generated/"+scene_name+".tscn").instance()
 	
-	old_map.get_parent().queue_free()
-	old_map.queue_free()
+	if old_map:
+		old_map.get_parent().queue_free()
+		old_map.queue_free()
 	mapnode.add_child(new_map_root)
 	var new_map = get_first_in_group("room_tilemap")
 	room = new_map
 	print(new_map.get_parent().name)
 	
 	var camera:Camera2D = player.get_node("Camera2D")
-	player.position = local_position(global_position(player.position, old_map), new_map)
+	if new_pos:
+		player.position = local_position(new_pos, new_map)
+	else:
+		player.position = local_position(global_position(player.position, old_map), new_map)
 	camera.align()
 	camera.reset_smoothing()
