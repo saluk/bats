@@ -24,13 +24,13 @@ func get_bounds():
 		if max_y==null or coord.y>max_y:
 			max_y = coord.y
 	
-	if not min_x:
+	if min_x == null:
 		min_x = -10000
-	if not max_x:
+	if max_x == null:
 		max_x = 10000
-	if not min_y:
+	if min_y == null:
 		min_y = -10000
-	if not max_y:
+	if max_y == null:
 		max_y = 10000
 	
 	return [min_x*cell_size.x, max_x*cell_size.x+cell_size.x, 

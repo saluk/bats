@@ -77,6 +77,6 @@ format = 1
 [node name="Player" type="Node" parent="."]
 
 [node name="Bat" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 92.9928, 59.5446 )
+position = Vector2( 62.0385, 93.2768 )
 
 [editable path="Layout"]

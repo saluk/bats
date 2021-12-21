@@ -97,8 +97,10 @@ func really_bad_change_scene(scene_name, mapnode, map, new_pos):
 	
 	var camera:Camera2D = player.get_node("CameraTarget/Camera2D")
 	if new_pos:
-		player.position = local_position(new_pos, new_map)
+		player.global_position = local_position(new_pos, new_map)
 	else:
-		player.position = local_position(global_position(player.position, old_map), new_map)
+		player.global_position = local_position(global_position(player.position, old_map), new_map)
+	# TODO now that camera is tracking the camera target this is broken
+	player.get_node("CameraTarget").position = player.move.normalized()*50
 	camera.align()
 	camera.reset_smoothing()
