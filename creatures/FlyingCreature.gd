@@ -77,8 +77,18 @@ func is_charging():
 	for node in get_children():
 		if "charge_state" in node:
 			if node.charge_state == node.Charging:
-				return node.charge_direction
+				if node.name == "LeftCharge":
+					return -1
+				else:
+					return 1
 	return 0
+	
+func charge_state():
+	for node in get_children():
+		if "charge_state" in node:
+			if node.charge_level >= node.charge_time:
+				return true
+	return false
 				
 func is_attacking():
 	for node in get_children():

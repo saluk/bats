@@ -27,6 +27,7 @@ func release_charge():
 		if charge_level > charge_time:
 			charge_state = ReleaseCharge
 			clear_other_charges()
+			apply_radar()
 		else:
 			charge_state = NotCharging
 			charge_level = 0
@@ -37,6 +38,16 @@ func apply_charge():
 	charge_level = 0
 	bat.move.x = charge_direction*charge_speed
 	bat.move.y = charge_speed
+	
+func apply_radar():
+	var arc:Node2D = bat.get_node("Arc")
+	var pulse = load("res://creatures/bat/RadarPulse.tscn").instance()
+	#pulse.global_position = arc.global_position
+	bat.add_child(pulse)
+	pulse.global_scale = arc.global_scale
+	pulse.global_rotation = arc.global_rotation
+	pulse.angle = arc.angle
+	pulse.start_angle = arc.start_angle
 		
 func physics(delta):
 	if charge_state in [Charging, ReleaseCharge]:
