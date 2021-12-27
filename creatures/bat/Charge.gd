@@ -35,11 +35,12 @@ func apply_charge():
 	charge_state = ReleaseCharge
 	clear_other_charges()
 	charge_level = 0
+	bat.move.x = charge_direction*charge_speed
+	bat.move.y = charge_speed
 		
 func physics(delta):
 	if charge_state in [Charging, ReleaseCharge]:
 		charge_level += delta
 	if charge_state == ReleaseCharge:
-		bat.move.x = charge_direction*charge_speed
 		if charge_level > release_charge_time:
 			charge_state = NotCharging
