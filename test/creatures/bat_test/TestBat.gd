@@ -57,3 +57,6 @@ func test_grab_drop_auto():
 	bat.drop_item()
 	assert_bool(rock in world.get_children()).is_true()
 	assert_object(bat.holding).is_equal(null)
+
+func test_radar_collision():
+	var target = world.add('res://objects/SingleRock.tscn')

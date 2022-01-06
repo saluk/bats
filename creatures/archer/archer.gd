@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends KinematicMob
 class_name Archer
 
 ### Operation variables ###
@@ -33,7 +33,8 @@ func _ready():
 		attack_collision = get_node("AttackCollision")
 	if attack_collision:
 		var _a = attack_collision.connect("body_entered", self, "attack_collide")
-	
+	._ready()
+
 # Body functions
 
 func flap_left():
@@ -161,6 +162,7 @@ func do_damage(_amount):
 		die()
 	
 func die():
+	ManageGame.set_deleted(self)
 	alive = false
 	$AnimatedSprite.play("death")
 	toss_vector = Vector2()

@@ -1,6 +1,6 @@
 extends Node2D
 
-var auto_grab = true
+export var auto_grab = true
 
 
 # Declare member variables here. Examples:
