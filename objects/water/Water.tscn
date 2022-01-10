@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://objects/water/copy_rect.gd" type="Script" id=1]
+[ext_resource path="res://objects/water/Water.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25.4727, 23.9619 )
+
+[node name="Water" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 180.0
+margin_bottom = 132.0
+color = Color( 0, 0.27451, 1, 0.352941 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="ColorRect"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/Area2D"]
+shape = SubResource( 1 )
+script = ExtResource( 1 )
