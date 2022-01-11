@@ -9,14 +9,14 @@ var toss_vector = move
 var alive = true
 
 ### Constants/Parameters ###
-var xlimit = 100
+var xlimit = 200
 var ylimit = 250
 var jump_width = 50
-var jump_height = 75
+var jump_height = 150
 var gravity = 300
-var flapping = 200
+var flapping = 150
 var charge_flap_force = 50
-var drag = 20
+var xdrag = 10
 var bounce_height = 75  # Force to apply when bouncing from an attack
 
 ### References ###
@@ -144,9 +144,9 @@ func apply_gravity(delta):
 func _tick(delta):
 	#slow down horizontal movement
 	if move.x < 0:
-		move.x += drag*delta
+		move.x += xdrag*delta
 	if move.x > 0:
-		move.x -= drag*delta
+		move.x -= xdrag*delta
 	choose_animation()
 	toss_vector = Vector2(move.x * 2, move.y * 3)
 	for n in get_children():

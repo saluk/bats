@@ -7,8 +7,9 @@ var left_charge = null
 var right_charge = null
 
 var input_buffer = []
-var input_buffer_seconds = 0.3
+var input_buffer_seconds = 0.2
 var input_buffer_time = 0.0
+var single_tap_seconds = 0.1
 
 func _ready():
 	bat = get_parent()
@@ -31,7 +32,8 @@ func apply_input_buffer(action):
 	input_buffer.append(
 		{
 			'age': 0,
-			'action': action
+			'action': action,
+			'tapped': false
 		}
 	)
 	print(input_buffer)
@@ -54,13 +56,13 @@ func double_right():
 func press_left():
 	if apply_input_buffer('left'):
 		return
-	bat.flap_left()
+	#bat.flap_left()
 	left_charge.begin_charge()
 	
 func press_right():
 	if apply_input_buffer('right'):
 		return
-	bat.flap_right()
+	#bat.flap_right()
 	right_charge.begin_charge()
 	
 # Input
@@ -115,12 +117,34 @@ func update_ui():
 		if interact_buttons:
 			interact_buttons[0].visible = false
 
+func single_tap(action):
+	if action == 'left':
+		bat.flap_left()
+	if action == 'right':
+		bat.flap_right()
+		
+func double_tap(action):
+	if action == 'left':
+		double_left()
+	if action == 'right':
+		double_right()
+
 func update_input_buffer(delta):
 	var new_arr = []
+	if input_buffer.size() == 1:
+		if not input_buffer[0]['tapped']:
+			if input_buffer[0]['age'] >= single_tap_seconds:
+				input_buffer[0]['tapped'] = true
+				single_tap(input_buffer[0]['action'])
 	for buffer in input_buffer:
 		buffer['age'] += delta
 		if buffer['age'] < input_buffer_seconds:
 			new_arr.append(buffer)
+	if input_buffer.size() == 2:
+		if not input_buffer[1]['tapped']:
+			if input_buffer[0]['action'] == input_buffer[1]['action']:
+				input_buffer[1]['tapped']
+				double_tap(input_buffer[0]['action'])
 	input_buffer = new_arr
 	
 func update_camera(delta):
