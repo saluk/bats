@@ -6,7 +6,7 @@ var area:Area2D
 func _ready():
 	area = find_node("Area2D")
 	
-func _process(delta):
+func _process(_delta):
 	for body in area.get_overlapping_bodies():
 		# TODO Affect physics and health
 		if "move" in body:

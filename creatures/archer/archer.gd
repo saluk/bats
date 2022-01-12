@@ -175,6 +175,7 @@ func die():
 	emit_signal("is_dead")
 	# Turn off collision with projectiles
 	set_collision_layer_bit(4, false)
+	get_node("Star").visible = false
 	
 func add_pickup(object):
 	if not alive: return

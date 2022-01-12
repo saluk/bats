@@ -14,8 +14,8 @@ var HELD = 3
 var TAPPED = 4
 var HELD_START = 5
 
-func _init(input_mappings):
-	self.input_mappings = input_mappings
+func _init(_input_mappings):
+	self.input_mappings = _input_mappings
 	
 func action_on(action):
 	buffer.append([action, 'on', 0, 0, false, false])

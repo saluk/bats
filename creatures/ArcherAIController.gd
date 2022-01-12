@@ -149,4 +149,5 @@ func _tick(d):
 
 # Events
 func was_stunned():
-	apply_state("stunned")
+	if state != "stunned":
+		apply_state("stunned")

@@ -24,7 +24,7 @@ var collision_circle:CircleShape2D
 
 func _ready():
 	collision_circle = shape.shape
-	area.connect("body_entered", self, "hit_body")
+	var _a = area.connect("body_entered", self, "hit_body")
 
 func _process(delta):
 	if edge_radius < max_edge_radius:
