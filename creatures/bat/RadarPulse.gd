@@ -1,5 +1,9 @@
 extends Node2D
 
+var effect = ["do_stun", []]
+
+var move:Vector2
+
 var edge_radius = 0
 var offset_radius = 0
 var max_edge_radius = 100
@@ -14,7 +18,6 @@ var point_count = 10
 var color = Color.aquamarine
 var width = 1
 
-onready var bat:FlyingCreature = get_parent()
 onready var area:Area2D = $Area2D
 onready var shape = $Area2D/CollisionShape2D
 var collision_circle:CircleShape2D
@@ -36,6 +39,7 @@ func _process(delta):
 		else:
 			queue_free()
 	collision_circle.radius = edge_radius
+	position += move * delta
 	update()
 	
 func _draw():
@@ -43,7 +47,7 @@ func _draw():
 	while radius > buffer_radius:
 		if radius < max_edge_radius:
 			draw_arc(
-				position, 
+				Vector2(0,0), 
 				radius, 
 				deg2rad(start_angle), 
 				deg2rad(angle), 
@@ -56,9 +60,11 @@ func _draw():
 	#draw_circle(position, edge_radius, Color(0,0,1,0.1))
 
 func hit_body(body):
-	if body == bat:
-		print("hit bat")
+	if body.is_in_group("player"):
 		return
 	print("radar hit ", body)
-	if body.has_method("do_damage"):
-		body.do_damage(1)
+	if body.has_method(effect[0]):
+		if effect[1]:
+			body.call(effect[0], effect[1])
+		else:
+			body.call(effect[0])

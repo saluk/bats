@@ -12,12 +12,13 @@ var STATE = 1
 var AGE = 2
 var HELD = 3
 var TAPPED = 4
+var HELD_START = 5
 
 func _init(input_mappings):
 	self.input_mappings = input_mappings
 	
 func action_on(action):
-	buffer.append([action, 'on', 0, 0, false])
+	buffer.append([action, 'on', 0, 0, false, false])
 	
 func action_off(action):
 	for i in range(buffer.size()):
@@ -27,7 +28,8 @@ func action_off(action):
 				apply_event("released", buffer[i][ACTION])
 				
 func apply_event(method, action):
-	print("event:", method, " ", action, " buffer:", buffer)
+	if not method in ["holding"]:
+		print("event:", method, " ", action, " buffer:", buffer)
 	for mapping in input_mappings.values():
 		if mapping['method'] == method and mapping['action'] == action:
 			mapping['self'].call(mapping['func_name'])
@@ -60,6 +62,9 @@ func _unhandled_input(event):
 func handle_held_event():
 	for event in buffer:
 		if event[STATE] == 'held':
+			if not event[HELD_START]:
+				event[HELD_START] = true
+				apply_event("held_start", event[ACTION])
 			apply_event("holding", event[ACTION])
 			
 func fire_single_tap():

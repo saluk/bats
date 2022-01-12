@@ -26,6 +26,7 @@ var attack_collision:Area2D = null
 
 ### Signals ###
 signal is_dead
+signal stunned
 
 func _ready():
 	ManageTime.attach_node(self, 'ai')
@@ -160,6 +161,9 @@ func _tick(delta):
 func do_damage(_amount):
 	if alive:
 		die()
+		
+func do_stun():
+	emit_signal("stunned")
 	
 func die():
 	ManageGame.set_deleted(self)

@@ -30,6 +30,7 @@ var attack_collision:Area2D = null
 
 ### Signals ###
 signal is_dead
+signal stunned
 
 func _ready():
 	ManageTime.attach_node(self, time_scene)
@@ -39,6 +40,10 @@ func _ready():
 # Body functions
 
 func set_flip(x):
+	if get_node("LeftCharge").charge_state == get_node("LeftCharge").Charging:
+		x = -1
+	elif get_node("RightCharge").charge_state == get_node("RightCharge").Charging:
+		x = 1
 	if x > 0:
 		$AnimatedSprite.flip_h = true
 	elif x < 0:
@@ -193,6 +198,9 @@ func _tick(delta):
 func do_damage(_amount):
 	if alive:
 		die()
+		
+func do_stun():
+	emit_signal("stunned")
 	
 func die():
 	alive = false

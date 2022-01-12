@@ -22,6 +22,7 @@ func _ready():
 	arrow_node = load("res://objects/projectiles/Arrow.tscn")
 	ManageTime.attach_node(self, time_scene)
 	creature = get_parent()
+	var _a = creature.connect("stunned", self, "was_stunned")
 
 func get_target():
 	for n in get_tree().get_nodes_in_group("player"):
@@ -90,8 +91,20 @@ func state_fire_at_target():
 		arrow.mover_node.rotate_sprite = true
 		state_time = 0
 		fire_time = rand_range(1, 2)
+		
+func can_stunned():
+	return false
+func apply_stunned():
+	state_time = 3
+	creature.get_node("Star").visible = true
+func state_stunned():
+	creature.get_node("AnimatedSprite").play("idle")
+func exit_stunned():
+	creature.get_node("Star").visible = false
 	
 func apply_state(s):
+	if state and has_method("exit_"+state):
+		call("exit_"+state)
 	state = s
 	if has_method("apply_"+s):
 		call("apply_"+s)
@@ -105,6 +118,7 @@ func switch_to_state_if_possible(new_state):
 
 func new_state():
 	var states:Array = [
+		"stunned",
 		"chase_target",
 		"fire_at_target"
 	]
@@ -132,3 +146,7 @@ func update_brain():
 func _tick(d):
 	self.delta = d
 	update_brain()
+
+# Events
+func was_stunned():
+	apply_state("stunned")
