@@ -13,7 +13,7 @@ func _ready():
 	bat = get_parent()
 
 func begin_charge():
-	if bat.alive and charge_state != ReleaseCharge:
+	if bat.alive and charge_state != ReleaseCharge and charge_state != Charging:
 		charge_state = Charging
 		charge_level = 0
 		
@@ -33,9 +33,12 @@ func release_charge():
 			charge_level = 0
 		
 func apply_charge():
+	if not bat.alive:
+		return
 	charge_state = ReleaseCharge
 	clear_other_charges()
 	charge_level = 0
+	bat.set_flip(charge_direction)
 	bat.move.x = charge_direction*charge_speed
 	bat.move.y = charge_speed
 	

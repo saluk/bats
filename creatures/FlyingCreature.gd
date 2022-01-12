@@ -38,13 +38,23 @@ func _ready():
 	
 # Body functions
 
+func set_flip(x):
+	if x > 0:
+		$AnimatedSprite.flip_h = true
+	elif x < 0:
+		$AnimatedSprite.flip_h = false
+
 func flap_left():
-	$AnimatedSprite.flip_h = false
+	if not alive:
+		return
+	set_flip(-1)
 	move.x -= jump_width
 	move.y -= jump_height
 	
 func flap_right():
-	$AnimatedSprite.flip_h = true
+	if not alive:
+		return
+	set_flip(1)
 	move.x += jump_width
 	move.y -= jump_height
 	
