@@ -1,11 +1,21 @@
 extends Control
 
 var seen_nodes = []
-var mapeditor
+var offset
+var layout
+
+func _ready():
+	# Pull the layout out of the map editor scene so we don't have the other elements
+	offset = find_node("Offset")
+	var map_editor = offset.get_node("MapEditor")
+	layout = map_editor.get_node("Layout")
+	map_editor.remove_child(layout)
+	offset.add_child(layout)
+	offset.move_child(layout, 0)
+	offset.remove_child(map_editor)
 
 func _process(_delta):
-	var offset = find_node("Offset")
-	var layout = find_node("Layout")
+	
 	if WorldSettings.room and not WorldSettings.room.room_offset in seen_nodes:
 		seen_nodes.append(WorldSettings.room.room_offset)
 	for node in layout.get_children():
