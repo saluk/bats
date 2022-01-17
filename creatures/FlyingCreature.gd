@@ -27,6 +27,8 @@ var last_collision:KinematicCollision2D = null
 
 var near_rafter = null
 var rafter_gravity = 0.0
+var rafter_heal_rate = 0.5 # seconds per shield health point
+var next_rafter_heal = 0.5
 
 var attack_collision:Area2D = null
 
@@ -215,9 +217,10 @@ func _physics_process(delta):
 
 # Signals and reactions
 
-func do_damage(_amount):
-	if alive:
-		die()
+func do_damage(amount, direction):
+	if not alive:
+		return
+	$HealthBar.do_damage(amount, direction)
 		
 func do_stun():
 	emit_signal("stunned")
@@ -267,6 +270,7 @@ func _on_Area2D_area_exited(area):
 func check_for_rafters(delta):
 	if not near_rafter:
 		rafter_gravity = 0
+		next_rafter_heal = rafter_heal_rate
 	near_rafter = null
 	if charge_state() or not alive:
 		return
@@ -280,6 +284,14 @@ func check_for_rafters(delta):
 		diff.y = -abs(diff.y)
 		move += Vector2(0, -abs(diff.y) * max(rafter_gravity, 0))
 		move.x = move.x * 0.8
+		if rafter_gravity >= 1:
+			heal_from_rafters(delta)
+
+func heal_from_rafters(delta):
+	next_rafter_heal -= delta
+	if next_rafter_heal <= 0:
+		next_rafter_heal = rafter_heal_rate
+		$HealthBar.heal(1)
 
 func attack_collide(body:KinematicBody2D):
 	if not alive:
