@@ -19,6 +19,7 @@ func _ready():
 func shoot():
 	var ob = projectile.instance()
 	ob.position = $ShootPosition.global_position
+	ob.scale.x = -scale.x
 	get_parent().add_child(ob)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

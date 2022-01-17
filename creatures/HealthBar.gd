@@ -4,8 +4,8 @@ var creature
 
 export var shields = [
 	{"start_arc":0, "arc":360, "max_health":2, "health": 0},
-	{"start_arc":0, "arc":180, "max_health":2, "health": 0},
-	{"start_arc":180, "arc":180, "max_health":2, "health": 0},
+	{"start_arc":320, "arc":80, "max_health":2, "health": 0},
+	{"start_arc":140, "arc":80, "max_health":2, "health": 0},
 	]
 
 export var start_radius = 15

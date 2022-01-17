@@ -24,6 +24,3 @@ func trap(body):
 		animated_node.explode()
 	if mover_node:
 		mover_node.speed = 0
-
-func collide_with(col):
-	trap(col.collider)
