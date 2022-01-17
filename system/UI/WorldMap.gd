@@ -7,12 +7,10 @@ var layout
 func _ready():
 	# Pull the layout out of the map editor scene so we don't have the other elements
 	offset = find_node("Offset")
-	var map_editor = offset.get_node("MapEditor")
-	layout = map_editor.get_node("Layout")
-	map_editor.remove_child(layout)
-	offset.add_child(layout)
-	offset.move_child(layout, 0)
-	offset.remove_child(map_editor)
+	layout = Util.replace_node(
+		offset.get_node("MapEditor"),
+		offset.find_node("Layout")
+	)
 
 func _process(_delta):
 	

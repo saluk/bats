@@ -1,7 +1,6 @@
 extends Node2D
 
 export var damage = 1
-export var time_scene = "projectile"
 
 var enabled = true
 

@@ -1,24 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=1]
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=2]
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/areas/AirFlow.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/areas/UVScroll.shader" type="Shader" id=5]
-[ext_resource path="res://objects/areas/Water.tscn" type="PackedScene" id=6]
-
-[sub_resource type="ShaderMaterial" id=1]
-resource_local_to_scene = true
-shader = ExtResource( 5 )
-shader_param/scroll_direction = Vector2( 0, 1 )
-shader_param/position = null
-shader_param/ratio = Vector2( 1, 1 )
+[ext_resource path="res://objects/water/Water.tscn" type="PackedScene" id=6]
 
 [node name="Area B" type="Node2D" groups=[
 "room_root",
 ]]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+
+[node name="Water" parent="." instance=ExtResource( 6 )]
+position = Vector2( 150, 192 )
 
 [node name="GeneratedTileMap" type="TileMap" parent="." groups=[
 "room_tilemap",
@@ -32,18 +26,4 @@ mapname = "Area B"
 room_offset = Vector2( 3, 7 )
 generate_room_offset = false
 
-[node name="Water" parent="." instance=ExtResource( 6 )]
-position = Vector2( 312.858, 200.432 )
-scale = Vector2( 15.4284, 5.51352 )
-
-[node name="AirFlow" parent="." instance=ExtResource( 4 )]
-material = SubResource( 1 )
-position = Vector2( 134.354, 140.416 )
-scale = Vector2( 1.85481, 2.51301 )
-alter_move_direction = Vector2( 0, 100 )
-
-[node name="AirFlow2" parent="." instance=ExtResource( 4 )]
-material = SubResource( 1 )
-position = Vector2( -22.5, 143.104 )
-scale = Vector2( 2.10938, 2.597 )
-alter_move_direction = Vector2( 0, -100 )
+[editable path="Water"]

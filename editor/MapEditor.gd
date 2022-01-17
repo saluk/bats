@@ -43,12 +43,10 @@ func get_scene_for(name):
 func update_scene_for(scene:Node, source_map):
 	print("-- (Re)Making new scene for "+source_map.name)
 	scene.name = source_map.name
-	# Clear all children that aren't saved
+	# Clear the Generated objects
 	for child in scene.get_children():
-		if child.name.begins_with("Save"):
-			continue
-		scene.remove_child(child)
-		child.queue_free()
+		if child.name.begins_with("Generated"):
+			scene.remove_child(child)
 	scene.add_to_group("room_root", true)
 	var tilemap:RoomMap = RoomMap.new()
 	tilemap.add_to_group("room_tilemap", true)
@@ -65,6 +63,7 @@ func update_scene_for(scene:Node, source_map):
 	#label.text = source_map.name
 	#scene.add_child(label)
 	#label.set_owner(scene)
+	scene.print_tree_pretty()
 	return scene
 	
 func save_scene(scene, filename):

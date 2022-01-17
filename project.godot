@@ -604,6 +604,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://test/editor/MapEditorTest.gd"
 }, {
+"base": "Sprite",
+"class": "PhysicsModifiedArea",
+"language": "GDScript",
+"path": "res://objects/areas/PhysicsModifiedArea.gd"
+}, {
 "base": "GdUnitMonitor",
 "class": "PushErrorMonitor",
 "language": "GDScript",
@@ -685,6 +690,11 @@ _global_script_classes=[ {
 "path": "res://addons/gdUnit3/src/core/TimeUnit.gd"
 }, {
 "base": "Reference",
+"class": "Util",
+"language": "GDScript",
+"path": "res://system/Util.gd"
+}, {
+"base": "Reference",
 "class": "ValueProvider",
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/asserts/ValueProvider.gd"
@@ -698,11 +708,6 @@ _global_script_classes=[ {
 "class": "Vector3Fuzzer",
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/fuzzers/Vector3Fuzzer.gd"
-}, {
-"base": "Node2D",
-"class": "Water",
-"language": "GDScript",
-"path": "res://objects/water/Water.gd"
 }, {
 "base": "Node",
 "class": "_TestCase",
@@ -834,6 +839,7 @@ _global_script_class_icons={
 "LocalTime": "",
 "MapEditor": "",
 "MapEditorTest": "",
+"PhysicsModifiedArea": "",
 "PushErrorMonitor": "",
 "RPC": "",
 "RPCClientConnect": "",
@@ -850,10 +856,10 @@ _global_script_class_icons={
 "StringFuzzer": "",
 "TestTrap": "",
 "TimeUnit": "",
+"Util": "",
 "ValueProvider": "",
 "Vector2Fuzzer": "",
 "Vector3Fuzzer": "",
-"Water": "",
 "_TestCase": "",
 "_TestSuiteScanner": ""
 }
@@ -869,7 +875,6 @@ config/icon="res://icon.png"
 ManageGame="*res://system/ManageGame.tscn"
 GlobalSettings="*res://system/GlobalSettings.tscn"
 WorldSettings="*res://scenes/WorldSettings.tscn"
-ManageTime="*res://system/ManageTime.tscn"
 
 [display]
 

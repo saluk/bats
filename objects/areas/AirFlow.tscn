@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://objects/areas/airflow.png" type="Texture" id=1]
+[ext_resource path="res://objects/areas/PhysicsModifiedArea.gd" type="Script" id=2]
+[ext_resource path="res://objects/areas/UVScroll.shader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/scroll_direction = Vector2( 0, 1 )
+shader_param/position = null
+shader_param/ratio = Vector2( 1, 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35.0164, 33.6363 )
+
+[node name="AirFlow" type="Sprite"]
+material = SubResource( 1 )
+position = Vector2( 3.85186e-34, 4.54747e-13 )
+scale = Vector2( 1.875, 1.14388 )
+z_index = 100
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+alter_move_scale = 1.0
+alter_move_direction = Vector2( 0, 1000 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -0.0863751, 0.528084 )
+shape = SubResource( 2 )

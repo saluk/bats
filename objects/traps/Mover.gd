@@ -6,10 +6,7 @@ export var rotate_sprite = false
 
 signal collide_body(body)
 
-func _ready():
-	ManageTime.attach_node(self, get_parent().time_scene)
-
-func _tick(delta):
+func _physics_process(delta):
 	if speed:
 		position += (direction*speed*delta)
 	if rotate_sprite: 
