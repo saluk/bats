@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=1]
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://objects/areas/UVScroll.shader" type="Shader" id=5]
 [ext_resource path="res://objects/areas/Water.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/traps/Spikes.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/helpful/Rafter.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -18,6 +19,9 @@ shader_param/ratio = Vector2( 1, 1 )
 [node name="Area B" type="Node2D" groups=[
 "room_root",
 ]]
+
+[node name="Rafter" parent="." instance=ExtResource( 8 )]
+position = Vector2( 357.818, 21.196 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
 
@@ -58,9 +62,9 @@ rotation = 3.14159
 
 [node name="AirFlow" parent="." instance=ExtResource( 4 )]
 material = SubResource( 1 )
-position = Vector2( 90, 102 )
+position = Vector2( 49.0526, 102 )
 rotation = -1.57079
-scale = Vector2( 1.40625, 2.8125 )
+scale = Vector2( 1.40625, 1.53289 )
 alter_move_direction = Vector2( 0, 100 )
 
 [node name="AirFlow2" parent="." instance=ExtResource( 4 )]

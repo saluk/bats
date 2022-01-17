@@ -22,7 +22,11 @@ var holding:Node2D = null
 var pickups = []
 var last_collision_type = ""
 var last_collision_side = ""
+var last_collision_ground = ""
 var last_collision:KinematicCollision2D = null
+
+var near_rafter = null
+var rafter_gravity = 0.0
 
 var attack_collision:Area2D = null
 
@@ -49,6 +53,8 @@ func set_flip(x):
 func flap_left():
 	if not alive:
 		return
+	if rafter_gravity > 0:
+		rafter_gravity = -1
 	set_flip(-1)
 	move.x -= jump_width
 	move.y -= jump_height
@@ -56,6 +62,8 @@ func flap_left():
 func flap_right():
 	if not alive:
 		return
+	if rafter_gravity > 0:
+		rafter_gravity = -1
 	set_flip(1)
 	move.x += jump_width
 	move.y -= jump_height
@@ -122,10 +130,19 @@ func choose_animation():
 	var charge_anim = get_charge_anim()
 	if charge_anim:
 		$AnimatedSprite.play(charge_anim)
+	elif near_rafter:
+		$AnimatedSprite.play("land")
+		$AnimatedSprite.rotation_degrees = rafter_gravity * 180
+		$AnimatedSprite.position.y = rafter_gravity * 4
+	elif last_collision_ground == "floor":
+		$AnimatedSprite.play("land")
 	elif abs(move.x)>0.5 or move.y<0:
 		$AnimatedSprite.play("fly")
 	else:
 		$AnimatedSprite.play("idle")
+	if not near_rafter:
+		$AnimatedSprite.rotation_degrees = 0
+		$AnimatedSprite.position.y = 0
 		
 func limit_movement():
 	if move.x < -xlimit: move.x = -xlimit
@@ -168,10 +185,12 @@ func _physics_process(delta):
 	apply_flapping(delta)
 	apply_charge_flapping(delta)
 	limit_movement()
+	check_for_rafters(delta)
 	var col = self.move_and_collide(move*delta)
 	last_collision_type = ""
 	last_collision = col
 	last_collision_side = ""
+	last_collision_ground = ""
 	if col:
 		if move.x < 0 and col.normal.x > 0:
 			last_collision_side = "left"
@@ -181,8 +200,10 @@ func _physics_process(delta):
 			move.x = 0
 		if move.y < 0 and col.normal.y > 0:
 			move.y = 0
+			last_collision_ground = "ceiling"
 		if move.y > 0 and col.normal.y < 0:
 			move.y = 0
+			last_collision_ground = "floor"
 		last_collision_type = "unknown"
 		if col.collider is TileMap:
 			last_collision_type = "terrain"
@@ -240,6 +261,24 @@ func _on_Area2D_area_entered(area):
 
 func _on_Area2D_area_exited(area):
 	remove_pickup(area)
+	
+func check_for_rafters(delta):
+	if not near_rafter:
+		rafter_gravity = 0.0
+	near_rafter = null
+	if charge_state():
+		return
+	for node in get_node("Perch").get_overlapping_bodies():
+		if node.is_in_group("rafter"):
+			near_rafter = node
+	if near_rafter:
+		if rafter_gravity < 1:
+			rafter_gravity += delta*2
+		var diff = (near_rafter.global_position - global_position)
+		diff.x = 0
+		diff.y = -abs(diff.y)
+		move += diff * rafter_gravity
+		move.x = move.x * 0.8
 
 func attack_collide(body:KinematicBody2D):
 	if not alive:
