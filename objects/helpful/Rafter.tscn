@@ -4,7 +4,7 @@
 [ext_resource path="res://objects/helpful/Rafter.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.7797, 4.52517 )
+extents = Vector2( 21.2797, 4.52517 )
 
 [node name="Rafter" type="KinematicBody2D" groups=[
 "rafter",

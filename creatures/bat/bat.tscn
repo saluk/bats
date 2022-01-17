@@ -245,6 +245,7 @@ font_data = SubResource( 55 )
 default_font = SubResource( 56 )
 
 [sub_resource type="CircleShape2D" id=58]
+radius = 6.2201
 
 [node name="Bat" type="KinematicBody2D" groups=[
 "creature",
@@ -326,6 +327,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Perch"]
+position = Vector2( -0.0992126, -4.06772 )
 shape = SubResource( 58 )
 __meta__ = {
 "_editor_description_": "check for rafters"

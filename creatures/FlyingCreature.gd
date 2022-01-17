@@ -53,18 +53,20 @@ func set_flip(x):
 func flap_left():
 	if not alive:
 		return
+	set_flip(-1)
 	if rafter_gravity > 0:
 		rafter_gravity = -1
-	set_flip(-1)
+		return
 	move.x -= jump_width
 	move.y -= jump_height
 	
 func flap_right():
 	if not alive:
 		return
+	set_flip(1)
 	if rafter_gravity > 0:
 		rafter_gravity = -1
-	set_flip(1)
+		return
 	move.x += jump_width
 	move.y -= jump_height
 	
@@ -132,7 +134,7 @@ func choose_animation():
 		$AnimatedSprite.play(charge_anim)
 	elif near_rafter:
 		$AnimatedSprite.play("land")
-		$AnimatedSprite.rotation_degrees = rafter_gravity * 180
+		$AnimatedSprite.rotation_degrees = min(rafter_gravity*4 * 180, 180)
 		$AnimatedSprite.position.y = rafter_gravity * 4
 	elif last_collision_ground == "floor":
 		$AnimatedSprite.play("land")
@@ -264,20 +266,19 @@ func _on_Area2D_area_exited(area):
 	
 func check_for_rafters(delta):
 	if not near_rafter:
-		rafter_gravity = 0.0
+		rafter_gravity = 0
 	near_rafter = null
-	if charge_state():
+	if charge_state() or not alive:
 		return
 	for node in get_node("Perch").get_overlapping_bodies():
 		if node.is_in_group("rafter"):
 			near_rafter = node
 	if near_rafter:
 		if rafter_gravity < 1:
-			rafter_gravity += delta*2
-		var diff = (near_rafter.global_position - global_position)
-		diff.x = 0
+			rafter_gravity += delta
+		var diff = (near_rafter.global_position - global_position) * 10
 		diff.y = -abs(diff.y)
-		move += diff * rafter_gravity
+		move += Vector2(0, -abs(diff.y) * max(rafter_gravity, 0))
 		move.x = move.x * 0.8
 
 func attack_collide(body:KinematicBody2D):

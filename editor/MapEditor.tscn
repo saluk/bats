@@ -194,4 +194,4 @@ format = 1
 [node name="Player" type="Node" parent="."]
 
 [node name="Bat" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 62.0385, 93.2768 )
+position = Vector2( 83.9265, 88.7869 )
