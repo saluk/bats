@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=1]
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://objects/areas/AirFlow.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/areas/UVScroll.shader" type="Shader" id=5]
 [ext_resource path="res://objects/areas/Water.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/traps/Spikes.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -36,14 +37,34 @@ generate_room_offset = false
 position = Vector2( 312.858, 200.432 )
 scale = Vector2( 15.4284, 5.51352 )
 
+[node name="Spikes2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 116.977, 233.893 )
+
+[node name="Spikes3" parent="." instance=ExtResource( 7 )]
+position = Vector2( -55.1091, 24.0886 )
+rotation = 3.14159
+
+[node name="Spikes4" parent="." instance=ExtResource( 7 )]
+position = Vector2( -132.594, 20.9388 )
+rotation = 3.14159
+
+[node name="Spikes5" parent="." instance=ExtResource( 7 )]
+position = Vector2( -84.4023, 21.8838 )
+rotation = 3.14159
+
+[node name="Spikes6" parent="." instance=ExtResource( 7 )]
+position = Vector2( -15.4216, 22.1988 )
+rotation = 3.14159
+
 [node name="AirFlow" parent="." instance=ExtResource( 4 )]
 material = SubResource( 1 )
-position = Vector2( 134.354, 140.416 )
-scale = Vector2( 1.85481, 2.51301 )
+position = Vector2( 90, 102 )
+rotation = -1.57079
+scale = Vector2( 1.40625, 2.8125 )
 alter_move_direction = Vector2( 0, 100 )
 
 [node name="AirFlow2" parent="." instance=ExtResource( 4 )]
 material = SubResource( 1 )
-position = Vector2( -22.5, 143.104 )
-scale = Vector2( 2.10938, 2.597 )
+position = Vector2( -75, 168 )
+scale = Vector2( 1.17188, 2.597 )
 alter_move_direction = Vector2( 0, -100 )

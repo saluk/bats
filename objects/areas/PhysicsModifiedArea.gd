@@ -23,4 +23,4 @@ func _process(_delta):
 		# TODO Affect physics and health
 		if "move" in body:
 			body.move = body.move * alter_move_scale
-			body.move = body.move + alter_move_direction
+			body.move = body.move + alter_move_direction.rotated(rotation)
