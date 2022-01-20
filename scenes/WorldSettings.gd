@@ -95,12 +95,29 @@ func really_bad_change_scene(scene_name, mapnode, map, new_pos):
 	room = new_map
 	print(new_map.get_parent().name)
 	
-	var camera:Camera2D = player.get_node("CameraTarget/Camera2D")
+	var camera:Camera2D = player.get_tree().root.get_node("prototype/CameraLocalTarget/Camera2D")
 	if new_pos:
 		player.global_position = local_position(new_pos, new_map)
 	else:
 		player.global_position = local_position(global_position(player.position, old_map), new_map)
-	# TODO now that camera is tracking the camera target this is broken
-	player.get_node("CameraTarget").position = player.move.normalized()*50
+	# TODO we still get one frame of the wrong position drawn, but its better
+	player.get_tree().root.get_node("prototype/CameraLocalTarget").global_position = player.get_node("CameraTarget").global_position
 	camera.align()
 	camera.reset_smoothing()
+	set_camera_limits(camera)
+
+func set_camera_limits(camera:Camera2D):
+	var bounds = room.get_bounds()
+	#print(bounds)
+	camera.limit_left = bounds[0]
+	camera.limit_right = bounds[1]
+	camera.limit_top = bounds[2]
+	camera.limit_bottom = bounds[3]
+	var scalex = max(min(float(abs(camera.limit_right-camera.limit_left)) / 400.0, 2), 1)
+	var scaley = max(min(float(abs(camera.limit_top-camera.limit_bottom)) / 400.0, 2), 1)
+	var scale = max(scalex,scaley)
+	print(scale)
+	camera.zoom = Vector2(
+		scale,
+		scale
+	)

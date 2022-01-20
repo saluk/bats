@@ -1,6 +1,8 @@
 extends Node
 class_name BatPlayerController
 
+export var view_offset_amount = 75
+
 ### Operation variables ###
 var bat:FlyingCreature = null
 var left_charge = null
@@ -102,7 +104,7 @@ func double_tap(action):
 func update_camera(delta):
 	var cam_target:Node2D = get_parent().get_node("CameraTarget")
 	cam_target.position = cam_target.position.linear_interpolate(
-		bat.move.normalized()*50, 1*delta
+		bat.move.normalized()*view_offset_amount, 1*delta
 	)
 
 func _physics_process(delta):
