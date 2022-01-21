@@ -89,10 +89,40 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/Comparator.gd"
 }, {
+"base": "Reference",
+"class": "DTS",
+"language": "GDScript",
+"path": "res://addons/dialogic/Localization/translation_service.gd"
+}, {
 "base": "ValueProvider",
 "class": "DefaultValueProvider",
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/asserts/DefaultValueProvider.gd"
+}, {
+"base": "Node",
+"class": "Dialogic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicClass.gd"
+}, {
+"base": "Control",
+"class": "DialogicBackgroundMusic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Nodes/BackgroundMusic.gd"
+}, {
+"base": "Node",
+"class": "DialogicDefinitionsUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicDefinitionsUtil.gd"
+}, {
+"base": "Reference",
+"class": "DialogicResources",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicResources.gd"
+}, {
+"base": "Reference",
+"class": "DialogicUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
 "base": "GdUnitArgumentMatcher",
 "class": "EqualsArgumentMatcher",
@@ -736,7 +766,13 @@ _global_script_class_icons={
 "CmdOption": "",
 "CmdOptions": "",
 "Comparator": "",
+"DTS": "",
 "DefaultValueProvider": "",
+"Dialogic": "",
+"DialogicBackgroundMusic": "",
+"DialogicDefinitionsUtil": "",
+"DialogicResources": "",
+"DialogicUtil": "",
 "EqualsArgumentMatcher": "",
 "FakeMap": "",
 "FlyingAIController": "",
@@ -875,6 +911,8 @@ config/icon="res://icon.png"
 ManageGame="*res://system/ManageGame.tscn"
 GlobalSettings="*res://system/GlobalSettings.tscn"
 WorldSettings="*res://scenes/WorldSettings.tscn"
+DebugLogger="*res://system/debug/DebugLogger.gd"
+Dialog="*res://system/Dialog.gd"
 
 [display]
 
@@ -887,7 +925,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/gdUnit3/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/gdUnit3/plugin.cfg" )
 
 [global]
 
@@ -915,6 +953,20 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
 }
 
 [layer_names]

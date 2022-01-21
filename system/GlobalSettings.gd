@@ -1,6 +1,8 @@
 extends Node2D
 
 export var auto_grab = true
+export var camera_limits = true
+export var show_debug = false
 
 
 # Declare member variables here. Examples:

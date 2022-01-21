@@ -107,15 +107,16 @@ func really_bad_change_scene(scene_name, mapnode, map, new_pos):
 	set_camera_limits(camera)
 
 func set_camera_limits(camera:Camera2D):
-	var bounds = room.get_bounds()
-	#print(bounds)
-	camera.limit_left = bounds[0]
-	camera.limit_right = bounds[1]
-	camera.limit_top = bounds[2]
-	camera.limit_bottom = bounds[3]
+	if GlobalSettings.camera_limits:
+		var bounds = room.get_bounds()
+		#print(bounds)
+		camera.limit_left = bounds[0]
+		camera.limit_right = bounds[1]
+		camera.limit_top = bounds[2]
+		camera.limit_bottom = bounds[3]
 	var scalex = max(min(float(abs(camera.limit_right-camera.limit_left)) / 400.0, 2), 1)
 	var scaley = max(min(float(abs(camera.limit_top-camera.limit_bottom)) / 400.0, 2), 1)
-	var scale = max(scalex,scaley)
+	var scale = min(scalex,scaley)
 	print(scale)
 	camera.zoom = Vector2(
 		scale,

@@ -1,0 +1,31 @@
+{
+	"events": [
+		{
+			"character": "character-1642726113.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I'm AWAKE stop pestering me!"
+		},
+		{
+			"character": "character-1642726113.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Huh? Oh I guess I was sleeping. Huh, Jenny must have gotten an early start. And where are the kids?"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Tap the right side of the screen to drop from the rafter, and head to the right"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.5
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1642726159.json",
+		"name": "Intro"
+	}
+}

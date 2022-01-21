@@ -6,14 +6,15 @@ var move = Vector2(0, 0)
 var toss_vector = move
 var alive = true
 
+
 ### Constants/Parameters ###
 var xlimit = 200
 var ylimit = 250
 var jump_width = 50
-var jump_height = 150
+var jump_height = 100
 var gravity = 300
-var flapping = 150
-var charge_flap_force = 50
+var flapping = 170
+var charge_flap_force = 100
 var xdrag = 10
 var bounce_height = 75  # Force to apply when bouncing from an attack
 
@@ -52,25 +53,21 @@ func set_flip(x):
 	elif x < 0:
 		$AnimatedSprite.flip_h = false
 
-func flap_left():
+func flap(x_dir):
 	if not alive:
 		return
-	set_flip(-1)
+	set_flip(x_dir)
 	if rafter_gravity > 0:
 		rafter_gravity = -1
 		return
-	move.x -= jump_width
-	move.y -= jump_height
+	move.x += jump_width * x_dir
+	move.y = -jump_height
+
+func flap_left():
+	flap(-1)
 	
 func flap_right():
-	if not alive:
-		return
-	set_flip(1)
-	if rafter_gravity > 0:
-		rafter_gravity = -1
-		return
-	move.x += jump_width
-	move.y -= jump_height
+	flap(1)
 	
 func drop_item():
 	if not holding:
@@ -136,8 +133,8 @@ func choose_animation():
 		$AnimatedSprite.play(charge_anim)
 	elif near_rafter:
 		$AnimatedSprite.play("land")
-		$AnimatedSprite.rotation_degrees = min(rafter_gravity*4 * 180, 180)
-		$AnimatedSprite.position.y = rafter_gravity * 4
+		$AnimatedSprite.rotation_degrees = min(rafter_gravity*8 * 180, 180)
+		$AnimatedSprite.position.y = min(abs(rafter_gravity) * 20, 6)
 	elif last_collision_ground == "floor":
 		$AnimatedSprite.play("land")
 	elif abs(move.x)>0.5 or move.y<0:
@@ -180,6 +177,7 @@ func _physics_process(delta):
 		move.x += xdrag*delta
 	if move.x > 0:
 		move.x -= xdrag*delta
+	#slow down direction intent
 	choose_animation()
 	toss_vector = Vector2(move.x * 2, move.y * 3)
 	for n in get_children():
@@ -190,6 +188,7 @@ func _physics_process(delta):
 	apply_charge_flapping(delta)
 	limit_movement()
 	check_for_rafters(delta)
+	DebugLogger.show_line("bat_move", [global_position, global_position+move])
 	var col = self.move_and_collide(move*delta)
 	last_collision_type = ""
 	last_collision = col
@@ -277,15 +276,18 @@ func check_for_rafters(delta):
 	for node in get_node("Perch").get_overlapping_bodies():
 		if node.is_in_group("rafter"):
 			near_rafter = node
+	DebugLogger.log_variable("rafter_gravity", rafter_gravity)
 	if near_rafter:
 		if rafter_gravity < 1:
 			rafter_gravity += delta
-		var diff = (near_rafter.global_position - global_position) * 10
+		var diff = (near_rafter.global_position - global_position) * 20
 		diff.y = -abs(diff.y)
 		move += Vector2(0, -abs(diff.y) * max(rafter_gravity, 0))
 		move.x = move.x * 0.8
 		if rafter_gravity >= 1:
 			heal_from_rafters(delta)
+	elif rafter_gravity > 1:
+		rafter_gravity -= delta
 
 func heal_from_rafters(delta):
 	next_rafter_heal -= delta

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://creatures/bat/bat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://system/UI/WorldMapUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://system/debug/DebugLogger.tscn" type="PackedScene" id=3]
 
 [node name="prototype" type="Node2D"]
 
 [node name="MapNode" type="Node2D" parent="."]
+pause_mode = 2
 
 [node name="CameraLocalTarget" type="Node2D" parent="."]
 position = Vector2( 120, 64 )
@@ -13,10 +15,6 @@ position = Vector2( 120, 64 )
 [node name="Camera2D" type="Camera2D" parent="CameraLocalTarget"]
 current = true
 zoom = Vector2( 1.5, 1.5 )
-limit_left = 0
-limit_top = 0
-limit_right = 480
-limit_bottom = 256
 limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
@@ -28,13 +26,14 @@ editor_draw_drag_margin = true
 position = Vector2( 120, 64 )
 
 [node name="AnimatedSprite" parent="Bat" index="3"]
-frame = 2
+frame = 0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1
 remote_path = NodePath("../../../CameraLocalTarget")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 mouse_filter = 2
@@ -69,6 +68,8 @@ __meta__ = {
 }
 
 [node name="WorldMap" parent="CanvasLayer/Control" instance=ExtResource( 2 )]
+
+[node name="DebugLogger" parent="CanvasLayer" instance=ExtResource( 3 )]
 
 [connection signal="pressed" from="CanvasLayer/Control/TossButton" to="Bat" method="_on_Drop_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/GrabButton" to="Bat" method="_on_Grab_pressed"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
+[ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=2]
+[ext_resource path="res://objects/helpful/Rafter.tscn" type="PackedScene" id=3]
+
+[node name="TutorialStart" type="Node2D" groups=[
+"room_root",
+]]
+
+[node name="GeneratedTileMap" type="TileMap" parent="." groups=[
+"room_tilemap",
+]]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 458763, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 2, 6, 0, 2, 7, 0, 2, 8, 0, 2, 9, 0, 2, 10, 0, 2, 11, 0, 2, 12, 0, 2, 13, 0, 2, 14, 0, 2, 65536, 0, 458763, 131072, 0, 458763, 196608, 0, 458763, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458752, 196613, 0, 458764, 196614, 0, 458764, 196615, 0, 458764, 196616, 0, 458764, 196617, 0, 458764, 196618, 0, 458764, 196619, 0, 458764, 196620, 0, 458764, 196621, 0, 458764, 196622, 0, 458764 )
+script = ExtResource( 1 )
+mapname = "TutorialStart"
+room_offset = Vector2( 8, 2 )
+generate_room_offset = false
+
+[node name="Rafter" parent="." instance=ExtResource( 3 )]
+position = Vector2( 104, 40 )
+
+[node name="Rafter2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 216, 40 )
