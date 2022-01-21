@@ -11,7 +11,7 @@
 1/texture = ExtResource( 5 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 0, 45, 36 )
+1/region = Rect2( 0, 0, 45, 48 )
 1/tile_mode = 2
 1/autotile/icon_coordinate = Vector2( 0, 0 )
 1/autotile/tile_size = Vector2( 15, 12 )
@@ -33,6 +33,19 @@
 script = ExtResource( 2 )
 
 [node name="Layout" type="Node2D" parent="."]
+
+[node name="TutorialStart" type="TileMap" parent="Layout"]
+modulate = Color( 1, 0.898039, 0.705882, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 131080, 1, 196608, 131081, 1, 196609, 131082, 1, 196609 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 4 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 8, 2 )
+generate_room_offset = false
 
 [node name="The Drop" type="TileMap" parent="Layout"]
 modulate = Color( 1, 0.898039, 0.705882, 1 )
@@ -128,7 +141,7 @@ room_offset = Vector2( 4, 9 )
 generate_room_offset = false
 
 [node name="Config" type="Node2D" parent="."]
-position = Vector2( 311.648, 41.9526 )
+position = Vector2( 320, 40 )
 
 [node name="0,0" type="TileMap" parent="Config"]
 tile_set = ExtResource( 4 )
@@ -150,33 +163,12 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 393227, 65536, 0, 65547, 65537, 0, 458767, 65538, 0, 458767, 65539, 0, 262155, 131072, 0, 65547, 131073, 0, 327687, 131074, 0, 327687, 131075, 0, 327691, 196608, 0, 65547, 196609, 0, 327687, 196610, 0, 327687, 196611, 0, 327691, 196612, 0, 458764 )
 
-[node name="1,2" type="TileMap" parent="Config"]
-position = Vector2( 160, 256 )
+[node name="0,3" type="TileMap" parent="Config"]
+position = Vector2( 0, 384 )
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 196608, 0, 458754, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458764 )
-
-[node name="2,2" type="TileMap" parent="Config"]
-position = Vector2( 320, 256 )
-tile_set = ExtResource( 4 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 4, 0, 393219, 65540, 0, 393219, 131076, 0, 393219, 196608, 0, 458754, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458755 )
-
-[node name="2,1" type="TileMap" parent="Config"]
-position = Vector2( 320, 128 )
-tile_set = ExtResource( 4 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 4, 0, 393219, 65540, 0, 393219, 131076, 0, 393219, 196612, 0, 393219 )
-
-[node name="2,0" type="TileMap" parent="Config"]
-position = Vector2( 320, 0 )
-tile_set = ExtResource( 4 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 3, 65540, 0, 393219, 131076, 0, 393219, 196612, 0, 393219 )
+tile_data = PoolIntArray( 0, 0, 458763, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 65536, 0, 458763, 131072, 0, 458763, 196608, 0, 458763, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458752 )
 
 [node name="1,0" type="TileMap" parent="Config"]
 position = Vector2( 160, 0 )
@@ -191,7 +183,50 @@ tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
 
+[node name="1,2" type="TileMap" parent="Config"]
+position = Vector2( 160, 256 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196608, 0, 458754, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458764 )
+
+[node name="1,3" type="TileMap" parent="Config"]
+position = Vector2( 160, 384 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 196608, 0, 458764, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458764 )
+
+[node name="2,0" type="TileMap" parent="Config"]
+position = Vector2( 320, 0 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 3, 65540, 0, 393219, 131076, 0, 393219, 196612, 0, 393219 )
+
+[node name="2,1" type="TileMap" parent="Config"]
+position = Vector2( 320, 128 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 4, 0, 393219, 65540, 0, 393219, 131076, 0, 393219, 196612, 0, 393219 )
+
+[node name="2,2" type="TileMap" parent="Config"]
+position = Vector2( 320, 256 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 4, 0, 393219, 65540, 0, 393219, 131076, 0, 393219, 196608, 0, 458754, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458755 )
+
+[node name="2,3" type="TileMap" parent="Config"]
+position = Vector2( 320, 384 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 3, 65540, 0, 393219, 131076, 0, 393219, 196608, 0, 458764, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458755 )
+
 [node name="Player" type="Node" parent="."]
 
 [node name="Bat" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 83.9265, 88.7869 )
+position = Vector2( 131.028, 28.1423 )
+scale = Vector2( 0.5, 0.5 )
