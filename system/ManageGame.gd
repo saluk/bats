@@ -43,3 +43,26 @@ func ensure_node(node, script_path):
 			return
 	print(node, node.name, " requires child script ", script_path)
 	assert(found_script)
+	
+func load_state():
+	var file = File.new()
+	if file.file_exists("user://state"):
+		file.open("user://state", File.READ)
+		var state = file.get_var()
+		file.close()
+		var bat = get_tree().get_nodes_in_group("player")[0]
+		saved_object_states = state["saved_object_states"]
+		bat.position.x = state["player_pos"]["x"]
+		bat.position.y = state["player_pos"]["y"]
+		
+
+func save_state():
+	var bat = get_tree().get_nodes_in_group("player")[0]
+	var state = {
+		"player_pos": {"x":bat.position.x, "y":bat.position.y},
+		"saved_object_states": saved_object_states
+	}
+	var file = File.new()
+	file.open("user://state", File.WRITE)
+	file.store_var(state)
+	file.close()

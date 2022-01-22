@@ -11,7 +11,7 @@ var alive = true
 var xlimit = 200
 var ylimit = 250
 var jump_width = 50
-var jump_height = 100
+var jump_height = 50
 var gravity = 300
 var flapping = 170
 var charge_flap_force = 100
@@ -61,7 +61,9 @@ func flap(x_dir):
 		rafter_gravity = -1
 		return
 	move.x += jump_width * x_dir
-	move.y = -jump_height
+	if move.y > 0:
+		move.y = move.y * 0.2
+	move.y -= jump_height
 
 func flap_left():
 	flap(-1)
@@ -169,7 +171,10 @@ func apply_charge_flapping(delta):
 		move.y -= charge_flap_force * delta
 	
 func apply_gravity(delta):
-	move.y += gravity * delta
+	if move.y < 0:
+		move.y += gravity * 0.8 * delta
+	else:
+		move.y += gravity * delta
 
 func _physics_process(delta):
 	#slow down horizontal movement
@@ -280,6 +285,8 @@ func check_for_rafters(delta):
 	if near_rafter:
 		if rafter_gravity < 1:
 			rafter_gravity += delta
+			if rafter_gravity >= 1:
+				ManageGame.save_state()
 		var diff = (near_rafter.global_position - global_position) * 20
 		diff.y = -abs(diff.y)
 		move += Vector2(0, -abs(diff.y) * max(rafter_gravity, 0))

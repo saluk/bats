@@ -110,3 +110,7 @@ func update_camera(delta):
 func _physics_process(delta):
 	update_ui()
 	update_camera(delta)
+
+func _unhandled_input(evt:InputEvent):
+	if evt.is_action_pressed("load_state"):
+		ManageGame.load_state()

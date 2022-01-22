@@ -24,4 +24,4 @@ generate_room_offset = false
 position = Vector2( 104, 40 )
 
 [node name="Rafter2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 216, 40 )
+position = Vector2( 432, 39.0831 )
