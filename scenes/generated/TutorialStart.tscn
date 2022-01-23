@@ -1,12 +1,327 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=2]
 [ext_resource path="res://objects/helpful/Rafter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/rock_tileset.png" type="Texture" id=6]
+[ext_resource path="res://objects/helpful/Rafter.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 64 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "rock_tileset.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 40, 60 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 20, 10 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 20, 64 )
+
+[sub_resource type="TileSet" id=4]
+0/name = "rock_tileset.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 40, 60 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 20, 10 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 20, 64 )
+
+[sub_resource type="TileSet" id=6]
+0/name = "rock_tileset.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 40, 60 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 20, 10 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 20, 64 )
+
+[sub_resource type="TileSet" id=8]
+0/name = "rock_tileset.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 40, 60 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 20, 10 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 20, 64 )
+
+[sub_resource type="TileSet" id=10]
+0/name = "rock_tileset.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 40, 60 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 20, 10 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 20, 64 )
+
+[sub_resource type="TileSet" id=12]
+0/name = "rock_tileset.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 40, 60 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 20, 10 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 20, 64 )
+
+[sub_resource type="TileSet" id=14]
+0/name = "rock_tileset.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 40, 60 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 20, 10 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 20, 64 )
+
+[sub_resource type="TileSet" id=16]
+0/name = "rock_tileset.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 40, 60 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 20, 10 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
 [node name="TutorialStart" type="Node2D" groups=[
 "room_root",
 ]]
+
+[node name="OverlayTileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 458763, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 2, 6, 0, 2, 7, 0, 2, 8, 0, 2, 9, 0, 2, 10, 0, 2, 11, 0, 2, 12, 0, 2, 13, 0, 3, 14, 0, 2, 65545, 0, 262147, 65546, 0, 262155, 65549, 0, 65539, 131077, 0, 458753, 131081, 0, 393219, 131082, 0, 327691, 196608, 0, 458763, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458752, 196613, 0, 327684, 196614, 0, 458764, 196615, 0, 458764, 196616, 0, 458764, 196617, 0, 458755, 196618, 0, 458763, 196619, 0, 458764, 196620, 0, 458764, 196621, 0, 458764, 196622, 0, 458764, 262144, 0, 327684, 262145, 0, 327684, 262146, 0, 327684, 262147, 0, 327684, 262148, 0, 327684, 262149, 0, 393220, 262150, 0, 327684, 262151, 0, 327684, 262152, 0, 327684, 262153, 0, 327684, 262154, 0, 327684, 262155, 0, 327684, 262156, 0, 327684, 262157, 0, 327684, 262158, 0, 327684 )
+script = ExtResource( 1 )
+mapname = "TutorialStart"
+room_offset = Vector2( 8, 2 )
+generate_room_offset = false
+
+[node name="Door" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( -8, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/KinematicBody2D" index="0"]
+position = Vector2( 20, 40 )
+shape = SubResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="Door/KinematicBody2D" index="1"]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 20, 10 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 196608, 327681, 0, 262145, 393216, 0, 196608, 393217, 0, 196609, 458752, 0, 327680, 458753, 0, 327681 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/KinematicBody2D" index="2"]
+position = Vector2( 20, 64 )
+shape = SubResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="Door/KinematicBody2D" index="3"]
+tile_set = SubResource( 4 )
+cell_size = Vector2( 20, 10 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 196608, 327681, 0, 262145, 393216, 0, 196608, 393217, 0, 196609, 458752, 0, 262144, 458753, 0, 262145, 524288, 0, 262144, 524289, 0, 262145, 589824, 0, 262144, 589825, 0, 262145, 655360, 0, 262144, 655361, 0, 262145, 720896, 0, 262144, 720897, 0, 262145, 786432, 0, 327680, 786433, 0, 327681 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/KinematicBody2D" index="4"]
+position = Vector2( 20, 64 )
+shape = SubResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="Door/KinematicBody2D" index="5"]
+tile_set = SubResource( 6 )
+cell_size = Vector2( 20, 10 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 196608, 327681, 0, 262145, 393216, 0, 196608, 393217, 0, 196609, 458752, 0, 262144, 458753, 0, 262145, 524288, 0, 262144, 524289, 0, 262145, 589824, 0, 262144, 589825, 0, 262145, 655360, 0, 262144, 655361, 0, 262145, 720896, 0, 262144, 720897, 0, 262145, 786432, 0, 327680, 786433, 0, 327681 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/KinematicBody2D" index="6"]
+position = Vector2( 20, 64 )
+shape = SubResource( 7 )
+
+[node name="TileMap" type="TileMap" parent="Door/KinematicBody2D" index="7"]
+tile_set = SubResource( 8 )
+cell_size = Vector2( 20, 10 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 196608, 327681, 0, 262145, 393216, 0, 196608, 393217, 0, 196609, 458752, 0, 262144, 458753, 0, 262145, 524288, 0, 262144, 524289, 0, 262145, 589824, 0, 262144, 589825, 0, 262145, 655360, 0, 262144, 655361, 0, 262145, 720896, 0, 262144, 720897, 0, 262145, 786432, 0, 327680, 786433, 0, 327681 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/KinematicBody2D" index="8"]
+position = Vector2( 20, 64 )
+shape = SubResource( 9 )
+
+[node name="TileMap" type="TileMap" parent="Door/KinematicBody2D" index="9"]
+tile_set = SubResource( 10 )
+cell_size = Vector2( 20, 10 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 196608, 327681, 0, 262145, 393216, 0, 196608, 393217, 0, 196609, 458752, 0, 262144, 458753, 0, 262145, 524288, 0, 262144, 524289, 0, 262145, 589824, 0, 262144, 589825, 0, 262145, 655360, 0, 262144, 655361, 0, 262145, 720896, 0, 262144, 720897, 0, 262145, 786432, 0, 327680, 786433, 0, 327681 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/KinematicBody2D" index="10"]
+position = Vector2( 20, 64 )
+shape = SubResource( 11 )
+
+[node name="TileMap" type="TileMap" parent="Door/KinematicBody2D" index="11"]
+tile_set = SubResource( 12 )
+cell_size = Vector2( 20, 10 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 196608, 327681, 0, 262145, 393216, 0, 196608, 393217, 0, 196609, 458752, 0, 262144, 458753, 0, 262145, 524288, 0, 262144, 524289, 0, 262145, 589824, 0, 262144, 589825, 0, 262145, 655360, 0, 262144, 655361, 0, 262145, 720896, 0, 262144, 720897, 0, 262145, 786432, 0, 327680, 786433, 0, 327681 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/KinematicBody2D" index="12"]
+position = Vector2( 20, 64 )
+shape = SubResource( 13 )
+
+[node name="TileMap" type="TileMap" parent="Door/KinematicBody2D" index="13"]
+tile_set = SubResource( 14 )
+cell_size = Vector2( 20, 10 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 196608, 327681, 0, 262145, 393216, 0, 196608, 393217, 0, 196609, 458752, 0, 262144, 458753, 0, 262145, 524288, 0, 262144, 524289, 0, 262145, 589824, 0, 262144, 589825, 0, 262145, 655360, 0, 262144, 655361, 0, 262145, 720896, 0, 262144, 720897, 0, 262145, 786432, 0, 327680, 786433, 0, 327681 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/KinematicBody2D" index="14"]
+position = Vector2( 20, 64 )
+shape = SubResource( 15 )
+
+[node name="TileMap" type="TileMap" parent="Door/KinematicBody2D" index="15"]
+tile_set = SubResource( 16 )
+cell_size = Vector2( 20, 10 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 196608, 327681, 0, 262145, 393216, 0, 196608, 393217, 0, 196609, 458752, 0, 262144, 458753, 0, 262145, 524288, 0, 262144, 524289, 0, 262145, 589824, 0, 262144, 589825, 0, 262145, 655360, 0, 262144, 655361, 0, 262145, 720896, 0, 262144, 720897, 0, 262145, 786432, 0, 327680, 786433, 0, 327681 )
+
+[node name="Rafter" type="KinematicBody2D" parent="." groups=[
+"rafter",
+] instance=ExtResource( 3 )]
+position = Vector2( 104, 40 )
+collision_layer = 5
+collision_mask = 0
+script = ExtResource( 7 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." instance=ExtResource( 4 )]
 
 [node name="GeneratedTileMap" type="TileMap" parent="." groups=[
 "room_tilemap",
@@ -20,8 +335,4 @@ mapname = "TutorialStart"
 room_offset = Vector2( 8, 2 )
 generate_room_offset = false
 
-[node name="Rafter" parent="." instance=ExtResource( 3 )]
-position = Vector2( 104, 40 )
-
-[node name="Rafter2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 432, 39.0831 )
+[editable path="Door"]

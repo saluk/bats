@@ -13,10 +13,11 @@ func get_player_global_position():
 	return global_position(player.position, room)
 
 func get_player_tile(v:Vector2, m:RoomMap):
-	v = global_position(v, m)
+	if m:
+		v = global_position(v, m)
 	return Vector2(
-		int(v.x/(5 * 32)), 
-		int(v.y/(4 * 32))
+		floor(v.x/(5 * 32)), 
+		floor(v.y/(4 * 32))
 	)
 	
 func global_position(local:Vector2, m:RoomMap):
@@ -55,14 +56,16 @@ func _process(_delta):
 		# Load player to the position defined on the MapEditor
 		var map_editor = load("res://editor/MapEditor.tscn").instance()
 		var map_editor_player = map_editor.get_node("Player/Bat")
+		print(map_editor_player.position)
 		var start_pos = Vector2(
 			int(map_editor_player.position.x/15*5*32),
 			int(map_editor_player.position.y/12*4*32)
 		)
 		print(start_pos)
-		var load_tile = Vector2(int(start_pos.x/(5*32)), int(start_pos.y/(4*32)))
+		var load_tile = get_player_tile(start_pos, null)
 		print("load load tile ", load_tile)
 		if load_tile in connected_rooms:
+			print("loading a map from none")
 			switch_connected_map(load_tile, null, mapnode, start_pos)
 		map_editor.queue_free()
 		return

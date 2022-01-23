@@ -54,6 +54,7 @@ func load_state():
 		saved_object_states = state["saved_object_states"]
 		bat.position.x = state["player_pos"]["x"]
 		bat.position.y = state["player_pos"]["y"]
+		bat.move = Vector2.ZERO
 		
 
 func save_state():

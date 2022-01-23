@@ -47,6 +47,32 @@ room_cell_size = Vector2( 32, 32 )
 room_offset = Vector2( 8, 2 )
 generate_room_offset = false
 
+[node name="TutorialStartBranch1" type="TileMap" parent="Layout"]
+modulate = Color( 0.407843, 1, 0.168627, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -131061, 1, 0, -131060, 1, 65538, -65525, 1, 65536, -65524, 1, 65538, 11, 1, 65536, 12, 1, 65538, 65547, 1, 0, 65548, 1, 65538, 131083, 1, 65537, 131084, 1, 196610, 196619, 1, 65536, 196620, 1, 65538, 262155, 1, 131072, 262156, 1, 196609, 262157, 1, 196609 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 4 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 11, -2 )
+generate_room_offset = false
+
+[node name="TutorialStart1AVerticalCrawl" type="TileMap" parent="Layout"]
+modulate = Color( 0.458824, 0.701961, 0.701961, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -917494, 1, 65536, -851958, 1, 65538, -786422, 1, 65536, -720887, 1, 0, -720886, 1, 131074, -655351, 1, 131072, -655350, 1, 1, -655349, 1, 2, -589814, 1, 0, -589813, 1, 131074, -524278, 1, 131072, -524277, 1, 1, -524276, 1, 2, -458742, 1, 0, -458741, 1, 2, -458740, 1, 65538, -393206, 1, 65536, -393205, 1, 131072, -393204, 1, 131074, -327670, 1, 131072, -327669, 1, 65537, -327668, 1, 2, -262133, 1, 0, -262132, 1, 131074, -196597, 1, 131072, -196596, 1, 2 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 4 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 9, -14 )
+generate_room_offset = false
+
 [node name="The Drop" type="TileMap" parent="Layout"]
 modulate = Color( 1, 0.898039, 0.705882, 1 )
 tile_set = SubResource( 1 )
@@ -228,5 +254,5 @@ tile_data = PoolIntArray( 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 3, 65540, 0,
 [node name="Player" type="Node" parent="."]
 
 [node name="Bat" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 131.028, 28.1423 )
+position = Vector2( 188.185, -32.0959 )
 scale = Vector2( 0.5, 0.5 )

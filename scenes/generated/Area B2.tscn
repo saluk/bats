@@ -1,18 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=1]
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=2]
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://creatures/archer/archer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://creatures/archer/archer.gd" type="Script" id=5]
 
 [node name="Area B2" type="Node2D" groups=[
 "room_root",
 ]]
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." instance=ExtResource( 3 )]
 
-[node name="Archer" parent="." instance=ExtResource( 4 )]
+[node name="Archer" type="KinematicBody2D" parent="." groups=[
+"creature",
+] instance=ExtResource( 4 )]
 position = Vector2( 90, 144 )
+collision_layer = 32
+script = ExtResource( 5 )
+mob_id = "67496"
 
 [node name="GeneratedTileMap" type="TileMap" parent="." groups=[
 "room_tilemap",
