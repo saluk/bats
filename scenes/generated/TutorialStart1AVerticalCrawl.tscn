@@ -1,65 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=2]
-[ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/background.png" type="Texture" id=4]
-[ext_resource path="res://scenes/back-walls.png" type="Texture" id=5]
-
-[sub_resource type="TileSet" id=1]
-0/name = "back-walls.png 0"
-0/texture = ExtResource( 5 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 512, 288 )
-0/tile_mode = 2
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 32, 32 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/priority_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
-
-[sub_resource type="TileSet" id=2]
-0/name = "back-walls.png 0"
-0/texture = ExtResource( 5 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 512, 288 )
-0/tile_mode = 2
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 32, 32 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/priority_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
 
 [node name="TutorialStart1AVerticalCrawl" type="Node2D" groups=[
 "room_root",
 ]]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 758.784, 655.518 )
+position = Vector2( 1528.27, 551.377 )
 motion_scale = Vector2( 0.7, 0.7 )
 
 [node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
@@ -137,578 +89,155 @@ position = Vector2( -1605, -408 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 758.784, 655.518 )
-motion_scale = Vector2( 0.9, 0.9 )
-
-[node name="background2" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background3" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -510, -348 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background4" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 465, -384 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background5" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 525, 288 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background6" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -315, 516 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background7" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -1320, 300 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background8" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -1095, -48 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background9" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 737, -84 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background10" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 227, -432 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background11" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 1202, -468 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background12" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 1262, 204 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background13" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 422, 432 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background14" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -583, 216 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background15" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -358, -132 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background16" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 767, 300 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background17" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 257, -48 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background18" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 1232, -84 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background19" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 1292, 588 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background20" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 452, 816 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background21" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -553, 600 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background22" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -328, 252 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background23" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 2, 432 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background24" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -508, 84 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background25" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 467, 48 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background26" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 527, 720 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background27" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -313, 948 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background28" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -1318, 732 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background29" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -1093, 384 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background30" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -283, -180 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background31" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -793, -528 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background32" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 182, -564 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background33" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 242, 108 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background34" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -598, 336 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background35" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -1603, 120 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background36" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( -1378, -228 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
-motion_scale = Vector2( 0.7, 0.7 )
-
-[node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+[node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 168.695, 101.261 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background2" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="1"]
+[node name="background2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 1080, 96 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background3" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="2"]
+[node name="background3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 1980, 84 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background4" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="3"]
+[node name="background4" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( -720, 120 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background5" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="4"]
+[node name="background5" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( -735, -504 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background6" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="5"]
+[node name="background6" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 180, -540 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background7" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="6"]
+[node name="background7" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 1080, -540 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background8" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="7"]
+[node name="background8" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 1965, -552 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background9" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="8"]
+[node name="background9" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 2010, 660 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background10" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="9"]
+[node name="background10" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 1080, 684 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background11" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="10"]
+[node name="background11" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 150, 696 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background12" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="11"]
+[node name="background12" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( -735, 768 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background13" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="12"]
+[node name="background13" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( -1620, 780 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background14" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="13"]
+[node name="background14" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( -1590, 216 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="background15" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="14"]
+[node name="background15" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( -1605, -408 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 4 )
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="3"]
-motion_scale = Vector2( 0.9, 0.9 )
+[node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 168.695, 101.261 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background2" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="0"]
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1080, 96 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background3" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="1"]
-position = Vector2( -510, -348 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1980, 84 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background4" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="2"]
-position = Vector2( 465, -384 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background4" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -720, 120 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background5" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="3"]
-position = Vector2( 525, 288 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background5" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -735, -504 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background6" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="4"]
-position = Vector2( -315, 516 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background6" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 180, -540 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background7" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="5"]
-position = Vector2( -1320, 300 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background7" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1080, -540 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background8" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="6"]
-position = Vector2( -1095, -48 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background8" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1965, -552 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background9" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="7"]
-position = Vector2( 737, -84 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background9" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 2010, 660 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background10" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="8"]
-position = Vector2( 227, -432 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background10" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1080, 684 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background11" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="9"]
-position = Vector2( 1202, -468 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background11" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 150, 696 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background12" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="10"]
-position = Vector2( 1262, 204 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background12" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -735, 768 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background13" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="11"]
-position = Vector2( 422, 432 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background13" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -1620, 780 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background14" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="12"]
-position = Vector2( -583, 216 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background14" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -1590, 216 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
-[node name="background15" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="13"]
-position = Vector2( -358, -132 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background16" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="14"]
-position = Vector2( 767, 300 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background17" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="15"]
-position = Vector2( 257, -48 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background18" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="16"]
-position = Vector2( 1232, -84 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background19" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="17"]
-position = Vector2( 1292, 588 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background20" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="18"]
-position = Vector2( 452, 816 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background21" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="19"]
-position = Vector2( -553, 600 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background22" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="20"]
-position = Vector2( -328, 252 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background23" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="21"]
-position = Vector2( 2, 432 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background24" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="22"]
-position = Vector2( -508, 84 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background25" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="23"]
-position = Vector2( 467, 48 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background26" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="24"]
-position = Vector2( 527, 720 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background27" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="25"]
-position = Vector2( -313, 948 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background28" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="26"]
-position = Vector2( -1318, 732 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background29" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="27"]
-position = Vector2( -1093, 384 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background30" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="28"]
-position = Vector2( -283, -180 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background31" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="29"]
-position = Vector2( -793, -528 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background32" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="30"]
-position = Vector2( 182, -564 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background33" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="31"]
-position = Vector2( 242, 108 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background34" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="32"]
-position = Vector2( -598, 336 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background35" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="33"]
-position = Vector2( -1603, 120 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
-
-[node name="background36" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="34"]
-position = Vector2( -1378, -228 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
+[node name="background15" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -1605, -408 )
+scale = Vector2( 4.71448, 2.26194 )
+texture = ExtResource( 4 )
 
 [node name="GeneratedTileMap" type="TileMap" parent="." groups=[
 "room_tilemap",
@@ -716,10 +245,8 @@ tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218,
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 393227, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 65536, 0, 0, 65541, 0, 65547, 65546, 0, 0, 65551, 0, 0, 131072, 0, 0, 131077, 0, 65547, 131082, 0, 0, 131087, 0, 0, 196608, 0, 0, 196613, 0, 65547, 196618, 0, 0, 196623, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262153, 0, 393219, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 327680, 0, 0, 327689, 0, 393219, 327690, 0, 0, 327695, 0, 0, 393216, 0, 0, 393225, 0, 393219, 393226, 0, 0, 393231, 0, 0, 458752, 0, 0, 458761, 0, 393219, 458762, 0, 0, 458767, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 393227, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 589824, 0, 0, 589829, 0, 65547, 589834, 0, 0, 589839, 0, 0, 655360, 0, 0, 655365, 0, 65547, 655370, 0, 0, 655375, 0, 0, 720896, 0, 0, 720901, 0, 65547, 720906, 0, 0, 720911, 0, 0, 786432, 0, 11, 786433, 0, 2, 786434, 0, 2, 786435, 0, 2, 786436, 0, 2, 786441, 0, 393219, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 851968, 0, 65547, 851977, 0, 393219, 851978, 0, 0, 851983, 0, 0, 917504, 0, 65547, 917513, 0, 393219, 917514, 0, 0, 917519, 0, 0, 983040, 0, 65547, 983045, 0, 458754, 983046, 0, 458764, 983047, 0, 458764, 983048, 0, 458764, 983049, 0, 458755, 983050, 0, 0, 983055, 0, 0, 1048576, 0, 393227, 1048581, 0, 2, 1048582, 0, 2, 1048583, 0, 2, 1048584, 0, 2, 1048585, 0, 2, 1048586, 0, 2, 1048587, 0, 2, 1048588, 0, 2, 1048589, 0, 2, 1048590, 0, 3, 1048591, 0, 0, 1048592, 0, 0, 1048593, 0, 0, 1048594, 0, 0, 1048595, 0, 0, 1114112, 0, 65547, 1114113, 0, 458767, 1114114, 0, 458767, 1114115, 0, 262155, 1114126, 0, 393219, 1114127, 0, 0, 1179648, 0, 65547, 1179649, 0, 327687, 1179650, 0, 327687, 1179651, 0, 327691, 1179662, 0, 393219, 1179663, 0, 0, 1245184, 0, 65547, 1245185, 0, 327687, 1245186, 0, 327687, 1245187, 0, 327691, 1245188, 0, 458764, 1245198, 0, 393219, 1245199, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310722, 0, 0, 1310723, 0, 0, 1310724, 0, 0, 1310725, 0, 11, 1310726, 0, 2, 1310727, 0, 2, 1310728, 0, 2, 1310729, 0, 2, 1310734, 0, 393219, 1310735, 0, 0, 1310736, 0, 0, 1310737, 0, 0, 1310738, 0, 0, 1310739, 0, 0, 1376256, 0, 0, 1376261, 0, 65547, 1376270, 0, 393219, 1376271, 0, 0, 1441792, 0, 0, 1441797, 0, 65547, 1441806, 0, 393219, 1441807, 0, 0, 1507328, 0, 0, 1507333, 0, 65547, 1507338, 0, 458754, 1507339, 0, 458764, 1507340, 0, 458764, 1507341, 0, 458764, 1507342, 0, 458755, 1507343, 0, 0, 1572864, 0, 0, 1572865, 0, 0, 1572866, 0, 0, 1572867, 0, 0, 1572868, 0, 0, 1572869, 0, 393227, 1572874, 0, 2, 1572875, 0, 2, 1572876, 0, 2, 1572877, 0, 2, 1572878, 0, 2, 1572879, 0, 2, 1572880, 0, 2, 1572881, 0, 2, 1572882, 0, 2, 1572883, 0, 3, 1638400, 0, 0, 1638405, 0, 65547, 1638406, 0, 458767, 1638407, 0, 458767, 1638408, 0, 262155, 1638419, 0, 393219, 1703936, 0, 0, 1703941, 0, 65547, 1703942, 0, 327687, 1703943, 0, 327687, 1703944, 0, 327691, 1703955, 0, 393219, 1769472, 0, 0, 1769477, 0, 65547, 1769478, 0, 327687, 1769479, 0, 327687, 1769480, 0, 327691, 1769481, 0, 458764, 1769491, 0, 393219, 1835008, 0, 0, 1835009, 0, 0, 1835010, 0, 0, 1835011, 0, 0, 1835012, 0, 0, 1835013, 0, 11, 1835014, 0, 2, 1835015, 0, 2, 1835016, 0, 2, 1835017, 0, 2, 1835018, 0, 2, 1835019, 0, 2, 1835020, 0, 2, 1835021, 0, 2, 1835022, 0, 3, 1835027, 0, 393219, 1900544, 0, 0, 1900549, 0, 65547, 1900558, 0, 393219, 1900563, 0, 393219, 1966080, 0, 0, 1966085, 0, 65547, 1966094, 0, 393219, 1966099, 0, 393219, 2031616, 0, 0, 2031621, 0, 65547, 2031630, 0, 393219, 2031635, 0, 393219, 2097152, 0, 0, 2097153, 0, 0, 2097154, 0, 0, 2097155, 0, 0, 2097156, 0, 0, 2097157, 0, 393227, 2097162, 0, 393227, 2097171, 0, 393219, 2162688, 0, 0, 2162693, 0, 65547, 2162698, 0, 65547, 2162699, 0, 458767, 2162700, 0, 458767, 2162701, 0, 262155, 2162707, 0, 393219, 2228224, 0, 0, 2228229, 0, 65547, 2228234, 0, 65547, 2228235, 0, 327687, 2228236, 0, 327687, 2228237, 0, 327691, 2228243, 0, 393219, 2293760, 0, 0, 2293765, 0, 65547, 2293770, 0, 65547, 2293771, 0, 327687, 2293772, 0, 327687, 2293773, 0, 327691, 2293774, 0, 458764, 2293775, 0, 458754, 2293776, 0, 458764, 2293777, 0, 458764, 2293778, 0, 458764, 2293779, 0, 458755, 2359296, 0, 0, 2359297, 0, 0, 2359298, 0, 0, 2359299, 0, 0, 2359300, 0, 0, 2359301, 0, 393227, 2359311, 0, 2, 2359312, 0, 2, 2359313, 0, 2, 2359314, 0, 2, 2359315, 0, 3, 2424832, 0, 0, 2424837, 0, 65547, 2424838, 0, 458767, 2424839, 0, 458767, 2424840, 0, 262155, 2424851, 0, 393219, 2490368, 0, 0, 2490373, 0, 65547, 2490374, 0, 327687, 2490375, 0, 327687, 2490376, 0, 327691, 2490387, 0, 393219, 2555904, 0, 0, 2555909, 0, 65547, 2555910, 0, 327687, 2555911, 0, 327687, 2555912, 0, 327691, 2555913, 0, 458764, 2555923, 0, 393219, 2621440, 0, 0, 2621441, 0, 0, 2621442, 0, 0, 2621443, 0, 0, 2621444, 0, 0, 2621445, 0, 0, 2621446, 0, 0, 2621447, 0, 0, 2621448, 0, 0, 2621449, 0, 0, 2621450, 0, 11, 2621451, 0, 2, 2621452, 0, 2, 2621453, 0, 2, 2621454, 0, 2, 2621459, 0, 393219, 2686976, 0, 0, 2686981, 0, 0, 2686986, 0, 65547, 2686995, 0, 393219, 2752512, 0, 0, 2752517, 0, 0, 2752522, 0, 65547, 2752531, 0, 393219, 2818048, 0, 0, 2818053, 0, 0, 2818058, 0, 65547, 2818063, 0, 458754, 2818064, 0, 458764, 2818065, 0, 458764, 2818066, 0, 458764, 2818067, 0, 458755, 2883584, 0, 0, 2883585, 0, 0, 2883586, 0, 0, 2883587, 0, 0, 2883588, 0, 0, 2883589, 0, 0, 2883590, 0, 0, 2883591, 0, 0, 2883592, 0, 0, 2883593, 0, 0, 2883594, 0, 393227, 2883599, 0, 2, 2883600, 0, 2, 2883601, 0, 2, 2883602, 0, 2, 2883603, 0, 3, 2949120, 0, 0, 2949125, 0, 0, 2949130, 0, 65547, 2949131, 0, 458767, 2949132, 0, 458767, 2949133, 0, 262155, 2949139, 0, 393219, 3014656, 0, 0, 3014661, 0, 0, 3014666, 0, 65547, 3014667, 0, 327687, 3014668, 0, 327687, 3014669, 0, 327691, 3014675, 0, 393219, 3080192, 0, 0, 3080197, 0, 0, 3080202, 0, 65547, 3080203, 0, 327687, 3080204, 0, 327687, 3080205, 0, 327691, 3080206, 0, 458764, 3080211, 0, 393219 )
+tile_data = PoolIntArray( -196605, 1610612736, 5, -196604, 1610612736, 5, -196603, 1610612736, 5, -196602, 1610612736, 5, -196601, 1610612736, 5, -196600, 1610612736, 5, -196599, 1610612736, 5, -196598, 1610612736, 5, -196597, 1610612736, 5, -196596, 1610612736, 5, -131071, 1610612736, 5, -131070, 1610612736, 5, -131069, 1610612736, 5, -131068, 1610612736, 5, -131067, 1610612736, 5, -131066, 1610612736, 5, -131065, 1610612736, 5, -131064, 1610612736, 5, -131063, 1610612736, 5, -131062, 1610612736, 5, -131061, 1610612736, 5, -131060, 1610612736, 5, -131059, 1610612736, 5, -131058, 1610612736, 5, -65536, 1610612736, 5, -65535, 1610612736, 5, -65534, 1610612736, 5, -65533, 1610612736, 5, -65532, 1610612736, 5, -65531, 1610612736, 5, -65530, 1610612736, 5, -65529, 1610612736, 5, -65528, 1610612736, 5, -65527, 1610612736, 5, -65526, 1610612736, 5, -65525, 1610612736, 5, -65524, 1610612736, 5, -65523, 1610612736, 5, -65522, 1610612736, 5, 0, 1610612736, 5, 1, 1610612736, 5, 2, 1610612736, 5, 3, 1610612736, 5, 4, 1610612736, 5, 5, 0, 393227, 6, 0, 1, 7, 0, 1, 8, 0, 1, 9, 0, 3, 10, 1610612736, 5, 11, 1610612736, 5, 12, 1610612736, 5, 13, 1610612736, 5, 14, 1610612736, 5, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 131071, 1610612736, 5, 65536, 1610612736, 5, 65537, 1610612736, 5, 65538, 1610612736, 5, 65539, 1610612736, 5, 65540, 1610612736, 5, 65541, 0, 65547, 65545, 0, 65539, 65546, 1610612736, 5, 65547, 1610612736, 5, 65548, 1610612736, 5, 65549, 1610612736, 5, 65550, 1610612736, 5, 65551, 0, 0, 196607, 1610612736, 5, 131072, 1610612736, 5, 131073, 1610612736, 5, 131074, 1610612736, 5, 131075, 1610612736, 5, 131076, 1610612736, 5, 131077, 0, 65547, 131081, 0, 65539, 131082, 1610612736, 5, 131083, 1610612736, 5, 131084, 1610612736, 5, 131085, 1610612736, 5, 131086, 1610612736, 5, 131087, 0, 0, 196608, 1610612736, 5, 196609, 1610612736, 5, 196610, 1610612736, 5, 196611, 1610612736, 5, 196612, 1610612736, 5, 196613, 0, 65547, 196617, 0, 65539, 196618, 1610612736, 5, 196619, 1610612736, 5, 196620, 1610612736, 5, 196621, 1610612736, 5, 196622, 1610612736, 5, 196623, 0, 0, 262144, 1610612736, 5, 262145, 1610612736, 5, 262146, 1610612736, 5, 262147, 1610612736, 5, 262148, 1610612736, 5, 262149, 0, 65547, 262153, 0, 393219, 262154, 1610612736, 5, 262155, 1610612736, 5, 262156, 1610612736, 5, 262157, 1610612736, 5, 262158, 1610612736, 5, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 327680, 1610612736, 5, 327681, 1610612736, 5, 327682, 1610612736, 5, 327683, 1610612736, 5, 327684, 1610612736, 5, 327685, 0, 65547, 327689, 0, 393219, 327690, 1610612736, 5, 327691, 1610612736, 5, 327692, 1610612736, 5, 327693, 1610612736, 5, 327694, 1610612736, 5, 327695, 0, 0, 393216, 1610612736, 5, 393217, 1610612736, 5, 393218, 1610612736, 5, 393219, 1610612736, 5, 393220, 1610612736, 5, 393221, 0, 65547, 393225, 0, 393219, 393226, 1610612736, 5, 393227, 1610612736, 5, 393228, 1610612736, 5, 393229, 1610612736, 5, 393230, 1610612736, 5, 393231, 0, 0, 458752, 1610612736, 5, 458753, 1610612736, 5, 458754, 1610612736, 5, 458755, 1610612736, 5, 458756, 1610612736, 5, 458757, 0, 65547, 458761, 0, 393219, 458762, 1610612736, 5, 458763, 1610612736, 5, 458764, 1610612736, 5, 458765, 1610612736, 5, 458766, 1610612736, 5, 458767, 0, 0, 524288, 1610612736, 5, 524289, 1610612736, 5, 524290, 1610612736, 5, 524291, 1610612736, 5, 524292, 1610612736, 5, 524293, 0, 393227, 524297, 0, 65539, 524298, 1610612736, 5, 524299, 1610612736, 5, 524300, 1610612736, 5, 524301, 1610612736, 5, 524302, 1610612736, 5, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 589824, 1610612736, 5, 589825, 1610612736, 5, 589826, 1610612736, 5, 589827, 1610612736, 5, 589828, 1610612736, 5, 589829, 0, 65547, 589833, 0, 65539, 589834, 1610612736, 5, 589835, 1610612736, 5, 589836, 1610612736, 5, 589837, 1610612736, 5, 589838, 1610612736, 5, 589839, 1610612736, 5, 589840, 1610612736, 5, 589841, 1610612736, 5, 589842, 1610612736, 5, 589843, 1610612736, 5, 720895, 1610612736, 5, 655360, 1610612736, 5, 655361, 1610612736, 5, 655362, 1610612736, 5, 655363, 1610612736, 5, 655364, 1610612736, 5, 655365, 0, 65547, 655369, 0, 65539, 655370, 1610612736, 5, 655371, 1610612736, 5, 655372, 1610612736, 5, 655373, 1610612736, 5, 655374, 1610612736, 5, 655375, 1610612736, 5, 655376, 1610612736, 5, 655377, 1610612736, 5, 655378, 1610612736, 5, 655379, 1610612736, 5, 786431, 1610612736, 5, 720896, 1610612736, 5, 720897, 1610612736, 5, 720898, 1610612736, 5, 720899, 1610612736, 5, 720900, 1610612736, 5, 720901, 0, 65547, 720905, 0, 65539, 720906, 1610612736, 5, 720907, 1610612736, 5, 720908, 1610612736, 5, 720909, 1610612736, 5, 720910, 1610612736, 5, 720911, 1610612736, 5, 720912, 1610612736, 5, 720913, 1610612736, 5, 720914, 1610612736, 5, 720915, 1610612736, 5, 851967, 1610612736, 5, 786432, 0, 11, 786433, 0, 2, 786434, 0, 2, 786435, 0, 2, 786436, 0, 2, 786437, 0, 12, 786441, 0, 393219, 786442, 1610612736, 5, 786443, 1610612736, 5, 786444, 1610612736, 5, 786445, 1610612736, 5, 786446, 1610612736, 5, 786447, 1610612736, 5, 786448, 1610612736, 5, 786449, 1610612736, 5, 786450, 1610612736, 5, 786451, 1610612736, 5, 917503, 1610612736, 5, 851968, 0, 65547, 851977, 0, 393219, 851978, 1610612736, 5, 851979, 1610612736, 5, 851980, 1610612736, 5, 851981, 1610612736, 5, 851982, 1610612736, 5, 851983, 1610612736, 5, 851984, 1610612736, 5, 851985, 1610612736, 5, 851986, 1610612736, 5, 851987, 1610612736, 5, 983039, 1610612736, 5, 917504, 0, 65547, 917513, 0, 393219, 917514, 1610612736, 5, 917515, 1610612736, 5, 917516, 1610612736, 5, 917517, 1610612736, 5, 917518, 1610612736, 5, 917519, 1610612736, 5, 917520, 1610612736, 5, 917521, 1610612736, 5, 917522, 1610612736, 5, 917523, 1610612736, 5, 917524, 1610612736, 5, 1048575, 1610612736, 5, 983040, 0, 65547, 983045, 0, 458754, 983046, 0, 458764, 983047, 0, 458764, 983048, 0, 458764, 983049, 0, 458755, 983050, 1610612736, 5, 983051, 1610612736, 5, 983052, 1610612736, 5, 983053, 1610612736, 5, 983054, 1610612736, 5, 983055, 1610612736, 5, 983056, 1610612736, 5, 983057, 1610612736, 5, 983058, 1610612736, 5, 983059, 1610612736, 5, 983060, 1610612736, 5, 1114111, 1610612736, 5, 1048576, 0, 393227, 1048581, 0, 2, 1048582, 0, 2, 1048583, 0, 2, 1048584, 0, 2, 1048585, 0, 2, 1048586, 0, 2, 1048587, 0, 2, 1048588, 0, 2, 1048589, 0, 2, 1048590, 0, 3, 1048591, 1610612736, 5, 1048592, 1610612736, 5, 1048593, 1610612736, 5, 1048594, 1610612736, 5, 1048595, 1610612736, 5, 1048596, 1610612736, 5, 1179647, 1610612736, 5, 1114112, 0, 65547, 1114113, 0, 458767, 1114114, 0, 458767, 1114115, 0, 262155, 1114126, 0, 393219, 1114127, 1610612736, 5, 1114128, 1610612736, 5, 1114129, 1610612736, 5, 1114130, 1610612736, 5, 1114131, 1610612736, 5, 1245183, 1610612736, 5, 1179648, 0, 65547, 1179649, 0, 327687, 1179650, 0, 327687, 1179651, 0, 327691, 1179662, 0, 393219, 1179663, 1610612736, 5, 1179664, 1610612736, 5, 1179665, 1610612736, 5, 1179666, 1610612736, 5, 1179667, 1610612736, 5, 1310719, 1610612736, 5, 1245184, 0, 65547, 1245185, 0, 327687, 1245186, 0, 327687, 1245187, 0, 327691, 1245188, 0, 458764, 1245198, 0, 393219, 1245199, 1610612736, 5, 1245200, 1610612736, 5, 1245201, 1610612736, 5, 1245202, 1610612736, 5, 1245203, 1610612736, 5, 1376255, 1610612736, 5, 1310720, 0, 4, 1310721, 0, 4, 1310722, 0, 4, 1310723, 0, 4, 1310724, 0, 4, 1310725, 0, 11, 1310726, 0, 2, 1310727, 0, 2, 1310728, 0, 2, 1310729, 0, 2, 1310734, 0, 393219, 1310735, 1610612736, 5, 1310736, 1610612736, 5, 1310737, 1610612736, 5, 1310738, 1610612736, 5, 1310739, 1610612736, 5, 1376256, 0, 4, 1376257, 0, 4, 1376258, 0, 4, 1376259, 0, 4, 1376260, 0, 4, 1376261, 0, 65547, 1376270, 0, 393219, 1376271, 1610612736, 5, 1376272, 1610612736, 5, 1376273, 1610612736, 5, 1376274, 1610612736, 5, 1376275, 1610612736, 5, 1376276, 1610612736, 5, 1441792, 0, 4, 1441793, 0, 4, 1441794, 0, 4, 1441795, 0, 4, 1441796, 0, 4, 1441797, 0, 65547, 1441806, 0, 393219, 1441807, 1610612736, 5, 1441808, 1610612736, 5, 1441809, 1610612736, 5, 1441810, 1610612736, 5, 1441811, 1610612736, 5, 1441812, 1610612736, 5, 1507328, 0, 4, 1507329, 0, 4, 1507330, 0, 4, 1507331, 0, 4, 1507332, 0, 4, 1507333, 0, 65547, 1507338, 0, 458754, 1507339, 0, 458764, 1507340, 0, 458764, 1507341, 0, 458764, 1507342, 0, 458755, 1507343, 1610612736, 5, 1507344, 1610612736, 5, 1507345, 1610612736, 5, 1507346, 1610612736, 5, 1507347, 1610612736, 5, 1507348, 1610612736, 5, 1572864, 0, 4, 1572865, 0, 4, 1572866, 0, 4, 1572867, 0, 4, 1572868, 0, 4, 1572869, 0, 393227, 1572874, 0, 2, 1572875, 0, 2, 1572876, 0, 2, 1572877, 0, 2, 1572878, 0, 2, 1572879, 0, 2, 1572880, 0, 2, 1572881, 0, 2, 1572882, 0, 2, 1572883, 0, 3, 1572884, 1610612736, 5, 1638400, 0, 4, 1638401, 0, 4, 1638402, 0, 4, 1638403, 0, 4, 1638404, 0, 4, 1638405, 0, 65547, 1638406, 0, 458767, 1638407, 0, 458767, 1638408, 0, 262155, 1638419, 0, 393219, 1638420, 1610612736, 5, 1703936, 0, 4, 1703937, 0, 4, 1703938, 0, 4, 1703939, 0, 4, 1703940, 0, 4, 1703941, 0, 65547, 1703942, 0, 327687, 1703943, 0, 327687, 1703944, 0, 327691, 1703955, 0, 393219, 1703956, 1610612736, 5, 1769472, 0, 4, 1769473, 0, 4, 1769474, 0, 4, 1769475, 0, 4, 1769476, 0, 4, 1769477, 0, 65547, 1769478, 0, 327687, 1769479, 0, 327687, 1769480, 0, 327691, 1769481, 0, 458764, 1769491, 0, 393219, 1769492, 1610612736, 5, 1835008, 0, 4, 1835009, 0, 4, 1835010, 0, 4, 1835011, 0, 4, 1835012, 0, 4, 1835013, 0, 11, 1835014, 0, 2, 1835015, 0, 2, 1835016, 0, 2, 1835017, 0, 2, 1835018, 0, 2, 1835019, 0, 2, 1835020, 0, 2, 1835021, 0, 2, 1835022, 0, 3, 1835027, 0, 393219, 1835028, 1610612736, 5, 1900544, 0, 4, 1900545, 0, 4, 1900546, 0, 4, 1900547, 0, 4, 1900548, 0, 4, 1900549, 0, 65547, 1900558, 0, 393219, 1900563, 0, 393219, 1900564, 1610612736, 5, 1966080, 0, 4, 1966081, 0, 4, 1966082, 0, 4, 1966083, 0, 4, 1966084, 0, 4, 1966085, 0, 65547, 1966094, 0, 393219, 1966099, 0, 393219, 1966100, 1610612736, 5, 2031616, 0, 4, 2031617, 0, 4, 2031618, 0, 4, 2031619, 0, 4, 2031620, 0, 4, 2031621, 0, 65547, 2031625, 0, 262147, 2031626, 0, 458753, 2031630, 0, 393219, 2031635, 0, 393219, 2031636, 1610612736, 5, 2097152, 0, 4, 2097153, 0, 4, 2097154, 0, 4, 2097155, 0, 4, 2097156, 0, 4, 2097157, 0, 393227, 2097161, 0, 393219, 2097162, 0, 393227, 2097171, 0, 393219, 2097172, 1610612736, 5, 2162688, 0, 4, 2162689, 0, 4, 2162690, 0, 4, 2162691, 0, 4, 2162692, 0, 4, 2162693, 0, 65547, 2162697, 0, 393219, 2162698, 0, 65547, 2162699, 0, 458767, 2162700, 0, 458767, 2162701, 1610612736, 1, 2162707, 0, 393219, 2162708, 1610612736, 5, 2228224, 0, 4, 2228225, 0, 4, 2228226, 0, 4, 2228227, 0, 4, 2228228, 0, 4, 2228229, 0, 65547, 2228233, 0, 393219, 2228234, 0, 65547, 2228235, 0, 327687, 2228236, 0, 327687, 2228237, 0, 327691, 2228243, 0, 393219, 2228244, 1610612736, 5, 2293760, 0, 4, 2293761, 0, 4, 2293762, 0, 4, 2293763, 0, 4, 2293764, 0, 4, 2293765, 0, 65547, 2293769, 0, 393219, 2293770, 0, 65547, 2293771, 0, 327687, 2293772, 0, 327687, 2293773, 0, 327691, 2293774, 0, 458764, 2293775, 0, 458754, 2293776, 0, 458764, 2293777, 0, 458764, 2293778, 0, 458764, 2293779, 0, 458755, 2293780, 1610612736, 5, 2359296, 0, 4, 2359297, 0, 4, 2359298, 0, 4, 2359299, 0, 4, 2359300, 0, 4, 2359301, 0, 393227, 2359315, 0, 65539, 2359316, 1610612736, 5, 2424832, 0, 4, 2424833, 0, 4, 2424834, 0, 4, 2424835, 0, 4, 2424836, 0, 4, 2424837, 0, 65547, 2424838, 0, 458767, 2424839, 0, 458767, 2424840, 0, 262155, 2424851, 0, 393219, 2424852, 1610612736, 5, 2490368, 0, 4, 2490369, 0, 4, 2490370, 0, 4, 2490371, 0, 4, 2490372, 0, 4, 2490373, 0, 4, 2490374, 0, 327687, 2490375, 0, 327687, 2490376, 0, 327691, 2490387, 0, 393219, 2490388, 1610612736, 5, 2555904, 0, 4, 2555905, 0, 4, 2555906, 0, 4, 2555907, 0, 4, 2555908, 0, 4, 2555909, 0, 4, 2555910, 0, 327687, 2555911, 0, 327687, 2555912, 0, 327691, 2555913, 0, 458764, 2555914, 0, 458764, 2555915, 0, 458764, 2555916, 0, 458764, 2555917, 0, 458764, 2555918, 0, 458764, 2555923, 0, 393219, 2555924, 1610612736, 5, 2621440, 0, 4, 2621441, 0, 4, 2621442, 0, 4, 2621443, 0, 4, 2621444, 0, 4, 2621445, 0, 4, 2621446, 0, 4, 2621447, 0, 4, 2621448, 0, 4, 2621449, 0, 4, 2621450, 0, 11, 2621451, 0, 2, 2621452, 0, 2, 2621453, 0, 2, 2621454, 0, 2, 2621459, 0, 393219, 2621460, 1610612736, 5, 2686976, 0, 4, 2686977, 0, 4, 2686978, 0, 4, 2686979, 0, 4, 2686980, 0, 4, 2686981, 0, 4, 2686982, 0, 4, 2686983, 0, 4, 2686984, 0, 4, 2686985, 0, 4, 2686986, 0, 65547, 2686995, 0, 393219, 2686996, 1610612736, 5, 2752512, 0, 4, 2752513, 0, 4, 2752514, 0, 4, 2752515, 0, 4, 2752516, 0, 4, 2752517, 0, 4, 2752518, 0, 4, 2752519, 0, 4, 2752520, 0, 4, 2752521, 0, 4, 2752522, 0, 65547, 2752531, 0, 393219, 2752532, 1610612736, 5, 2818048, 0, 4, 2818049, 0, 4, 2818050, 0, 4, 2818051, 0, 4, 2818052, 0, 4, 2818053, 0, 4, 2818054, 0, 4, 2818055, 0, 4, 2818056, 0, 4, 2818057, 0, 4, 2818058, 0, 65547, 2818063, 0, 458754, 2818064, 0, 458764, 2818065, 0, 458764, 2818066, 0, 458764, 2818067, 0, 458755, 2818068, 1610612736, 5, 2883584, 0, 4, 2883585, 0, 4, 2883586, 0, 4, 2883587, 0, 4, 2883588, 0, 4, 2883589, 0, 4, 2883590, 0, 4, 2883591, 0, 4, 2883592, 0, 4, 2883593, 0, 4, 2883594, 0, 393227, 2883599, 0, 2, 2883600, 0, 2, 2883601, 0, 2, 2883602, 0, 2, 2883603, 0, 3, 2883604, 1610612736, 5, 2949120, 0, 4, 2949121, 0, 4, 2949122, 0, 4, 2949123, 0, 4, 2949124, 0, 4, 2949125, 0, 4, 2949126, 0, 4, 2949127, 0, 4, 2949128, 0, 4, 2949129, 0, 4, 2949130, 0, 65547, 2949131, 0, 458767, 2949132, 0, 458767, 2949133, 0, 262155, 2949139, 0, 393219, 2949140, 1610612736, 5, 3014656, 0, 4, 3014657, 0, 4, 3014658, 0, 4, 3014659, 0, 4, 3014660, 0, 4, 3014661, 0, 4, 3014662, 0, 4, 3014663, 0, 4, 3014664, 0, 4, 3014665, 0, 4, 3014666, 0, 327686, 3014667, 0, 327686, 3014668, 0, 327687, 3014669, 0, 327691, 3014675, 0, 393219, 3014676, 1610612736, 5, 3080192, 0, 4, 3080193, 0, 4, 3080194, 0, 4, 3080195, 0, 4, 3080196, 0, 4, 3080197, 0, 4, 3080198, 0, 4, 3080199, 0, 4, 3080200, 0, 4, 3080201, 0, 4, 3080202, 0, 327686, 3080203, 0, 327686, 3080204, 0, 327687, 3080205, 0, 327691, 3080206, 0, 458764, 3080211, 0, 393219, 3080212, 1610612736, 5, 3145728, 1610612736, 5, 3145729, 1610612736, 5, 3145730, 1610612736, 5, 3145731, 1610612736, 5, 3145732, 1610612736, 5, 3145733, 1610612736, 5, 3145734, 1610612736, 5, 3145735, 1610612736, 5, 3145736, 1610612736, 5, 3145737, 1610612736, 5, 3145738, 1610612736, 5, 3145739, 1610612736, 5, 3145740, 1610612736, 5, 3145741, 1610612736, 5, 3145742, 1610612736, 5, 3145748, 1610612736, 5 )
 script = ExtResource( 1 )
 mapname = "TutorialStart1AVerticalCrawl"
 room_offset = Vector2( 9, -14 )
 generate_room_offset = false
-
-[editable path="ParallaxBackground"]

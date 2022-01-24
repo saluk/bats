@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://creatures/bat/bat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://system/UI/WorldMapUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://system/debug/DebugLogger.tscn" type="PackedScene" id=3]
+[ext_resource path="res://system/CameraLimitZoom.gd" type="Script" id=4]
 
 [node name="prototype" type="Node2D"]
 
@@ -11,6 +12,7 @@ pause_mode = 2
 
 [node name="CameraLocalTarget" type="Node2D" parent="."]
 position = Vector2( 120, 64 )
+script = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="CameraLocalTarget"]
 current = true
@@ -24,9 +26,6 @@ editor_draw_drag_margin = true
 
 [node name="Bat" parent="." instance=ExtResource( 1 )]
 position = Vector2( 120, 64 )
-
-[node name="AnimatedSprite" parent="Bat" index="3"]
-frame = 1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1

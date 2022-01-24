@@ -7,14 +7,23 @@ var player_tile = null
 var player = null
 var room:RoomMap = null
 
+var block_width = 5
+var block_height = 4
+
+func room_width():
+	return block_width * 32
+	
+func room_height():
+	return block_height * 32
+
 func get_player_global_position():
 	if not room or not player:
 		return null
 	return global_position(player.position, room)
 
-func get_player_tile(v:Vector2, m:RoomMap):
-	if m:
-		v = global_position(v, m)
+func get_player_tile(v:Vector2):
+	if room:
+		v = global_position(v, room)
 	return Vector2(
 		floor(v.x/(5 * 32)), 
 		floor(v.y/(4 * 32))
@@ -62,7 +71,7 @@ func _process(_delta):
 			int(map_editor_player.position.y/12*4*32)
 		)
 		print(start_pos)
-		var load_tile = get_player_tile(start_pos, null)
+		var load_tile = get_player_tile(start_pos)
 		print("load load tile ", load_tile)
 		if load_tile in connected_rooms:
 			print("loading a map from none")
@@ -71,7 +80,7 @@ func _process(_delta):
 		return
 	room = map
 	
-	var tile = get_player_tile(player.position, map)
+	var tile = get_player_tile(player.position)
 	player_tile = tile
 	if debug:
 		player.get_node("Label").text = "x:"+str(int(player.position.x))+"("+str(tile.x)+")"+" y:"+str(int(player.position.y))+"("+str(tile.y)+")"
@@ -105,23 +114,9 @@ func really_bad_change_scene(scene_name, mapnode, map, new_pos):
 		player.global_position = local_position(global_position(player.position, old_map), new_map)
 	# TODO we still get one frame of the wrong position drawn, but its better
 	player.get_tree().root.get_node("prototype/CameraLocalTarget").global_position = player.get_node("CameraTarget").global_position
+	camera.limit_left = -10000
+	camera.limit_right = 10000
+	camera.limit_top = -10000
+	camera.limit_bottom = 10000
 	camera.align()
 	camera.reset_smoothing()
-	set_camera_limits(camera)
-
-func set_camera_limits(camera:Camera2D):
-	if GlobalSettings.camera_limits:
-		var bounds = room.get_bounds()
-		#print(bounds)
-		camera.limit_left = bounds[0]
-		camera.limit_right = bounds[1]
-		camera.limit_top = bounds[2]
-		camera.limit_bottom = bounds[3]
-	var scalex = max(min(float(abs(camera.limit_right-camera.limit_left)) / 400.0, 2), 1)
-	var scaley = max(min(float(abs(camera.limit_top-camera.limit_bottom)) / 400.0, 2), 1)
-	var scale = min(scalex,scaley)
-	print(scale)
-	camera.zoom = Vector2(
-		scale,
-		scale
-	)
