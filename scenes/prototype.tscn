@@ -27,6 +27,9 @@ editor_draw_drag_margin = true
 [node name="Bat" parent="." instance=ExtResource( 1 )]
 position = Vector2( 120, 64 )
 
+[node name="AnimatedSprite" parent="Bat" index="3"]
+frame = 5
+
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1
 remote_path = NodePath("../../../CameraLocalTarget")

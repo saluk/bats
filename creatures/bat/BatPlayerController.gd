@@ -99,7 +99,7 @@ func double_tap(action):
 	if action == 'right':
 		pass#double_right()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	update_ui()
 
 func _unhandled_input(evt:InputEvent):

@@ -5,8 +5,8 @@ class_name FlyingAIController
 var spot_distance = 100
 
 ### Operation variables ###
-var creature:FlyingCreature = null  # Creature we are controlling
-var target:FlyingCreature = null
+var creature:Creature = null  # Creature we are controlling
+var target:Creature = null
 
 var delta = 0.0
 var direction = -1

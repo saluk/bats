@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/rock_tileset.png" type="Texture" id=6]
-[ext_resource path="res://objects/helpful/Rafter.gd" type="Script" id=7]
+[ext_resource path="res://creatures/slug/slug.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 64 )
@@ -230,7 +230,27 @@ mapname = "TutorialStart"
 room_offset = Vector2( 8, 2 )
 generate_room_offset = false
 
-[node name="Door" type="Node2D" parent="." instance=ExtResource( 5 )]
+[node name="Rafter" parent="." instance=ExtResource( 3 )]
+position = Vector2( 104, 40 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
+
+[node name="GeneratedTileMap" type="TileMap" parent="." groups=[
+"room_tilemap",
+]]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 458763, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 2, 6, 0, 2, 7, 0, 2, 8, 0, 2, 9, 0, 2, 10, 0, 2, 11, 0, 2, 12, 0, 2, 13, 0, 2, 14, 0, 2, 65536, 0, 458763, 131072, 0, 458763, 196608, 0, 458763, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458752, 196613, 0, 458764, 196614, 0, 458764, 196615, 0, 458764, 196616, 0, 458764, 196617, 0, 458764, 196618, 0, 458764, 196619, 0, 458764, 196620, 0, 458764, 196621, 0, 458764, 196622, 0, 458764 )
+script = ExtResource( 1 )
+mapname = "TutorialStart"
+room_offset = Vector2( 8, 2 )
+generate_room_offset = false
+
+[node name="Slug" parent="." instance=ExtResource( 7 )]
+position = Vector2( 241.755, 19.1696 )
+
+[node name="Door" parent="." instance=ExtResource( 5 )]
 position = Vector2( -8, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/KinematicBody2D" index="0"]
@@ -312,27 +332,5 @@ tile_set = SubResource( 16 )
 cell_size = Vector2( 20, 10 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 196608, 327681, 0, 262145, 393216, 0, 196608, 393217, 0, 196609, 458752, 0, 262144, 458753, 0, 262145, 524288, 0, 262144, 524289, 0, 262145, 589824, 0, 262144, 589825, 0, 262145, 655360, 0, 262144, 655361, 0, 262145, 720896, 0, 262144, 720897, 0, 262145, 786432, 0, 327680, 786433, 0, 327681 )
-
-[node name="Rafter" type="KinematicBody2D" parent="." groups=[
-"rafter",
-] instance=ExtResource( 3 )]
-position = Vector2( 104, 40 )
-collision_layer = 5
-collision_mask = 0
-script = ExtResource( 7 )
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." instance=ExtResource( 4 )]
-
-[node name="GeneratedTileMap" type="TileMap" parent="." groups=[
-"room_tilemap",
-]]
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 0, 0, 458763, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 2, 6, 0, 2, 7, 0, 2, 8, 0, 2, 9, 0, 2, 10, 0, 2, 11, 0, 2, 12, 0, 2, 13, 0, 2, 14, 0, 2, 65536, 0, 458763, 131072, 0, 458763, 196608, 0, 458763, 196609, 0, 458764, 196610, 0, 458764, 196611, 0, 458764, 196612, 0, 458752, 196613, 0, 458764, 196614, 0, 458764, 196615, 0, 458764, 196616, 0, 458764, 196617, 0, 458764, 196618, 0, 458764, 196619, 0, 458764, 196620, 0, 458764, 196621, 0, 458764, 196622, 0, 458764 )
-script = ExtResource( 1 )
-mapname = "TutorialStart"
-room_offset = Vector2( 8, 2 )
-generate_room_offset = false
 
 [editable path="Door"]

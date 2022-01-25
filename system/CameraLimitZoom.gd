@@ -77,8 +77,8 @@ func _process(delta):
 		if camera.limit_left < -10000 or camera.limit_right > 10000 or camera.limit_top < -10000 or camera.limit_bottom > 10000:
 			return
 
-	var scalex = max(min(float(abs(camera.limit_right-camera.limit_left)) / 400.0, 2), 0.5)
-	var scaley = max(min(float(abs(camera.limit_top-camera.limit_bottom)) / 400.0, 2), 0.5)
+	var scalex = max(min(float(abs(camera.limit_right-camera.limit_left)) / 400.0, 2), 1)
+	var scaley = max(min(float(abs(camera.limit_top-camera.limit_bottom)) / 400.0, 2), 1)
 	var scale = min(scalex,scaley)
 
 	camera.zoom = lerp(camera.zoom, Vector2(

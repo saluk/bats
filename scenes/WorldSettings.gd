@@ -71,6 +71,7 @@ func _process(_delta):
 			int(map_editor_player.position.y/12*4*32)
 		)
 		print(start_pos)
+		room = map
 		var load_tile = get_player_tile(start_pos)
 		print("load load tile ", load_tile)
 		if load_tile in connected_rooms:

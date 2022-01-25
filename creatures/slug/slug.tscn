@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://creatures/slug/slug_2.png" type="Texture" id=1]
+[ext_resource path="res://creatures/Creature.gd" type="Script" id=2]
+[ext_resource path="res://system/debug/move_vector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://creatures/CrawlingAIController.gd" type="Script" id=4]
+[ext_resource path="res://creatures/slug/slug_1.png" type="Texture" id=5]
+[ext_resource path="res://creatures/slug/slug_3.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.96337
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 1 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "crawl",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 2.57183, 2.06326 )
+
+[node name="Slug" type="KinematicBody2D"]
+collision_layer = 32
+collision_mask = 9
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "This is the most recent version of a creature"
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Dropping" type="Node2D" parent="."]
+position = Vector2( 0.794594, 20.792 )
+
+[node name="Holding" type="Node2D" parent="."]
+position = Vector2( 0.397301, 9.27031 )
+
+[node name="Sprite" type="Sprite" parent="Holding"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.132431, -1.90735e-06 )
+scale = Vector2( -0.05, 0.05 )
+frames = SubResource( 2 )
+animation = "crawl"
+frame = 1
+playing = true
+
+[node name="move_vector" parent="." instance=ExtResource( 3 )]
+track_vector = "move"
+color = Color( 1, 0, 0, 1 )
+
+[node name="CrawlingAIController" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="UpCast" type="Area2D" parent="."]
+position = Vector2( -0.353554, -5.92202 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpCast"]
+shape = SubResource( 3 )

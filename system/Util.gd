@@ -12,3 +12,13 @@ static func replace_node(node:Node, replacement:Node) -> Node:
 	parent.move_child(replacement, index)
 	parent.remove_child(node)
 	return replacement
+
+static func int_toward(i, target_i, speed):
+	if i == target_i:
+		return i
+	var d = target_i - i
+	var ad = d/abs(d)
+	if abs(d) < speed:
+		speed = abs(d)
+	i += ad * speed
+	return i
