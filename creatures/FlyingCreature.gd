@@ -33,7 +33,6 @@ var next_rafter_heal = 0.5
 var attack_collision:Area2D = null
 
 ### Signals ###
-signal is_dead
 signal stunned
 
 func _ready():

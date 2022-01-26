@@ -39,7 +39,8 @@ func can_drop():
 	if not attached:
 		return false
 	target = get_target()
-	return abs(target.global_position.x-creature.global_position.x) < 15 and target.global_position.y > creature.global_position.y
+	if target:
+		return abs(target.global_position.x-creature.global_position.x) < 15 and target.global_position.y > creature.global_position.y
 func state_drop():
 	attached = false
 	creature.move.x = 0

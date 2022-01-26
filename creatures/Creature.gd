@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends KinematicMob
 class_name Creature
 
 # States
@@ -24,6 +24,9 @@ var impulses = {}  # Each type of impulse and its vector
 
 # References
 var animation:CreatureAnimation
+
+# Signals
+signal is_dead
 
 var last_collision = {"type":"", "collision": null, "side": "", "ground": ""}
 
@@ -94,12 +97,13 @@ func _physics_process(delta):
 func do_damage(amount, direction):
 	if not alive:
 		return
-	if $HealthBar:
+	if has_node("HealthBar"):
 		$HealthBar.do_damage(amount, direction)
 	else:
 		die()
 		
 func die():
+	ManageGame.set_deleted(self)
 	alive = false
 	animation.play("death")
 	emit_signal("is_dead")

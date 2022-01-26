@@ -1,31 +1,30 @@
-extends KinematicMob
+extends Creature
 class_name Archer
 
 ### Operation variables ###
-var move = Vector2(0, 0)
+#var move = Vector2(0, 0)
 var toss_vector = move
-var alive = true
+#var alive = true
 
 ### Constants/Parameters ###
 var xlimit = 100
 var ylimit = 250
 var jump_width = 50
 var jump_height = 50
-var gravity = 300
+#var gravity = 300
 var flapping = 200
-var drag = 20
+#var drag = 20
 
 ### References ###
 var holding:Node2D = null
 var pickups = []
 var last_collision_type = ""
 var last_collision_side = ""
-var last_collision:KinematicCollision2D = null
+#var last_collision:KinematicCollision2D = null
 
 var attack_collision:Area2D = null
 
 ### Signals ###
-signal is_dead
 signal stunned
 
 func _ready():
@@ -123,9 +122,9 @@ func apply_gravity(delta):
 func _physics_process(delta):
 	#slow down horizontal movement
 	if move.x < 0:
-		move.x += drag*delta
+		move.x += drag["x"]*delta
 	if move.x > 0:
-		move.x -= drag*delta
+		move.x -= drag["x"]*delta
 	choose_animation()
 	toss_vector = Vector2(move.x * 2, move.y * 3)
 	for n in get_children():
@@ -157,7 +156,7 @@ func _physics_process(delta):
 
 # Signals and reactions
 
-func do_damage(_amount):
+func do_damage(_amount, _direction):
 	if alive:
 		die()
 		
