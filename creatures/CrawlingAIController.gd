@@ -44,8 +44,11 @@ func state_crawl():
 		direction = -direction
 	elif hit_gap:
 		# TODO we are bad at gaps
-		#attach_direction = attach_move_direction()
+		creature.position += attach_move_direction() * 4
+		attach_direction = attach_move_direction()
 		direction = -direction
+		creature.position += attach_move_direction() * 4
+		pass
 			
 func can_drop():
 	if not attached:
@@ -100,7 +103,7 @@ func check_hit_wall(space_state):
 	
 func check_hit_gap(space_state):
 	var result
-	var start_pos = creature.global_position + attach_move_direction()*10
+	var start_pos = creature.global_position + attach_move_direction()*1
 	#print("gap_start_pos:", start_pos)
 	var end_pos = start_pos - attach_direction*20
 	#print("gap_end_pos:", end_pos)
