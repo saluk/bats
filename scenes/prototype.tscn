@@ -8,7 +8,7 @@
 [node name="prototype" type="Node2D"]
 
 [node name="MapNode" type="Node2D" parent="."]
-pause_mode = 2
+pause_mode = 1
 
 [node name="CameraLocalTarget" type="Node2D" parent="."]
 position = Vector2( 120, 64 )
@@ -26,9 +26,10 @@ editor_draw_drag_margin = true
 
 [node name="Bat" parent="." instance=ExtResource( 1 )]
 position = Vector2( 120, 64 )
+mob_id = "188802874"
 
 [node name="AnimatedSprite" parent="Bat" index="3"]
-frame = 5
+frame = 8
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1

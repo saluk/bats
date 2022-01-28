@@ -3,6 +3,7 @@ extends Node2D
 var tracked_variables = {
 	
 }
+var texts = []
 var dirty = true
 
 func _process(_delta):
@@ -25,15 +26,14 @@ func _draw():
 	var v
 	for name in tracked_variables:
 		v = tracked_variables[name]
-		if v[1] != "vector":
-			continue
-		draw_line(
-			v[0][0],
-			v[0][1],
-			Color.red,
-			1.0,
-			true
-		)
+		if v[1] == "vector":
+			draw_line(
+				v[0][0],
+				v[0][1],
+				Color.red,
+				1.0,
+				true
+			)
 
 func log_variable(name, value):
 	tracked_variables[name] = [value, "string"]
@@ -41,3 +41,7 @@ func log_variable(name, value):
 
 func show_line(name, start_end_array):
 	tracked_variables[name] = [start_end_array, "vector"]
+
+func show_at(name, value, pos):
+	# Not yet implemented
+	tracked_variables[name] = [value, "pos", pos]

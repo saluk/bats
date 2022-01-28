@@ -20,10 +20,6 @@ var bounce_height = 75  # Force to apply when bouncing from an attack
 ### References ###
 var holding:Node2D = null
 var pickups = []
-#var last_collision_type = ""
-#var last_collision_side = ""
-#var last_collision_ground = ""
-#var last_collision:KinematicCollision2D = null
 
 var near_rafter = null
 var rafter_gravity = 0.0
@@ -125,7 +121,9 @@ func get_charge_anim():
 	return anim
 
 func choose_animation():
+	DebugLogger.log_variable("bat bottom:", last_collision.bottom)
 	if not alive:
+		animation.animatedSprite.rotation_degrees = 0
 		return
 	var charge_anim = get_charge_anim()
 	if charge_anim:
@@ -134,7 +132,7 @@ func choose_animation():
 		animation.play("land")
 		animation.animatedSprite.rotation_degrees = min(rafter_gravity*8 * 180, 180)
 		animation.animatedSprite.position.y = min(abs(rafter_gravity) * 20, 6)
-	elif last_collision["ground"] == "floor":
+	elif last_collision.bottom:
 		animation.play("land")
 	elif abs(move.x)>0.5 or move.y<0:
 		animation.play("fly")
@@ -189,9 +187,11 @@ func integrate_physics(delta):
 	apply_flapping(delta)
 	apply_charge_flapping(delta)
 	limit_movement()
-	DebugLogger.show_line("bat_move", [global_position, global_position+move])
-	var col = self.move_and_collide(move*delta)
-	record_last_collision(col, col)
+	#DebugLogger.show_line("bat_move", [global_position, global_position+move])
+	var xcol = self.move_and_collide(Vector2(move.x*delta,0))
+	var ycol = self.move_and_collide(Vector2(0,move.y*delta))
+	last_collision.clear()
+	record_last_collision(xcol, ycol)
 
 
 # Signals and reactions

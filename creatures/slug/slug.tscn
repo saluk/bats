@@ -24,8 +24,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 2.57183, 2.06326 )
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 7.42904
+height = 9.83246
 
 [node name="Slug" type="KinematicBody2D"]
 collision_layer = 32
@@ -33,6 +34,14 @@ collision_mask = 9
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": "This is the most recent version of a creature"
+}
+mob_id = "1429395714"
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -61,12 +70,14 @@ color = Color( 1, 0, 0, 1 )
 [node name="CrawlingAIController" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="UpCast" type="Area2D" parent="."]
-position = Vector2( -0.353554, -5.92202 )
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpCast"]
-shape = SubResource( 3 )
-
 [node name="InitMob" type="Node" parent="."]
 script = ExtResource( 7 )
+
+[node name="Attack" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2( -0.0952682, 6.69597 )
+rotation = 1.57079
+shape = SubResource( 3 )

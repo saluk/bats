@@ -34,3 +34,5 @@ Text"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="OnScreenPanels" type="Node2D" parent="Control"]

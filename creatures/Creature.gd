@@ -3,6 +3,7 @@ class_name Creature
 
 # States
 var alive = true
+var collision_type = "creature"
 
 # Parameters
 export var gravity = 300
@@ -28,7 +29,23 @@ var animation:CreatureAnimation
 # Signals
 signal is_dead
 
-var last_collision = {"type":"", "collision": null, "side": "", "ground": ""}
+class CollisionInfo extends Reference:
+	var type = ""
+	var collision:KinematicCollision2D = null
+
+class CollisionRecord extends Reference:
+	var left:CollisionInfo = null
+	var right:CollisionInfo = null
+	var top:CollisionInfo = null
+	var bottom:CollisionInfo = null
+	func clear():
+		left = null
+		right = null
+		top = null
+		bottom = null
+
+var collision_buffer = []
+var last_collision:CollisionRecord = CollisionRecord.new()
 
 func _ready():
 	animation = CreatureAnimation.new(get_node("AnimatedSprite"))
@@ -52,43 +69,43 @@ func initialize_physics():
 		}
 	}
 	
-func record_last_collision(xcol:KinematicCollision2D, ycol:KinematicCollision2D):
-	last_collision = {"type":"", "collision": null, "side": "", "ground": ""}
-	var col
-	if xcol or ycol:
-		if xcol and move.x < 0 and xcol.normal.x > 0:
-			last_collision["side"] = "left"
-			move.x = 0
-			col = xcol
-		if xcol and move.x > 0 and xcol.normal.x < 0:
-			last_collision["side"] = "right"
-			move.x = 0
-			col = xcol
-		if ycol and move.y < 0 and ycol.normal.y > 0:
-			move.y = 0
-			last_collision["ground"] = "ceiling"
-			col = ycol
-		if ycol and move.y > 0 and ycol.normal.y < 0:
-			move.y = 0
-			last_collision["ground"] = "floor"
-			col = ycol
-		last_collision["type"] = "unknown"
-		if col:
-			last_collision["collision"] = col
-			if col.collider is TileMap:
-				last_collision["type"] = "terrain"
-			if col.collider.get_class() == "Creature":
-				last_collision["type"] = "creature"
+func assign_collision(collision:KinematicCollision2D):
+	var collision_info = CollisionInfo.new()
+	collision_info.collision = collision
+	collision_info.type = (collision.collider.collision_type 
+		if "collision_type" in collision.collider 
+		else "terrain")
+	return collision_info
+	
+func record_last_collision(
+		xcol:KinematicCollision2D, 
+		ycol:KinematicCollision2D):
+	# Must be called before modifying move to have accurate results
+	if xcol and xcol.remainder.x != 0:
+		if move.x < 0:
+			last_collision.left = assign_collision(xcol)
+		elif move.x > 0:
+			last_collision.right = assign_collision(xcol)
+		move.x = 0
+	if ycol and ycol.normal.y != 0 and ycol.remainder.y != 0:
+		if move.y < 0:
+			last_collision.top = assign_collision(ycol)
+		elif move.y > 0:
+			last_collision.bottom = assign_collision(ycol)
+		move.y = 0
 			
 func integrate_physics(delta):
+	last_collision.clear()
 	for impulse in impulses.values():
 		call("_"+impulse["type"]+"_impulse", impulse, delta)
 	for n in get_children():
 		if n.has_method("physics"):
 			n.physics(delta)
-	var xcol = self.move_and_collide(Vector2(move.x*delta,0))
-	var ycol = self.move_and_collide(Vector2(0,move.y*delta))
-	record_last_collision(xcol, ycol)
+	var old_pos = Vector2(position.x, position.y)
+	var xcol = move_and_collide(Vector2(move.x*delta,0))
+	record_last_collision(xcol, null)
+	var ycol = move_and_collide(Vector2(0,move.y*delta))
+	record_last_collision(null, ycol)
 	initialize_physics()
 
 func _physics_process(delta):

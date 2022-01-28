@@ -36,13 +36,13 @@ func state_walk_left():
 	direction = -1
 	creature.walk_left()
 	creature.move = creature.move.move_toward(Vector2(-40, 0), self.delta*150)
-	if creature.last_collision_type == "terrain" and creature.last_collision_side == "left":
+	if creature.last_collision.left and creature.last_collision.left.type == "terrain":
 		apply_state("walk_right")
 func state_walk_right():
 	direction = 1
 	creature.walk_right()
 	creature.move = creature.move.move_toward(Vector2(40, 0), self.delta*150)
-	if creature.last_collision_type == "terrain" and creature.last_collision_side == "right":
+	if creature.last_collision.right and creature.last_collision.right.type == "terrain":
 		apply_state("walk_left")
 func apply_walk_left():
 	state_time = 2
@@ -146,5 +146,7 @@ func _physics_process(d):
 
 # Events
 func was_stunned():
+	if not creature.alive:
+		return
 	if state != "stunned":
 		apply_state("stunned")

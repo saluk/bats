@@ -18,9 +18,6 @@ var flapping = 200
 ### References ###
 var holding:Node2D = null
 var pickups = []
-var last_collision_type = ""
-var last_collision_side = ""
-#var last_collision:KinematicCollision2D = null
 
 var attack_collision:Area2D = null
 
@@ -132,26 +129,9 @@ func _physics_process(delta):
 			n.physics(delta)
 	apply_gravity(delta)
 	limit_movement()
-	var col = self.move_and_collide(move*delta)
-	last_collision_type = ""
-	last_collision = col
-	last_collision_side = ""
-	if col:
-		if move.x < 0 and col.normal.x > 0 and col.position.y < global_position.y:
-			last_collision_side = "left"
-			move.x = 0
-		if move.x > 0 and col.normal.x < 0 and col.position.y < global_position.y:
-			last_collision_side = "right"
-			move.x = 0
-		if move.y < 0 and col.normal.y > 0:
-			move.y = 0
-		if move.y > 0 and col.normal.y < 0:
-			move.y = 0
-		last_collision_type = "unknown"
-		if col.collider is TileMap:
-			last_collision_type = "terrain"
-		if col.collider.get_class() == self.get_class():
-			last_collision_type = "creature"
+	var xcol = self.move_and_collide(Vector2(move.x*delta,0))
+	var ycol = self.move_and_collide(Vector2(0,move.y*delta))
+	record_last_collision(xcol, ycol)
 
 
 # Signals and reactions
