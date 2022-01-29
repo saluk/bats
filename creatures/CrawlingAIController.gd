@@ -1,4 +1,4 @@
-extends Node
+extends StateMachine
 class_name CrawlingAIController
 
 ### Constants/Parameters ###
@@ -8,10 +8,7 @@ var spot_distance = 100
 var creature:Creature = null  # Creature we are controlling
 var target:Creature = null
 
-var delta = 0.0
 export var direction = 1 # x direction to move along the floor, rotates with attached surface
-var state = ""
-var state_time = 0
 var attached = true   # Try to attach to nearby walls or fall
 var attach_direction = Vector2.ZERO  #Normal of wall we are attached to
 var hit_wall = false
@@ -31,61 +28,6 @@ func get_target():
 		if n.alive:
 			return n
 	return null
-
-func apply_crawl():
-	state_time = 0.25
-func can_crawl():
-	return true
-func state_crawl():
-	attached = true
-	creature.move += attach_move_direction() * 25
-	if hit_wall:
-		attach_direction = -attach_move_direction()
-		direction = -direction
-	elif hit_gap:
-		# TODO we are bad at gaps
-		creature.position += attach_move_direction() * 4
-		attach_direction = attach_move_direction()
-		direction = -direction
-		creature.position += attach_move_direction() * 4
-		pass
-			
-func can_drop():
-	if not attached:
-		print("not attached cant drop")
-		return false
-	target = get_target()
-	if target:
-		print("target range:", abs(target.global_position.x-creature.global_position.x))
-		print("target below:", target.global_position.y > creature.global_position.y)
-		return abs(target.global_position.x-creature.global_position.x) < 10 and target.global_position.y > creature.global_position.y
-func state_drop():
-	attached = false
-	attach_direction = Vector2.ZERO
-	creature.move.x = 0
-func apply_drop():
-	state_time = 1.0
-	creature.move.y = 100
-	
-func apply_state(s):
-	state = s
-	if has_method("apply_"+s):
-		DebugLogger.log_variable("ApplyState."+get_parent().name, state)
-		call("apply_"+s)
-	return state
-		
-func switch_to_state_if_possible(new_state):
-	if call("can_"+new_state):
-		return apply_state(new_state)
-	return null
-
-func new_state():
-	var states:Array = [
-		"drop", "crawl"
-	]
-	for possible_state in states:
-		if switch_to_state_if_possible(possible_state):
-			return
 			
 func check_hit_wall(space_state):
 	var result
@@ -156,28 +98,16 @@ func attach_move_direction():
 	var move_dir = Vector2(direction, 0).rotated(attach_direction.angle_to(Vector2.UP))
 	return move_dir
 
-# Input
-func update_brain():
-	if not creature.alive: return
-	if state:
-		state_time -= self.delta
-		if state_time <= 0:
-			new_state()
-		call("state_"+state)
-	else:
-		new_state()
-
-
 func _physics_process(_delta):
-	delta = _delta
 	if attached:
 		attach_to_walls()
-	update_brain()
-	#print("move:",creature.move)
-	pass
 
 func damage_bat(body:Node2D):
 	if not creature.alive:
 		return
 	if "player" in body.get_groups():
 		body.do_damage(1, creature.global_position - body.global_position)
+
+func update_brain():
+	if creature.alive:
+		.update_brain()
