@@ -261,7 +261,6 @@ script = ExtResource( 2 )
 mob_id = "188798460"
 
 [node name="PhysicsCollisionShape" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0.551216, 2.28361 )
 shape = SubResource( 1 )
 
@@ -276,7 +275,7 @@ position = Vector2( 0.397301, 9.27031 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 49 )
 animation = "idle"
-frame = 7
+frame = 4
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

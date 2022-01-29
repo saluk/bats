@@ -85,12 +85,11 @@ func attach_to_walls():
 		#print("hit_gap:", hit_gap)
 		
 		creature.animation.animatedSprite.rotation = -attach_direction.angle_to(Vector2.UP)
+		creature.get_node("Attack").rotation = -attach_direction.angle_to(Vector2.UP)
 		if abs(attach_move_direction().x) > 0.5:
 			creature.animation.set_flipx(-direction)
 		if abs(attach_move_direction().y) > 0.5:
 			creature.animation.set_flipx(direction)
-	else:
-		creature.animation.animatedSprite.rotation_degrees = 0
 		
 func attach_move_direction():
 	if not attach_direction:
@@ -101,6 +100,9 @@ func attach_move_direction():
 func _physics_process(_delta):
 	if attached:
 		attach_to_walls()
+	else:
+		creature.animation.animatedSprite.rotation_degrees = 0
+		creature.get_node("Attack").rotation_degrees = 0
 
 func damage_bat(body:Node2D):
 	if not creature.alive:

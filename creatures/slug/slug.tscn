@@ -28,7 +28,7 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 7.42904
-height = 9.83246
+height = 17.0825
 
 [node name="Slug" type="KinematicBody2D"]
 collision_layer = 32

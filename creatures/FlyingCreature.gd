@@ -254,5 +254,5 @@ func attack_collide(body:KinematicBody2D):
 		return
 	if "alive" in body and body.alive:
 		move = body.position.direction_to(position) * bounce_height
-		if body.global_position.y > global_position.y:
+		if body.global_position.y > global_position.y + 5:
 			body.do_damage(5, Vector2(1,0))
