@@ -84,7 +84,10 @@ func attach_to_walls():
 		#print("hit_wall:", hit_wall)
 		#print("hit_gap:", hit_gap)
 		
-		creature.animation.animatedSprite.rotation = -attach_direction.angle_to(Vector2.UP)
+		creature.animation.animatedSprite.rotation = lerp(
+			creature.animation.animatedSprite.rotation,
+			-attach_direction.angle_to(Vector2.UP),
+			0.2)
 		creature.get_node("Attack").rotation = -attach_direction.angle_to(Vector2.UP)
 		if abs(attach_move_direction().x) > 0.5:
 			creature.animation.set_flipx(-direction)

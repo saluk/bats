@@ -10,5 +10,8 @@ func can_switch():
 func make_active():
 	pass
 	
-func process(delta):
+func process(_delta):
+	pass
+
+func exit():
 	pass

@@ -101,7 +101,7 @@ func integrate_physics(delta):
 	for n in get_children():
 		if n.has_method("physics"):
 			n.physics(delta)
-	var old_pos = Vector2(position.x, position.y)
+	var _old_pos = Vector2(position.x, position.y)
 	var xcol = move_and_collide(Vector2(move.x*delta,0))
 	record_last_collision(xcol, null)
 	var ycol = move_and_collide(Vector2(0,move.y*delta))
