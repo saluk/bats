@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/rock_tileset.png" type="Texture" id=6]
+[ext_resource path="res://objects/RoomTrigger.tscn" type="PackedScene" id=7]
 [ext_resource path="res://creatures/archer/archer.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -247,7 +248,9 @@ mapname = "TutorialStart"
 room_offset = Vector2( 8, 2 )
 generate_room_offset = false
 
-[node name="Door" parent="." instance=ExtResource( 5 )]
+[node name="Door" parent="." groups=[
+"door1",
+] instance=ExtResource( 5 )]
 position = Vector2( -8, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/KinematicBody2D" index="0"]
@@ -330,8 +333,15 @@ cell_size = Vector2( 20, 10 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 196608, 327681, 0, 262145, 393216, 0, 196608, 393217, 0, 196609, 458752, 0, 262144, 458753, 0, 262145, 524288, 0, 262144, 524289, 0, 262145, 589824, 0, 262144, 589825, 0, 262145, 655360, 0, 262144, 655361, 0, 262145, 720896, 0, 262144, 720897, 0, 262145, 786432, 0, 327680, 786433, 0, 327681 )
 
-[node name="Archer" parent="." instance=ExtResource( 8 )]
+[node name="Archer" parent="." groups=[
+"enemy",
+] instance=ExtResource( 8 )]
 position = Vector2( 215.813, 86.1747 )
 mob_id = "2694533072"
+
+[node name="RoomTrigger" parent="." instance=ExtResource( 7 )]
+position = Vector2( 83.634, 76.2789 )
+enemy_group = "enemy"
+door_group = "door1"
 
 [editable path="Door"]
