@@ -10,7 +10,7 @@ func _physics_process(delta):
 	if speed:
 		position += (direction*speed*delta)
 	if rotate_sprite: 
-		$AnimatedSprite.rotation = direction.angle()
+		rotation = direction.angle()
 
 
 func _on_KinematicBody2D_body_entered(body):
