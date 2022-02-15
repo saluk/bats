@@ -9,7 +9,7 @@ var toss_vector = move
 ### Constants/Parameters ###
 var xlimit = 200
 var ylimit = 250
-var jump_width = 50
+var jump_width = 75
 var jump_height = 50
 #var gravity = 300
 var flapping = 170
