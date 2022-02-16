@@ -82,6 +82,6 @@ func _process(delta):
 	var scale = min(scalex,scaley)
 
 	camera.zoom = lerp(camera.zoom, Vector2(
-		scale,
-		scale
+		scale*1.5,
+		scale*1.5
 	), delta*2)

@@ -25,13 +25,30 @@ func _reload():
 
 func check_deleted(node):
 	if node.mob_id in saved_object_states:
-		if saved_object_states[node.mob_id]['deleted'] == true:
-			node.queue_free()
+		if 'deleted' in saved_object_states[node.mob_id]:
+			if saved_object_states[node.mob_id]['deleted'] == true:
+				node.queue_free()
+				return true
+	return false
 
 func set_deleted(node):
 	if not node.mob_id in saved_object_states:
 		saved_object_states[node.mob_id] = {}
 	saved_object_states[node.mob_id]['deleted'] = true
+	
+func load_props(node):
+	if node.mob_id in saved_object_states:
+		for prop in node.save_props:
+			if prop in saved_object_states[node.mob_id]:
+				node.set(prop, saved_object_states[node.mob_id][prop])
+				
+func set_props(node):
+	if not node.mob_id in saved_object_states:
+		saved_object_states[node.mob_id] = {}
+	for prop in node.save_props:
+		print("saving ",prop," as ", node.get(prop))
+		saved_object_states[node.mob_id][prop] = node.get(prop)
+	print(saved_object_states)
 
 func ensure_node(node, script_path):
 	var found_script = false

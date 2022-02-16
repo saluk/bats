@@ -252,6 +252,12 @@ generate_room_offset = false
 "door1",
 ] instance=ExtResource( 5 )]
 position = Vector2( -8, 32 )
+mob_id = "tutdoor1"
+open_state = Vector2( 0, -150 )
+open_speed = 0.1
+
+[node name="KinematicBody2D" parent="Door" index="0"]
+position = Vector2( 0, -150 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/KinematicBody2D" index="0"]
 position = Vector2( 20, 40 )
