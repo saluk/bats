@@ -34,6 +34,7 @@ class CollisionInfo extends Reference:
 	var collision:KinematicCollision2D = null
 
 class CollisionRecord extends Reference:
+	var ownername
 	var left:CollisionInfo = null
 	var right:CollisionInfo = null
 	var top:CollisionInfo = null
@@ -81,13 +82,14 @@ func record_last_collision(
 		xcol:KinematicCollision2D, 
 		ycol:KinematicCollision2D):
 	# Must be called before modifying move to have accurate results
-	if xcol and xcol.remainder.x != 0:
+	if xcol and xcol.normal.x != 0:
 		if move.x < 0:
 			last_collision.left = assign_collision(xcol)
 		elif move.x > 0:
 			last_collision.right = assign_collision(xcol)
 		move.x = 0
-	if ycol and ycol.normal.y != 0 and ycol.remainder.y != 0:
+	# TODO We used to use ycol.remainder here, but sometimes it was zero
+	if ycol and ycol.normal.y != 0:
 		if move.y < 0:
 			last_collision.top = assign_collision(ycol)
 		elif move.y > 0:

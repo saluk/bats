@@ -121,7 +121,7 @@ func get_charge_anim():
 	return anim
 
 func choose_animation():
-	DebugLogger.log_variable("bat bottom:", last_collision.bottom)
+	DebugLogger.log_variable("animation", animation.get_playing())
 	if not alive:
 		animation.animatedSprite.rotation_degrees = 0
 		return
@@ -172,6 +172,7 @@ func apply_gravity(delta):
 		move.y += gravity * delta
 
 func integrate_physics(delta):
+	last_collision.ownername = name
 	#slow down horizontal movement
 	if move.x < 0:
 		move.x += xdrag*delta
@@ -188,10 +189,11 @@ func integrate_physics(delta):
 	apply_charge_flapping(delta)
 	limit_movement()
 	#DebugLogger.show_line("bat_move", [global_position, global_position+move])
-	var xcol = self.move_and_collide(Vector2(move.x*delta,0))
-	var ycol = self.move_and_collide(Vector2(0,move.y*delta))
 	last_collision.clear()
-	record_last_collision(xcol, ycol)
+	var xcol = self.move_and_collide(Vector2(move.x*delta,0))
+	record_last_collision(xcol, null)
+	var ycol = self.move_and_collide(Vector2(0,move.y*delta))
+	record_last_collision(null, ycol)
 
 
 # Signals and reactions
