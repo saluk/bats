@@ -30,5 +30,5 @@ func process(_delta):
 		machine.state_time = 0
 		fire_time = rand_range(1, 2)
 
-func _process(delta):
-	fire_time -= machine.delta
+func _physics_process(delta):
+	fire_time -= delta

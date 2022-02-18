@@ -8,11 +8,15 @@ var toss_vector = move
 
 ### Constants/Parameters ###
 var xlimit = 200
-var ylimit = 250
+var ylimit = 350
 var jump_width = 75
 var jump_height = 50
+var stop_hover_time = 1   #How long with no input do we disable hover force
+var fly_time = 1		  #If we are receiving input how long do we enable hover force
 #var gravity = 300
-var flapping = 170
+var flapping = 170 		  #flapping force
+var is_flapping = true
+var last_flap = 0
 var charge_flap_force = 100
 var xdrag = 10
 var bounce_height = 75  # Force to apply when bouncing from an attack
@@ -49,6 +53,8 @@ func set_flip(x):
 func flap(x_dir):
 	if not alive:
 		return
+	last_flap = 0
+	is_flapping = true
 	set_flip(x_dir)
 	if rafter_gravity > 0:
 		rafter_gravity = -1
@@ -134,10 +140,10 @@ func choose_animation():
 		animation.animatedSprite.position.y = min(abs(rafter_gravity) * 20, 6)
 	elif last_collision.bottom:
 		animation.play("land")
-	elif abs(move.x)>0.5 or move.y<0:
+	elif abs(move.x)>0.5 or move.y<0 and is_flapping:
 		animation.play("fly")
 	else:
-		animation.play("idle")
+		animation.play("land")
 	if not near_rafter:
 		animation.animatedSprite.rotation_degrees = 0
 		animation.animatedSprite.position.y = 0
@@ -159,7 +165,11 @@ func can_pickup():
 
 func apply_flapping(delta):
 	if not alive: return
-	move.y -= flapping * delta
+	if is_flapping:
+		move.y -= flapping * delta
+		last_flap += delta
+		if last_flap > stop_hover_time:
+			is_flapping = false
 	
 func apply_charge_flapping(delta):
 	if is_charging():
