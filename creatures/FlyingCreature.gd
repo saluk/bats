@@ -132,8 +132,11 @@ func choose_animation():
 		animation.animatedSprite.rotation_degrees = 0
 		return
 	var charge_anim = get_charge_anim()
+	var emitting = false
 	if charge_anim:
 		animation.play(charge_anim)
+		if charge_anim == "attack":
+			emitting = true
 	elif near_rafter:
 		animation.play("land")
 		animation.animatedSprite.rotation_degrees = min(rafter_gravity*8 * 180, 180)
@@ -147,6 +150,7 @@ func choose_animation():
 	if not near_rafter:
 		animation.animatedSprite.rotation_degrees = 0
 		animation.animatedSprite.position.y = 0
+	$firetrail/Particles2D.emitting = emitting
 		
 func limit_movement():
 	if move.x < -xlimit: move.x = -xlimit

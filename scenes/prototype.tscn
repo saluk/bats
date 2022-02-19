@@ -28,6 +28,9 @@ editor_draw_drag_margin = true
 position = Vector2( 120, 64 )
 mob_id = "188802874"
 
+[node name="AnimatedSprite" parent="Bat" index="4"]
+frame = 1
+
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1
 remote_path = NodePath("../../../CameraLocalTarget")
