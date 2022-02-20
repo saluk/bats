@@ -2,11 +2,13 @@ extends Node
 
 var canvaslayer
 var time_to_intro = 1
-var bat:FlyingCreature
+var bat
 
 var dialog_trigger_count = {}
 
 func _process(delta):
+	if not get_tree().root.has_node("prototype"):
+		return
 	if not canvaslayer:
 		canvaslayer = get_tree().root.get_node("prototype/CanvasLayer")
 		return

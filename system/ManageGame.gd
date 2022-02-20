@@ -22,6 +22,9 @@ func _process(delta):
 func _reload():
 	saved_object_states = {}
 	var _scene = get_tree().change_scene("res://scenes/prototype.tscn")
+	
+func is_prototype():
+	return get_tree().root.has_node("prototype")
 
 func check_deleted(node):
 	if node.mob_id in saved_object_states:

@@ -9,7 +9,7 @@ func _ready():
 	if ManageGame.check_deleted(self):
 		return
 	ManageGame.load_props(self)
-	connect("tree_exited", self, "exit_tree")
+	var _a = connect("tree_exited", self, "exit_tree")
 	
 func exit_tree():
 	print(name," exiting")

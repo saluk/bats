@@ -1,4 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://effects/firetrail.gd" type="Script" id=1]
+[ext_resource path="res://effects/FiretrailCollision.gd" type="Script" id=2]
+[ext_resource path="res://system/collision/DamageArea.gd" type="Script" id=3]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 0, 0, 1, 0.992157, 1, 0, 0 )
@@ -12,7 +16,7 @@ flag_rotate_y = true
 flag_disable_z = true
 direction = Vector3( 0, 1, 0 )
 spread = 112.5
-gravity = Vector3( 0, 98, 0 )
+gravity = Vector3( 0, 48, 0 )
 initial_velocity = 20.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
@@ -24,6 +28,8 @@ hue_variation = 0.06
 hue_variation_random = 0.39
 
 [node name="firetrail" type="Node2D"]
+script = ExtResource( 1 )
+max_shapes = 20
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( -2.00226, -0.156931 )
@@ -33,3 +39,15 @@ amount = 60
 lifetime = 3.0
 local_coords = false
 process_material = SubResource( 3 )
+
+[node name="CollisionTemplate" type="Area2D" parent="."]
+position = Vector2( -1.20856, -0.156929 )
+script = ExtResource( 2 )
+end_scale = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionTemplate"]
+position = Vector2( -1.87288, 7.30424 )
+polygon = PoolVector2Array( -8.76689, -7.76512, 15.3933, -7.01597, 24.1959, 10.9637, -20.1915, 11.9002 )
+
+[node name="DamageArea" type="Node" parent="CollisionTemplate"]
+script = ExtResource( 3 )

@@ -18,6 +18,8 @@ func sort_custom(a, b):
 	return false
 	
 func write_text():
+	if not get_tree().get_nodes_in_group("debug_logger"):
+		return
 	if GlobalSettings.show_debug:
 		get_tree().get_nodes_in_group("debug_logger")[0].get_node("Control/Label").visible = true
 	var s = ""
