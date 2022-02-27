@@ -6,7 +6,7 @@
 [ext_resource path="res://creatures/bat/BatPlayerController.gd" type="Script" id=4]
 [ext_resource path="res://creatures/bat/Charge.gd" type="Script" id=5]
 [ext_resource path="res://creatures/bat/Arc.gd" type="Script" id=6]
-[ext_resource path="res://creatures/HealthBar.gd" type="Script" id=7]
+[ext_resource path="res://creatures/Shield.gd" type="Script" id=7]
 [ext_resource path="res://creatures/bat/Perch.gd" type="Script" id=8]
 [ext_resource path="res://system/InitMob.gd" type="Script" id=9]
 [ext_resource path="res://effects/firetrail.tscn" type="PackedScene" id=10]
@@ -56,83 +56,83 @@ region = Rect2( 288, 160, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 288, 32, 32 )
+region = Rect2( 0, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 288, 32, 32 )
+region = Rect2( 32, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 288, 32, 32 )
+region = Rect2( 64, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 288, 32, 32 )
+region = Rect2( 96, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 1 )
-region = Rect2( 128, 288, 32, 32 )
+region = Rect2( 128, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 1 )
-region = Rect2( 160, 288, 32, 32 )
+region = Rect2( 160, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 1 )
-region = Rect2( 192, 288, 32, 32 )
+region = Rect2( 192, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 1 )
-region = Rect2( 224, 288, 32, 32 )
+region = Rect2( 224, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 1 )
-region = Rect2( 256, 288, 32, 32 )
+region = Rect2( 256, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 1 )
-region = Rect2( 288, 288, 32, 32 )
+region = Rect2( 288, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 256, 32, 32 )
+region = Rect2( 0, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 256, 32, 32 )
+region = Rect2( 32, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 256, 32, 32 )
+region = Rect2( 64, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 256, 32, 32 )
+region = Rect2( 96, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 1 )
-region = Rect2( 128, 256, 32, 32 )
+region = Rect2( 128, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 1 )
-region = Rect2( 160, 256, 32, 32 )
+region = Rect2( 160, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 1 )
-region = Rect2( 192, 256, 32, 32 )
+region = Rect2( 192, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 1 )
-region = Rect2( 224, 256, 32, 32 )
+region = Rect2( 224, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 1 )
-region = Rect2( 256, 256, 32, 32 )
+region = Rect2( 256, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 1 )
-region = Rect2( 288, 256, 32, 32 )
+region = Rect2( 288, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 1 )
@@ -211,12 +211,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
 "loop": false,
-"name": "death",
+"name": "attack",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
 "loop": false,
-"name": "attack",
+"name": "death",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
@@ -261,11 +261,11 @@ collision_mask = 9
 script = ExtResource( 2 )
 mob_id = "188798460"
 
-[node name="firetrail" parent="." instance=ExtResource( 10 )]
-
 [node name="PhysicsCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2( 0.551216, 2.28361 )
 shape = SubResource( 1 )
+
+[node name="firetrail" parent="." instance=ExtResource( 10 )]
 
 [node name="Dropping" type="Node2D" parent="."]
 position = Vector2( 0.794594, 20.792 )
@@ -278,7 +278,6 @@ position = Vector2( 0.397301, 9.27031 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 49 )
 animation = "idle"
-frame = 3
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

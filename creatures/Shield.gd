@@ -1,16 +1,81 @@
-extends Node
+extends Node2D
+class_name Shield
 
+var creature
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var shields = [
+	{"start_arc":0, "arc":360, "max_health":2, "health": 0},
+	{"start_arc":320, "arc":80, "max_health":2, "health": 0},
+	{"start_arc":140, "arc":80, "max_health":2, "health": 0},
+	]
 
+export var start_radius = 15
+export var next_radius = 5
+var point_count = 16
+export var width = 2
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	creature = get_parent()
+	
+func get_color(shield):
+	var percent = float(shield['health']) / shield['max_health']
+	var ramp:Gradient = load("res://creatures/healthbar_colors.tres")
+	print(shield, " percent ", percent, " ramp ", ramp.interpolate(percent))
+	return ramp.interpolate(percent)
+	
+func shield_take_damage(shield, amount, angle):
+	print("take damage ", shield, " amount ", amount, " angle ", angle)
+	if angle >= shield["start_arc"] and angle <= shield["start_arc"] + shield["arc"]:
+		if shield["health"] > 0:
+			shield["health"] -= amount
+			print(shield["health"])
+			if shield["health"] < 0:
+				shield["health"] = 0
+			return true
+	
+func do_damage(amount, direction:Vector2):
+	var angle = rad2deg(direction.angle())
+	if angle < 0:
+		angle += 360
+	for i in range(shields.size()):
+		var shield = shields[shields.size()-i-1]
+		var effect = shield_take_damage(shield, amount, angle)
+		if effect:
+			update()
+			return
+	creature.die()
+	
+func heal(amount):
+	for i in range(shields.size()):
+		var shield = shields[shields.size()-i-1]
+		if shield["health"] >= shield["max_health"]:
+			continue
+		shield["health"] += amount
+		if shield["health"] > shield["max_health"]:
+			amount = shield["max_health"] - shield["health"]
+			shield["health"] = shield["max_health"]
+			continue
+		update()
+		return
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _draw():
+	var level = 0
+	var arc = 0
+	
+	for shield in shields:
+		print("level:",level," arc:",arc)
+		if shield["health"] > 0:
+			draw_arc(
+				position, 
+				start_radius + level * next_radius, 
+				deg2rad(shield["start_arc"]), 
+				deg2rad(shield["start_arc"]+shield["arc"]), 
+				point_count, 
+				get_color(shield), 
+				width, 
+				true
+			)
+		arc += shield["arc"]
+		if arc >= 360:
+			arc = 0
+			level += 1

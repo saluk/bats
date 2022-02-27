@@ -1,80 +1,47 @@
 extends Node2D
+class_name HealthBar
 
 var creature
 
-export var shields = [
-	{"start_arc":0, "arc":360, "max_health":2, "health": 0},
-	{"start_arc":320, "arc":80, "max_health":2, "health": 0},
-	{"start_arc":140, "arc":80, "max_health":2, "health": 0},
-	]
+export var offset_x = 16
 
-export var start_radius = 15
-export var next_radius = 5
-var point_count = 16
-export var width = 2
+export var health_max = 3
+var health 
+
+export var dot_size = 5
 
 func _ready():
 	creature = get_parent()
-	
-func get_color(shield):
-	var percent = float(shield['health']) / shield['max_health']
-	var ramp:Gradient = load("res://creatures/healthbar_colors.tres")
-	print(shield, " percent ", percent, " ramp ", ramp.interpolate(percent))
-	return ramp.interpolate(percent)
-	
-func shield_take_damage(shield, amount, angle):
-	print("take damage ", shield, " amount ", amount, " angle ", angle)
-	if angle >= shield["start_arc"] and angle <= shield["start_arc"] + shield["arc"]:
-		if shield["health"] > 0:
-			shield["health"] -= amount
-			print(shield["health"])
-			if shield["health"] < 0:
-				shield["health"] = 0
-			return true
+	health = health_max
+	update()
 	
 func do_damage(amount, direction:Vector2):
-	var angle = rad2deg(direction.angle())
-	if angle < 0:
-		angle += 360
-	for i in range(shields.size()):
-		var shield = shields[shields.size()-i-1]
-		var effect = shield_take_damage(shield, amount, angle)
-		if effect:
-			update()
-			return
-	creature.die()
+	print(health, '-=', amount)
+	if health > 0:
+		health -= amount
+	if health <= 0:
+		health = 0
+		creature.die()
+	update()
 	
 func heal(amount):
-	for i in range(shields.size()):
-		var shield = shields[shields.size()-i-1]
-		if shield["health"] >= shield["max_health"]:
-			continue
-		shield["health"] += amount
-		if shield["health"] > shield["max_health"]:
-			amount = shield["max_health"] - shield["health"]
-			shield["health"] = shield["max_health"]
-			continue
-		update()
-		return
+	health += amount
+	if health >= health_max:
+		health = health_max
 
 func _draw():
+	print("drawing")
+	if health <= 0:
+		visible = false
 	var level = 0
 	var arc = 0
-	
-	for shield in shields:
-		print("level:",level," arc:",arc)
-		if shield["health"] > 0:
-			draw_arc(
-				position, 
-				start_radius + level * next_radius, 
-				deg2rad(shield["start_arc"]), 
-				deg2rad(shield["start_arc"]+shield["arc"]), 
-				point_count, 
-				get_color(shield), 
-				width, 
-				true
-			)
-		arc += shield["arc"]
-		if arc >= 360:
-			arc = 0
-			level += 1
+	var remaining_good_health = health
+	var y = 0
+	var x = offset_x
+	for i in range(health_max):
+		var color = Color.antiquewhite if remaining_good_health > 0 else Color.brown
+		var outline_color = Color.brown
+		draw_circle(Vector2(x,y), dot_size/2, outline_color)
+		draw_circle(Vector2(x,y), dot_size/2-0.5, color)
+		y -= dot_size+1
+		remaining_good_health -= 1

@@ -31,6 +31,7 @@ var rafter_heal_rate = 0.5 # seconds per shield health point
 var next_rafter_heal = 0.5
 
 var attack_collision:Area2D = null
+var attack_damage = 1
 
 ### Signals ###
 signal stunned
@@ -271,4 +272,4 @@ func attack_collide(body:KinematicBody2D):
 	if "alive" in body and body.alive:
 		move = body.position.direction_to(position) * bounce_height
 		if body.global_position.y > global_position.y + 5:
-			body.do_damage(5, Vector2(1,0))
+			body.do_damage(attack_damage, Vector2(1,0))

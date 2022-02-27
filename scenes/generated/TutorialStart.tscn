@@ -345,6 +345,46 @@ tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0
 position = Vector2( 215.813, 86.1747 )
 mob_id = "2694533072"
 
+[node name="Archer2" parent="." groups=[
+"enemy",
+] instance=ExtResource( 8 )]
+position = Vector2( 370.83, 87.9565 )
+mob_id = "2694533072"
+drag = {
+"x": 10,
+"y": null
+}
+
+[node name="Archer3" parent="." groups=[
+"enemy",
+] instance=ExtResource( 8 )]
+position = Vector2( 277.731, 83.9474 )
+mob_id = "2694533072"
+drag = {
+"x": 10,
+"y": null
+}
+
+[node name="Archer4" parent="." groups=[
+"enemy",
+] instance=ExtResource( 8 )]
+position = Vector2( 215.813, 86.1747 )
+mob_id = "2694533072"
+drag = {
+"x": 10,
+"y": null
+}
+
+[node name="Archer5" parent="." groups=[
+"enemy",
+] instance=ExtResource( 8 )]
+position = Vector2( 246.549, 84.3929 )
+mob_id = "2694533072"
+drag = {
+"x": 10,
+"y": null
+}
+
 [node name="RoomTrigger" parent="." instance=ExtResource( 7 )]
 position = Vector2( 83.634, 76.2789 )
 enemy_group = "enemy"

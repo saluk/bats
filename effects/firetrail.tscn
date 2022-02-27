@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://effects/firetrail.gd" type="Script" id=1]
 [ext_resource path="res://effects/FiretrailCollision.gd" type="Script" id=2]
 [ext_resource path="res://system/collision/DamageArea.gd" type="Script" id=3]
+[ext_resource path="res://effects/lightmask.png" type="Texture" id=4]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 0, 0, 1, 0.992157, 1, 0, 0 )
@@ -35,6 +36,7 @@ max_shapes = 20
 position = Vector2( -2.00226, -0.156931 )
 z_index = -1
 z_as_relative = false
+emitting = false
 amount = 60
 lifetime = 3.0
 local_coords = false
@@ -51,3 +53,10 @@ polygon = PoolVector2Array( -8.76689, -7.76512, 15.3933, -7.01597, 24.1959, 10.9
 
 [node name="DamageArea" type="Node" parent="CollisionTemplate"]
 script = ExtResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="CollisionTemplate"]
+visible = false
+scale = Vector2( 0.201132, 0.224031 )
+texture = ExtResource( 4 )
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )

@@ -624,6 +624,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/asserts/GdUnitVector3AssertImpl.gd"
 }, {
+"base": "Node2D",
+"class": "HealthBar",
+"language": "GDScript",
+"path": "res://creatures/HealthBar.gd"
+}, {
 "base": "Node",
 "class": "InitMob",
 "language": "GDScript",
@@ -763,6 +768,11 @@ _global_script_classes=[ {
 "class": "STWalk",
 "language": "GDScript",
 "path": "res://creatures/archer/STWalk.gd"
+}, {
+"base": "Node2D",
+"class": "Shield",
+"language": "GDScript",
+"path": "res://creatures/Shield.gd"
 }, {
 "base": "Resource",
 "class": "SignalHandler",
@@ -953,6 +963,7 @@ _global_script_class_icons={
 "GdUnitVector2AssertImpl": "",
 "GdUnitVector3Assert": "",
 "GdUnitVector3AssertImpl": "",
+"HealthBar": "",
 "InitMob": "",
 "InputBuffer": "",
 "IntFuzzer": "",
@@ -981,6 +992,7 @@ _global_script_class_icons={
 "STFire": "",
 "STStunned": "",
 "STWalk": "",
+"Shield": "",
 "SignalHandler": "",
 "StateMachine": "",
 "StringFuzzer": "",
