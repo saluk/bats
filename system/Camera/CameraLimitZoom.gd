@@ -1,6 +1,7 @@
 extends Node2D
 
 export var view_offset_amount = 75
+export var zoom_scale = 1.5
 
 var camera:Camera2D
 var bat:FlyingCreature
@@ -103,6 +104,6 @@ func _process(delta):
 	var scale = min(scalex,scaley)
 
 	camera.zoom = lerp(camera.zoom, Vector2(
-		scale,
-		scale
+		scale * zoom_scale,
+		scale * zoom_scale
 	), delta*2)
