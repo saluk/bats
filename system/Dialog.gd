@@ -27,7 +27,8 @@ func unpause_gameplay(_timeline_name):
 	get_tree().paused = false
 			
 func play_dialog(timeline, times):
-	return
+	if not GlobalSettings.run_dialog:
+		return
 	if times == "once" and timeline in dialog_trigger_count:
 		return
 	dialog_trigger_count[timeline] = 1

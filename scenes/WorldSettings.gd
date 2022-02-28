@@ -77,6 +77,9 @@ func _process(_delta):
 		if load_tile in connected_rooms:
 			print("loading a map from none")
 			switch_connected_map(load_tile, null, mapnode, start_pos)
+		else:
+			print("no map tile found ", load_tile, " ", connected_rooms.keys())
+			pass
 		map_editor.queue_free()
 		return
 	room = map

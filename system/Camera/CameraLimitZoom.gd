@@ -25,6 +25,8 @@ func stable_lerp(cur_val, val, speed, dt):
 	return cur_val
 	
 func find_world_camera_limits():
+	if not WorldSettings.room:
+		return
 	var cur_tile = WorldSettings.get_player_tile(bat.global_position)
 	var check_tile
 	
@@ -64,8 +66,6 @@ func find_area_camera_limits():
 		camera_region = camera_region as Area2D
 		if camera_region.overlaps_body(bat):
 			var rshape = camera_region.get_node("CollisionShape2D").shape
-			print(camera_region.global_position.y)
-			print(rshape.extents)
 			return {
 				'left': camera_region.global_position.x - rshape.extents[0],
 				'right': camera_region.global_position.x + rshape.extents[0],
@@ -91,10 +91,11 @@ func _process(delta):
 		if not limits:
 			limits = find_world_camera_limits()
 
-		camera.limit_left = stable_lerp(camera.limit_left, limits.left, 250, delta)
-		camera.limit_right = stable_lerp(camera.limit_right, limits.right, 250, delta)
-		camera.limit_top = stable_lerp(camera.limit_top, limits.top, 250, delta)
-		camera.limit_bottom = stable_lerp(camera.limit_bottom, limits.bottom, 250, delta)
+		if limits:
+			camera.limit_left = stable_lerp(camera.limit_left, limits.left, 250, delta)
+			camera.limit_right = stable_lerp(camera.limit_right, limits.right, 250, delta)
+			camera.limit_top = stable_lerp(camera.limit_top, limits.top, 250, delta)
+			camera.limit_bottom = stable_lerp(camera.limit_bottom, limits.bottom, 250, delta)
 		
 		if camera.limit_left < -10000 or camera.limit_right > 10000 or camera.limit_top < -10000 or camera.limit_bottom > 10000:
 			return

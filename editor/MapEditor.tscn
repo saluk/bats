@@ -40,15 +40,16 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 15, 12 )
 cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
 format = 1
-tile_data = PoolIntArray( 131080, 1, 0, 131081, 1, 1, 131082, 1, 1, 196616, 1, 131072, 196617, 1, 131073, 196618, 1, 131074 )
+tile_data = PoolIntArray( 131079, 1, 0, 131080, 1, 1, 131081, 1, 1, 196615, 1, 131072, 196616, 1, 131073, 196617, 1, 131074 )
 script = ExtResource( 1 )
 room_tileset = ExtResource( 4 )
 room_cell_size = Vector2( 32, 32 )
-room_offset = Vector2( 8, 2 )
+room_offset = Vector2( 7, 2 )
 generate_room_offset = false
 
 [node name="TutorialStartBranch1" type="TileMap" parent="Layout"]
 modulate = Color( 0.407843, 1, 0.168627, 1 )
+position = Vector2( -15, 0 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 15, 12 )
 cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
@@ -57,11 +58,12 @@ tile_data = PoolIntArray( -131061, 1, 0, -131060, 1, 65538, -65525, 1, 65536, -6
 script = ExtResource( 1 )
 room_tileset = ExtResource( 4 )
 room_cell_size = Vector2( 32, 32 )
-room_offset = Vector2( 11, -2 )
+room_offset = Vector2( 10, -2 )
 generate_room_offset = false
 
 [node name="TutorialStart1AVerticalCrawl" type="TileMap" parent="Layout"]
 modulate = Color( 0.458824, 0.701961, 0.701961, 1 )
+position = Vector2( -15, 0 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 15, 12 )
 cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
@@ -70,7 +72,7 @@ tile_data = PoolIntArray( -917494, 1, 65536, -851958, 1, 65538, -786422, 1, 6553
 script = ExtResource( 1 )
 room_tileset = ExtResource( 4 )
 room_cell_size = Vector2( 32, 32 )
-room_offset = Vector2( 9, -14 )
+room_offset = Vector2( 8, -14 )
 generate_room_offset = false
 
 [node name="The Drop" type="TileMap" parent="Layout"]
@@ -187,7 +189,7 @@ position = Vector2( 0, 256 )
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 393227, 65536, 0, 65547, 65537, 0, 458767, 65538, 0, 458767, 65539, 0, 262155, 131072, 0, 65547, 131073, 0, 327687, 131074, 0, 327687, 131075, 0, 327691, 196608, 0, 65547, 196609, 0, 327687, 196610, 0, 327687, 196611, 0, 327691, 196612, 0, 458764 )
+tile_data = PoolIntArray( 0, 0, 393227, 65536, 0, 65547, 131072, 0, 65547, 196608, 0, 65547, 196609, 0, 458752, 196610, 0, 458752, 196611, 0, 458752, 196612, 0, 458764 )
 
 [node name="0,3" type="TileMap" parent="Config"]
 position = Vector2( 0, 384 )
@@ -254,6 +256,6 @@ tile_data = PoolIntArray( 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 3, 65540, 0,
 [node name="Player" type="Node" parent="."]
 
 [node name="Bat" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 129.046, 28.6235 )
+position = Vector2( 115.569, 28.5451 )
 scale = Vector2( 0.5, 0.5 )
 mob_id = "188794334"

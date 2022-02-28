@@ -71,6 +71,12 @@ func save_scene(scene, filename):
 	var pack = PackedScene.new()
 	pack.pack(scene)
 	var _ERR = ResourceSaver.save(filename, pack)
+	
+func get_offset_tiles(index, map):
+	return Vector2(index.x+map.position.x/15*5, index.y+map.position.y/12*4)
+	
+func get_offset_index(index, map):
+	return Vector2(index.x+map.position.x/15, index.y+map.position.y/12)
 
 # match the tiles from the generatedtilemap to the tilemap
 func edit_scene(scene, tilemap:RoomMap):
@@ -92,7 +98,7 @@ func edit_scene(scene, tilemap:RoomMap):
 			max_y = cell_index.y
 	if tilemap.generate_room_offset:
 		tilemap.generate_room_offset = false
-		tilemap.room_offset = Vector2(min_x, min_y)
+		tilemap.room_offset = get_offset_index(Vector2(min_x, min_y), tilemap)
 	var offset = tilemap.room_offset
 	save_map.clear()
 	for x in range(min_x, max_x+1):
@@ -111,6 +117,9 @@ func edit_scene(scene, tilemap:RoomMap):
 						(x-offset.x)*5+ref_x,
 						(y-offset.y)*4+ref_y
 					)
+					coord = get_offset_tiles(coord, tilemap)
+					if tilemap.position.x < 0:
+						print("OFFSET COORD:", coord)
 					if ref_id>=0 and has_tile>=0:
 						save_map.set_cell(
 							coord.x, 
@@ -140,6 +149,7 @@ func find_connected_rooms():
 			# TODO - not sure if we need this or not
 			#var ref = n.get_cell(cell_index.x, cell_index.y)
 			#var coord = n.get_cell_autotile_coord(cell_index.x, cell_index.y)
+			cell_index = get_offset_index(cell_index, n)
 			connectable_spots[cell_index] = n.room_offset
 			names[n.room_offset] = n.name
 	var connected_rooms = {}

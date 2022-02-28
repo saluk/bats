@@ -29,6 +29,7 @@ func _ready():
 		attack_collision = get_node("AttackCollision")
 	if attack_collision:
 		var _a = attack_collision.connect("body_entered", self, "attack_collide")
+		print("archer has attack collision")
 	._ready()
 
 # Body functions

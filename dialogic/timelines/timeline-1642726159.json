@@ -4,19 +4,19 @@
 			"character": "character-1642726113.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I'm AWAKE stop pestering me!"
+			"text": "What was that sound?"
 		},
 		{
 			"character": "character-1642726113.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Huh? Oh I guess I was sleeping. Huh, Jenny must have gotten an early start. And where are the kids?"
+			"text": "It looks like the castle has some new visitors. I should go patrol and see if I can figure out why they are here and where they have come from."
 		},
 		{
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Tap the right side of the screen to drop from the rafter, and head to the right"
+			"text": "(Tap the right side of the screen to drop from the rafter, tap again to flap)"
 		},
 		{
 			"event_id": "dialogic_022",
