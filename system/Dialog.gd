@@ -33,6 +33,6 @@ func play_dialog(timeline, times):
 		return
 	dialog_trigger_count[timeline] = 1
 	pause_gameplay()
-	var d = Dialogic.start("Intro", '', "res://addons/dialogic/Nodes/DialogNode.tscn",  false, true)
+	var d = Dialogic.start(timeline, '', "res://addons/dialogic/Nodes/DialogNode.tscn",  false, true)
 	canvaslayer.call_deferred('add_child', d)
 	d.connect("timeline_end", self, "unpause_gameplay")

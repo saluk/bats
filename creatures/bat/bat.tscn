@@ -319,7 +319,7 @@ playing = true
 [node name="AnimatedSpriteOld" type="AnimatedSprite" parent="."]
 frames = SubResource( 55 )
 animation = "idle"
-frame = 1
+frame = 4
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

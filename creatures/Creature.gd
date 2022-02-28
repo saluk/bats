@@ -9,6 +9,8 @@ var collision_type = "creature"
 export var animated_sprite_name = "AnimatedSprite"
 export var gravity = 300
 export var drag = {"x": 10, "y": null}
+export var zero_horizontal = true
+export var zero_vertical = true
 
 var move = Vector2(0,0)
 var impulses = {}  # Each type of impulse and its vector
@@ -88,14 +90,16 @@ func record_last_collision(
 			last_collision.left = assign_collision(xcol)
 		elif move.x > 0:
 			last_collision.right = assign_collision(xcol)
-		move.x = 0
+		if zero_horizontal:
+			move.x = 0
 	# TODO We used to use ycol.remainder here, but sometimes it was zero
 	if ycol and ycol.normal.y != 0:
 		if move.y < 0:
 			last_collision.top = assign_collision(ycol)
 		elif move.y > 0:
 			last_collision.bottom = assign_collision(ycol)
-		move.y = 0
+		if zero_vertical:
+			move.y = 0
 			
 func integrate_physics(delta):
 	last_collision.clear()
