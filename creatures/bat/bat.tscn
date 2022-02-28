@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://creatures/bat/rat and bat spritesheet calciumtrice.png" type="Texture" id=1]
 [ext_resource path="res://creatures/FlyingCreature.gd" type="Script" id=2]
@@ -10,9 +10,43 @@
 [ext_resource path="res://creatures/bat/Perch.gd" type="Script" id=8]
 [ext_resource path="res://system/InitMob.gd" type="Script" id=9]
 [ext_resource path="res://effects/firetrail.tscn" type="PackedScene" id=10]
+[ext_resource path="res://creatures/bat/mybat1.png" type="Texture" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.33508
+
+[sub_resource type="SpriteFrames" id=49]
+animations = [ {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "idle",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "attack",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "death",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "prepare_charge",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "fly",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "land",
+"speed": 10.0
+} ]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -202,7 +236,7 @@ region = Rect2( 64, 256, 32, 32 )
 atlas = ExtResource( 1 )
 region = Rect2( 224, 256, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=49]
+[sub_resource type="SpriteFrames" id=55]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
@@ -260,6 +294,7 @@ collision_layer = 18
 collision_mask = 9
 script = ExtResource( 2 )
 mob_id = "188798460"
+animated_sprite_name = "AnimatedSpriteNew"
 
 [node name="PhysicsCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2( 0.551216, 2.28361 )
@@ -275,10 +310,16 @@ position = Vector2( 0.397301, 9.27031 )
 
 [node name="Sprite" type="Sprite" parent="Holding"]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSpriteNew" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 49 )
 animation = "idle"
-frame = 6
+playing = true
+
+[node name="AnimatedSpriteOld" type="AnimatedSprite" parent="."]
+frames = SubResource( 55 )
+animation = "idle"
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

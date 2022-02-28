@@ -11,7 +11,9 @@ var xlimit = 200
 var ylimit = 350
 var jump_width = 75
 var jump_height = 50
-var stop_hover_time = 1   #How long with no input do we disable hover force
+var width_multiplier = 0.5
+var height_multiplier = 0.5
+var stop_hover_time = 0.7   #How long with no input do we disable hover force
 var fly_time = 1		  #If we are receiving input how long do we enable hover force
 #var gravity = 300
 var flapping = 170 		  #flapping force
@@ -60,10 +62,16 @@ func flap(x_dir):
 	if rafter_gravity > 0:
 		rafter_gravity = -1
 		return
-	move.x += jump_width * x_dir
+	var adjust_move_x = 0
+	var adjust_move_y = 0
+	if x_dir > 0 and move.x > 0 or x_dir < 0 and move.x < 0:
+		adjust_move_x = width_multiplier * abs(move.x)
+	if move.y < 0:
+		adjust_move_y = height_multiplier * abs(move.y)
+	move.x += (jump_width+adjust_move_x) * x_dir
 	if move.y > 0:
 		move.y = move.y * 0.2
-	move.y -= jump_height
+	move.y -= jump_height + adjust_move_y
 
 func flap_left():
 	flap(-1)

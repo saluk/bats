@@ -6,6 +6,7 @@ var alive = true
 var collision_type = "creature"
 
 # Parameters
+export var animated_sprite_name = "AnimatedSprite"
 export var gravity = 300
 export var drag = {"x": 10, "y": null}
 
@@ -49,7 +50,7 @@ var collision_buffer = []
 var last_collision:CollisionRecord = CollisionRecord.new()
 
 func _ready():
-	animation = CreatureAnimation.new(get_node("AnimatedSprite"))
+	animation = CreatureAnimation.new(get_node(animated_sprite_name))
 	
 func _add_impulse(impulse, delta):
 	move += Vector2(impulse["x"]*delta, impulse["y"]*delta)
