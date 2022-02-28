@@ -3,7 +3,7 @@
 [ext_resource path="res://creatures/bat/bat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://system/UI/WorldMapUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://system/debug/DebugLogger.tscn" type="PackedScene" id=3]
-[ext_resource path="res://system/CameraLimitZoom.gd" type="Script" id=4]
+[ext_resource path="res://system/Camera/CameraLimitZoom.gd" type="Script" id=4]
 
 [node name="prototype" type="Node2D"]
 
@@ -27,9 +27,6 @@ editor_draw_drag_margin = true
 [node name="Bat" parent="." instance=ExtResource( 1 )]
 position = Vector2( 120, 64 )
 mob_id = "188802874"
-
-[node name="AnimatedSprite" parent="Bat" index="4"]
-frame = 9
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1

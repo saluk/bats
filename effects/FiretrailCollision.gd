@@ -8,7 +8,7 @@ var life = 0.0
 var move = 0
 var moved = 0  #How far we have fallen
 
-onready var shape2d = get_node("CollisionShape2D")
+onready var shape2d = get_node("CollisionPolygon2D")
 
 func do_damage(node:Node2D):
 	if node.is_in_group("can_burn"):

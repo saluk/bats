@@ -278,6 +278,7 @@ position = Vector2( 0.397301, 9.27031 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 49 )
 animation = "idle"
+frame = 4
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
