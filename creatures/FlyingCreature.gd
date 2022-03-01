@@ -117,7 +117,7 @@ func is_charging():
 func charge_state():
 	for node in get_children():
 		if "charge_state" in node:
-			if node.charge_level >= node.charge_time:
+			if node.charge_state != node.NotCharging:
 				return true
 	return false
 				
