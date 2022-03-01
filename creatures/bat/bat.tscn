@@ -311,15 +311,14 @@ position = Vector2( 0.397301, 9.27031 )
 [node name="Sprite" type="Sprite" parent="Holding"]
 
 [node name="AnimatedSpriteNew" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 49 )
 animation = "idle"
 playing = true
 
 [node name="AnimatedSpriteOld" type="AnimatedSprite" parent="."]
+visible = false
 frames = SubResource( 55 )
 animation = "idle"
-frame = 4
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
