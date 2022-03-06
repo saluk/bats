@@ -136,10 +136,6 @@ func _physics_process(delta):
 
 
 # Signals and reactions
-
-func do_damage(amount, direction):
-	if alive:
-		$HealthBar.do_damage(amount, direction)
 		
 func do_stun():
 	emit_signal("stunned")

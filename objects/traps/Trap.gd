@@ -17,9 +17,7 @@ func _ready():
 	elif mover_node:
 		mover_node.connect("body_entered", self, "trap")
 
-func trap(body):
-	if body.has_method("do_damage"):
-		body.do_damage(self.damage, global_position - body.global_position)
+func trap(_body):
 	if animated_node and animated_node.has_method("explode"):
 		animated_node.explode()
 	if mover_node:

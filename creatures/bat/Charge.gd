@@ -13,6 +13,7 @@ var after_time = 0
 var bat = null
 func _ready():
 	bat = get_parent()
+	var _a = Dialog.connect("pause_for_dialog", self, "reset")
 
 func begin_charge():
 	if charge_held():
@@ -30,8 +31,11 @@ func charge_held():
 func clear_charges():
 	for node in bat.get_children():
 		if "charge_state" in node:
-			node.charge_state = NotCharging
-			node.charge_level = 0
+			node.reset()
+			
+func reset():
+	charge_state = NotCharging
+	charge_level = 0
 
 func release_charge():
 	if bat.alive and charge_state == Charging:
@@ -48,9 +52,8 @@ func apply_charge():
 		return
 	charge_state = ReleaseCharge
 	charge_level = 0
-	bat.set_flip(charge_direction)
-	bat.move.x = charge_direction*charge_speed
-	bat.move.y = charge_speed
+	bat.charge_attack(charge_direction)
+
 	
 func apply_radar():
 	clear_charges()
@@ -65,6 +68,7 @@ func apply_radar():
 	after_time = hover_after_time
 		
 func physics(delta):
+	DebugLogger.log_variable(name+".charge",str(charge_level)+","+str(charge_state))
 	if charge_state in [Charging, ReleaseCharge]:
 		charge_level += delta
 	if charge_state == ReleaseCharge:

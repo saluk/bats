@@ -11,5 +11,5 @@ func _ready():
 	if area_node:
 		area_node.connect("body_entered", self, "trigger_dialog")
 
-func trigger_dialog(body):
+func trigger_dialog(_body):
 	Dialog.play_dialog(dialog_tag, "many")

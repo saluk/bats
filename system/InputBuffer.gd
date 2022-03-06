@@ -16,6 +16,7 @@ var HELD_START = 5
 
 func _init(_input_mappings):
 	self.input_mappings = _input_mappings
+	var _a = Dialog.connect("resume_from_dialog", self, "clear_buffer")
 	
 func action_on(action):
 	buffer.append([action, 'on', 0, 0, false, false])
@@ -88,6 +89,9 @@ func process_events():
 	pop_double_tap()
 	fire_single_tap()
 	handle_held_event()
+	
+func clear_buffer():
+	buffer = []
 
 func update_input_buffer(delta):
 	var new_arr = []

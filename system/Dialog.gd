@@ -6,10 +6,13 @@ var bat
 
 var dialog_trigger_count = {}
 
+signal pause_for_dialog
+signal resume_from_dialog
+
 func _process(delta):
 	if not get_tree().root.has_node("prototype"):
 		return
-	if not canvaslayer:
+	if not Util.valid_object(canvaslayer):
 		canvaslayer = get_tree().root.get_node("prototype/CanvasLayer")
 		return
 	if not bat:
@@ -21,10 +24,12 @@ func _process(delta):
 			play_dialog("Intro", "once")
 			
 func pause_gameplay():
+	emit_signal("pause_for_dialog")
 	get_tree().paused = true
 
 func unpause_gameplay(_timeline_name):
 	get_tree().paused = false
+	emit_signal("resume_from_dialog")
 			
 func play_dialog(timeline, times):
 	if not GlobalSettings.run_dialog:

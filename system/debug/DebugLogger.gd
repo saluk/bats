@@ -75,7 +75,7 @@ func log_variable(name, value, timeout = 0.1):
 func log_increment(name):
 	if not name in tracked_variables:
 		tracked_variables[name] = Line.new("string", name, "0", Engine.get_frames_drawn())
-	tracked_variables[name].l_value = str(int(tracked_variables[name].value)+1)
+	tracked_variables[name].l_value = str(int(tracked_variables[name].l_value)+1)
 	dirty = true
 
 func show_line(name, start_end_array):

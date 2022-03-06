@@ -117,14 +117,6 @@ func integrate_physics(delta):
 
 func _physics_process(delta):
 	integrate_physics(delta)
-
-func do_damage(amount, direction):
-	if not alive:
-		return
-	if has_node("HealthBar"):
-		$HealthBar.do_damage(amount, direction)
-	else:
-		die()
 		
 func die():
 	ManageGame.set_deleted(self)

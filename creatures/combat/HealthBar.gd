@@ -15,7 +15,8 @@ func _ready():
 	health = health_max
 	update()
 	
-func do_damage(amount, direction:Vector2):
+func do_damage(source):
+	var amount = source.amount
 	print(health, '-=', amount)
 	if health > 0:
 		health -= amount
@@ -33,12 +34,12 @@ func _draw():
 	print("drawing")
 	if health <= 0:
 		visible = false
-	var level = 0
-	var arc = 0
+	var _level = 0
+	var _arc = 0
 	var remaining_good_health = health
 	var y = 0
 	var x = offset_x
-	for i in range(health_max):
+	for _i in range(health_max):
 		var color = Color.antiquewhite if remaining_good_health > 0 else Color.brown
 		var outline_color = Color.brown
 		draw_circle(Vector2(x,y), dot_size/2, outline_color)

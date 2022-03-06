@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=2]
 [ext_resource path="res://objects/helpful/Rafter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/castle_foreground.tres" type="TileSet" id=4]
 [ext_resource path="res://objects/helpful/Sign.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/traps/Spikes.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/RoomTrigger.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/projectiles/Arrow.tscn" type="PackedScene" id=9]
+[ext_resource path="res://creatures/archer/archer.tscn" type="PackedScene" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
@@ -76,3 +79,12 @@ generate_room_offset = false
 [node name="Sign" parent="." instance=ExtResource( 5 )]
 position = Vector2( 368.06, 57.6765 )
 dialog_tag = "press_left"
+
+[node name="Spikes" parent="." instance=ExtResource( 6 )]
+position = Vector2( 210.12, 182.735 )
+
+[node name="Arrow" parent="." instance=ExtResource( 9 )]
+position = Vector2( 368.966, 144.025 )
+
+[node name="Archer" parent="." instance=ExtResource( 10 )]
+position = Vector2( 214.124, 158.708 )

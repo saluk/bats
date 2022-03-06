@@ -6,7 +6,7 @@ export var door_move_amount = 100
 
 var triggered = false
 
-func _process(delta):
+func _process(_delta):
 	if not enemy_group or not door_group:
 		return
 	if triggered:

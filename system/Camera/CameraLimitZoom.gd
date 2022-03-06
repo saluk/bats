@@ -109,7 +109,7 @@ func _process(delta):
 		bat = get_tree().get_nodes_in_group("player")[0]
 		return
 		
-	var cam_target:Node2D = bat.get_node("CameraTarget")
+	var _cam_target:Node2D = bat.get_node("CameraTarget")
 	#cam_target.position = cam_target.position.linear_interpolate(
 	#	bat.move.normalized()*view_offset_amount*camera.zoom, 1*delta
 	#)
@@ -132,7 +132,7 @@ func _process(delta):
 
 	var scalex = max(min(float(abs(camera.limit_right-camera.limit_left)) / 400.0, 2), 1)
 	var scaley = max(min(float(abs(camera.limit_top-camera.limit_bottom)) / 400.0, 2), 1)
-	var scale = min(scalex,scaley)
+	var _scale = min(scalex,scaley)
 
 	#camera.zoom = lerp(camera.zoom, Vector2(
 	#	scale * zoom_scale,

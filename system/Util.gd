@@ -22,3 +22,6 @@ static func int_toward(i, target_i, speed):
 		speed = abs(d)
 	i += ad * speed
 	return i
+
+static func valid_object(n:Object):
+	return n and not n.is_queued_for_deletion() and is_instance_valid(n)

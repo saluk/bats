@@ -19,7 +19,7 @@ func _ready():
 	
 func get_color(shield):
 	var percent = float(shield['health']) / shield['max_health']
-	var ramp:Gradient = load("res://creatures/healthbar_colors.tres")
+	var ramp:Gradient = load("res://creatures/combat/healthbar_colors.tres")
 	print(shield, " percent ", percent, " ramp ", ramp.interpolate(percent))
 	return ramp.interpolate(percent)
 	
@@ -33,7 +33,9 @@ func shield_take_damage(shield, amount, angle):
 				shield["health"] = 0
 			return true
 	
-func do_damage(amount, direction:Vector2):
+func do_damage(damage_source):
+	var amount = damage_source.amount
+	var direction = damage_source.direction
 	var angle = rad2deg(direction.angle())
 	if angle < 0:
 		angle += 360

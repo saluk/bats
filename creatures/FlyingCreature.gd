@@ -40,8 +40,8 @@ signal stunned
 
 func _ready():
 	attack_collision = get_node("AttackCollision")
-	var _a = attack_collision.connect("body_entered", self, "attack_collide")
-	
+	#var _a = attack_collision.connect("area_entered", self, "attack_collide")
+	var _b = attack_collision.connect("damage_given", self, "attack_collide")
 	animation.offsets["death"] = Vector2(0, -6)
 	
 # Body functions
@@ -102,6 +102,15 @@ func grab_item():
 	pickups.erase(source)
 	$Holding.get_child(0).texture = holding.find_node('Sprite').texture
 	return true
+	
+func charge_attack(direction):
+	if not alive: return
+	set_flip(direction)
+	move.x = direction*$LeftCharge.charge_speed
+	move.y = $LeftCharge.charge_speed
+	$AttackCollision.damage = attack_damage
+	$AttackCollision.enabled = true
+	$AttackCollision.enabled_time = $LeftCharge.release_charge_time
 
 # State enforcement
 func is_charging():
@@ -144,8 +153,9 @@ func choose_animation():
 	var emitting = false
 	if charge_anim:
 		animation.play(charge_anim)
-		if charge_anim == "attack":
-			emitting = true
+		# TODO disable fire
+		#if charge_anim == "attack":
+		#	emitting = true
 	elif near_rafter:
 		animation.play("land")
 		animation.animatedSprite.rotation_degrees = min(rafter_gravity*8 * 180, 180)
@@ -220,14 +230,6 @@ func integrate_physics(delta):
 
 
 # Signals and reactions
-
-func do_damage(amount, direction):
-	if not alive:
-		return
-	if $HealthBar:
-		$HealthBar.do_damage(amount, direction)
-	else:
-		die()
 		
 func do_stun():
 	emit_signal("stunned")
@@ -272,12 +274,10 @@ func _on_Area2D_area_entered(area):
 func _on_Area2D_area_exited(area):
 	remove_pickup(area)
 
-func attack_collide(body:KinematicBody2D):
+func attack_collide(body):
+	print(body)
 	if not alive:
 		return
 	if not body:
 		return
-	if "alive" in body and body.alive:
-		move = body.position.direction_to(position) * bounce_height
-		if body.global_position.y > global_position.y + 5:
-			body.do_damage(attack_damage, Vector2(1,0))
+	move = position.direction_to(body.position) * bounce_height
