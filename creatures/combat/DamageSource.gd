@@ -2,6 +2,7 @@ extends Area2D
 class_name DamageSource
 
 export var damage = 1
+export var type = 'blunt'
 export var enabled = true
 var enabled_time = null
 

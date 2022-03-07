@@ -19,18 +19,8 @@ var flapping = 200
 var holding:Node2D = null
 var pickups = []
 
-var attack_collision:Area2D = null
-
 ### Signals ###
 signal stunned
-
-func _ready():
-	if has_node("AttackCollision"):
-		attack_collision = get_node("AttackCollision")
-	if attack_collision:
-		var _a = attack_collision.connect("body_entered", self, "attack_collide")
-		print("archer has attack collision")
-	._ready()
 
 # Body functions
 
@@ -182,12 +172,3 @@ func _on_Area2D_area_entered(area):
 func _on_Area2D_area_exited(area):
 	remove_pickup(area)
 
-func attack_collide(body:FlyingCreature):
-	if not alive:
-		return
-	if not body:
-		return
-	if body.alive:
-		move = body.position.direction_to(position) * 100
-		if body.global_position.y > global_position.y:
-			body.do_damage(5, global_position-body.position)

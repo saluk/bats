@@ -109,11 +109,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogic/Localization/translation_service.gd"
 }, {
-"base": "Node",
-"class": "DamageArea",
-"language": "GDScript",
-"path": "res://system/collision/DamageArea.gd"
-}, {
 "base": "Area2D",
 "class": "DamageSource",
 "language": "GDScript",
@@ -870,7 +865,6 @@ _global_script_class_icons={
 "Creature": "",
 "CreatureAnimation": "",
 "DTS": "",
-"DamageArea": "",
 "DamageSource": "",
 "DamageTaker": "",
 "DefaultValueProvider": "",

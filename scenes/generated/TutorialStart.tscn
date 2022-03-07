@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=2]
 [ext_resource path="res://objects/helpful/Rafter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/castle_foreground.tres" type="TileSet" id=4]
 [ext_resource path="res://objects/helpful/Sign.tscn" type="PackedScene" id=5]
+[ext_resource path="res://creatures/archer/archer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/RoomTrigger.tscn" type="PackedScene" id=7]
 [ext_resource path="res://creatures/slug/slug.tscn" type="PackedScene" id=8]
 
@@ -65,6 +66,7 @@ shape = SubResource( 2 )
 [node name="GeneratedTileMap" type="TileMap" parent="." groups=[
 "room_tilemap",
 ]]
+visible = false
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
@@ -80,3 +82,6 @@ dialog_tag = "press_left"
 
 [node name="Slug" parent="." instance=ExtResource( 8 )]
 position = Vector2( 309.141, 35.8853 )
+
+[node name="Archer" parent="." instance=ExtResource( 6 )]
+position = Vector2( 387.745, 160.452 )

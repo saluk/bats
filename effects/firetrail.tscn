@@ -52,6 +52,7 @@ position = Vector2( 1.20856, 0.156929 )
 collision_layer = 0
 collision_mask = 32
 script = ExtResource( 2 )
+type = "fire"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionTemplate/DamageSource"]
 position = Vector2( -3.08144, 7.14731 )
