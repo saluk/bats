@@ -11,7 +11,8 @@ export var disable_when_timeout = false
 signal damage_given
 
 func _ready():
-	get_parent().connect("is_dead", self, "end")
+	if get_parent().has_signal("is_dead"):
+		var _a = get_parent().connect("is_dead", self, "end")
 	
 func end():
 	enabled = false

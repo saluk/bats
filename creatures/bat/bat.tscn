@@ -324,7 +324,7 @@ playing = true
 visible = false
 frames = SubResource( 50 )
 animation = "idle"
-frame = 5
+frame = 2
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

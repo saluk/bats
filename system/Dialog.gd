@@ -18,11 +18,6 @@ func _process(delta):
 	if not bat:
 		bat = get_tree().get_nodes_in_group("player")[0]
 		return
-	return
-	if time_to_intro > 0:
-		time_to_intro -= delta
-		if time_to_intro <= 0 and bat.near_rafter:
-			play_dialog("Intro", "once")
 			
 func pause_gameplay():
 	emit_signal("pause_for_dialog")

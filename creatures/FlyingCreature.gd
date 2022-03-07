@@ -154,8 +154,8 @@ func choose_animation():
 	if charge_anim:
 		animation.play(charge_anim)
 		# TODO disable fire
-		#if charge_anim == "attack":
-		#	emitting = true
+		if charge_anim == "attack":
+			emitting = true
 	elif near_rafter:
 		animation.play("land")
 		animation.animatedSprite.rotation_degrees = min(rafter_gravity*8 * 180, 180)

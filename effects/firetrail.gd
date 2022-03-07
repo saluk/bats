@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var particles:Particles2D = get_node("Particles2D")
-var collision_template:Area2D
+var collision_template:Node2D
 var cycle = 0.0
 var next_col = 0
 

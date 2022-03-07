@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://effects/firetrail.gd" type="Script" id=1]
-[ext_resource path="res://effects/FiretrailCollision.gd" type="Script" id=2]
-[ext_resource path="res://system/collision/DamageArea.gd" type="Script" id=3]
+[ext_resource path="res://creatures/combat/DamageSource.gd" type="Script" id=2]
+[ext_resource path="res://effects/FiretrailCollision.gd" type="Script" id=3]
 [ext_resource path="res://effects/lightmask.png" type="Texture" id=4]
 
 [sub_resource type="Gradient" id=1]
@@ -42,17 +42,20 @@ lifetime = 3.0
 local_coords = false
 process_material = SubResource( 3 )
 
-[node name="CollisionTemplate" type="Area2D" parent="."]
+[node name="CollisionTemplate" type="Node2D" parent="."]
 position = Vector2( -1.20856, -0.156929 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 end_scale = 8
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionTemplate"]
-position = Vector2( -1.87288, 7.30424 )
-polygon = PoolVector2Array( -8.76689, -7.76512, 15.3933, -7.01597, 24.1959, 10.9637, -20.1915, 11.9002 )
+[node name="DamageSource" type="Area2D" parent="CollisionTemplate"]
+position = Vector2( 1.20856, 0.156929 )
+collision_layer = 0
+collision_mask = 32
+script = ExtResource( 2 )
 
-[node name="DamageArea" type="Node" parent="CollisionTemplate"]
-script = ExtResource( 3 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionTemplate/DamageSource"]
+position = Vector2( -3.08144, 7.14731 )
+polygon = PoolVector2Array( -8.76689, -7.76512, 15.3933, -7.01597, 24.1959, 10.9637, -20.1915, 11.9002 )
 
 [node name="Light2D" type="Light2D" parent="CollisionTemplate"]
 visible = false
