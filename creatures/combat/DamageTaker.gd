@@ -6,6 +6,8 @@
 extends Node2D
 class_name DamageTaker
 
+var enabled = true
+
 onready var base = get_parent()
 export var iseconds:float = 0.5
 export var invincible = false
@@ -39,6 +41,10 @@ func _ready():
 			area2d.connect("body_entered", self, "_area_or_body_entered")
 			area2d.connect("area_exited", self, "_area_or_body_exited")
 			area2d.connect("body_exited", self, "_area_or_body_exited")
+	get_parent().connect("is_dead", self, "end")
+	
+func end():
+	enabled = false
 			
 func _area_or_body_entered(area_or_body):
 	print("thing entered ", area_or_body.name)
@@ -74,6 +80,8 @@ func remove_source(object):
 		print("removed damage source")
 
 func _physics_process(delta):
+	if not enabled:
+		return
 	DebugLogger.log_increment("damage taker physics")
 	DebugLogger.log_variable("num_overlapping_damage", damage_sources.keys().size())
 	if last_hurt < iseconds:

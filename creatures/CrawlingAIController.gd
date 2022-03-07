@@ -16,7 +16,7 @@ var hit_gap = false
 
 func _ready():
 	creature = get_parent()
-	creature.connect("is_dead", self, "clear_attach")
+	var _a = creature.connect("is_dead", self, "clear_attach")
 	
 func clear_attach():
 	attached = false

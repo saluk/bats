@@ -10,6 +10,12 @@ export var disable_when_timeout = false
 
 signal damage_given
 
+func _ready():
+	get_parent().connect("is_dead", self, "end")
+	
+func end():
+	enabled = false
+
 func _physics_process(delta):
 	if disable_when_timeout:
 		if enabled_time != null:
