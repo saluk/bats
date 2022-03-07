@@ -41,10 +41,15 @@ func _ready():
 			area2d.connect("body_exited", self, "_area_or_body_exited")
 			
 func _area_or_body_entered(area_or_body):
+	print("thing entered ", area_or_body.name)
 	if "damage" in area_or_body:
+		print("damage in thing")
 		add_source(area_or_body)
 	elif "damage" in area_or_body.get_parent():
+		print("damage in parent")
 		add_source(area_or_body.get_parent())
+	else:
+		print("no damage")
 	_physics_process(0)
 		
 func _area_or_body_exited(area_or_body):
@@ -61,12 +66,15 @@ func add_source(object):
 		damage_sources[object].type = "normal"
 		damage_sources[object].amount = object.damage
 		damage_sources[object].direction = (object.global_position - base.global_position).normalized()
+		print("added damage source")
 		
 func remove_source(object):
 	if object in damage_sources:
 		damage_sources.erase(object)
+		print("removed damage source")
 
 func _physics_process(delta):
+	DebugLogger.log_increment("damage taker physics")
 	DebugLogger.log_variable("num_overlapping_damage", damage_sources.keys().size())
 	if last_hurt < iseconds:
 		last_hurt += delta
@@ -85,4 +93,9 @@ func hurt():
 					source.apply()
 				last_hurt = 0.0
 				return
+			else:
+				print("source not enabled")
+		else:
+			print("source not valid")
+		print("erasing damage source", source_object.name)
 		damage_sources.erase(source_object)

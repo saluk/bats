@@ -6,6 +6,8 @@ func make_active():
 func can_switch():
 	return true
 func process(_delta):
+	if not enabled:
+		return
 	machine.attached = true
 	machine.creature.move += machine.attach_move_direction() * 25
 	if machine.hit_wall:

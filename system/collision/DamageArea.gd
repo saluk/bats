@@ -1,3 +1,6 @@
+# TODO - Deprecated, currently the firetrail generates damageareas, but they
+# should really be damage sources
+
 # A damage area can initialized from an Area2D or a KinematicBody2D
 # A damage area registers a callback to be emitted periodically on
 # all overlappying areas or bodies

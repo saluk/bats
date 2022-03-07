@@ -1,6 +1,8 @@
 extends Node
 class_name SMState
 
+export var enabled = true
+
 var machine:StateMachine
 var memory = {}
 

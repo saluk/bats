@@ -17,7 +17,6 @@ var hit_gap = false
 func _ready():
 	creature = get_parent()
 	creature.connect("is_dead", self, "clear_attach")
-	creature.get_node("Attack").connect("body_entered", self, "damage_bat")
 	
 func clear_attach():
 	attached = false
@@ -106,12 +105,6 @@ func _physics_process(_delta):
 	else:
 		creature.animation.animatedSprite.rotation_degrees = 0
 		creature.get_node("Attack").rotation_degrees = 0
-
-func damage_bat(body:Node2D):
-	if not creature.alive:
-		return
-	if "player" in body.get_groups():
-		body.do_damage(1, creature.global_position - body.global_position)
 
 func update_brain():
 	if creature.alive:

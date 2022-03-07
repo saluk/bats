@@ -1,12 +1,12 @@
 extends Area2D
 class_name DamageSource
 
-var damage = 1
-var enabled = false
+export var damage = 1
+export var enabled = true
 var enabled_time = null
 
-export var disable_on_damage = true
-export var disable_when_timeout = true
+export var disable_on_damage = false
+export var disable_when_timeout = false
 
 signal damage_given
 

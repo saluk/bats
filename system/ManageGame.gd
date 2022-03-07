@@ -8,7 +8,6 @@ extends Node2D
 var reload_in_seconds = 0.0
 var saved_object_states = {}
 
-
 func reload():
 	if reload_in_seconds <= 0:
 		reload_in_seconds = 2

@@ -108,9 +108,9 @@ func charge_attack(direction):
 	set_flip(direction)
 	move.x = direction*$LeftCharge.charge_speed
 	move.y = $LeftCharge.charge_speed
-	$AttackCollision.damage = attack_damage
-	$AttackCollision.enabled = true
-	$AttackCollision.enabled_time = $LeftCharge.release_charge_time
+	attack_collision.damage = attack_damage
+	attack_collision.enabled = true
+	attack_collision.enabled_time = $LeftCharge.release_charge_time
 
 # State enforcement
 func is_charging():
