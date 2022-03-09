@@ -1,4 +1,4 @@
-extends Area2D
+extends Area2DComponent
 class_name DamageSource
 
 export var damage = 1
@@ -12,11 +12,13 @@ export var disable_when_timeout = false
 signal damage_given
 
 func _ready():
-	if get_parent().has_signal("is_dead"):
+	._ready()
+	if base_node.has_signal("is_dead"):
 		var _a = get_parent().connect("is_dead", self, "end")
 	
 func end():
 	enabled = false
+	DebugLogger.log_increment("attack ended")
 
 func _physics_process(delta):
 	if disable_when_timeout:

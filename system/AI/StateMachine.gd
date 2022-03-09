@@ -1,4 +1,4 @@
-extends Node
+extends NodeComponent
 class_name StateMachine
 
 var current_state  # Should be an SMState

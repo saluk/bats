@@ -1,7 +1,5 @@
-extends Node2D
+extends Node2DComponent
 class_name Shield
-
-var creature
 
 export var shields = [
 	{"start_arc":0, "arc":360, "max_health":2, "health": 0},
@@ -13,9 +11,6 @@ export var start_radius = 15
 export var next_radius = 5
 var point_count = 16
 export var width = 2
-
-func _ready():
-	creature = get_parent()
 	
 func get_color(shield):
 	var percent = float(shield['health']) / shield['max_health']
@@ -45,7 +40,7 @@ func do_damage(damage_source):
 		if effect:
 			update()
 			return
-	creature.die()
+	base_node.die()
 	
 func heal(amount):
 	for i in range(shields.size()):

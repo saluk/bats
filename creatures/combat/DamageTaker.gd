@@ -3,12 +3,11 @@
 # Customize what object actually handles damage being dealt
 # Customize how many seconds of invincible time
 
-extends Node2D
+extends Node2DComponent
 class_name DamageTaker
 
 var enabled = true
 
-onready var base = get_parent()
 export var iseconds:float = 0.5
 export var invincible = false
 export var apply_damage_node_path:NodePath
@@ -32,6 +31,7 @@ var damage_sources = {}
 var last_hurt = 0.0
 
 func _ready():
+	._ready()
 	var apply_damage_node = get_node(apply_damage_node_path)
 	var _a = connect("applied_damage", apply_damage_node, "do_damage")
 	for area in get_children():
@@ -71,7 +71,7 @@ func add_source(object):
 		damage_sources[object].collider = object
 		damage_sources[object].type = "normal"
 		damage_sources[object].amount = object.damage
-		damage_sources[object].direction = (object.global_position - base.global_position).normalized()
+		damage_sources[object].direction = (object.global_position - base_node.global_position).normalized()
 		print("added damage source")
 		
 func remove_source(object):
@@ -93,8 +93,8 @@ func hurt():
 		var source = damage_sources[source_object]
 		if Util.valid_object(source):
 			if source.enabled():
-				DebugLogger.log_increment("damage_taken "+base.name)
-				print("take damage "+base.name)
+				DebugLogger.log_increment("damage_taken "+base_node.name)
+				print("take damage "+base_node.name)
 				if not invincible:
 					emit_signal("applied_damage", source)
 					source.apply()

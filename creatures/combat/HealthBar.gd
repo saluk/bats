@@ -1,7 +1,5 @@
-extends Node2D
+extends Node2DComponent
 class_name HealthBar
-
-var creature
 
 export var offset_x = 16
 
@@ -11,7 +9,7 @@ var health
 export var dot_size = 5
 
 func _ready():
-	creature = get_parent()
+	._ready()
 	health = health_max
 	update()
 	
@@ -22,7 +20,7 @@ func do_damage(source):
 		health -= amount
 	if health <= 0:
 		health = 0
-		creature.die()
+		base_node.die()
 	update()
 	
 func heal(amount):

@@ -1,4 +1,4 @@
-extends Node
+extends NodeComponent
 class_name SMState
 
 export var enabled = true

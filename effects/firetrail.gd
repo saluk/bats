@@ -1,4 +1,4 @@
-extends Node2D
+extends Node2DComponent
 
 onready var particles:Particles2D = get_node("Particles2D")
 var collision_template:Node2D
@@ -46,9 +46,9 @@ func make_shape():
 	var shape = collision_template.duplicate()
 	shape.global_position = global_position
 	# TODO we are assuming our parent is a Mob and we want to add the collision to the world level above the mob
-	if get_parent().get_parent():
-		get_parent().get_parent().add_child(shape)
+	if base_node.get_parent():
+		base_node.get_parent().add_child(shape)
 	else:
-		get_parent().add_child(shape)
+		base_node.add_child(shape)
 	shapes.append(shape)
 	shape.ttl = particles.lifetime/2

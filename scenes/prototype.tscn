@@ -30,17 +30,17 @@ position = Vector2( 120, 64 )
 mob_id = "188802874"
 
 [node name="AnimatedSpriteOld" parent="Bat" index="5"]
-frame = 1
+frame = 0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1
 remote_path = NodePath("../../../CameraLocalTarget")
 
-[node name="HealthBar" parent="Bat" index="15"]
+[node name="HealthBar" parent="Bat" index="14"]
 shields = [ {
 "arc": 360,
-"health": 100,
-"max_health": 100,
+"health": 1,
+"max_health": 1,
 "start_arc": 0
 }, {
 "arc": 80,
