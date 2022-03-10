@@ -12,4 +12,5 @@ func _ready():
 		area_node.connect("body_entered", self, "trigger_dialog")
 
 func trigger_dialog(_body):
+	_body.attack_rush.append(_body.attack_fire_trail)
 	Dialog.play_dialog(dialog_tag, "many")

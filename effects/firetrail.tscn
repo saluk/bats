@@ -59,7 +59,6 @@ position = Vector2( -3.08144, 7.14731 )
 polygon = PoolVector2Array( -8.76689, -7.76512, 15.3933, -7.01597, 24.1959, 10.9637, -20.1915, 11.9002 )
 
 [node name="Light2D" type="Light2D" parent="CollisionTemplate"]
-visible = false
 scale = Vector2( 0.201132, 0.224031 )
 texture = ExtResource( 4 )
 shadow_enabled = true

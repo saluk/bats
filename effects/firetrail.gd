@@ -10,16 +10,24 @@ var shapes = []
 export var max_shapes = 8
 export var move = Vector2(0,0)
 
+export var emitting = true
+
 func _ready():
 	cycle = particles.lifetime/max_shapes
 	collision_template = get_node("CollisionTemplate").duplicate()
 	remove_child(get_node("CollisionTemplate"))
+	var _a = base_node.connect("is_dead", self, "set_emitting", [false])
+	set_emitting(emitting)
 
 func _physics_process(delta):
 	position += move*delta
-	if particles.emitting:
+	if emitting:
 		create_collision_shapes(delta)
 	process_collision_shapes(delta)
+	
+func set_emitting(_emitting):
+	emitting = _emitting
+	$Particles2D.emitting = emitting
 
 func create_collision_shapes(delta):
 	next_col += delta

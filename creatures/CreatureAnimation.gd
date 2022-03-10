@@ -19,6 +19,12 @@ func set_flipx(x):
 	if x < 0:
 		set_fliph(sprite_default_facing > 0)
 		
+func get_fliph():
+	if animatedSprite.flip_h:
+		return -sprite_default_facing
+	else:
+		return sprite_default_facing
+		
 func get_playing():
 	return animatedSprite.animation
 

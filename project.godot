@@ -759,6 +759,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://editor/RoomMap.gd"
 }, {
+"base": "Node2DComponent",
+"class": "RushAttackBonus",
+"language": "GDScript",
+"path": "res://creatures/bat/RushAttackBonus.gd"
+}, {
 "base": "NodeComponent",
 "class": "SMState",
 "language": "GDScript",
@@ -1015,6 +1020,7 @@ _global_script_class_icons={
 "RichTextEffectBackground": "",
 "RichTextLabelExt": "",
 "RoomMap": "",
+"RushAttackBonus": "",
 "SMState": "",
 "STChase": "",
 "STCrawl": "",
