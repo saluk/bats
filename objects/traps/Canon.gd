@@ -17,10 +17,10 @@ func _ready():
 	pass # Replace with function body.
 	
 func shoot():
-	var ob = projectile.instance()
-	ob.position = $ShootPosition.global_position
+	var ob = Spawner.spawn(projectile, {
+		"position": $ShootPosition.global_position
+	})
 	ob.scale.x = -scale.x
-	get_parent().add_child(ob)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

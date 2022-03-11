@@ -1057,6 +1057,7 @@ GlobalSettings="*res://system/GlobalSettings.tscn"
 WorldSettings="*res://scenes/WorldSettings.tscn"
 DebugLogger="*res://system/debug/DebugLogger.gd"
 Dialog="*res://system/Dialog.gd"
+Spawner="*res://system/Spawner.gd"
 
 [display]
 

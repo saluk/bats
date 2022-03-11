@@ -23,7 +23,7 @@ func begin():
 		if attack in emitters:
 			emitters[attack].set_emitting(true)
 		else:
-			var node = load(attack.scene).instance()
+			var node = Spawner.spawn(attack.scene, {"parent":null})
 			for prop in attack.props:
 				node.set(prop, attack.props[prop])
 			# Constant attacks are turned off when the attack stops

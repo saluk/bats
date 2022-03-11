@@ -9,7 +9,7 @@ var dialog_trigger_count = {}
 signal pause_for_dialog
 signal resume_from_dialog
 
-func _process(delta):
+func _process(_delta):
 	if not get_tree().root.has_node("prototype"):
 		return
 	if not Util.valid_object(canvaslayer):

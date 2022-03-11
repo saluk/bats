@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://objects/RoomTrigger.tscn" type="PackedScene" id=7]
 [ext_resource path="res://creatures/slug/slug.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/traps/Spikes.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/traps/Canon.tscn" type="PackedScene" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
@@ -104,3 +105,7 @@ position = Vector2( 387.745, 160.452 )
 
 [node name="Spikes" parent="." instance=ExtResource( 9 )]
 position = Vector2( 121.747, 117.69 )
+
+[node name="Canon" parent="." instance=ExtResource( 10 )]
+position = Vector2( 269.885, 142.128 )
+scale = Vector2( -1, 1 )

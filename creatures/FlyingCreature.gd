@@ -53,7 +53,7 @@ var attack_fire_trail = AttackPower.new(
 var attack_arrow = AttackPower.new(AttackPower.PROJECTILE, 
 	"res://objects/projectiles/Arrow.tscn",
 	{"direction": Vector2(1,1)})
-var attack_rush = []
+var attack_rush = [attack_fire_trail, attack_arrow]
 
 ### Signals ###
 signal stunned

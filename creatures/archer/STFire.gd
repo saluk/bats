@@ -2,10 +2,7 @@ extends SMState
 class_name STFire
 
 var fire_time = 0
-var arrow_node
-
-func _ready():
-	arrow_node = load("res://objects/projectiles/Arrow.tscn")
+export var arrow_path = "res://objects/projectiles/Arrow.tscn"
 
 func make_active():
 	machine.state_time = 2
@@ -22,9 +19,7 @@ func process(_delta):
 	if fire_time <= 0:
 		machine.creature.get_node("AnimatedSprite").play("shoot_med")
 	if machine.creature.get_node("AnimatedSprite").frame >= 4 and fire_time <= 0:
-		var arrow = arrow_node.instance()
-		machine.creature.get_parent().add_child(arrow)
-		arrow.position = machine.creature.position
+		var arrow = Spawner.spawn(arrow_path, {"position": machine.creature.position})
 		arrow.mover_node.direction = d
 		arrow.mover_node.rotate_sprite = true
 		machine.state_time = 0
