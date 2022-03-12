@@ -28,7 +28,7 @@ func bake_map_for(tilemap:TileMap):
 	if not scene:
 		scene = Node2D.new()
 	update_scene_for(scene, tilemap)
-	print("scene", scene)
+	print("scene", scene, ", ", scene.name)
 	edit_scene(scene, tilemap)
 	scene.free()
 	
@@ -63,7 +63,7 @@ func update_scene_for(scene:Node, source_map):
 	#label.text = source_map.name
 	#scene.add_child(label)
 	#label.set_owner(scene)
-	scene.print_tree_pretty()
+	#scene.print_tree_pretty()
 	return scene
 	
 func save_scene(scene, filename):
@@ -104,6 +104,8 @@ func edit_scene(scene, tilemap:RoomMap):
 	for x in range(min_x, max_x+1):
 		for y in range(min_y, max_y+1):
 			var has_tile = tilemap.get_cell(x, y)
+			#if scene.name == "TutorialStartBranch1":
+			#	print("x:",x," y:",y, " tilemap:", has_tile)
 			tile_id = tilemap.get_cell_autotile_coord(x, y)
 			#print(x,',',y,',',tile_id)
 			map_ref = get_node("Config/"+str(tile_id.x)+","+str(tile_id.y))
@@ -118,9 +120,9 @@ func edit_scene(scene, tilemap:RoomMap):
 						(y-offset.y)*4+ref_y
 					)
 					coord = get_offset_tiles(coord, tilemap)
-					if tilemap.position.x < 0:
-						print("OFFSET COORD:", coord)
-					if ref_id>=0 and has_tile>=0:
+					if ref_id>=0 and has_tile!=TileMap.INVALID_CELL:
+						if scene.name == "TutorialStartBranch1":
+							print("x:",x," y:",y, " tilemap:", has_tile)
 						save_map.set_cell(
 							coord.x, 
 							coord.y,
@@ -129,8 +131,8 @@ func edit_scene(scene, tilemap:RoomMap):
 							false,
 							false,
 							autotile_coord)
-					else:
-						save_map.set_cell(coord.x, coord.y, ref_id)
+					#else:
+					#	save_map.set_cell(coord.x, coord.y, ref_id)
 	save_scene(scene, scene_file(tilemap.name))
 
 

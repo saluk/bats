@@ -61,6 +61,7 @@ func ensure_node(node, script_path):
 			found_script = true
 			return
 	print(node, node.name, " requires child script ", script_path)
+	return
 	assert(found_script)
 	
 func load_state():

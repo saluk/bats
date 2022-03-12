@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://creatures/combat/DamageSource.gd" type="Script" id=1]
+[ext_resource path="res://creatures/combat/DamageTaker.gd" type="Script" id=2]
+[ext_resource path="res://creatures/Creature.gd" type="Script" id=3]
+[ext_resource path="res://system/InitMob.gd" type="Script" id=4]
+[ext_resource path="res://creatures/slug/STCrawl.gd" type="Script" id=5]
+[ext_resource path="res://creatures/slug/slug_3.png" type="Texture" id=6]
+[ext_resource path="res://creatures/CrawlingAIController.gd" type="Script" id=7]
+[ext_resource path="res://creatures/slug/STDrop.gd" type="Script" id=8]
+[ext_resource path="res://creatures/slug/slug_1.png" type="Texture" id=9]
+[ext_resource path="res://creatures/slug/slug_2.png" type="Texture" id=10]
+[ext_resource path="res://performance_check.gd" type="Script" id=12]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.96337
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "crawl",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 7.42904
+height = 17.0825
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 7.77114
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 12 )
+
+[node name="Slug" type="KinematicBody2D" parent="."]
+collision_layer = 32
+collision_mask = 9
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": "This is the most recent version of a creature"
+}
+mob_id = "123576036"
+
+[node name="Label" type="Label" parent="Slug"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slug"]
+shape = SubResource( 1 )
+
+[node name="Dropping" type="Node2D" parent="Slug"]
+position = Vector2( 0.794594, 20.792 )
+
+[node name="Holding" type="Node2D" parent="Slug"]
+position = Vector2( 0.397301, 9.27031 )
+
+[node name="Sprite" type="Sprite" parent="Slug/Holding"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Slug"]
+position = Vector2( -0.132431, -1.90735e-06 )
+scale = Vector2( -0.05, 0.05 )
+frames = SubResource( 2 )
+animation = "crawl"
+playing = true
+
+[node name="CrawlingAIController" type="Node" parent="Slug"]
+script = ExtResource( 7 )
+
+[node name="STDrop" type="Node" parent="Slug/CrawlingAIController"]
+script = ExtResource( 8 )
+
+[node name="STCrawl" type="Node" parent="Slug/CrawlingAIController"]
+script = ExtResource( 5 )
+
+[node name="InitMob" type="Node" parent="Slug"]
+script = ExtResource( 4 )
+
+[node name="Attack" type="Area2D" parent="Slug"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slug/Attack"]
+position = Vector2( -0.0952682, 6.69597 )
+rotation = 1.57079
+shape = SubResource( 3 )
+
+[node name="DamageTaker" type="Node2D" parent="Slug"]
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Slug/DamageTaker"]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slug/DamageTaker/Area2D"]
+shape = SubResource( 4 )

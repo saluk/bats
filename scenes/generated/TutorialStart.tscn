@@ -1,15 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
-[ext_resource path="res://scenes/cave_foreground.tres" type="TileSet" id=2]
 [ext_resource path="res://objects/helpful/Rafter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/castle_foreground.tres" type="TileSet" id=4]
 [ext_resource path="res://objects/helpful/Sign.tscn" type="PackedScene" id=5]
-[ext_resource path="res://creatures/archer/archer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/RoomTrigger.tscn" type="PackedScene" id=7]
-[ext_resource path="res://creatures/slug/slug.tscn" type="PackedScene" id=8]
-[ext_resource path="res://objects/traps/Spikes.tscn" type="PackedScene" id=9]
-[ext_resource path="res://objects/traps/Canon.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/helpful/Sign.gd" type="Script" id=12]
+[ext_resource path="res://objects/helpful/Rafter.gd" type="Script" id=16]
+[ext_resource path="res://objects/RoomTrigger.gd" type="Script" id=17]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
@@ -61,11 +59,17 @@ mapname = "TutorialStart"
 room_offset = Vector2( 8, 2 )
 generate_room_offset = false
 
-[node name="Rafter" parent="." instance=ExtResource( 3 )]
+[node name="Rafter" type="KinematicBody2D" parent="." groups=[
+"rafter",
+] instance=ExtResource( 3 )]
 position = Vector2( 104, 40 )
+collision_layer = 5
+collision_mask = 0
+script = ExtResource( 16 )
 
-[node name="RoomTrigger" parent="." instance=ExtResource( 7 )]
+[node name="RoomTrigger" type="Node2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 83.634, 76.2789 )
+script = ExtResource( 17 )
 enemy_group = "enemy"
 door_group = "door1"
 
@@ -79,33 +83,19 @@ script = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraRegion"]
 shape = SubResource( 2 )
 
+[node name="Sign" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 368.06, 57.6765 )
+script = ExtResource( 12 )
+dialog_tag = "press_left"
+
 [node name="GeneratedTileMap" type="TileMap" parent="." groups=[
 "room_tilemap",
 ]]
-visible = false
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 11, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 2, 6, 0, 2, 7, 0, 2, 8, 0, 2, 9, 0, 2, 10, 0, 2, 11, 0, 2, 12, 0, 2, 13, 0, 2, 14, 0, 2, 65536, 0, 65547, 131072, 0, 65547, 196608, 0, 65547, 262144, 0, 393227, 262158, 0, 393219, 327680, 0, 65547, 327694, 0, 393219, 393216, 0, 65547, 393230, 0, 393219, 458752, 0, 65547, 458753, 0, 458752, 458754, 0, 458752, 458755, 0, 458752, 458756, 0, 458764, 458757, 0, 458754, 458758, 0, 458764, 458759, 0, 458764, 458760, 0, 458764, 458761, 0, 458764, 458762, 0, 458754, 458763, 0, 458764, 458764, 0, 458764, 458765, 0, 458764, 458766, 0, 458755 )
+tile_data = PoolIntArray( 0, 1, 65536, 1, 1, 65541, 2, 1, 65541, 3, 1, 65541, 4, 1, 65541, 5, 1, 65541, 6, 1, 65541, 7, 1, 65541, 8, 1, 65541, 9, 1, 65541, 10, 1, 65541, 11, 1, 65541, 12, 1, 65541, 13, 1, 65541, 14, 1, 65541, 65536, 1, 131075, 131072, 1, 131075, 196608, 1, 131075, 262144, 1, 131075, 262158, 1, 131075, 327680, 1, 131075, 327694, 1, 131075, 393216, 1, 131075, 393230, 1, 131075, 458752, 1, 4, 458753, 1, 65541, 458754, 1, 65541, 458755, 1, 65541, 458756, 1, 65541, 458757, 1, 65541, 458758, 1, 65541, 458759, 1, 65541, 458760, 1, 65541, 458761, 1, 65541, 458762, 1, 65541, 458763, 1, 65541, 458764, 1, 65541, 458765, 1, 65541, 458766, 1, 6 )
 script = ExtResource( 1 )
 mapname = "TutorialStart"
 room_offset = Vector2( 7, 2 )
 generate_room_offset = false
-
-[node name="Sign" parent="." instance=ExtResource( 5 )]
-position = Vector2( 368.06, 57.6765 )
-dialog_tag = "press_left"
-
-[node name="Slug" parent="." instance=ExtResource( 8 )]
-position = Vector2( 364.985, 55.0921 )
-mob_id = "85408860"
-
-[node name="Archer" parent="." instance=ExtResource( 6 )]
-position = Vector2( 387.745, 160.452 )
-
-[node name="Spikes" parent="." instance=ExtResource( 9 )]
-position = Vector2( 121.747, 117.69 )
-
-[node name="Canon" parent="." instance=ExtResource( 10 )]
-position = Vector2( 269.885, 142.128 )
-scale = Vector2( -1, 1 )
