@@ -31,7 +31,7 @@ position = Vector2( 120, 64 )
 mob_id = "188802874"
 
 [node name="AnimatedSpriteOld" parent="Bat" index="5"]
-frame = 1
+frame = 5
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1
@@ -54,10 +54,6 @@ shields = [ {
 "max_health": 2,
 "start_arc": 140
 } ]
-
-[node name="Particles" type="Node" parent="." groups=[
-"spawner",
-]]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 pause_mode = 2

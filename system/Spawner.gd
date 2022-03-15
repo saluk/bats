@@ -2,6 +2,7 @@ extends Node
 
 var spawned_elements = []
 var scene_cache = {}
+var spawn_parent:Node  # What spawned objects default to be parented to
 
 class SpawnInfo extends Reference:
 	var path_or_scene
@@ -27,6 +28,16 @@ class CacheInfo extends Reference:
 #	'position': Vector2 - object will be set to this global position
 #}
 
+func create_spawn_parent():
+	var possible_nodes = get_tree().get_nodes_in_group("spawner")
+	if not possible_nodes:
+		spawn_parent = Node.new()
+		spawn_parent.name = "level_spawn_parent"
+		spawn_parent.add_to_group("spawner")
+		WorldSettings.room.add_child(spawn_parent)
+	else:
+		spawn_parent = possible_nodes[0]
+
 func spawn(path_or_scene, props:Dictionary):
 	var scene
 	var info = SpawnInfo.new()
@@ -50,7 +61,9 @@ func spawn(path_or_scene, props:Dictionary):
 	if "parent" in props:
 		parent = props["parent"]
 	else:
-		parent = get_tree().get_nodes_in_group("spawner")[0]
+		create_spawn_parent()
+		assert(spawn_parent)
+		parent = spawn_parent
 	if parent:
 		parent.add_child(info.node)
 	if "position" in props:
