@@ -325,6 +325,7 @@ playing = true
 visible = false
 frames = SubResource( 50 )
 animation = "idle"
+frame = 6
 playing = true
 
 [node name="PickupRegion" type="Area2D" parent="."]
@@ -412,6 +413,7 @@ shape = SubResource( 51 )
 
 [node name="DamageTaker" type="Node2D" parent="."]
 script = ExtResource( 12 )
+invincible = true
 apply_damage_node_path = NodePath("../HealthBar")
 
 [node name="Hurt" type="Area2D" parent="DamageTaker"]

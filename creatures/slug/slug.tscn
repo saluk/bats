@@ -67,7 +67,7 @@ position = Vector2( -0.132431, -1.90735e-06 )
 scale = Vector2( -0.05, 0.05 )
 frames = SubResource( 2 )
 animation = "crawl"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CrawlingAIController" type="Node" parent="."]

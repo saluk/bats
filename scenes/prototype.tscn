@@ -31,7 +31,7 @@ position = Vector2( 120, 64 )
 mob_id = "188802874"
 
 [node name="AnimatedSpriteOld" parent="Bat" index="5"]
-frame = 5
+frame = 3
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1

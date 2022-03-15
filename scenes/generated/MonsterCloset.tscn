@@ -24,6 +24,16 @@ mapname = "MonsterCloset"
 room_offset = Vector2( 4, 9 )
 generate_room_offset = false
 
+[node name="GeneratedTileMap2" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65540, 196613, 0, 65541, 458765, 0, 131075, 393230, 0, 196612, 0, 65536, 196613, 0, 65538, 262148, 0, 4, 262149, 0, 6 )
+script = ExtResource( 1 )
+mapname = "MonsterCloset"
+room_offset = Vector2( 4, 9 )
+generate_room_offset = false
+
 [node name="Slug2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 153.15, 71.7721 )
 

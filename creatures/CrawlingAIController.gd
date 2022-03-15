@@ -69,11 +69,12 @@ func attach_to_walls():
 				attach_direction = -vdirection  #reverse ray to get normal
 				break
 				
-func apply_attach_force():
+func apply_attach_force(delta):
 	if attach_direction:
 		# Stick to surface force
-		base_node.move.x = 0
-		base_node.move.y = 0
+		base_node.move.x = lerp(base_node.move.x, 0, 0.1)
+		base_node.move.y += (-1 * base_node.gravity*delta)
+		base_node.move.y = lerp(base_node.move.y, 0, 0.1)
 		base_node.move -= attach_direction * 10
 		
 		hit_wall = check_hit_wall(space_state)

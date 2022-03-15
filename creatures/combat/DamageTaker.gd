@@ -11,6 +11,7 @@ var enabled = true
 export var iseconds:float = 0.5
 export var invincible = false
 export var apply_damage_node_path:NodePath
+export var damage_knockback_force = 250
 
 signal applied_damage(source)
 
@@ -88,6 +89,9 @@ func _physics_process(delta):
 		return
 	hurt()
 	
+func apply_knockback(source):
+	base_node.move += -source.direction * damage_knockback_force
+	
 func hurt():
 	for source_object in damage_sources.keys():
 		var source = damage_sources[source_object]
@@ -98,6 +102,7 @@ func hurt():
 				if not invincible:
 					emit_signal("applied_damage", source)
 					source.apply()
+					apply_knockback(source)
 				last_hurt = 0.0
 				return
 			else:

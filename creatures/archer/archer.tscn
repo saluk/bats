@@ -203,7 +203,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=44]
+[sub_resource type="CapsuleShape2D" id=41]
 radius = 7.50284
 height = 24.1146
 
@@ -262,7 +262,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageTaker/Area2D"]
 position = Vector2( -0.264862, -11.5217 )
-shape = SubResource( 44 )
+shape = SubResource( 41 )
 
 [connection signal="area_entered" from="DamageTaker/Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="DamageTaker/Area2D" to="." method="_on_Area2D_area_exited"]
