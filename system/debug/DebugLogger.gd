@@ -6,12 +6,13 @@ var tracked_variables = {
 var texts = []
 var dirty = true
 
-class Line extends Reference:
+class LogVariable extends Reference:
 	var l_type = ""
 	var l_name = ""
 	var l_value = ""
 	var l_time = 0
 	var l_pos = Vector2.ZERO
+	var l_node = null
 	var timeout = null
 	func _init(type, name, value, time):
 		l_type = type
@@ -22,6 +23,9 @@ class Line extends Reference:
 func timeout_lines():
 	for key in tracked_variables.keys():
 		if tracked_variables[key].timeout and Engine.get_frames_drawn() > tracked_variables[key].timeout:
+			print("timeout")
+			if tracked_variables[key].l_node:
+				tracked_variables[key].l_node.queue_free()
 			tracked_variables.erase(key)
 
 func _process(_delta):
@@ -45,7 +49,15 @@ func write_text():
 	var v
 	var ar = []
 	for name in tracked_variables:
-		ar.append([name, tracked_variables[name]])
+		v = tracked_variables[name]
+		if v.l_type == 'string':
+			ar.append([name, v])
+		elif v.l_type == "pos":
+			if not v.l_node or not Util.valid_object(v.l_node):
+				v.l_node = Label.new()
+				get_tree().get_nodes_in_group("debug_position_control")[0].add_child(v.l_node)
+			v.l_node.set_global_position(v.l_pos)
+			v.l_node.text = v.l_value
 	ar.sort_custom(self, "sort_by_time")
 	for val in ar:
 		var name = val[0]
@@ -56,7 +68,7 @@ func write_text():
 func _draw():
 	var v
 	for name in tracked_variables:
-		v = tracked_variables[name]
+		v = tracked_variables[name] as LogVariable
 		if v.l_type == "vector":
 			draw_line(
 				v.l_value[0],
@@ -67,21 +79,24 @@ func _draw():
 			)
 
 func log_variable(name, value, timeout = 0.1):
-	tracked_variables[name] = Line.new("string", name, value, Engine.get_frames_drawn())
+	tracked_variables[name] = LogVariable.new("string", name, value, Engine.get_frames_drawn())
 	if timeout:
 		tracked_variables[name].timeout = Engine.get_frames_drawn()+timeout/0.02
 	dirty = true
 	
 func log_increment(name):
 	if not name in tracked_variables:
-		tracked_variables[name] = Line.new("string", name, "0", Engine.get_frames_drawn())
+		tracked_variables[name] = LogVariable.new("string", name, "0", Engine.get_frames_drawn())
 	tracked_variables[name].l_value = str(int(tracked_variables[name].l_value)+1)
 	dirty = true
 
 func show_line(name, start_end_array):
-	tracked_variables[name] = Line.new("vector", name, start_end_array, Engine.get_frames_drawn())
+	tracked_variables[name] = LogVariable.new("vector", name, start_end_array, Engine.get_frames_drawn())
 
 func show_at(name, value, pos):
-	# Not yet implemented
-	tracked_variables[name] = Line.new("pos", name, value, Engine.get_frames_drawn())
+	if not name in tracked_variables:
+		tracked_variables[name] = LogVariable.new("pos", name, value, Engine.get_frames_drawn())
+		print("create")
+	tracked_variables[name].timeout = Engine.get_frames_drawn()+5
 	tracked_variables[name].l_pos = pos
+	tracked_variables[name].l_value = value
