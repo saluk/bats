@@ -43,3 +43,4 @@ func update_brain():
 		current_state.process(self.delta)
 	else:
 		new_state()
+	DebugLogger.show_at(base_node.name + "." + name + ".state", current_state.name, base_node.global_position)

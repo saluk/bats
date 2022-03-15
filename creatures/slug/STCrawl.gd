@@ -8,7 +8,9 @@ func can_switch():
 func process(_delta):
 	if not enabled:
 		return
-	machine.attached = true
+		
+	machine.apply_attach_force()
+		
 	machine.creature.move += machine.attach_move_direction() * 25
 	if machine.hit_wall:
 		machine.attach_direction = -machine.attach_move_direction()
@@ -19,3 +21,4 @@ func process(_delta):
 		machine.attach_direction = machine.attach_move_direction()
 		machine.direction = -machine.direction
 		machine.creature.position += machine.attach_move_direction() * 4
+

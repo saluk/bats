@@ -9,17 +9,17 @@ var creature:Creature = null  # Creature we are controlling
 var target:Creature = null
 
 export var direction = 1 # x direction to move along the floor, rotates with attached surface
-var attached = true   # Try to attach to nearby walls or fall
 var attach_direction = Vector2.ZERO  #Normal of wall we are attached to
 var hit_wall = false
 var hit_gap = false
+var space_state
 
 func _ready():
 	creature = get_parent()
-	var _a = creature.connect("is_dead", self, "clear_attach")
+	space_state = creature.get_world_2d().direct_space_state
+	var _a = creature.connect("is_dead", self, "make_dead")
 	
-func clear_attach():
-	attached = false
+func make_dead():
 	creature.animation.animatedSprite.modulate = Color(1, 0, 0)
 
 func get_target():
@@ -57,8 +57,7 @@ func check_hit_gap(space_state):
 	return result.empty()
 			
 func attach_to_walls():
-	var space_state = creature.get_world_2d().direct_space_state
-	if attached and attach_direction.length()==0:
+	if attach_direction.length()==0:
 		var result
 		for vdirection in [Vector2(0,1), Vector2(0,-1), Vector2(1,0), Vector2(-1,0)]:
 			result = space_state.intersect_ray(
@@ -70,7 +69,9 @@ func attach_to_walls():
 			if not result.empty():
 				attach_direction = -vdirection  #reverse ray to get normal
 				break
-	if attached and attach_direction:
+				
+func apply_attach_force():
+	if attach_direction:
 		# Stick to surface force
 		creature.move.x = 0
 		creature.move.y = 0
@@ -100,11 +101,7 @@ func attach_move_direction():
 	return move_dir
 
 func _physics_process(_delta):
-	if attached:
-		attach_to_walls()
-	else:
-		creature.animation.animatedSprite.rotation_degrees = 0
-		creature.get_node("Attack").rotation_degrees = 0
+	attach_to_walls()
 
 func update_brain():
 	if creature.alive:
