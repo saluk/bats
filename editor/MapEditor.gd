@@ -99,6 +99,7 @@ func edit_scene(scene, tilemap:RoomMap):
 	if tilemap.generate_room_offset:
 		tilemap.generate_room_offset = false
 		tilemap.room_offset = get_offset_index(Vector2(min_x, min_y), tilemap)
+		save_map.room_offset = tilemap.room_offset
 	var offset = tilemap.room_offset
 	save_map.clear()
 	for x in range(min_x, max_x+1):

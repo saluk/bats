@@ -47,9 +47,37 @@ room_cell_size = Vector2( 32, 32 )
 room_offset = Vector2( 7, 2 )
 generate_room_offset = false
 
+[node name="ChooseScene" type="TileMap" parent="Layout"]
+modulate = Color( 0.929412, 0.305882, 1, 1 )
+position = Vector2( 0, 84 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 131079, 1, 1, 131080, 1, 65537, 131081, 1, 1, 196615, 1, 65536, 196616, 1, 131073, 196617, 1, 65538 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 6 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 7, 9 )
+generate_room_offset = false
+
+[node name="MonsterCloset" type="TileMap" parent="Layout"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -45, 84 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 131079, 1, 0, 131080, 1, 1, 131081, 1, 1, 196615, 1, 131072, 196616, 1, 131073, 196617, 1, 131074 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 6 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 4, 9 )
+generate_room_offset = false
+
 [node name="TutorialStartBranch1" type="TileMap" parent="Layout"]
 modulate = Color( 0.407843, 1, 0.168627, 1 )
-position = Vector2( -15, 0 )
+position = Vector2( 60, 0 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 15, 12 )
 cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
@@ -63,7 +91,7 @@ generate_room_offset = false
 
 [node name="TutorialStart1AVerticalCrawl" type="TileMap" parent="Layout"]
 modulate = Color( 0.458824, 0.701961, 0.701961, 1 )
-position = Vector2( -15, 0 )
+position = Vector2( 60, 0 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 15, 12 )
 cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
@@ -142,6 +170,6 @@ tile_data = PoolIntArray( 4, 1, 131075, 65540, 1, 131075, 131076, 1, 131075, 196
 [node name="Player" type="Node" parent="."]
 
 [node name="Bat" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 115.569, 28.5451 )
+position = Vector2( 127.016, 119.777 )
 scale = Vector2( 0.5, 0.5 )
 mob_id = "188794334"
