@@ -5,7 +5,6 @@ class_name CrawlingAIController
 var spot_distance = 100
 
 ### Operation variables ###
-var creature:Creature = null  # Creature we are controlling
 var target:Creature = null
 
 export var direction = 1 # x direction to move along the floor, rotates with attached surface
@@ -15,12 +14,12 @@ var hit_gap = false
 var space_state
 
 func _ready():
-	creature = get_parent()
-	space_state = creature.get_world_2d().direct_space_state
-	var _a = creature.connect("is_dead", self, "make_dead")
+	._ready()
+	space_state = base_node.get_world_2d().direct_space_state
+	var _a = base_node.connect("is_dead", self, "make_dead")
 	
 func make_dead():
-	creature.animation.animatedSprite.modulate = Color(1, 0, 0)
+	base_node.animation.animatedSprite.modulate = Color(1, 0, 0)
 
 func get_target():
 	for n in get_tree().get_nodes_in_group("player"):
@@ -30,7 +29,7 @@ func get_target():
 			
 func check_hit_wall(space_state):
 	var result
-	var start_pos = creature.global_position
+	var start_pos = base_node.global_position
 	#print("gap_start_pos:", start_pos)
 	var end_pos = start_pos + attach_move_direction()*10
 	#print("gap_end_pos:", end_pos)
@@ -44,7 +43,7 @@ func check_hit_wall(space_state):
 	
 func check_hit_gap(space_state):
 	var result
-	var start_pos = creature.global_position + attach_move_direction()*1
+	var start_pos = base_node.global_position + attach_move_direction()*1
 	#print("gap_start_pos:", start_pos)
 	var end_pos = start_pos - attach_direction*20
 	#print("gap_end_pos:", end_pos)
@@ -61,8 +60,8 @@ func attach_to_walls():
 		var result
 		for vdirection in [Vector2(0,1), Vector2(0,-1), Vector2(1,0), Vector2(-1,0)]:
 			result = space_state.intersect_ray(
-				creature.global_position,
-				creature.global_position + vdirection*10,
+				base_node.global_position,
+				base_node.global_position + vdirection*10,
 				[self],
 				0b00000000000000000001
 			)
@@ -73,26 +72,22 @@ func attach_to_walls():
 func apply_attach_force():
 	if attach_direction:
 		# Stick to surface force
-		creature.move.x = 0
-		creature.move.y = 0
-		creature.move -= attach_direction * 10
+		base_node.move.x = 0
+		base_node.move.y = 0
+		base_node.move -= attach_direction * 10
 		
 		hit_wall = check_hit_wall(space_state)
 		hit_gap = check_hit_gap(space_state)
-		#print("attach_direction:", attach_direction)
-		#print("attach_move_direction:", attach_move_direction())
-		#print("hit_wall:", hit_wall)
-		#print("hit_gap:", hit_gap)
 		
-		creature.animation.animatedSprite.rotation = lerp(
-			creature.animation.animatedSprite.rotation,
+		base_node.animation.animatedSprite.rotation = lerp(
+			base_node.animation.animatedSprite.rotation,
 			-attach_direction.angle_to(Vector2.UP),
 			0.2)
-		creature.get_node("Attack").rotation = -attach_direction.angle_to(Vector2.UP)
+		base_node.get_node("Attack").rotation = -attach_direction.angle_to(Vector2.UP)
 		if abs(attach_move_direction().x) > 0.5:
-			creature.animation.set_flipx(-direction)
+			base_node.animation.set_flipx(-direction)
 		if abs(attach_move_direction().y) > 0.5:
-			creature.animation.set_flipx(direction)
+			base_node.animation.set_flipx(direction)
 		
 func attach_move_direction():
 	if not attach_direction:
@@ -104,5 +99,5 @@ func _physics_process(_delta):
 	attach_to_walls()
 
 func update_brain():
-	if creature.alive:
+	if base_node.alive:
 		.update_brain()

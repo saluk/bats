@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
 [ext_resource path="res://scenes/castle_foreground.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/ParallaxBackgroundDarkCastle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://creatures/slug/slug.tscn" type="PackedScene" id=4]
+[ext_resource path="res://creatures/archer/archer.tscn" type="PackedScene" id=5]
 
 [node name="MonsterCloset" type="Node2D" groups=[
 "room_root",
@@ -23,5 +24,8 @@ mapname = "MonsterCloset"
 room_offset = Vector2( 4, 9 )
 generate_room_offset = false
 
-[node name="Slug" parent="." instance=ExtResource( 4 )]
-position = Vector2( 210, 204 )
+[node name="Slug2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 153.15, 71.7721 )
+
+[node name="Archer" parent="." instance=ExtResource( 5 )]
+position = Vector2( 48.1022, 196.541 )

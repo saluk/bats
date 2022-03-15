@@ -4,14 +4,12 @@ class_name ComponentBase
 class Component:
 	var instance:Node
 	var base_node:Node
-	func _init(component):
-		instance = component
 
-static func base_node(component):
-	while component and "component" in component and component.component is Component:
-		component = component.get_parent()
-	return component
+static func base_node(node):
+	while node and "component" in node and node.component is Component:
+		node = node.get_parent()
+	print("stopping at ",node)
+	return node
 	
-static func component_ready(component):
-	component.component = Component.new(component)
-	component.base_node = base_node(component)
+static func component_ready(component_node):
+	component_node.base_node = base_node(component_node)

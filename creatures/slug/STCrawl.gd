@@ -11,14 +11,14 @@ func process(_delta):
 		
 	machine.apply_attach_force()
 		
-	machine.creature.move += machine.attach_move_direction() * 25
+	base_node.move += machine.attach_move_direction() * 25
 	if machine.hit_wall:
 		machine.attach_direction = -machine.attach_move_direction()
 		machine.direction = -machine.direction
 	elif machine.hit_gap:
 		# TODO we are bad at gaps
-		machine.creature.position += machine.attach_move_direction() * 4
+		base_node.position += machine.attach_move_direction() * 4
 		machine.attach_direction = machine.attach_move_direction()
 		machine.direction = -machine.direction
-		machine.creature.position += machine.attach_move_direction() * 4
+		base_node.position += machine.attach_move_direction() * 4
 
