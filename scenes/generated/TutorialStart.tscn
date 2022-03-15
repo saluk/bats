@@ -99,3 +99,6 @@ script = ExtResource( 1 )
 mapname = "TutorialStart"
 room_offset = Vector2( 7, 2 )
 generate_room_offset = false
+
+[node name="Label" type="Label" parent="."]
+text = "TutorialStart"

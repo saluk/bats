@@ -18,3 +18,6 @@ script = ExtResource( 1 )
 mapname = "TutorialStart1AVerticalCrawl"
 room_offset = Vector2( 8, -14 )
 generate_room_offset = false
+
+[node name="Label" type="Label" parent="."]
+text = "TutorialStart1AVerticalCrawl"

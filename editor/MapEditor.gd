@@ -40,7 +40,7 @@ func get_scene_for(name):
 		return null
 	return load(scene_file(name)).instance()
 	
-func update_scene_for(scene:Node, source_map):
+func update_scene_for(scene:Node, source_map:RoomMap):
 	print("-- (Re)Making new scene for "+source_map.name)
 	scene.name = source_map.name
 	# Clear the Generated objects
@@ -48,6 +48,10 @@ func update_scene_for(scene:Node, source_map):
 		if child.name.begins_with("Generated"):
 			scene.remove_child(child)
 	scene.add_to_group("room_root", true)
+	var bg_scene = source_map.background_scene.instance()
+	bg_scene.name = "GeneratedBackground"
+	scene.add_child(bg_scene)
+	bg_scene.set_owner(scene)
 	var tilemap:RoomMap = RoomMap.new()
 	tilemap.add_to_group("room_tilemap", true)
 	print("GROUPS:", tilemap.get_groups())
@@ -59,10 +63,6 @@ func update_scene_for(scene:Node, source_map):
 	tilemap.generate_room_offset = false
 	scene.add_child(tilemap)
 	tilemap.set_owner(scene)
-	#var label = Label.new()
-	#label.text = source_map.name
-	#scene.add_child(label)
-	#label.set_owner(scene)
 	#scene.print_tree_pretty()
 	return scene
 	
