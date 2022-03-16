@@ -13,6 +13,9 @@ export var invincible = false
 export var apply_damage_node_path:NodePath
 export var damage_knockback_force = 250
 
+# key is just an identifier, value is an array of damage types
+export var excluded_damage_type_masks:Dictionary
+
 signal applied_damage(source)
 
 class DamageSourceRecord extends Reference:
@@ -70,7 +73,7 @@ func add_source(object):
 	if not object in damage_sources.keys():
 		damage_sources[object] = DamageSourceRecord.new()
 		damage_sources[object].collider = object
-		damage_sources[object].type = "normal"
+		damage_sources[object].type = object.damage_type
 		damage_sources[object].amount = object.damage
 		damage_sources[object].direction = (object.global_position - base_node.global_position).normalized()
 		print("added damage source")
@@ -87,10 +90,26 @@ func _physics_process(delta):
 	if last_hurt < iseconds:
 		last_hurt += delta
 		return
+	DebugLogger.show_at("masks", excluded_damage_type_masks.keys().size(), base_node.global_position)
 	hurt()
 	
 func apply_knockback(source):
 	base_node.move += -source.direction * damage_knockback_force
+	
+func set_type_mask(key, types):
+	excluded_damage_type_masks[key] = types
+
+func clear_type_mask(key):
+	if key in excluded_damage_type_masks:
+		excluded_damage_type_masks.erase(key)
+	
+func damage_allowed(source):
+	if invincible:
+		return false
+	for types in excluded_damage_type_masks.values():
+		if source.type in types:
+			return false
+	return true
 	
 func hurt():
 	for source_object in damage_sources.keys():
@@ -99,7 +118,7 @@ func hurt():
 			if source.enabled():
 				DebugLogger.log_increment("damage_taken "+base_node.name)
 				print("take damage "+base_node.name)
-				if not invincible:
+				if damage_allowed(source):
 					emit_signal("applied_damage", source)
 					source.apply()
 					apply_knockback(source)

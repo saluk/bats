@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://creatures/combat/DamageSource.gd" type="Script" id=1]
-[ext_resource path="res://creatures/combat/DamageTaker.gd" type="Script" id=2]
+[ext_resource path="res://system/combat/DamageSource.gd" type="Script" id=1]
+[ext_resource path="res://system/combat/DamageTaker.gd" type="Script" id=2]
 [ext_resource path="res://creatures/Creature.gd" type="Script" id=3]
 [ext_resource path="res://system/InitMob.gd" type="Script" id=4]
 [ext_resource path="res://creatures/slug/STCrawl.gd" type="Script" id=5]

@@ -53,7 +53,7 @@ var attack_fire_trail = AttackPower.new(
 var attack_arrow = AttackPower.new(AttackPower.PROJECTILE, 
 	"res://objects/projectiles/Arrow.tscn",
 	{"direction": Vector2(1,1)})
-var attack_rush = [attack_fire_trail, attack_arrow]
+var attack_rush = []
 
 ### Signals ###
 signal stunned
@@ -188,7 +188,14 @@ func choose_animation():
 	if not near_rafter:
 		animation.animatedSprite.rotation_degrees = 0
 		animation.animatedSprite.position.y = 0
-	$RushAttackBonus.set_attacking(attack_effect)
+	handle_attack_states(attack_effect)
+	
+func handle_attack_states(is_attacking:bool):
+	$RushAttackBonus.set_attacking(is_attacking)
+	if is_attacking:
+		$DamageTaker.set_type_mask("attacking", ["blunt"])
+	else:
+		$DamageTaker.clear_type_mask("attacking")
 		
 func limit_movement():
 	if move.x < -xlimit: move.x = -xlimit

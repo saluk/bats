@@ -23,6 +23,7 @@ animations = [ {
 
 [node name="Arrow" type="Node2D"]
 script = ExtResource( 2 )
+damage_type = "projectile"
 
 [node name="Mover" type="Area2D" parent="."]
 collision_layer = 0

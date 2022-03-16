@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://effects/firetrail.gd" type="Script" id=1]
-[ext_resource path="res://creatures/combat/DamageSource.gd" type="Script" id=2]
+[ext_resource path="res://system/combat/DamageSource.gd" type="Script" id=2]
 [ext_resource path="res://effects/FiretrailCollision.gd" type="Script" id=3]
 [ext_resource path="res://effects/lightmask.png" type="Texture" id=4]
 
@@ -52,7 +52,7 @@ position = Vector2( 1.20856, 0.156929 )
 collision_layer = 0
 collision_mask = 32
 script = ExtResource( 2 )
-type = "fire"
+damage_type = "fire"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionTemplate/DamageSource"]
 position = Vector2( -3.08144, 7.14731 )

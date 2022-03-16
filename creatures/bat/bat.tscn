@@ -6,12 +6,12 @@
 [ext_resource path="res://creatures/bat/BatPlayerController.gd" type="Script" id=4]
 [ext_resource path="res://creatures/bat/Charge.gd" type="Script" id=5]
 [ext_resource path="res://creatures/bat/Arc.gd" type="Script" id=6]
-[ext_resource path="res://creatures/combat/Shield.gd" type="Script" id=7]
+[ext_resource path="res://system/combat/Shield.gd" type="Script" id=7]
 [ext_resource path="res://creatures/bat/Perch.gd" type="Script" id=8]
 [ext_resource path="res://system/InitMob.gd" type="Script" id=9]
 [ext_resource path="res://creatures/bat/mybat1.png" type="Texture" id=11]
-[ext_resource path="res://creatures/combat/DamageTaker.gd" type="Script" id=12]
-[ext_resource path="res://creatures/combat/DamageSource.gd" type="Script" id=13]
+[ext_resource path="res://system/combat/DamageTaker.gd" type="Script" id=12]
+[ext_resource path="res://system/combat/DamageSource.gd" type="Script" id=13]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.33508
@@ -24,14 +24,9 @@ animations = [ {
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 11 ) ],
-"loop": false,
-"name": "attack",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 11 ) ],
-"loop": false,
-"name": "land",
-"speed": 10.0
+"loop": true,
+"name": "fly",
+"speed": 16.0
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": false,
@@ -39,13 +34,18 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "fly",
-"speed": 16.0
+"loop": false,
+"name": "land",
+"speed": 10.0
 }, {
 "frames": [  ],
 "loop": false,
 "name": "death",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "attack",
 "speed": 10.0
 } ]
 
@@ -91,43 +91,43 @@ region = Rect2( 288, 160, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 256, 32, 32 )
+region = Rect2( 0, 224, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 256, 32, 32 )
+region = Rect2( 32, 224, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 256, 32, 32 )
+region = Rect2( 64, 224, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 256, 32, 32 )
+region = Rect2( 96, 224, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 1 )
-region = Rect2( 128, 256, 32, 32 )
+region = Rect2( 128, 224, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 1 )
-region = Rect2( 160, 256, 32, 32 )
+region = Rect2( 160, 224, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 1 )
-region = Rect2( 192, 256, 32, 32 )
+region = Rect2( 192, 224, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 1 )
-region = Rect2( 224, 256, 32, 32 )
+region = Rect2( 224, 224, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 1 )
-region = Rect2( 256, 256, 32, 32 )
+region = Rect2( 256, 224, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 1 )
-region = Rect2( 288, 256, 32, 32 )
+region = Rect2( 288, 224, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 1 )
@@ -143,99 +143,99 @@ region = Rect2( 64, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 1 )
-region = Rect2( 224, 256, 32, 32 )
+region = Rect2( 0, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 256, 32, 32 )
+region = Rect2( 32, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 256, 32, 32 )
+region = Rect2( 64, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 256, 32, 32 )
+region = Rect2( 224, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 224, 32, 32 )
+region = Rect2( 0, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 224, 32, 32 )
+region = Rect2( 32, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 224, 32, 32 )
+region = Rect2( 64, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 224, 32, 32 )
+region = Rect2( 96, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 1 )
-region = Rect2( 128, 224, 32, 32 )
+region = Rect2( 128, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 1 )
-region = Rect2( 160, 224, 32, 32 )
+region = Rect2( 160, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 1 )
-region = Rect2( 192, 224, 32, 32 )
+region = Rect2( 192, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 1 )
-region = Rect2( 224, 224, 32, 32 )
+region = Rect2( 224, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 1 )
-region = Rect2( 256, 224, 32, 32 )
+region = Rect2( 256, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 1 )
-region = Rect2( 288, 224, 32, 32 )
+region = Rect2( 288, 288, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 288, 32, 32 )
+region = Rect2( 0, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=41]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 288, 32, 32 )
+region = Rect2( 32, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=42]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 288, 32, 32 )
+region = Rect2( 64, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 288, 32, 32 )
+region = Rect2( 96, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=44]
 atlas = ExtResource( 1 )
-region = Rect2( 128, 288, 32, 32 )
+region = Rect2( 128, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 1 )
-region = Rect2( 160, 288, 32, 32 )
+region = Rect2( 160, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=46]
 atlas = ExtResource( 1 )
-region = Rect2( 192, 288, 32, 32 )
+region = Rect2( 192, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=47]
 atlas = ExtResource( 1 )
-region = Rect2( 224, 288, 32, 32 )
+region = Rect2( 224, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=48]
 atlas = ExtResource( 1 )
-region = Rect2( 256, 288, 32, 32 )
+region = Rect2( 256, 256, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 1 )
-region = Rect2( 288, 288, 32, 32 )
+region = Rect2( 288, 256, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=50]
 animations = [ {
@@ -245,28 +245,28 @@ animations = [ {
 "speed": 7.0
 }, {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
-"loop": false,
-"name": "attack",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
-"loop": false,
-"name": "land",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
-"loop": false,
-"name": "prepare_charge",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
 "loop": true,
 "name": "fly",
 "speed": 16.0
 }, {
-"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ) ],
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": false,
+"name": "prepare_charge",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": false,
+"name": "land",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
 "loop": false,
 "name": "death",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ) ],
+"loop": false,
+"name": "attack",
 "speed": 10.0
 } ]
 
@@ -325,7 +325,7 @@ playing = true
 visible = false
 frames = SubResource( 50 )
 animation = "idle"
-frame = 6
+frame = 1
 playing = true
 
 [node name="PickupRegion" type="Area2D" parent="."]
@@ -413,7 +413,6 @@ shape = SubResource( 51 )
 
 [node name="DamageTaker" type="Node2D" parent="."]
 script = ExtResource( 12 )
-invincible = true
 apply_damage_node_path = NodePath("../HealthBar")
 
 [node name="Hurt" type="Area2D" parent="DamageTaker"]

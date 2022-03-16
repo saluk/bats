@@ -14,7 +14,7 @@ export var width = 2
 	
 func get_color(shield):
 	var percent = float(shield['health']) / shield['max_health']
-	var ramp:Gradient = load("res://creatures/combat/healthbar_colors.tres")
+	var ramp:Gradient = load("res://system/combat/healthbar_colors.tres")
 	print(shield, " percent ", percent, " ramp ", ramp.interpolate(percent))
 	return ramp.interpolate(percent)
 	

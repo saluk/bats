@@ -122,12 +122,12 @@ _global_script_classes=[ {
 "base": "Area2DComponent",
 "class": "DamageSource",
 "language": "GDScript",
-"path": "res://creatures/combat/DamageSource.gd"
+"path": "res://system/combat/DamageSource.gd"
 }, {
 "base": "Node2DComponent",
 "class": "DamageTaker",
 "language": "GDScript",
-"path": "res://creatures/combat/DamageTaker.gd"
+"path": "res://system/combat/DamageTaker.gd"
 }, {
 "base": "ValueProvider",
 "class": "DefaultValueProvider",
@@ -642,7 +642,7 @@ _global_script_classes=[ {
 "base": "Node2DComponent",
 "class": "HealthBar",
 "language": "GDScript",
-"path": "res://creatures/combat/HealthBar.gd"
+"path": "res://system/combat/HealthBar.gd"
 }, {
 "base": "NodeComponent",
 "class": "InitMob",
@@ -802,7 +802,7 @@ _global_script_classes=[ {
 "base": "Node2DComponent",
 "class": "Shield",
 "language": "GDScript",
-"path": "res://creatures/combat/Shield.gd"
+"path": "res://system/combat/Shield.gd"
 }, {
 "base": "Resource",
 "class": "SignalHandler",

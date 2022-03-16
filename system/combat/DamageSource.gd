@@ -2,7 +2,7 @@ extends Area2DComponent
 class_name DamageSource
 
 export var damage = 1
-export var type = 'blunt'
+export var damage_type = 'blunt'
 export var enabled = true
 var enabled_time = null
 

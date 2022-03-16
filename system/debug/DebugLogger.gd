@@ -57,7 +57,7 @@ func write_text():
 				v.l_node = Label.new()
 				get_tree().get_nodes_in_group("debug_position_control")[0].add_child(v.l_node)
 			v.l_node.set_global_position(v.l_pos)
-			v.l_node.text = v.l_value
+			v.l_node.text = str(v.l_value)
 	ar.sort_custom(self, "sort_by_time")
 	for val in ar:
 		var name = val[0]

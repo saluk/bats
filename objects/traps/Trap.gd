@@ -1,6 +1,7 @@
 extends Node2D
 
 export var damage = 1
+export var damage_type = 'trap'
 
 var enabled = true
 

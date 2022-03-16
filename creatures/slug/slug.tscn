@@ -8,9 +8,9 @@
 [ext_resource path="res://system/InitMob.gd" type="Script" id=7]
 [ext_resource path="res://creatures/slug/STCrawl.gd" type="Script" id=8]
 [ext_resource path="res://creatures/slug/STDrop.gd" type="Script" id=9]
-[ext_resource path="res://creatures/combat/DamageSource.gd" type="Script" id=10]
-[ext_resource path="res://creatures/combat/HealthBar.gd" type="Script" id=11]
-[ext_resource path="res://creatures/combat/DamageTaker.gd" type="Script" id=12]
+[ext_resource path="res://system/combat/DamageSource.gd" type="Script" id=10]
+[ext_resource path="res://system/combat/HealthBar.gd" type="Script" id=11]
+[ext_resource path="res://system/combat/DamageTaker.gd" type="Script" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.96337
@@ -67,7 +67,6 @@ position = Vector2( -0.132431, -1.90735e-06 )
 scale = Vector2( -0.05, 0.05 )
 frames = SubResource( 2 )
 animation = "crawl"
-frame = 1
 playing = true
 
 [node name="CrawlingAIController" type="Node" parent="."]
