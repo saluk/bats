@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://creatures/bat/bat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://system/UI/WorldMapUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://system/debug/DebugLogger.tscn" type="PackedScene" id=3]
 [ext_resource path="res://system/Camera/CameraLimitZoom.gd" type="Script" id=4]
 [ext_resource path="res://system/debug/DebugLogger.tres" type="Theme" id=5]
+[ext_resource path="res://system/UI/AbilityButton.gd" type="Script" id=6]
 
 [node name="prototype" type="Node2D"]
 
@@ -31,7 +32,7 @@ position = Vector2( 120, 64 )
 mob_id = "188802874"
 
 [node name="AnimatedSpriteOld" parent="Bat" index="5"]
-frame = 3
+frame = 8
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1
@@ -68,9 +69,8 @@ __meta__ = {
 "drop_button",
 ]]
 visible = false
-margin_left = 0.374573
-margin_top = 107.398
-margin_right = 260.495
+margin_top = 107.0
+margin_right = 198.0
 margin_bottom = 128.0
 text = "Toss"
 __meta__ = {
@@ -81,14 +81,38 @@ __meta__ = {
 "grab_button",
 ]]
 visible = false
-margin_left = 0.374573
-margin_top = 107.398
-margin_right = 260.495
+margin_top = 107.0
+margin_right = 198.0
 margin_bottom = 128.0
 text = "Grab"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SubInterface" type="Control" parent="CanvasLayer/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AbilityButton" type="Button" parent="CanvasLayer/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 232.78
+margin_top = 117.743
+margin_right = 255.78
+margin_bottom = 127.743
+theme = ExtResource( 5 )
+toggle_mode = true
+text = "Ability"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+sub_interface = NodePath("../SubInterface")
 
 [node name="WorldMap" parent="CanvasLayer/Control" instance=ExtResource( 2 )]
 
@@ -104,7 +128,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 5 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [connection signal="pressed" from="CanvasLayer/Control/TossButton" to="Bat" method="_on_Drop_pressed"]

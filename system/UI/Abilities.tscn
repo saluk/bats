@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://system/UI/Abilities.gd" type="Script" id=1]
+
+[node name="Abilities" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+rush_label = NodePath("Panel/RushLabel")
+rush_abilities = NodePath("Panel/RushAbilties")
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_right = 256.0
+margin_bottom = 128.0
+
+[node name="RushLabel" type="Label" parent="Panel"]
+margin_left = 45.0
+margin_top = 24.0
+margin_right = 85.0
+margin_bottom = 38.0
+text = "Rush"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RushAbilties" type="ItemList" parent="Panel"]
+margin_left = 75.0
+margin_top = 48.0
+margin_right = 180.0
+margin_bottom = 108.0
+auto_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_selected" from="Panel/RushAbilties" to="." method="_on_RushAbilties_item_selected"]

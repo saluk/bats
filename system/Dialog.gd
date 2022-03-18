@@ -23,7 +23,7 @@ func pause_gameplay():
 	emit_signal("pause_for_dialog")
 	get_tree().paused = true
 
-func unpause_gameplay(_timeline_name):
+func unpause_gameplay(_timeline_name=null):
 	get_tree().paused = false
 	emit_signal("resume_from_dialog")
 			

@@ -38,22 +38,28 @@ var attack_damage = 1
 ### Attack powers ###
 class AttackPower:
 	enum {PROJECTILE, CONSTANT}
+	var name = ""
 	var mode = CONSTANT
 	var scene = ""
 	var props = {}
-	func _init(_mode, _scene, _props):
+	func _init(_name, _mode, _scene, _props):
+		name = _name
 		mode = _mode
 		scene = _scene
 		props = _props
 	
 var attack_fire_trail = AttackPower.new(
+	"Enflame",
 	AttackPower.CONSTANT, 
 	"res://effects/firetrail.tscn",
 	{"max_shapes": 20})
-var attack_arrow = AttackPower.new(AttackPower.PROJECTILE, 
+var attack_arrow = AttackPower.new(
+	"Arrow spit",
+	AttackPower.PROJECTILE, 
 	"res://objects/projectiles/Arrow.tscn",
 	{"direction": Vector2(1,1)})
 var attack_rush = []
+var attacks_available = [attack_fire_trail, attack_arrow]
 
 ### Signals ###
 signal stunned
