@@ -73,7 +73,7 @@ func _draw():
 			draw_line(
 				v.l_value[0],
 				v.l_value[1],
-				Color.red,
+				Color(rand_range(0.0,1.0),rand_range(0.0,1.0),rand_range(0.0,1.0)),
 				1.0,
 				true
 			)

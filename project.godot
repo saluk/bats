@@ -44,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://system/components/Area2DComponent.gd"
 }, {
-"base": "Node",
+"base": "NodeComponent",
 "class": "BatPlayerController",
 "language": "GDScript",
 "path": "res://creatures/bat/BatPlayerController.gd"
@@ -103,6 +103,11 @@ _global_script_classes=[ {
 "class": "ComponentBase",
 "language": "GDScript",
 "path": "res://system/components/ComponentBase.gd"
+}, {
+"base": "NodeComponent",
+"class": "Cooldown",
+"language": "GDScript",
+"path": "res://system/combat/Cooldown.gd"
 }, {
 "base": "StateMachine",
 "class": "CrawlingAIController",
@@ -814,7 +819,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/core/event/SignalHandler.gd"
 }, {
-"base": "NodeComponent",
+"base": "SMState",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://system/AI/StateMachine.gd"
@@ -894,6 +899,7 @@ _global_script_class_icons={
 "CmdOptions": "",
 "Comparator": "",
 "ComponentBase": "",
+"Cooldown": "",
 "CrawlingAIController": "",
 "Creature": "",
 "CreatureAnimation": "",

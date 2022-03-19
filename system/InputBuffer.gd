@@ -33,7 +33,7 @@ func apply_event(method, action):
 		print("event:", method, " ", action, " buffer:", buffer)
 	for mapping in input_mappings.values():
 		if mapping['method'] == method and mapping['action'] == action:
-			mapping['self'].call(mapping['func_name'])
+			mapping['self'].callv(mapping['func_name'], mapping.get('args', []))
 
 # Input
 func _unhandled_input(event):

@@ -32,6 +32,7 @@ var rafter_gravity = 0.0
 var rafter_heal_rate = 0.5 # seconds per shield health point
 var next_rafter_heal = 0.5
 
+onready var rush_attack_cooldown = get_node("RushAttackBonus/Cooldown")
 var attack_collision:Area2D = null
 var attack_damage = 1
 
@@ -129,8 +130,14 @@ func grab_item():
 	$Holding.get_child(0).texture = holding.find_node('Sprite').texture
 	return true
 	
-func charge_attack(direction):
+func rush_attack(direction):
 	if not alive: return
+	if not rush_attack_cooldown.start():
+		move.x = direction*$LeftCharge.charge_speed * 0.5
+		move.y = $LeftCharge.charge_speed * 0.5
+		return
+	$LeftCharge.clear_charges()
+	$RightCharge.clear_charges()
 	set_flip(direction)
 	move.x = direction*$LeftCharge.charge_speed
 	move.y = $LeftCharge.charge_speed
@@ -157,10 +164,7 @@ func charge_state():
 	return false
 				
 func is_attacking():
-	for node in get_children():
-		if "charge_state" in node:
-			if node.charge_state == node.ReleaseCharge:
-				return true
+	return attack_collision.enabled
 
 func get_charge_anim():
 	var anim = ""

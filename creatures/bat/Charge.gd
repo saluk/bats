@@ -46,14 +46,6 @@ func release_charge():
 		else:
 			charge_state = NotCharging
 			charge_level = 0
-		
-func apply_charge():
-	if not bat.alive:
-		return
-	charge_state = ReleaseCharge
-	charge_level = 0
-	bat.charge_attack(charge_direction)
-
 	
 func apply_radar():
 	clear_charges()

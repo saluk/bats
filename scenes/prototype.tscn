@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://creatures/bat/bat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://system/UI/WorldMapUI.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://system/Camera/CameraLimitZoom.gd" type="Script" id=4]
 [ext_resource path="res://system/debug/DebugLogger.tres" type="Theme" id=5]
 [ext_resource path="res://system/UI/AbilityButton.gd" type="Script" id=6]
+[ext_resource path="res://system/UI/AbilityCooldown.gd" type="Script" id=7]
 
 [node name="prototype" type="Node2D"]
 
@@ -32,7 +33,7 @@ position = Vector2( 120, 64 )
 mob_id = "188802874"
 
 [node name="AnimatedSpriteOld" parent="Bat" index="5"]
-frame = 8
+frame = 6
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1
@@ -113,6 +114,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 sub_interface = NodePath("../SubInterface")
+
+[node name="CooldownRush" type="ColorRect" parent="CanvasLayer/Control/AbilityButton"]
+margin_left = -2.0
+margin_top = -13.0
+margin_right = 9.0
+margin_bottom = -2.0
+color = Color( 1, 1, 1, 0.317647 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+cooldown_group = "cooldown_rush"
+
+[node name="CooldownRushBonus" type="ColorRect" parent="CanvasLayer/Control/AbilityButton"]
+margin_left = 12.0158
+margin_top = -13.0
+margin_right = 23.0158
+margin_bottom = -2.0
+color = Color( 1, 1, 1, 0.290196 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+cooldown_group = "cooldown_rush_bonus"
 
 [node name="WorldMap" parent="CanvasLayer/Control" instance=ExtResource( 2 )]
 

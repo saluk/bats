@@ -1,15 +1,14 @@
-extends Node
+extends NodeComponent
 class_name BatPlayerController
 
 ### Operation variables ###
-var bat:FlyingCreature = null
+onready var bat = base_node as FlyingCreature
 var left_charge = null
 var right_charge = null
 
 var input_buffer:InputBuffer
 
 func _ready():
-	bat = get_parent()
 	left_charge = bat.get_node("LeftCharge")
 	right_charge = bat.get_node("RightCharge")
 	
@@ -29,14 +28,16 @@ func _ready():
 		'attack_left': {
 			'action': 'ui_left',
 			'method': 'double',
-			'self': left_charge,
-			'func_name': 'apply_charge'
+			'self': bat,
+			'func_name': 'rush_attack',
+			'args': [-1]
 		},
 		'attack_right': {
 			'action': 'ui_right',
 			'method': 'double',
-			'self': right_charge,
-			'func_name': 'apply_charge'
+			'self': bat,
+			'func_name': 'rush_attack',
+			'args': [1]
 		},
 		'charge_left': {
 			'action': 'ui_left',

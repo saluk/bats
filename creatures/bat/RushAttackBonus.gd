@@ -5,6 +5,7 @@ var enabled = false
 export var effects_variable = ""
 
 var emitters = {}
+onready var bonus_cooldown = get_node("BonusCooldown")
 
 func set_attacking(_enabled):
 	if enabled and not _enabled:
@@ -19,6 +20,8 @@ func cleanup():
 			emitters[attack].set_emitting(false)
 	
 func begin():
+	if not bonus_cooldown.start():
+		return
 	for attack in base_node.get(effects_variable):
 		if attack in emitters:
 			emitters[attack].set_emitting(true)

@@ -15,7 +15,6 @@
 [node name="GeneratedTileMap" type="TileMap" parent="." groups=[
 "room_tilemap",
 ]]
-position = Vector2( -480, 0 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
