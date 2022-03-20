@@ -347,7 +347,7 @@ playing = true
 visible = false
 frames = SubResource( 50 )
 animation = "idle"
-frame = 4
+frame = 2
 playing = true
 
 [node name="PickupRegion" type="Area2D" parent="."]
