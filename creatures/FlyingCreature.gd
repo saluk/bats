@@ -32,6 +32,8 @@ var rafter_gravity = 0.0
 var rafter_heal_rate = 0.5 # seconds per shield health point
 var next_rafter_heal = 0.5
 
+onready var charge = get_node("Charge")
+
 onready var rush_attack_cooldown = get_node("RushAttackBonus/Cooldown")
 var attack_collision:Area2D = null
 var attack_damage = 1
@@ -74,10 +76,8 @@ func _ready():
 # Body functions
 
 func set_flip(x):
-	if get_node("LeftCharge").charge_state == get_node("LeftCharge").Charging:
-		x = -1
-	elif get_node("RightCharge").charge_state == get_node("RightCharge").Charging:
-		x = 1
+	if charge.charge_state == charge.Charging:
+		x = charge.charge_direction
 	animation.set_flipx(x)
 
 func flap(x_dir):
@@ -133,35 +133,25 @@ func grab_item():
 func rush_attack(direction):
 	if not alive: return
 	if not rush_attack_cooldown.start():
-		move.x = direction*$LeftCharge.charge_speed * 0.5
-		move.y = $LeftCharge.charge_speed * 0.5
+		move.x = direction*charge.charge_speed * 0.5
+		move.y = charge.charge_speed * 0.5
 		return
-	$LeftCharge.clear_charges()
-	$RightCharge.clear_charges()
+	charge.clear_charges()
 	set_flip(direction)
-	move.x = direction*$LeftCharge.charge_speed
-	move.y = $LeftCharge.charge_speed
+	move.x = direction*charge.charge_speed
+	move.y = charge.charge_speed
 	attack_collision.damage = attack_damage
 	attack_collision.enabled = true
-	attack_collision.enabled_time = $LeftCharge.release_charge_time
+	attack_collision.enabled_time = charge.release_charge_time
 
 # State enforcement
 func is_charging():
-	for node in get_children():
-		if "charge_state" in node:
-			if node.charge_state == node.Charging:
-				if node.name == "LeftCharge":
-					return -1
-				else:
-					return 1
+	if charge.charge_state == charge.Charging:
+		return charge.charge_direction
 	return 0
 	
 func charge_state():
-	for node in get_children():
-		if "charge_state" in node:
-			if node.charge_state != node.NotCharging:
-				return true
-	return false
+	return charge.charge_state != charge.NotCharging
 				
 func is_attacking():
 	return attack_collision.enabled

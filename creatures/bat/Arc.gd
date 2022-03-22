@@ -11,6 +11,10 @@ var width = 10
 onready var bat = get_parent()
 
 func _process(delta):
+	if bat.charge.what_action() != "radar":
+		visible = false
+		return
+	visible = true
 	if bat.is_charging() and bat.charge_state():
 		if angle < max_angle:
 			angle += delta*90
