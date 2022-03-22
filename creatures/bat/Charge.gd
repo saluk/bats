@@ -73,6 +73,7 @@ func apply_radar():
 		print(bat.get_node("AimingArc").dir)
 		bat.toss_vector = bat.get_node("AimingArc").get_vector() * 150
 		print(bat.toss_vector)
+		bat.holding.get_node("DamageSource").enabled = true
 		bat.drop_item()
 		
 func physics(delta):

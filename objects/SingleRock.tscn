@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/rocks.png" type="Texture" id=1]
 [ext_resource path="res://objects/SingleRock.gd" type="Script" id=2]
+[ext_resource path="res://system/combat/DamageSource.gd" type="Script" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -10,9 +11,12 @@ region = Rect2( 170.853, 22.3289, 11.8231, 10.1525 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 6.50696
 
+[sub_resource type="CircleShape2D" id=3]
+radius = 8.39094
+
 [node name="SingleRock" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 9
+collision_mask = 41
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -20,3 +24,13 @@ texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="DamageSource" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource( 3 )
+disable_on_damage = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageSource"]
+visible = false
+shape = SubResource( 3 )

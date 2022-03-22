@@ -33,7 +33,7 @@ position = Vector2( 120, 64 )
 mob_id = "188802874"
 
 [node name="AnimatedSpriteOld" parent="Bat" index="5"]
-frame = 0
+frame = 8
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bat/CameraTarget" index="0"]
 pause_mode = 1
@@ -62,30 +62,6 @@ pause_mode = 2
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TossButton" type="Button" parent="CanvasLayer/Control" groups=[
-"drop_button",
-]]
-visible = false
-margin_top = 107.0
-margin_right = 198.0
-margin_bottom = 128.0
-text = "Toss"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GrabButton" type="Button" parent="CanvasLayer/Control" groups=[
-"grab_button",
-]]
-visible = false
-margin_top = 107.0
-margin_right = 198.0
-margin_bottom = 128.0
-text = "Grab"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -155,8 +131,5 @@ theme = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
-
-[connection signal="pressed" from="CanvasLayer/Control/TossButton" to="Bat" method="_on_Drop_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/GrabButton" to="Bat" method="_on_Grab_pressed"]
 
 [editable path="Bat"]
