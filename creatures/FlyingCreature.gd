@@ -110,9 +110,9 @@ func drop_item():
 	if not holding:
 		return
 	$Holding/Sprite.texture = null
-	holding.position = $Dropping.global_position
-	get_parent().add_child(holding)
-	#holding.move = toss_vector
+	Spawner.spawn(holding, {
+		'position': $Dropping.global_position
+	})
 	holding.apply_central_impulse(toss_vector)
 	holding.pickup_time = 1
 	holding = null
@@ -287,12 +287,6 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	remove_pickup(body)
-
-func _on_Drop_pressed():
-	drop_item()
-
-func _on_Grab_pressed():
-	grab_item()
 
 func _on_Area2D_area_entered(area):
 	add_pickup(area)

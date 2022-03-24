@@ -35,9 +35,9 @@ static func get_classname(node:Node) -> String:
 		return "no_class"
 	return node.get_class()
 	
-static func get_class_node(node:Node, classname:String) -> Node:
+static func get_class_node(node:Node, classname:String):
 	for child in walk_children(node):
 		print(child.name+":"+get_classname(child))
 		if get_classname(child) == classname:
 			return child
-	return null
+	assert(false, "No child node of given class found")

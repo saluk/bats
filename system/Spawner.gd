@@ -37,23 +37,38 @@ func create_spawn_parent():
 		WorldSettings.room.add_child(spawn_parent)
 	else:
 		spawn_parent = possible_nodes[0]
-
-func spawn(path_or_scene, props:Dictionary):
-	var scene
-	var info = SpawnInfo.new()
+		
+func instance_scene(path_or_scene):
+	var cached:CacheInfo
+	var scene:Node
 	if path_or_scene is String:
 		if not path_or_scene in scene_cache:
 			scene_cache[path_or_scene] = CacheInfo.new(path_or_scene)
-		scene = scene_cache[path_or_scene]
+		cached = scene_cache[path_or_scene]
 	elif path_or_scene is PackedScene:
-		scene = CacheInfo.new("")
-		scene.scene = path_or_scene
-	info.path_or_scene = path_or_scene
+		cached = CacheInfo.new("")
+		cached.scene = path_or_scene
+	elif path_or_scene is Node:
+		scene = path_or_scene
+	else:
+		assert(false, "path_or_scene is not a path, packedscene, or node")
+	assert(cached or scene)
+	if cached:
+		scene = cached.spawn()
+	return scene
+
+func spawn(path_or_scene, props:Dictionary):
 	if "singular" in props and props["singular"]:
 		for s_info in spawned_elements:
-			if s_info.path_or_scene == info.path_or_scene:
+			if s_info.path_or_scene == path_or_scene:
 				return
-	info.node = scene.spawn()
+				
+	var info = SpawnInfo.new()
+	info.path_or_scene = path_or_scene
+
+	info.node = instance_scene(path_or_scene)
+	assert(info.node!=null)
+
 	info.time_spawned = Engine.get_physics_frames()
 	if "time_limit" in props:
 		info.time_limit = props["time_limit"]
