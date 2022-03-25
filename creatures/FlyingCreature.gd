@@ -79,32 +79,6 @@ func set_flip(x):
 	if charge.charge_state == charge.Charging:
 		x = charge.charge_direction
 	animation.set_flipx(x)
-
-func flap(x_dir):
-	if not alive:
-		return
-	last_flap = 0
-	is_flapping = true
-	set_flip(x_dir)
-	if rafter_gravity > 0:
-		rafter_gravity = -1
-		return
-	var adjust_move_x = 0
-	var adjust_move_y = 0
-	if x_dir > 0 and move.x > 0 or x_dir < 0 and move.x < 0:
-		adjust_move_x = width_multiplier * abs(move.x)
-	if move.y < 0:
-		adjust_move_y = height_multiplier * abs(move.y)
-	move.x += (jump_width+adjust_move_x) * x_dir
-	if move.y > 0:
-		move.y = move.y * 0.2
-	move.y -= jump_height + adjust_move_y
-
-func flap_left():
-	flap(-1)
-	
-func flap_right():
-	flap(1)
 	
 func drop_item():
 	if not holding:
@@ -129,20 +103,6 @@ func grab_item():
 	pickups.erase(source)
 	$Holding.get_child(0).texture = holding.find_node('Sprite').texture
 	return true
-	
-func rush_attack(direction):
-	if not alive: return
-	if not rush_attack_cooldown.start():
-		move.x = direction*charge.charge_speed * 0.5
-		move.y = charge.charge_speed * 0.5
-		return
-	charge.clear_charges()
-	set_flip(direction)
-	move.x = direction*charge.charge_speed
-	move.y = charge.charge_speed
-	attack_collision.damage = attack_damage
-	attack_collision.enabled = true
-	attack_collision.enabled_time = charge.release_charge_time
 
 # State enforcement
 func is_charging():
@@ -211,14 +171,6 @@ func can_pickup():
 	return null
 
 #Physics functions
-
-func apply_flapping(delta):
-	if not alive: return
-	if is_flapping:
-		move.y -= flapping * delta
-		last_flap += delta
-		if last_flap > stop_hover_time:
-			is_flapping = false
 	
 func apply_charge_flapping(delta):
 	if is_charging():
@@ -244,7 +196,6 @@ func integrate_physics(delta):
 		if n.has_method("physics"):
 			n.physics(delta)
 	apply_gravity(delta)
-	apply_flapping(delta)
 	apply_charge_flapping(delta)
 	limit_movement()
 	#DebugLogger.show_line("bat_move", [global_position, global_position+move])

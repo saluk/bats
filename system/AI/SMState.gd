@@ -3,11 +3,11 @@ class_name SMState
 
 export var enabled = true
 
-var machine:StateMachine
+var machine
 var memory = {}
 
 func can_switch():
-	pass
+	return true
 	
 func make_active():
 	pass

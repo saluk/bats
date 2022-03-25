@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "NodeComponent",
 "class": "BatPlayerController",
 "language": "GDScript",
-"path": "res://creatures/bat/BatPlayerController.gd"
+"path": "res://creatures/bat/states/BatPlayerController.gd"
 }, {
 "base": "GdUnitTestSuite",
 "class": "BatTest",

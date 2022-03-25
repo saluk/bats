@@ -5,7 +5,6 @@ var charge_level = 0.0
 var charge_time = 0.5  #Hold this long to charge
 enum {NotCharging, Charging, ReleaseCharge}
 var charge_state = NotCharging
-var charge_speed = 100  #Speed we move after a charge
 var release_charge_time = 1  #How long we charge before resetting
 var hover_after_time = 0.25
 var after_time = 0
