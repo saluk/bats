@@ -85,7 +85,7 @@ func drop_item():
 		return
 	$Holding/Sprite.texture = null
 	Spawner.spawn(holding, {
-		'position': $Dropping.global_position
+		'position': global_position
 	})
 	holding.apply_central_impulse(toss_vector)
 	holding.pickup_time = 1

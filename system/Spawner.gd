@@ -18,7 +18,8 @@ class CacheInfo extends Reference:
 			scene = load(path)
 		time_cached = Engine.get_physics_frames()
 	func spawn():
-		return scene.instance()
+		var node = scene.instance()
+		return node
 		
 #props dictionary:
 #{
@@ -55,6 +56,7 @@ func instance_scene(path_or_scene):
 	assert(cached or scene)
 	if cached:
 		scene = cached.spawn()
+		scene.connect("tree_exited", self, "exit_node", [scene])
 	return scene
 
 func spawn(path_or_scene, props:Dictionary):
@@ -83,7 +85,6 @@ func spawn(path_or_scene, props:Dictionary):
 		parent.add_child(info.node)
 	if "position" in props:
 		info.node.global_position = props["position"]
-	info.node.connect("tree_exited", self, "exit_node", [info.node])
 	spawned_elements.append(info)
 	return info.node
 	

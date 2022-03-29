@@ -43,7 +43,7 @@ func release_charge(xdir):
 		if is_active_charge():
 			charge_state = ReleaseCharge
 			clear_charges()
-			apply_radar()
+			apply_release()
 		else:
 			charge_state = NotCharging
 			charge_level = 0
@@ -55,7 +55,7 @@ func what_action():
 	charge_time = 0.5
 	return "radar"
 	
-func apply_radar():
+func apply_release():
 	clear_charges()
 	if what_action() == "radar":
 		var arc:Node2D = bat.get_node("Arc")
