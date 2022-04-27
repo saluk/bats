@@ -2,7 +2,7 @@ extends SMState
 class_name STDrop
 
 func can_switch():
-	if machine.attach_direction.length() == 0:
+	if not machine.ray_grip_back_result and not machine.ray_grip_front_result:
 		return true
 	machine.target = machine.get_target()
 	if machine.target:

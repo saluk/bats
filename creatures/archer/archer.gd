@@ -24,40 +24,6 @@ signal stunned
 
 # Body functions
 
-func flap_left():
-	$AnimatedSprite.flip_h = false
-	move.x -= jump_width
-	move.y -= jump_height
-	
-func flap_right():
-	$AnimatedSprite.flip_h = true
-	move.x += jump_width
-	move.y -= jump_height
-	
-func drop_item():
-	if not holding:
-		return
-	$Holding/Sprite.texture = null
-	holding.position = $Dropping.global_position
-	get_parent().add_child(holding)
-	#holding.move = toss_vector
-	holding.apply_central_impulse(toss_vector)
-	holding.pickup_time = 1
-	holding = null
-	
-func grab_item():
-	if not alive: return
-	var source = can_pickup()
-	if not source:
-		return
-	var object = source.pickup_object()
-	if not object:
-		return false
-	holding = object
-	pickups.erase(source)
-	$Holding.get_child(0).texture = holding.find_node('Sprite').texture
-	return true
-
 # State enforcement
 func get_charge_anim():
 	var anim = ""
@@ -136,7 +102,6 @@ func die():
 	$AnimatedSprite.play("death")
 	toss_vector = Vector2()
 	pickups = []
-	drop_item()
 	emit_signal("is_dead")
 	# Turn off collision with projectiles
 	set_collision_layer_bit(4, false)
@@ -159,12 +124,6 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	remove_pickup(body)
-
-func _on_Drop_pressed():
-	drop_item()
-
-func _on_Grab_pressed():
-	grab_item()
 
 func _on_Area2D_area_entered(area):
 	add_pickup(area)

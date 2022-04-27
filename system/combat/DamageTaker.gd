@@ -51,23 +51,16 @@ func end():
 	enabled = false
 			
 func _area_or_body_entered(area_or_body):
-	print("thing entered ", area_or_body.name)
 	if "damage" in area_or_body:
-		print("damage in thing")
 		add_source(area_or_body)
 	elif "damage" in area_or_body.get_parent():
-		print("damage in parent")
 		add_source(area_or_body.get_parent())
-	else:
-		print("no damage")
-	_physics_process(0)
 		
 func _area_or_body_exited(area_or_body):
 	if "damage" in area_or_body:
 		remove_source(area_or_body)
 	elif "damage" in area_or_body.get_parent():
 		remove_source(area_or_body.get_parent())
-	_physics_process(0)
 		
 func add_source(object):
 	if not object in damage_sources.keys():
@@ -77,11 +70,13 @@ func add_source(object):
 		damage_sources[object].amount = object.damage
 		damage_sources[object].direction = (object.global_position - base_node.global_position).normalized()
 		print("added damage source")
+		_physics_process(0)
 		
 func remove_source(object):
 	if object in damage_sources:
 		damage_sources.erase(object)
 		print("removed damage source")
+		_physics_process(0)
 
 func _physics_process(delta):
 	if not enabled:
@@ -90,7 +85,7 @@ func _physics_process(delta):
 	if last_hurt < iseconds:
 		last_hurt += delta
 		return
-	DebugLogger.show_at("masks", excluded_damage_type_masks.keys().size(), base_node.global_position)
+	#DebugLogger.show_at("masks", excluded_damage_type_masks.keys().size(), base_node.global_position)
 	hurt()
 	
 func apply_knockback(source):
@@ -124,8 +119,6 @@ func hurt():
 					apply_knockback(source)
 				last_hurt = 0.0
 				return
-			else:
-				print("source not enabled")
 		else:
 			print("source not valid")
 			print("erasing damage source", source_object.name)

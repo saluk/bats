@@ -14,20 +14,6 @@ func process(delta):
 
 	machine.apply_attach_force(delta)
 		
-	base_node.move += machine.attach_move_direction() * 125 * delta
-	if machine.check_hit_wall():
-		if not turn:
-			machine.attach_direction = -machine.attach_move_direction()
-			machine.direction = -machine.direction
-			turn = true
-	elif machine.check_hit_gap():
-		# TODO we are bad at gaps
-		if not turn:
-			base_node.position += machine.attach_move_direction() * 4
-			machine.attach_direction = machine.attach_move_direction()
-			machine.direction = -machine.direction
-			base_node.position += machine.attach_move_direction() * 4
-			turn = true
-	else:
-		turn = false
+	#base_node.move += machine.attach_move_direction() * 125 * delta
+
 

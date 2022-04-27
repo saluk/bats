@@ -8,7 +8,6 @@ class Component:
 static func base_node(node):
 	while node and "component" in node and node.component is Component:
 		node = node.get_parent()
-	print("stopping at ",node)
 	return node
 	
 static func component_ready(component_node):

@@ -1,22 +1,6 @@
 extends StateMachine
 class_name CrawlingAIController
 
-# TODO - New algorithm for gaps. Actual crawling!
-# For the given slug rotation
-#  Step forward along crawl path
-#  Rotate toward where the surface should be
-#  Is there a surface?
-#     pull toward the current forward direction, counteract gravity, and push toward that surface a little
-#  If there isn't a surface?
-#     Rotate one more step to see if there is a curve
-#     If there isn't, we should drop
-#     If there is we can attach to that surface
-
-# Another option:
-# If we are on a tile, generate a path of contiguous movement, and move toward
-# the next point
-# If we aren't on a tile just drop
-
 ### Constants/Parameters ###
 var spot_distance = 100
 
@@ -26,6 +10,11 @@ var target:Creature = null
 export var direction = 1 # x direction to move along the floor, rotates with attached surface
 var attach_direction = Vector2.ZERO  #Normal of wall we are attached to
 var space_state
+
+var ray_grip_back_result
+var ray_grip_front_result
+var ray_grip_corner_result
+var ray_wall_result
 
 func _ready():
 	._ready()
@@ -40,74 +29,57 @@ func get_target():
 		if n.alive:
 			return n
 	return null
-			
-func check_hit_wall():
+	
+func get_ray_result(name, start_pos:Vector2, end_vec:Vector2):
+	DebugLogger.show_line(name, [start_pos, start_pos+end_vec])
 	var result
-	var start_pos = base_node.global_position
-	#print("gap_start_pos:", start_pos)
-	var end_pos = start_pos + attach_move_direction()*10
-	#print("gap_end_pos:", end_pos)
 	result = space_state.intersect_ray(
 		start_pos,
-		end_pos,
+		start_pos+end_vec,
 		[self],
 		0b00000000000000000001
 	)
 	return not result.empty()
 	
-func check_hit_gap():
-	var result
-	var start_pos = base_node.global_position + attach_move_direction()*1
-	#print("gap_start_pos:", start_pos)
-	var end_pos = start_pos - attach_direction*20
-	#print("gap_end_pos:", end_pos)
-	result = space_state.intersect_ray(
-		start_pos,
-		end_pos,
-		[self],
-		0b00000000000000000001
+func raycasts():
+	var gp = base_node.global_position
+	var slug = base_node as KinematicBody2D
+	var down = slug.transform.basis_xform(Vector2(0,1))
+	var forward = slug.transform.basis_xform(Vector2(1,0))
+	var back = -forward
+	ray_grip_back_result = get_ray_result(
+		'gb', gp + back*4, down*6
 	)
-	return result.empty()
-			
+	ray_grip_front_result = get_ray_result(
+		'gf', gp + forward*4, down*6
+	)
+	ray_grip_corner_result = get_ray_result(
+		'gc', gp+down*6+forward*6, back*6
+	)
+	ray_wall_result = get_ray_result(
+		'w', gp, forward*10
+	)
+
 func attach_to_walls():
+	if ray_grip_corner_result and not ray_grip_front_result:
+		(base_node as KinematicBody2D).rotation_degrees += 10
+	base_node.move += base_node.transform.basis_xform(Vector2(0,1)) * 5
 	# We should check attach direction every frame, but things get weird going around corners
-	if attach_direction.length()==0:
-		DebugLogger.log_increment("regenerate attach direction")
-		var result
-		for vdirection in [Vector2(0,1), Vector2(0,-1), Vector2(1,0), Vector2(-1,0)]:
-			result = space_state.intersect_ray(
-				base_node.global_position,
-				base_node.global_position + vdirection*10,
-				[self],
-				0b00000000000000000001
-			)
-			if not result.empty():
-				attach_direction = -vdirection  #reverse ray to get normal
-				break
-	base_node.animation.animatedSprite.rotation = lerp(
-		base_node.animation.animatedSprite.rotation,
-		-attach_direction.angle_to(Vector2.UP),
-		0.2)
-	base_node.get_node("Attack").rotation = -attach_direction.angle_to(Vector2.UP)
-	if abs(attach_move_direction().x) > 0.5:
-		base_node.animation.set_flipx(-direction)
-	if abs(attach_move_direction().y) > 0.5:
-		base_node.animation.set_flipx(direction)
+	#if abs(attach_move_direction().x) > 0.5:
+	#	base_node.animation.set_flipx(-direction)
+	#if abs(attach_move_direction().y) > 0.5:
+	#	base_node.animation.set_flipx(direction)
 				
 func apply_attach_force(delta):
+	base_node.move += base_node.transform.basis_xform(Vector2(1,0))*direction*50*delta
 	if attach_direction.length()>0:
 		# Stick to surface force
 		DebugLogger.log_variable("attach force", attach_direction)
 		base_node.move.y += (-1 * base_node.gravity*delta)
 		base_node.move -= attach_direction * 10
-		
-func attach_move_direction():
-	if attach_direction.length()==0:
-		return Vector2(direction, 0)
-	var move_dir = Vector2(direction, 0).rotated(attach_direction.angle_to(Vector2.UP))
-	return move_dir
 
 func _physics_process(_delta):
+	raycasts()
 	attach_to_walls()
 
 func update_brain():

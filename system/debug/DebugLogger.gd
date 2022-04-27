@@ -13,7 +13,7 @@ class LogVariable extends Reference:
 	var l_time = 0
 	var l_pos = Vector2.ZERO
 	var l_node = null
-	var timeout = null
+	var timeout:float = -1  # in seconds, less than zero is infinite
 	func _init(type, name, value, time):
 		l_type = type
 		l_name = name
@@ -22,17 +22,16 @@ class LogVariable extends Reference:
 		
 func timeout_lines():
 	for key in tracked_variables.keys():
-		if tracked_variables[key].timeout and Engine.get_frames_drawn() > tracked_variables[key].timeout:
-			print("timeout")
+		if tracked_variables[key].timeout >= 0 and (Engine.get_frames_drawn() - tracked_variables[key].l_time) * 0.02 > tracked_variables[key].timeout:
 			if tracked_variables[key].l_node:
 				tracked_variables[key].l_node.queue_free()
 			tracked_variables.erase(key)
 
-func _process(_delta):
+func _physics_process(_delta):
+	timeout_lines()
 	if dirty:
 		write_text()
 		dirty = false
-	timeout_lines()
 	update()
 
 func sort_custom(a, b):
@@ -56,6 +55,7 @@ func write_text():
 			if not v.l_node or not Util.valid_object(v.l_node):
 				v.l_node = Label.new()
 				get_tree().get_nodes_in_group("debug_position_control")[0].add_child(v.l_node)
+				print("create shown at label node ", Engine.get_frames_drawn())
 			v.l_node.set_global_position(v.l_pos)
 			v.l_node.text = str(v.l_value)
 	ar.sort_custom(self, "sort_by_time")
@@ -81,7 +81,7 @@ func _draw():
 func log_variable(name, value, timeout = 0.1):
 	tracked_variables[name] = LogVariable.new("string", name, value, Engine.get_frames_drawn())
 	if timeout:
-		tracked_variables[name].timeout = Engine.get_frames_drawn()+timeout/0.02
+		tracked_variables[name].timeout = timeout
 	dirty = true
 	
 func log_increment(name):
@@ -90,13 +90,16 @@ func log_increment(name):
 	tracked_variables[name].l_value = str(int(tracked_variables[name].l_value)+1)
 	dirty = true
 
-func show_line(name, start_end_array):
+func show_line(name, start_end_array, timeout=0.1):
 	tracked_variables[name] = LogVariable.new("vector", name, start_end_array, Engine.get_frames_drawn())
+	tracked_variables[name].timeout = timeout
+	dirty = true
 
-func show_at(name, value, pos):
+func show_at(name, value, pos, timeout=0.1):
 	if not name in tracked_variables:
 		tracked_variables[name] = LogVariable.new("pos", name, value, Engine.get_frames_drawn())
-		print("create")
-	tracked_variables[name].timeout = Engine.get_frames_drawn()+5
+	tracked_variables[name].timeout = timeout
 	tracked_variables[name].l_pos = pos
 	tracked_variables[name].l_value = value
+	tracked_variables[name].l_time = Engine.get_frames_drawn()
+	dirty = true

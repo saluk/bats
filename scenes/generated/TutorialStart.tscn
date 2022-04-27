@@ -1,13 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
 [ext_resource path="res://objects/helpful/Rafter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/castle_foreground.tres" type="TileSet" id=4]
 [ext_resource path="res://objects/helpful/Sign.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/RoomTrigger.tscn" type="PackedScene" id=7]
-[ext_resource path="res://objects/helpful/Sign.gd" type="Script" id=12]
-[ext_resource path="res://objects/helpful/Rafter.gd" type="Script" id=16]
-[ext_resource path="res://objects/RoomTrigger.gd" type="Script" id=17]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
@@ -59,17 +56,11 @@ mapname = "TutorialStart"
 room_offset = Vector2( 8, 2 )
 generate_room_offset = false
 
-[node name="Rafter" type="KinematicBody2D" parent="." groups=[
-"rafter",
-] instance=ExtResource( 3 )]
+[node name="Rafter" parent="." instance=ExtResource( 3 )]
 position = Vector2( 104, 40 )
-collision_layer = 5
-collision_mask = 0
-script = ExtResource( 16 )
 
-[node name="RoomTrigger" type="Node2D" parent="." instance=ExtResource( 7 )]
+[node name="RoomTrigger" parent="." instance=ExtResource( 7 )]
 position = Vector2( 83.634, 76.2789 )
-script = ExtResource( 17 )
 enemy_group = "enemy"
 door_group = "door1"
 
@@ -83,9 +74,8 @@ script = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraRegion"]
 shape = SubResource( 2 )
 
-[node name="Sign" type="Node2D" parent="." instance=ExtResource( 5 )]
+[node name="Sign" parent="." instance=ExtResource( 5 )]
 position = Vector2( 368.06, 57.6765 )
-script = ExtResource( 12 )
 dialog_tag = "press_left"
 
 [node name="GeneratedTileMap" type="TileMap" parent="." groups=[
