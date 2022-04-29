@@ -1,6 +1,9 @@
 extends Node2D
 
-var effect = ["do_stun", []]
+var effects = [
+	["do_stun", []],
+	["do_reveal", []]
+]
 
 var move:Vector2
 
@@ -25,6 +28,7 @@ var collision_circle:CircleShape2D
 func _ready():
 	collision_circle = shape.shape
 	var _a = area.connect("body_entered", self, "hit_body")
+	var _b = area.connect("area_entered", self, "hit_body")
 
 func _process(delta):
 	if edge_radius < max_edge_radius:
@@ -63,8 +67,9 @@ func hit_body(body):
 	if body.is_in_group("player"):
 		return
 	print("radar hit ", body)
-	if body.has_method(effect[0]):
-		if effect[1]:
-			body.call(effect[0], effect[1])
-		else:
-			body.call(effect[0])
+	for effect in effects:
+		if body.has_method(effect[0]):
+			if effect[1]:
+				body.call(effect[0], effect[1])
+			else:
+				body.call(effect[0])

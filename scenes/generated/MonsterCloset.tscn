@@ -6,15 +6,11 @@
 [ext_resource path="res://creatures/slug/slug.tscn" type="PackedScene" id=4]
 [ext_resource path="res://creatures/archer/archer.tscn" type="PackedScene" id=5]
 
-[node name="MonsterCloset" type="Node2D" groups=[
-"room_root",
-]]
+[node name="MonsterCloset" type="Node2D" groups=["room_root"]]
 
 [node name="GeneratedBackground" parent="." instance=ExtResource( 3 )]
 
-[node name="GeneratedTileMap" type="TileMap" parent="." groups=[
-"room_tilemap",
-]]
+[node name="GeneratedTileMap" type="TileMap" parent="." groups=["room_tilemap"]]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1

@@ -1,19 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
 [ext_resource path="res://scenes/castle_foreground.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/RockPile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/Pickup.tscn" type="PackedScene" id=5]
 
-[node name="ChooseScene" type="Node2D" groups=[
-"room_root",
-]]
+[node name="ChooseScene" type="Node2D" groups=["room_root"]]
 
 [node name="GeneratedBackground" parent="." instance=ExtResource( 3 )]
 
-[node name="GeneratedTileMap" type="TileMap" parent="." groups=[
-"room_tilemap",
-]]
+[node name="GeneratedTileMap" type="TileMap" parent="." groups=["room_tilemap"]]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
@@ -25,3 +22,6 @@ generate_room_offset = false
 
 [node name="RockPile" parent="." instance=ExtResource( 4 )]
 position = Vector2( 210.795, 211.416 )
+
+[node name="Pickup" parent="." instance=ExtResource( 5 )]
+position = Vector2( 481.584, 115.642 )

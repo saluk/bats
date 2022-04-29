@@ -46,16 +46,6 @@ animations = [ {
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "fly",
-"speed": 16.0
-}, {
-"frames": [ ExtResource( 11 ) ],
-"loop": false,
-"name": "prepare_charge",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ) ],
 "loop": false,
 "name": "land",
 "speed": 10.0
@@ -64,6 +54,16 @@ animations = [ {
 "loop": true,
 "name": "attack",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "fly",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "prepare_charge",
+"speed": 5.0
 } ]
 
 [sub_resource type="AtlasTexture" id=5]
@@ -146,58 +146,6 @@ region = Rect2( 256, 288, 32, 32 )
 atlas = ExtResource( 1 )
 region = Rect2( 288, 288, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=38]
-atlas = ExtResource( 1 )
-region = Rect2( 96, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 1 )
-region = Rect2( 128, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 1 )
-region = Rect2( 160, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 1 )
-region = Rect2( 192, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 1 )
-region = Rect2( 224, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 1 )
-region = Rect2( 256, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 1 )
-region = Rect2( 288, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 256, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 256, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 256, 32, 32 )
-
 [sub_resource type="AtlasTexture" id=48]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 256, 32, 32 )
@@ -254,6 +202,58 @@ region = Rect2( 256, 256, 32, 32 )
 atlas = ExtResource( 1 )
 region = Rect2( 288, 256, 32, 32 )
 
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 224, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 224, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 224, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 224, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 224, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 1 )
+region = Rect2( 160, 224, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 224, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 1 )
+region = Rect2( 224, 224, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 1 )
+region = Rect2( 256, 224, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 1 )
+region = Rect2( 288, 224, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 256, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 256, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 256, 32, 32 )
+
 [sub_resource type="SpriteFrames" id=52]
 animations = [ {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
@@ -266,16 +266,6 @@ animations = [ {
 "name": "death",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
-"loop": true,
-"name": "fly",
-"speed": 16.0
-}, {
-"frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
-"loop": false,
-"name": "prepare_charge",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ) ],
 "loop": false,
 "name": "land",
@@ -285,6 +275,16 @@ animations = [ {
 "loop": false,
 "name": "attack",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
+"loop": true,
+"name": "fly",
+"speed": 16.0
+}, {
+"frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"loop": false,
+"name": "prepare_charge",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=53]
@@ -368,7 +368,7 @@ playing = true
 visible = false
 frames = SubResource( 52 )
 animation = "idle"
-frame = 3
+frame = 4
 playing = true
 
 [node name="PickupRegion" type="Area2D" parent="."]

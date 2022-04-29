@@ -28,9 +28,7 @@ func _ready():
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 231.88, 164.576 )
 
-[node name="TutorialStart" type="Node2D" groups=[
-"room_root",
-]]
+[node name="TutorialStart" type="Node2D" groups=["room_root"]]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -64,9 +62,7 @@ position = Vector2( 83.634, 76.2789 )
 enemy_group = "enemy"
 door_group = "door1"
 
-[node name="CameraRegion" type="Area2D" parent="." groups=[
-"camera_region",
-]]
+[node name="CameraRegion" type="Area2D" parent="." groups=["camera_region"]]
 visible = false
 position = Vector2( 247.295, 78.3416 )
 script = SubResource( 1 )
@@ -78,9 +74,7 @@ shape = SubResource( 2 )
 position = Vector2( 368.06, 57.6765 )
 dialog_tag = "press_left"
 
-[node name="GeneratedTileMap" type="TileMap" parent="." groups=[
-"room_tilemap",
-]]
+[node name="GeneratedTileMap" type="TileMap" parent="." groups=["room_tilemap"]]
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
