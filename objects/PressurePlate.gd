@@ -20,15 +20,17 @@ func _physics_process(delta):
 	var target_y = weight*2
 	var k = $PhysicalPart
 	var move = Vector2()
-	var dist = abs(k.position.y - target_y)
-	if dist > 0.5:
+	var dir = k.position.y - target_y
+	var dist = abs(dir)
+	if dist > 0.02:
 		if k.position.y < target_y:
 			move.y = down_speed
 		if k.position.y > target_y:
 			move.y = -up_speed
-	$Label.text = "w:" + str(weight) + " ty:" + str(target_y) + " ry:" + str(k.position.y) + " mv:" + str(move.y)
+		if k.position.y > target_y and dir < 0 or k.position.y < target_y and dir > 0:
+			move.y = 0
+			k.position.y = target_y
 	k.position.y += move.y * delta
 	if door_group:
 		for door in get_tree().get_nodes_in_group(door_group):
-			var d = door.get_node("KinematicBody2D")
-			d.position.y = -(k.position.y * door_move_scale)
+			door.percent_open = k.position.y * door_move_scale

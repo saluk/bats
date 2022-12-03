@@ -72,12 +72,12 @@ scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 1 )
 
 [node name="background9" type="Sprite" parent="ParallaxLayer"]
-position = Vector2( 2010, 660 )
+position = Vector2( 1890, 684 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 1 )
 
 [node name="background10" type="Sprite" parent="ParallaxLayer"]
-position = Vector2( 1080, 684 )
+position = Vector2( 1020, 696 )
 scale = Vector2( 4.71448, 2.26194 )
 texture = ExtResource( 1 )
 
@@ -277,7 +277,7 @@ format = 1
 tile_data = PoolIntArray( 65528, 0, 0, 0, 0, 393216, 1, 0, 393217, 2, 0, 393218, 3, 0, 393219, 4, 0, 10, 5, 0, 11, 6, 0, 12, 7, 0, 13, 65536, 0, 524289, 65537, 0, 524289, 65538, 0, 524289, 65539, 0, 524289, 65540, 0, 131081, 65541, 0, 131082, 65542, 0, 131083, 65543, 0, 131085, 131072, 0, 524290, 131073, 0, 524290, 131074, 0, 524290, 131075, 0, 524290, 131076, 0, 327689, 131077, 0, 327690, 131078, 0, 327691, 131079, 0, 327692, 196608, 0, 524298, 196609, 0, 524298, 196610, 0, 524298, 196611, 0, 524298, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0 )
 
 [node name="background26" type="TileMap" parent="ParallaxLayer2"]
-position = Vector2( 527, 720 )
+position = Vector2( 660, 684 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1

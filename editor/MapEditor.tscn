@@ -64,6 +64,21 @@ room_offset = Vector2( 7, 9 )
 generate_room_offset = false
 background_scene = ExtResource( 4 )
 
+[node name="PuzzleRoom" type="TileMap" parent="Layout"]
+modulate = Color( 0.329412, 0.305882, 1, 1 )
+position = Vector2( 0, 84 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 15, 12 )
+cell_custom_transform = Transform2D( 15, 0, 0, 12, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 196619, 1, 1, 196620, 1, 1, 196621, 1, 1, 196622, 1, 1, 196623, 1, 2, 262155, 1, 131072, 262156, 1, 65537, 262157, 1, 65537, 262158, 1, 65537, 262159, 1, 65538, 327692, 1, 131072, 327693, 1, 131073, 327694, 1, 65537, 327695, 1, 65538, 393230, 1, 131073, 393231, 1, 131074 )
+script = ExtResource( 1 )
+room_tileset = ExtResource( 6 )
+room_cell_size = Vector2( 32, 32 )
+room_offset = Vector2( 11, 10 )
+generate_room_offset = false
+background_scene = ExtResource( 4 )
+
 [node name="MonsterCloset" type="TileMap" parent="Layout"]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -45, 84 )
@@ -174,6 +189,6 @@ tile_data = PoolIntArray( 4, 1, 131075, 65540, 1, 131075, 131076, 1, 131075, 196
 [node name="Player" type="Node" parent="."]
 
 [node name="Bat" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 127.016, 119.777 )
+position = Vector2( 173.652, 128.977 )
 scale = Vector2( 0.5, 0.5 )
 mob_id = "188794334"

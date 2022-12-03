@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://editor/RoomMap.gd" type="Script" id=1]
+[ext_resource path="res://scenes/castle_foreground.tres" type="TileSet" id=2]
+[ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/SingleRock.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/PressurePlate.tscn" type="PackedScene" id=6]
+
+[node name="PuzzleRoom" type="Node2D" groups=["room_root"]]
+
+[node name="GeneratedBackground" parent="." instance=ExtResource( 3 )]
+
+[node name="Door2" parent="." groups=["ExitDoor"] instance=ExtResource( 4 )]
+position = Vector2( 395.39, 277.934 )
+rotation = -1.57079
+mob_id = "2850115343"
+open_state = Vector2( -400, 0 )
+
+[node name="GeneratedTileMap" type="TileMap" parent="." groups=["room_tilemap"]]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 1, 65541, 1, 1, 65541, 2, 1, 65541, 3, 1, 65541, 4, 1, 65541, 5, 1, 65541, 6, 1, 65541, 7, 1, 65541, 8, 1, 65541, 9, 1, 65541, 10, 1, 65541, 11, 1, 65541, 12, 1, 65541, 13, 1, 65541, 14, 1, 65541, 15, 1, 65541, 16, 1, 65541, 17, 1, 65541, 18, 1, 65541, 19, 1, 65541, 20, 1, 65541, 21, 1, 65541, 22, 1, 65541, 23, 1, 65541, 24, 1, 65538, 65560, 1, 131075, 131096, 1, 131075, 196632, 1, 131075, 262144, 1, 131075, 262168, 1, 131075, 327680, 1, 131075, 327704, 1, 131075, 393216, 1, 131075, 393240, 1, 131075, 458752, 1, 4, 458753, 1, 65541, 458754, 1, 65541, 458755, 1, 65541, 458756, 1, 65541, 458776, 1, 131075, 524293, 1, 131075, 524312, 1, 131075, 589829, 1, 131075, 589848, 1, 131075, 655365, 1, 131075, 655384, 1, 131075, 720901, 1, 4, 720902, 1, 65541, 720903, 1, 65541, 720904, 1, 65541, 720905, 1, 65541, 720906, 1, 65541, 720907, 1, 65541, 720908, 1, 65541, 720909, 1, 65541, 720910, 1, 65541, 720920, 1, 131075, 786456, 1, 131075, 851992, 1, 131075, 917528, 1, 131075, 983055, 1, 65541, 983056, 1, 65541, 983057, 1, 65541, 983058, 1, 65541, 983059, 1, 65541, 983060, 1, 65541, 983061, 1, 65541, 983062, 1, 65541, 983063, 1, 65541, 983064, 1, 6 )
+script = ExtResource( 1 )
+mapname = "PuzzleRoom"
+room_offset = Vector2( 11, 10 )
+generate_room_offset = false
+
+[node name="OverlayMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 1, 65541, 1, 1, 65541, 2, 1, 65541, 3, 1, 65541, 4, 1, 65541, 5, 1, 65541, 6, 1, 65541, 7, 1, 65541, 8, 1, 65541, 9, 1, 65541, 10, 1, 65541, 11, 1, 65541, 12, 1, 65541, 13, 1, 65541, 14, 1, 65541, 15, 1, 65541, 16, 1, 65541, 17, 1, 65541, 18, 1, 65541, 19, 1, 65541, 20, 1, 65541, 21, 1, 65541, 22, 1, 65541, 23, 1, 65541, 24, 1, 65538, 65560, 1, 131075, 131096, 1, 131075, 196632, 1, 131075, 262144, 1, 131075, 262168, 1, 131075, 327680, 1, 131075, 327704, 1, 131075, 393216, 1, 131075, 393240, 1, 131075, 458752, 1, 4, 458753, 1, 65541, 458754, 1, 65541, 458755, 1, 65541, 458756, 1, 65541, 458757, 0, 131076, 458776, 1, 131075, 524293, 1, 131075, 524312, 1, 131075, 589829, 1, 131075, 589848, 1, 131075, 655365, 1, 131075, 655384, 1, 131075, 720901, 1, 4, 720902, 1, 65541, 720903, 1, 65541, 720904, 1, 65541, 720905, 1, 65541, 720906, 1, 65541, 720907, 1, 65541, 720908, 1, 65541, 720909, 1, 65541, 720910, 1, 65541, 720920, 1, 131075, 786456, 1, 131075, 851992, 1, 131075, 917528, 1, 131075, 983055, 1, 65541, 983056, 1, 65541, 983057, 1, 65541, 983058, 1, 65541, 983059, 1, 65541, 983060, 1, 65541, 983061, 1, 65541, 983062, 1, 65541, 983063, 1, 65541, 983064, 1, 6 )
+script = ExtResource( 1 )
+mapname = "PuzzleRoom"
+room_offset = Vector2( 11, 10 )
+generate_room_offset = false
+
+[node name="PressurePlate" parent="." instance=ExtResource( 6 )]
+position = Vector2( 456.773, 351.217 )
+scale = Vector2( 2, 1 )
+door_group = "ExitDoor"
+door_move_scale = 0.5
+up_speed = 0.5
+
+[node name="SingleRock" parent="." instance=ExtResource( 5 )]
+position = Vector2( 267.942, 318.551 )
+
+[node name="Door" parent="." groups=["ExitDoor"] instance=ExtResource( 4 )]
+position = Vector2( 478.388, 351.217 )
+mob_id = "2850115343"

@@ -5,7 +5,7 @@ export var open = false
 export var closed_state = Vector2(0,0)
 export var open_state = Vector2(0,-100)
 export var open_speed = 1.0
-var percent_open = 0.0
+var percent_open := 0.0
 var goal_percent_open = null
 
 var save_props = ["open"]
