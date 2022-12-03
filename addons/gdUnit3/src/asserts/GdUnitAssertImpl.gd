@@ -23,6 +23,7 @@ static func _get_line_number() -> int:
 		 or source.ends_with("AssertImpl.gd") \
 		 or source.ends_with("GdUnitTestSuite.gd") \
 		 or source.ends_with("GdUnitSceneRunnerImpl.gd") \
+		 or source.ends_with("GdUnitObjectInteractions.gd") \
 		 or source.ends_with("GdUnitAwaiter.gd"):
 			continue
 		return stack_info.get("line")
@@ -70,7 +71,7 @@ static func _normalize_bbcode(message :String) -> String:
 	var rtl := RichTextLabelExt.new()
 	rtl._ready()
 	rtl.bbcode_enabled = true
-	rtl.parse_bbcode(message)
+	rtl.parse_bbcode(message if message else "")
 	var normalized = rtl.get_text()
 	rtl.free()
 	return normalized
@@ -79,7 +80,7 @@ func has_failure_message(expected :String):
 	var current_error := _normalize_bbcode(_current_error_message)
 	if current_error != expected:
 		_expect_fail = false
-		var diffs := GdObjects.string_diff(current_error, expected)
+		var diffs := GdDiffTool.string_diff(current_error, expected)
 		var current := GdAssertMessages.colorDiff(diffs[1])
 		report_error(GdAssertMessages.error_not_same_error(current, expected))
 	return self
@@ -88,7 +89,7 @@ func starts_with_failure_message(expected :String):
 	var current_error := _normalize_bbcode(_current_error_message)
 	if current_error.find(expected) != 0:
 		_expect_fail = false
-		var diffs := GdObjects.string_diff(current_error, expected)
+		var diffs := GdDiffTool.string_diff(current_error, expected)
 		var current := GdAssertMessages.colorDiff(diffs[1])
 		report_error(GdAssertMessages.error_not_same_error(current, expected))
 	return self

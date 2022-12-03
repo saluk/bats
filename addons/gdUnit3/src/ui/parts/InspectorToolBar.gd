@@ -5,7 +5,7 @@ signal run_pressed
 signal stop_pressed
 
 
-onready var debug_icon_image :StreamTexture = load("res://addons/gdUnit3/src/ui/assets/PlayDebug.svg")
+onready var debug_icon_image :Texture = load("res://addons/gdUnit3/src/ui/assets/PlayDebug.svg")
 onready var _version_label := $Tools/CenterContainer/version
 onready var _button_wiki := $Tools/help
 onready var _tool_button := $Tools/tool
@@ -45,7 +45,7 @@ func _on_GdUnit_gdunit_runner_stop(client_id :int):
 	_button_stop.disabled = true
 
 func _on_wiki_pressed():
-	OS.shell_open("https://github.com/MikeSchulze/gdUnit3/wiki")
+	OS.shell_open("https://mikeschulze.github.io/gdUnit3/")
 
 
 func _on_btn_tool_pressed():
