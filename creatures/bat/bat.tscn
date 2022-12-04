@@ -368,7 +368,6 @@ playing = true
 visible = false
 frames = SubResource( 52 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="PickupRegion" type="Area2D" parent="."]
@@ -416,6 +415,7 @@ __meta__ = {
 }
 
 [node name="HealthBar" type="Node2D" parent="."]
+visible = false
 script = ExtResource( 7 )
 shields = [ {
 "arc": 360,

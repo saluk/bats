@@ -11,11 +11,31 @@
 
 [node name="GeneratedBackground" parent="." instance=ExtResource( 3 )]
 
-[node name="Door2" parent="." groups=["ExitDoor"] instance=ExtResource( 4 )]
-position = Vector2( 395.39, 277.934 )
+[node name="DoorCorner" parent="." groups=["CornerDoor"] instance=ExtResource( 4 )]
+position = Vector2( 696.79, 384 )
+mob_id = "1446922301"
+open_state = Vector2( -90, 0 )
+
+[node name="KinematicBody2D" parent="DoorCorner" index="0"]
 rotation = -1.57079
-mob_id = "2850115343"
-open_state = Vector2( -400, 0 )
+
+[node name="CollisionShape2D" parent="DoorCorner/KinematicBody2D" index="0"]
+position = Vector2( 20, 64 )
+
+[node name="DoorSide" parent="." groups=["SideDoor"] instance=ExtResource( 4 )]
+position = Vector2( 602.59, 351.217 )
+mob_id = "1041129740"
+open_state = Vector2( -40, 0 )
+
+[node name="KinematicBody2D" parent="DoorSide" index="0"]
+rotation = -1.57079
+
+[node name="CollisionShape2D" parent="DoorSide/KinematicBody2D" index="0"]
+position = Vector2( 20, 31.7408 )
+scale = Vector2( 1, 0.5 )
+
+[node name="TileMap" parent="DoorSide/KinematicBody2D" index="1"]
+tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131073, 65536, 0, 196608, 65537, 0, 196609, 131072, 0, 196608, 131073, 0, 196609, 196608, 0, 262144, 196609, 0, 196609, 262144, 0, 196608, 262145, 0, 196609, 327680, 0, 262144, 327681, 0, 262145, 393216, 0, 327680, 393217, 0, 327681 )
 
 [node name="GeneratedTileMap" type="TileMap" parent="." groups=["room_tilemap"]]
 tile_set = ExtResource( 2 )
@@ -31,22 +51,62 @@ generate_room_offset = false
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 0, 1, 65541, 1, 1, 65541, 2, 1, 65541, 3, 1, 65541, 4, 1, 65541, 5, 1, 65541, 6, 1, 65541, 7, 1, 65541, 8, 1, 65541, 9, 1, 65541, 10, 1, 65541, 11, 1, 65541, 12, 1, 65541, 13, 1, 65541, 14, 1, 65541, 15, 1, 65541, 16, 1, 65541, 17, 1, 65541, 18, 1, 65541, 19, 1, 65541, 20, 1, 65541, 21, 1, 65541, 22, 1, 65541, 23, 1, 65541, 24, 1, 65538, 65560, 1, 131075, 131096, 1, 131075, 196632, 1, 131075, 262144, 1, 131075, 262168, 1, 131075, 327680, 1, 131075, 327704, 1, 131075, 393216, 1, 131075, 393240, 1, 131075, 458752, 1, 4, 458753, 1, 65541, 458754, 1, 65541, 458755, 1, 65541, 458756, 1, 65541, 458757, 0, 131076, 458776, 1, 131075, 524293, 1, 131075, 524312, 1, 131075, 589829, 1, 131075, 589848, 1, 131075, 655365, 1, 131075, 655384, 1, 131075, 720901, 1, 4, 720902, 1, 65541, 720903, 1, 65541, 720904, 1, 65541, 720905, 1, 65541, 720906, 1, 65541, 720907, 1, 65541, 720908, 1, 65541, 720909, 1, 65541, 720910, 1, 65541, 720920, 1, 131075, 786456, 1, 131075, 851992, 1, 131075, 917528, 1, 131075, 983055, 1, 65541, 983056, 1, 65541, 983057, 1, 65541, 983058, 1, 65541, 983059, 1, 65541, 983060, 1, 65541, 983061, 1, 65541, 983062, 1, 65541, 983063, 1, 65541, 983064, 1, 6 )
+tile_data = PoolIntArray( 0, 1, 65541, 1, 1, 65541, 2, 1, 65541, 3, 1, 65541, 4, 1, 65541, 5, 1, 65541, 6, 1, 65541, 7, 1, 65541, 8, 1, 65541, 9, 1, 65541, 10, 1, 65541, 11, 1, 65541, 12, 1, 65541, 13, 1, 65541, 14, 1, 65541, 15, 1, 65541, 16, 1, 65541, 17, 1, 65541, 18, 1, 65541, 19, 1, 65541, 20, 1, 65541, 21, 1, 65541, 22, 1, 65541, 23, 1, 65541, 24, 1, 65538, 65560, 1, 131075, 131096, 1, 131075, 196632, 1, 131075, 262144, 1, 131075, 262168, 1, 131075, 327680, 1, 131075, 327699, 0, 131073, 327700, 0, 65541, 327701, 0, 65541, 327702, 0, 65541, 327703, 0, 65542, 327704, 1, 131075, 393216, 1, 131075, 393235, 0, 131075, 393240, 1, 131075, 458752, 1, 4, 458753, 1, 65541, 458754, 1, 65541, 458755, 1, 65541, 458756, 1, 65541, 458757, 0, 131076, 458771, 0, 131075, 458776, 1, 131075, 524293, 1, 131075, 524307, 0, 131075, 524309, 0, 65539, 524312, 1, 131075, 589829, 1, 131075, 589842, 0, 65540, 589843, 0, 131073, 589845, 0, 131073, 589846, 0, 65538, 589848, 1, 131075, 655365, 1, 131075, 655381, 0, 4, 655382, 0, 6, 655384, 1, 131075, 720901, 1, 4, 720902, 1, 65541, 720903, 1, 65541, 720904, 1, 65541, 720905, 1, 65541, 720906, 1, 65541, 720907, 1, 65541, 720908, 1, 65541, 720909, 1, 65541, 720910, 1, 65541, 720920, 1, 131075, 786451, 0, 65539, 786453, 0, 65539, 786456, 1, 131075, 851987, 0, 131075, 851989, 0, 131075, 851992, 1, 131075, 917523, 0, 196611, 917525, 0, 196611, 917528, 1, 131075, 983054, 0, 131076, 983055, 1, 65541, 983056, 1, 65541, 983057, 1, 65541, 983058, 1, 65541, 983059, 1, 65541, 983060, 1, 65541, 983061, 1, 65541, 983062, 1, 65541, 983063, 1, 65541, 983064, 1, 6 )
 script = ExtResource( 1 )
 mapname = "PuzzleRoom"
 room_offset = Vector2( 11, 10 )
 generate_room_offset = false
 
-[node name="PressurePlate" parent="." instance=ExtResource( 6 )]
-position = Vector2( 456.773, 351.217 )
+[node name="PressurePlateCorner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 655.886, 480 )
 scale = Vector2( 2, 1 )
+door_group = "CornerDoor"
+door_move_scale = 0.5
+up_speed = 0.5
+
+[node name="PressurePlateSide" parent="." instance=ExtResource( 6 )]
+position = Vector2( 591.669, 287.943 )
+scale = Vector2( 2, 1 )
+door_group = "SideDoor"
+door_move_scale = 0.5
+
+[node name="PressurePlateExit" parent="." instance=ExtResource( 6 )]
+position = Vector2( 737.334, 479.995 )
+scale = Vector2( 2.5, 1 )
 door_group = "ExitDoor"
 door_move_scale = 0.5
 up_speed = 0.5
 
 [node name="SingleRock" parent="." instance=ExtResource( 5 )]
-position = Vector2( 267.942, 318.551 )
+position = Vector2( 690.059, 246.519 )
 
-[node name="Door" parent="." groups=["ExitDoor"] instance=ExtResource( 4 )]
+[node name="SingleRock2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 462.326, 470.685 )
+
+[node name="DoorExit" parent="." groups=["ExitDoor"] instance=ExtResource( 4 )]
 position = Vector2( 478.388, 351.217 )
 mob_id = "2850115343"
+
+[node name="CollisionShape2D" parent="DoorExit/KinematicBody2D" index="0"]
+position = Vector2( 20, 64.5607 )
+
+[node name="DoorExit2" parent="." groups=["CornerDoor"] instance=ExtResource( 4 )]
+position = Vector2( 410.603, 381.027 )
+mob_id = "2850115343"
+open_state = Vector2( 0, 96 )
+
+[node name="CollisionShape2D" parent="DoorExit2/KinematicBody2D" index="0"]
+position = Vector2( 20, 64.5607 )
+
+[node name="Todo" type="TextEdit" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+text = "Step 1 - get first rock
+Step 2 - get second rock
+Step 3 - use first rock in locking pit
+Step 4 - use second rock to escape"
+
+[editable path="DoorCorner"]
+[editable path="DoorSide"]
+[editable path="DoorExit"]
+[editable path="DoorExit2"]

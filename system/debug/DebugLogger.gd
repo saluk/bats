@@ -66,6 +66,8 @@ func write_text():
 	get_tree().get_nodes_in_group("debug_logger")[0].get_node("Control/Label").text = s
 	
 func _draw():
+	if not GlobalSettings.show_debug:
+		return
 	var v
 	for name in tracked_variables:
 		v = tracked_variables[name] as LogVariable
@@ -96,6 +98,8 @@ func show_line(name, start_end_array, timeout=0.1):
 	dirty = true
 
 func show_at(name, value, pos, timeout=0.1):
+	if not GlobalSettings.show_debug:
+		return
 	if not name in tracked_variables:
 		tracked_variables[name] = LogVariable.new("pos", name, value, Engine.get_frames_drawn())
 	tracked_variables[name].timeout = timeout

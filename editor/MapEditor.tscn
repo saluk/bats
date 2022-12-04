@@ -189,6 +189,6 @@ tile_data = PoolIntArray( 4, 1, 131075, 65540, 1, 131075, 131076, 1, 131075, 196
 [node name="Player" type="Node" parent="."]
 
 [node name="Bat" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 173.652, 128.977 )
+position = Vector2( 217.75, 161.105 )
 scale = Vector2( 0.5, 0.5 )
 mob_id = "188794334"
